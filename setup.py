@@ -19,13 +19,6 @@ distribute_setup.use_setuptools()
 
 from setuptools import setup, find_packages
 
-#
-# Prevent setuptools from trying to add extra files to the source code
-# manifest by scanning the version control system for its contents.
-#
-#from setuptools.command import sdist
-#   del sdist.finders[:]
-
 setup(
     name = "graf-python",
     description = "Python GrAF API",
@@ -63,5 +56,5 @@ setup(
     package_dir = {'':'src'},
     package_data = {'graf': ['VERSION']},
     #install_requires=['PyYAML>=3.09'],
-    #test_suite = 'nltk.test.simple',
+    #test_suite = 'graf.test.simple',
     )
