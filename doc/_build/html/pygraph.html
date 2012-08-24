@@ -1,0 +1,293 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>PyAnnotation Module - PyGraph.py &mdash; Graf-Python 2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Graf-Python 2 documentation" href="index.html" />
+    <link rel="next" title="PyAnnotation Module - PyGraphElement.py" href="pygraphelement.html" />
+    <link rel="prev" title="PyAnnotation Module - PyGrafRenderer.py" href="pygrafrender.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pygraphelement.html" title="PyAnnotation Module - PyGraphElement.py"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pygrafrender.html" title="PyAnnotation Module - PyGrafRenderer.py"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Graf-Python 2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-PyGraph">
+<span id="pyannotation-module-pygraph-py"></span><h1>PyAnnotation Module - <cite>PyGraph.py</cite><a class="headerlink" href="#module-PyGraph" title="Permalink to this headline">¶</a></h1>
+<p>Graph structure backing the ISO GrAF format.
+The graph is undirected, composed of C{PyNode}s and C{PyEdge}s, each
+backed by a C{list} to maintain the order of the nodes/edges and to
+allow for quick traversals, and a hash map so nodes/edges can be found
+quickly based on their ID</p>
+<dl class="class">
+<dt id="PyGraph.PyGraph">
+<em class="property">class </em><tt class="descclassname">PyGraph.</tt><tt class="descname">PyGraph</tt><a class="reference internal" href="_modules/PyGraph.html#PyGraph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraph.PyGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class of PyGraph.</p>
+<dl class="method">
+<dt id="PyGraph.PyGraph.__init__">
+<tt class="descname">__init__</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/PyGraph.html#PyGraph.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraph.PyGraph.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor for PyGraph.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGraph.PyGraph.add_annotation_set">
+<tt class="descname">add_annotation_set</tt><big>(</big><em>set</em><big>)</big><a class="headerlink" href="#PyGraph.PyGraph.add_annotation_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add given C{PyAnnotationSpace} to this C{PyGraph}.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>set</strong> &#8211; C{PyAnnotationSpace}</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGraph.PyGraph.add_as_create">
+<tt class="descname">add_as_create</tt><big>(</big><em>name</em>, <em>type</em><big>)</big><a class="headerlink" href="#PyGraph.PyGraph.add_as_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create C{PyAnnotationSpace} from given name, value and 
+add it to this C{PyGraph}.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; C{str}</li>
+<li><strong>type</strong> &#8211; C{str}</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGraph.PyGraph.add_edge">
+<tt class="descname">add_edge</tt><big>(</big><em>edge</em><big>)</big><a class="headerlink" href="#PyGraph.PyGraph.add_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add C{PyEdge} to this C{PyGraph}.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>edge</strong> &#8211; C{PyEdge}</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGraph.PyGraph.add_edge_create">
+<tt class="descname">add_edge_create</tt><big>(</big><em>id</em>, <em>fromNode=None</em>, <em>toNode=None</em><big>)</big><a class="headerlink" href="#PyGraph.PyGraph.add_edge_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create C{PyEdge} from id, from_node, toNode and add it to
+this C{PyGraph}.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>id</strong> &#8211; C{str}</li>
+<li><strong>fromNode</strong> &#8211; C{PyNode}</li>
+<li><strong>toNode</strong> &#8211; C{PyNode}</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGraph.PyGraph.add_edge_from_to">
+<tt class="descname">add_edge_from_to</tt><big>(</big><em>fromNode</em>, <em>toNode</em><big>)</big><a class="headerlink" href="#PyGraph.PyGraph.add_edge_from_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create C{PyEdge} from from_node, toNode and add it to
+this C{PyGraph} id is created.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fromNode</strong> &#8211; C{PyNode}</li>
+<li><strong>toNode</strong> &#8211; C{PyNode}</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGraph.PyGraph.add_edge_to_from_id">
+<tt class="descname">add_edge_to_from_id</tt><big>(</big><em>id</em>, <em>fromID</em>, <em>toID</em><big>)</big><a class="headerlink" href="#PyGraph.PyGraph.add_edge_to_from_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create C{PyEdge} from id, fromID, toID and add it to 
+this C{PyGraph}.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>id</strong> &#8211; C{str}</li>
+<li><strong>fromID</strong> &#8211; C{str}</li>
+<li><strong>toID</strong> &#8211; C{str}</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGraph.PyGraph.add_node">
+<tt class="descname">add_node</tt><big>(</big><em>node</em><big>)</big><a class="headerlink" href="#PyGraph.PyGraph.add_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add C{PyNode} to this C{PyGraph}.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> &#8211; C{PyNode} or C{str}</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGraph.PyGraph.find_edge">
+<tt class="descname">find_edge</tt><big>(</big><em>fromNode</em>, <em>toNode</em><big>)</big><a class="headerlink" href="#PyGraph.PyGraph.find_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for C{PyEdge} with its from_node, toNode, either nodes or ids.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fromNode</strong> &#8211; C{PyNode} or C{str}</li>
+<li><strong>toNode</strong> &#8211; C{PyNode} or C{str}</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">C{PyEdge}</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">PyAnnotation Module - <cite>PyGraph.py</cite></a><ul>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pygrafrender.html"
+                        title="previous chapter">PyAnnotation Module - <cite>PyGrafRenderer.py</cite></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pygraphelement.html"
+                        title="next chapter">PyAnnotation Module - <cite>PyGraphElement.py</cite></a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/pygraph.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pygraphelement.html" title="PyAnnotation Module - PyGraphElement.py"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pygrafrender.html" title="PyAnnotation Module - PyGrafRenderer.py"
+             >previous</a> |</li>
+        <li><a href="index.html">Graf-Python 2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, A.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

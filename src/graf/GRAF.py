@@ -48,7 +48,7 @@ class GRAF:
         self.MEDIUM = "medium"
         self.ANCHOR_TYPES = "anchorTypes"
         self.ANCHOR_TYPE = "anchorType"
-        self.ANNOTATION_SETS = "annotationSets"
+        self.ANNOTATION_SETS = "annotation_sets"
         self.ANNOTATION_SET = "annotationSet"
         self.NAME = "name"
         self.VALUE = "value"

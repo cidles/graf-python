@@ -7,16 +7,14 @@
 # For license information, see LICENSE.TXT
 #
 
-from PyGraph import *
-
 class PyDocumentHeader:
     def __init__(self, path):
         self._basename = ""
         self._dir = ""
         self._annotationMap = {}
-        self.setBasepath(path)
+        self.set_basepath(path)
 
-    def setBasepath(self, filename):
+    def set_basepath(self, filename):
         if filename.endswith(".anc") or filename.endswith(".txt"):
             self._basename = filename[0:len(filename)-4]
             return
@@ -30,7 +28,7 @@ class PyDocumentHeader:
     def load(self, file):
         pass
 
-    def getLocation(self, type):
+    def get_location(self, type):
         if len(self._annotationMap) != 0:
             return self._annotationMap.get(type)
         if self._basename != None:

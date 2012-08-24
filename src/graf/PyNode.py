@@ -7,10 +7,8 @@
 # For license information, see LICENSE.TXT
 #
 
-from PyEdge import *
-from PyLink import *
-from PyGraphElement import PyGraphElement
-
+from graf.PyLink import PyLink
+from graf.PyGraphElement import PyGraphElement
 
 class PyNode(PyGraphElement):
     """
@@ -19,7 +17,8 @@ class PyNode(PyGraphElement):
     Each collection is backed by two data structures:
         1. A list (for traversals)
         2. A hash map
-    Nodes may also contain one or more C{PyAnnotation} objects
+    Nodes may also contain one or more C{PyAnnotation} objects.
+    
     """
 
     def __init__(self, id = ""):
@@ -31,7 +30,7 @@ class PyNode(PyGraphElement):
         self._links = []
         self._annotationRoot = False
 
-    def fromNode(node):
+    def from_node(node):
         newNode = PyNode(node._id)
         newNode._annotationRoot = node._annotationRoot
         return newNode
@@ -39,28 +38,28 @@ class PyNode(PyGraphElement):
     def __repr__(self):
         return "NodeID = " + self._id
 
-    def addInEdge(self, e):
+    def add_in_edge(self, e):
         self._inEdges[e._id] = e
         self._inEdgeList.append(e)
 
-    def addLink(self, link):
+    def add_link(self, link):
         self._links.append(link)
         for region in link._regions:
-            region.addNode(self)
+            region.add_node(self)
 
-    def addOutEdge(self, e):
+    def add_out_edge(self, e):
         self._outEdges[e._id] = e    
         self._outEdgeList.append(e)
     
-    def addRegion(self, region):
+    def add_region(self, region):
         link = None
         if len(self._links) > 0:
             link = self._links[len(self._links)-1]
         else:
             link = PyLink()
             self._links.append(link)
-        link.addTarget(region)
-        region.addNode(self)
+        link.add_target(region)
+        region.add_node(self)
         
     def clear(self):
         self._visited = False
@@ -69,7 +68,7 @@ class PyNode(PyGraphElement):
             if toNode is not None and toNode.visited():
                 toNode.clear()
 
-    def compareTo(self, node):
+    def compare_to(self, node):
         if self._id > node._id:
             return 1
         elif self._id < node._id:
@@ -80,8 +79,8 @@ class PyNode(PyGraphElement):
     def degree(self):
         return len(self._inEdgeList) + len(self._outEdgeList)
 
-    def getInEdge(self, index):
-        if isinstance(index, basestring):
+    def get_in_edge(self, index):
+        if isinstance(index, str):
             return self._inEdges.get(index)
         else:
             if len(self._inEdgeList) <= index:
@@ -89,8 +88,8 @@ class PyNode(PyGraphElement):
             else:
                 return self._inEdgeList[index]
 
-    def getOutEdge(self, index):
-        if isinstance(index, basestring):
+    def get_out_edge(self, index):
+        if isinstance(index, str):
             return self._outEdges.get(index)
         else:
             if len(self._outEdgeList) <= index:
@@ -98,14 +97,14 @@ class PyNode(PyGraphElement):
             else:
                 return self._outEdgeList[index]
 
-    def getParent(self):
+    def get_parent(self):
         if len(self._inEdgeList) == 0:
             return None
         else:
             return self._inEdgeList[0].getFrom()
 
-    def inDegree(self):
+    def in_degree(self):
         return len(self._inEdgeList)
 
-    def outDegree(self):
+    def out_degree(self):
         return len(self._outEdgeList)

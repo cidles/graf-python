@@ -12,36 +12,38 @@ class PyAnchor:
     Class for the PyAnchor elements of a PyGraph.
     These are used to represent character offsets in a region of text.
     Each PyAnchor contains an offset, which is a number (int) that 
-    corresponds to a character position in a text file
+    corresponds to a character position in a text file.
+    
     """
+    
     def __init__(self, offset = 0):
         self._offset = offset
 
     def __repr__(self):
         return "AnchorOffset = " + str(self._offset)
 
-    def toString(self):
+    def to_string(self):
         return str(self._offset)
 
     def add(self, delta):
         #TODO: add outofbounds check
         self._offset += delta
 
-    def addAnchor(self, a):
+    def add_anchor(self, a):
         self._offset += a._offset
 
-    def addFromAnchor(self, a):
+    def add_from_anchor(self, a):
         self._offset += a._offset
 
     def subtract(self, delta):
         self._offset = self._offset - delta
         return self._offset
 
-    def subtractFromAnchor(self, a):
-        self._offset = self._offset - a.getOffset()
+    def subtract_from_anchor(self, a):
+        self._offset = self._offset - a.get_offset()
         return self._offset
 
-    def compareTo(self, a):
+    def compare_to(self, a):
         if self._offset == a._offset:
             return 0
         elif self._offset < a._offset:
@@ -53,8 +55,5 @@ class PyAnchor:
             return self._offset == a._offset()
         return False
     
-    def getOffset(self):
+    def get_offset(self):
         return self._offset
-
-
-

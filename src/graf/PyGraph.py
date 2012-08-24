@@ -1,8 +1,8 @@
 # Natural Language Toolkit: GrAF API
 #
 # Copyright (C) 2001-2010 NLTK Project
-# Author: Keith Suderman <suderman@cs.vassar.edu> (Original API)
-#         Stephen Matysik <smatysik@gmail.com> (Conversion to Python)
+# Author: Keith Suderman <suderman:cs.vassar.edu> (Original API)
+#         Stephen Matysik <smatysik:gmail.com> (Conversion to Python)
 # URL: <http://www.nltk.org/>
 # For license information, see LICENSE.TXT
 #
@@ -15,21 +15,22 @@ allow for quick traversals, and a hash map so nodes/edges can be found
 quickly based on their ID
 """
 
-from PyAnchor import *
-from PyAnnotationSet import *
-from PyEdge import *
-from PyFeature import *
-from PyFeatureStructure import *
-from PyNode import *
-from PyRegion import *
-from PyStandoffHeader import *    
-
+from graf.PyEdge import PyEdge
+from graf.PyFeatureStructure import PyFeatureStructure
+from graf.PyNode import PyNode
+from graf.PyStandoffHeader import PyStandoffHeader
 
 class PyGraph:
+    """
+    Class of PyGraph.
+    
+    """
+    
     def __init__(self):
+        """Constructor for PyGraph.
+        
         """
-        Constructor for PyGraph
-        """
+        
         self._edgeCount = 0
         self._features = PyFeatureStructure()
         self._nodeSet = {}
@@ -40,41 +41,49 @@ class PyGraph:
         self._header = PyStandoffHeader()
         self._userObject = None
 
-    def addAnnotationSet(self, set):
+    def add_annotation_set(self, set):
+        """Add given C{PyAnnotationSpace} to this C{PyGraph}.
+        
+        :param set: C{PyAnnotationSpace}
+        
         """
-        Add given C{PyAnnotationSet} to this C{PyGraph}
-        @param set: C{PyAnnotationSet}
-        """
+        
         self._annotationSets[set._name] = set
-        self._header.addAnnotationSetCreate(set._name, set._type)
+        self._header.add_annotation_set_create(set._name, set._type)
 
-    def addASCreate(self, name, type):
+    def add_as_create(self, name, type):
+        """Create C{PyAnnotationSpace} from given name, value and 
+        add it to this C{PyGraph}.
+        
+        :param name: C{str}
+        :param type: C{str}
+        
         """
-        Create C{PyAnnotationSet} from given name, value and 
-        add it to this C{PyGraph}
-        @param name: C{str}
-        @param type: C{str}
-        """
-        aSet = PyAnnotationSet(name, type)
-        self.addAnnotationSet(aSet)
+        
+        aSet = graf.PyAnnotationSpace(name, type)
+        self.add_annotation_set(aSet)
         return aSet
 
-    def addEdge(self, edge):
+    def add_edge(self, edge):
+        """Add C{PyEdge} to this C{PyGraph}.
+        
+        :param edge: C{PyEdge}
+        
         """
-        Add C{PyEdge} to this C{PyGraph}
-        @param edge: C{PyEdge}
-        """
+        
         self._edgeSet[edge._id] = edge
-        self.updateNode(edge)
+        self.update_node(edge)
 
-    def addEdgeCreate(self, id, fromNode = None , toNode = None):
-        """
-        Create C{PyEdge} from id, fromNode, toNode and add it to
-        this C{PyGraph}
-        @param id: C{str}
-        @param fromNode: C{PyNode}
-        @param toNode: C{PyNode}
+    def add_edge_create(self, id, fromNode = None , toNode = None):
+        """Create C{PyEdge} from id, from_node, toNode and add it to
+        this C{PyGraph}.
+        
+        :param id: C{str}
+        :param fromNode: C{PyNode}
+        :param toNode: C{PyNode}
+        
         """ 
+        
         if self._nodeSet.get(fromNode.getID()) is None:
             self._nodeSet[fromNode.getID()] = fromNode
         if self._nodeSet.get(toNode.getID()) is None:
@@ -82,43 +91,48 @@ class PyGraph:
         self._edgeCount += 1
         newEdge = PyEdge(id, fromNode, toNode)
         self._edgeSet[newEdge.getID()] = newEdge
-        self.updateNode(newEdge)
+        self.update_node(newEdge)
         return newEdge
         
-    def addEdgeFromTo(self, fromNode, toNode):
+    def add_edge_from_to(self, fromNode, toNode):
+        """Create C{PyEdge} from from_node, toNode and add it to
+        this C{PyGraph} id is created.
+        
+        :param fromNode: C{PyNode}
+        :param toNode: C{PyNode}
+        
         """
-        Create C{PyEdge} from fromNode, toNode and add it to 
-        this C{PyGraph}
-        id is created
-        @param fromNode: C{PyNode}
-        @param toNode: C{PyNode}
-        """
-        return self.addEdgeCreate("e" + str(self._edgeCount), 
+        
+        return self.add_edge_create("e" + str(self._edgeCount),
                                 fromNode, toNode)
 
-    def addEdgeToFromID(self, id, fromID, toID):
+    def add_edge_to_from_id(self, id, fromID, toID):
+        """Create C{PyEdge} from id, fromID, toID and add it to 
+        this C{PyGraph}.
+        
+        :param id: C{str}
+        :param fromID: C{str}
+        :param toID: C{str}
+        
         """
-        Create C{PyEdge} from id, fromID, toID and add it to 
-        this C{PyGraph}
-        @param id: C{str}
-        @param fromID: C{str}
-        @param toID: C{str}
-        """
+        
         fromNode = self._nodeSet.get(fromID)
         toNode = self._nodeSet.get(toID)
         if fromNode is None or toNode is None:
             return None
-        return self.addEdge(id, fromNode, toNode)
+        return self.add_edge(id, fromNode, toNode)
 
-    def addFeature(self, name, value):
+    def add_feature(self, name, value):
         self._features.add(name, value)
 
-    def addNode(self, node):
+    def add_node(self, node):
+        """Add C{PyNode} to this C{PyGraph}.
+        
+        :param node: C{PyNode} or C{str}
+        
         """
-        Add C{PyNode} to this C{PyGraph}
-        @param node: C{PyNode} or C{str}
-        """
-        if isinstance(node, basestring):
+        
+        if isinstance(node, str):
             newNode = self._nodeSet.get(node)
             if newNode is None:
                 newNode = PyNode(node)
@@ -127,27 +141,29 @@ class PyGraph:
         else:
             self._nodeSet[node._id] = node
 
-    def addRegion(self, region):
+    def add_region(self, region):
         self._regions[region._id] = region
 
-    def annotationSets(self):
+    def annotation_sets(self):
         return self._annotationSets.itervalues()
 
     def edges(self):
         return self._edgeSet.values()
 
-    def findEdgeFromID(self, id):
+    def find_edge_from_id(self, id):
         return self._edgeSet.get(id)
 
-    def findEdge(self, fromNode, toNode):
+    def find_edge(self, fromNode, toNode):
+        """Search for C{PyEdge} with its from_node, toNode, either nodes or ids.
+        
+        :param fromNode: C{PyNode} or C{str}
+        :param toNode: C{PyNode} or C{str}
+        :return: C{PyEdge}
+        
         """
-        Search for C{PyEdge} with its fromNode, toNode, either nodes or ids
-        @param fromNode: C{PyNode} or C{str}
-        @param toNode: C{PyNode} or C{str}
-        @return: C{PyEdge}
-        """
-        if (isinstance(fromNode, basestring) and 
-                    isinstance(toNode, basestring)):
+        
+        if (isinstance(fromNode, str) and 
+                    isinstance(toNode, str)):
             f = self._nodeSet.get(fromNode)
             t = self._nodeSet.get(toNode)
             if f is None or t is None:
@@ -160,65 +176,65 @@ class PyGraph:
                     return e
             return None
 
-    def findNode(self, id):
+    def find_node(self, id):
         return self._nodeSet.get(id)
 
-    def getAnnotationSet(self, name):
+    def get_annotation_set(self, name):
         return self._annotationSets.get(name)
 
-    def getAnnotationSets(self):
+    def get_annotation_sets(self):
         return self._annotationSets.values()
 
-    def getContent(self):
+    def get_content(self):
         return self._content
 
-    def getEdgeSetSize(self):
+    def get_edge_set_size(self):
         return len(self._edgeSet)
 
-    def getFeature(self, name):
+    def get_feature(self, name):
         return self._features.get(name)
 
-    def getFeatures(self):
+    def get_features(self):
         return self._features
 
-    def getHeader(self):
+    def get_header(self):
         return self._header
 
-    def getNodeSetSize(self):
+    def get_node_set_size(self):
         return len(self._nodeSet)
 
-    def getRegion(self, start, end):
+    def get_region(self, start, end):
         for region in self.regions():
-            if (start.compareTo(region.getStart()) == 0 and 
-                end.compareTo(region.getEnd()) == 0):
+            if (start.compare_to(region.get_start()) == 0 and
+                end.compare_to(region.get_end()) == 0):
                 return region
         return None
 
-    def getRegionFromID(self, id):
+    def get_region_from_id(self, id):
         return self._regions.get(id)
 
-    def getRegions(self):
+    def get_regions(self):
         return self._regions.values()
 
-    def getRoot(self):
-        h = self.getHeader()
-        roots = h.getRoots()
+    def get_root(self):
+        h = self.get_header()
+        roots = h.get_roots()
         if len(roots) == 0:
             return None
         id = roots[0]
         return self._nodeSet.get(id)        
 
-    def getRoots(self):
+    def get_roots(self):
         roots = []
-        h = self.getHeader()
-        for id in h.getRoots():
+        h = self.get_header()
+        for id in h.get_roots():
             roots.append(self._nodeSet.get(id))
         return roots
 
-    def getUserObject(self):
+    def get_user_object(self):
         return self._userObject
 
-    def insertEdge(self, e):
+    def insert_edge(self, e):
         self._edgeSet[e.getID()] = e
 
     def nodes(self):
@@ -227,29 +243,28 @@ class PyGraph:
     def regions(self):
         return self._regions.values()
 
-    def removeRegion(self, region):
-        if isinstance(region, basestring):
+    def remove_region(self, region):
+        if isinstance(region, str):
             return self._regions.pop(region, None)
         else: 
             return self._regions.pop(region.getID(), None)
 
     def roots(self):
-        return self.getRoots()
+        return self.get_roots()
 
-    def setContent(self, content):
+    def set_content(self, content):
         self._content = content
 
-    def setHeader(self, header):
+    def set_header(self, header):
         self._header = header
 
-    def setRoot(self, node):
-        self._header.clearRoots()
-        self._header.addRoot(node._id) 
+    def set_root(self, node):
+        self._header.clear_roots()
+        self._header.add_root(node._id)
 
-    def setUserObject(self, object):
+    def set_user_object(self, object):
         self._userObject = object
 
-    def updateNode(self, edge):
-        edge._fromNode.addOutEdge(edge)
-        edge._toNode.addInEdge(edge)
-
+    def update_node(self, edge):
+        edge._fromNode.add_out_edge(edge)
+        edge._toNode.add_in_edge(edge)

@@ -7,8 +7,6 @@
 # For license information, see LICENSE.TXT
 #
 
-from PyRegion import *
-
 class PyLink:
     def __init__(self):
         self._regions = []
@@ -16,7 +14,7 @@ class PyLink:
     def __repr__(self):
         return str(self._regions)
 
-    def addTarget(self, region):
+    def add_target(self, region):
         self._regions.append(region)
 
 

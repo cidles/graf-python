@@ -1,0 +1,591 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>PyGraphParser &mdash; Graf-Python 2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Graf-Python 2 documentation" href="../index.html" />
+    <link rel="up" title="Module code" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../index.html">Graf-Python 2 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for PyGraphParser</h1><div class="highlight"><pre>
+<span class="c"># Natural Language Toolkit: GrAF API</span>
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2001-2010 NLTK Project</span>
+<span class="c"># Author: Keith Suderman &lt;suderman:cs.vassar.edu&gt; (Original API)</span>
+<span class="c">#         Stephen Matysik &lt;smatysik:gmail.com&gt; (Conversion to Python)</span>
+<span class="c"># URL: &lt;http://www.nltk.org/&gt;</span>
+<span class="c"># For license information, see LICENSE.TXT</span>
+<span class="c">#</span>
+
+<span class="kn">from</span> <span class="nn">xml.sax</span> <span class="kn">import</span> <span class="n">make_parser</span><span class="p">,</span> <span class="n">SAXException</span>
+<span class="kn">from</span> <span class="nn">xml.sax.handler</span> <span class="kn">import</span> <span class="n">ContentHandler</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">PyGraph</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">GRAF</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">PyGrafRenderer</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">PyDocumentHeader</span> <span class="kn">import</span> <span class="o">*</span>
+
+<div class="viewcode-block" id="PyGraphParser"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser">[docs]</a><span class="k">class</span> <span class="nc">PyGraphParser</span><span class="p">(</span><span class="n">ContentHandler</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Used to parse the GrAF XML representation and construct the instance </span>
+<span class="sd">    of C{PyGraph} objects.</span>
+<span class="sd">    </span>
+<span class="sd">    version: 1.0.</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PyGraphParser.__init__"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a new C{PyGraphParser} instance.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span> <span class="o">=</span> <span class="n">make_parser</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span><span class="o">.</span><span class="n">setContentHandler</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_g</span> <span class="o">=</span> <span class="n">GRAF</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_annotation_set_map</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_annotation</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_annotation_set</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_fs</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_node</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_edge_annotations</span> <span class="o">=</span> <span class="p">[]</span> <span class="c"># pairs?</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_edges</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fs_stack</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_f_stack</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_header</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_node_map</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parent_dir</span> <span class="o">=</span> <span class="bp">None</span> <span class="c">###</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parsed</span> <span class="o">=</span> <span class="p">[]</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_relations</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_root_id</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_root_element</span> <span class="o">=</span> <span class="mi">0</span>
+
+</div>
+<div class="viewcode-block" id="PyGraphParser.parse"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">file</span><span class="p">,</span> <span class="n">parsed</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parses the XML file at the given path.</span>
+<span class="sd">    </span>
+<span class="sd">        :return: a PyGraph representing the annotated text in GrAF format</span>
+<span class="sd">        :rtype: PyGraph</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">parsed</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">parsed</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c">#print &quot;parsing &quot; + file</span>
+        <span class="n">delete_header</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_header</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_header</span> <span class="o">=</span> <span class="n">PyDocumentHeader</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="nb">file</span><span class="p">))</span>
+            <span class="n">delete_header</span> <span class="o">=</span> <span class="bp">True</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parsed</span> <span class="o">=</span> <span class="n">parsed</span>
+        <span class="n">FILE</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">FILE</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="k">if</span> <span class="n">delete_header</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_header</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="n">FILE</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">result</span>
+</div>
+<div class="viewcode-block" id="PyGraphParser.startElement"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.startElement">[docs]</a>    <span class="k">def</span> <span class="nf">startElement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Processes the opening xml tags, according to their type.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">GRAPH</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphStart</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">NODE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nodeStart</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EDGE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">edgeStart</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ANNOTATION</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">annStart</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ASET</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ASStart</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">REGION</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">regionStart</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">LINK</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linkStart</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">DEPENDS_ON</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dependsOnStart</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ANNOTATION_SET</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">annotationSetStart</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ROOT</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rootStart</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">FS</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fsStart</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">FEATURE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">featureStart</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span>
+</div>
+<div class="viewcode-block" id="PyGraphParser.characters"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.characters">[docs]</a>    <span class="k">def</span> <span class="nf">characters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ch</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Processes any characters within the xml file.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c">#check for root node</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_root_element</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">+=</span> <span class="n">ch</span>
+    </div>
+<div class="viewcode-block" id="PyGraphParser.endElement"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.endElement">[docs]</a>    <span class="k">def</span> <span class="nf">endElement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Processes the end xml tags, according to their type.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">GRAPH</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphEnd</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">NODE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nodeEnd</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ANNOTATION</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">annEnd</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ASET</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ASEnd</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EDGE</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">FS</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fsEnd</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">FEATURE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">featureEnd</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ROOT</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rootEnd</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="PyGraphParser.graphStart"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.graphStart">[docs]</a>    <span class="k">def</span> <span class="nf">graphStart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Executes when the parser encounters the begin graph tag</span>
+<span class="sd">        Initializes the data structures used to construct the graph.</span>
+<span class="sd">        The element attributes are added to the new graph as features.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edges</span><span class="p">[:]</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fs_stack</span><span class="p">[:]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_node_map</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_node</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_root_id</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_relations</span><span class="p">[:]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span> <span class="o">=</span> <span class="n">PyGraph</span><span class="p">()</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getLength</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getQName</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ROOT</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_root_id</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">VERSION</span> <span class="o">!=</span> <span class="n">name</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">addFeature</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="PyGraphParser.graphEnd"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.graphEnd">[docs]</a>    <span class="k">def</span> <span class="nf">graphEnd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Executes when the parser encounters the end graph tag.</span>
+<span class="sd">        Sets the root node and adds all the edges to the graph. </span>
+<span class="sd">        Neither of these tasks can be safely performed until all nodes </span>
+<span class="sd">        have been added.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="sd">&quot;&quot;&quot;Create and add the edges&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edges</span><span class="p">:</span>
+            <span class="n">from_node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">edge</span><span class="o">.</span><span class="n">_from</span><span class="p">)</span>
+            <span class="n">to_node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">edge</span><span class="o">.</span><span class="n">_to</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">addEdge</span><span class="p">(</span><span class="n">PyEdge</span><span class="p">(</span><span class="n">edge</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="n">from_node</span><span class="p">,</span> <span class="n">to_node</span><span class="p">))</span>
+    
+        <span class="sd">&quot;&quot;&quot;add annotations to any edges&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edge_annotations</span><span class="p">:</span>
+            <span class="n">e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">findEdge</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">e</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">SAXException</span><span class="p">(</span><span class="s">&quot;Could not find graph element with ID &quot;</span> 
+                                <span class="o">+</span> <span class="n">s</span><span class="p">)</span>
+            <span class="n">e</span><span class="o">.</span><span class="n">addAnnotation</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+        <span class="sd">&quot;&quot;&quot;link nodes to regions&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_relations</span><span class="p">:</span>
+            <span class="n">link</span> <span class="o">=</span> <span class="n">PyLink</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+                <span class="n">region</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">getRegionFromID</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">region</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">link</span><span class="o">.</span><span class="n">addTarget</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+            <span class="n">n</span><span class="o">.</span><span class="n">addLink</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_root_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">findNode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_root_id</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">SAXException</span><span class="p">(</span><span class="s">&quot;Root node with ID &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_root_id</span> 
+                        <span class="o">+</span> <span class="s">&quot; was not found in the graph.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">setRoot</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="PyGraphParser.nodeStart"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.nodeStart">[docs]</a>    <span class="k">def</span> <span class="nf">nodeStart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Used to parse the node start tag.</span>
+<span class="sd">        Creates a new self._current_node, of type PyNode.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="nb">id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ID</span><span class="p">)</span>
+        <span class="n">isRoot</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ROOT</span><span class="p">)</span> <span class="c">##?</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_node</span> <span class="o">=</span> <span class="n">PyNode</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">isRoot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="s">&quot;true&quot;</span> <span class="ow">is</span> <span class="n">isRoot</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_current_node</span><span class="o">.</span><span class="n">_annotationRoot</span> <span class="o">=</span> <span class="bp">True</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_node_map</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_node</span>
+</div>
+<div class="viewcode-block" id="PyGraphParser.nodeEnd"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.nodeEnd">[docs]</a>    <span class="k">def</span> <span class="nf">nodeEnd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Adds the current_node to the graph being constructed and</span>
+<span class="sd">        sets self._current_node to None.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">addNode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_current_node</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_node</span> <span class="o">=</span> <span class="bp">None</span>
+
+</div>
+<div class="viewcode-block" id="PyGraphParser.annotationSetStart"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.annotationSetStart">[docs]</a>    <span class="k">def</span> <span class="nf">annotationSetStart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Used to parse &lt;annotationSet .../&gt; elements in the XML </span>
+<span class="sd">        representation.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">name</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">NAME</span><span class="p">)</span>
+        <span class="nb">type</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">TYPE</span><span class="p">)</span>
+        <span class="n">sets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">getAnnotationSets</span><span class="p">()</span>
+        <span class="k">for</span> <span class="nb">set</span> <span class="ow">in</span> <span class="n">sets</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">set</span><span class="o">.</span><span class="n">_name</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">set</span><span class="o">.</span><span class="n">_type</span> <span class="o">!=</span> <span class="nb">type</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">SAXException</span><span class="p">(</span><span class="s">&quot;Annotation set type mismatch for &quot;</span> 
+                            				<span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_annotation_set_map</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span>
+                <span class="k">return</span>
+        <span class="n">a_set</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">addASCreate</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_annotation_set_map</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">a_set</span>
+</div>
+    <span class="k">def</span> <span class="nf">annStart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">LABEL</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_annotation</span> <span class="o">=</span> <span class="n">PyAnnotation</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">SAXException</span><span class="p">(</span><span class="s">&quot;Required attribute &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">LABEL</span> <span class="o">+</span> 
+                    <span class="s">&quot; missing on annotation&quot;</span><span class="p">)</span>
+
+        <span class="n">node_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">REF</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">node_id</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SAXException</span><span class="p">(</span><span class="s">&quot;Annotation is not associate with a node&quot;</span><span class="p">)</span>
+        <span class="n">set_name</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ASET</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">set_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">a_set</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_annotation_set_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">set_name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">a_set</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">SAXException</span><span class="p">(</span><span class="s">&quot;Unknown annotation set name &quot;</span> 
+                                    <span class="o">+</span> <span class="n">set_name</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_current_annotation</span><span class="o">.</span><span class="n">_set</span> <span class="o">=</span> <span class="n">a_set</span>
+            <span class="n">a_set</span><span class="o">.</span><span class="n">addAnnotation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_current_annotation</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_annotation_set</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_current_annotation_set</span><span class="o">.</span><span class="n">addAnnotation</span><span class="p">(</span>
+                                                <span class="bp">self</span><span class="o">.</span><span class="n">_current_annotation</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_current_annotation</span><span class="o">.</span><span class="n">setAnnotationSet</span><span class="p">(</span>
+                                                <span class="bp">self</span><span class="o">.</span><span class="n">current_annotation_set</span><span class="p">)</span>
+
+        <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">node_id</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c"># Assume it belongs to an edge</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_edge_annotations</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">node_id</span><span class="p">,</span> 
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">_current_annotation</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">addAnnotation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_current_annotation</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">annEnd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fs_stack</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">fs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fs_stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_current_annotation</span><span class="o">.</span><span class="n">_features</span><span class="o">=</span> <span class="n">fs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_annotation</span> <span class="o">=</span> <span class="bp">None</span>
+
+<div class="viewcode-block" id="PyGraphParser.edgeStart"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.edgeStart">[docs]</a>    <span class="k">def</span> <span class="nf">edgeStart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Used to parse edge elements in the XML representation.</span>
+<span class="sd">        Edge information is stored and the edges are added after </span>
+<span class="sd">        all nodes/spans have been parsed.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">from_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">FROM</span><span class="p">)</span>
+        <span class="n">to_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">TO</span><span class="p">)</span>
+        <span class="nb">id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ID</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_edges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EdgeInfo</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">from_id</span><span class="p">,</span> <span class="n">to_id</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="PyGraphParser.regionStart"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.regionStart">[docs]</a>    <span class="k">def</span> <span class="nf">regionStart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Used to pare the region elements in the XML representation.</span>
+<span class="sd">        A tolkenizer is used to separate the anchors listed in the XML tag,</span>
+<span class="sd">        and a new PyAnchor instance is created for each one.  </span>
+<span class="sd">        A PyRegion instance is then created with the id from the </span>
+<span class="sd">        XML tag and added to the graph.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="nb">id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ID</span><span class="p">)</span>
+        <span class="n">att</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ANCHORS</span><span class="p">)</span>
+        <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">att</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SAXException</span><span class="p">(</span><span class="s">&quot;Invalid number of anchors for the regions&quot;</span><span class="p">)</span>
+        <span class="n">anchors</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tokenizer</span><span class="p">:</span>
+            <span class="n">anchor</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">anchor</span> <span class="o">=</span> <span class="n">PyAnchor</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">SAXException</span><span class="p">(</span><span class="s">&quot;Unable to create an anchor for &quot;</span> <span class="o">+</span> <span class="n">t</span><span class="p">)</span>
+
+            <span class="n">anchors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">anchor</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">region</span> <span class="o">=</span> <span class="n">PyRegion</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">anchors</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">addRegion</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SAXException</span><span class="p">(</span><span class="s">&quot;Could not add the region to the graph&quot;</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="PyGraphParser.fsStart"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.fsStart">[docs]</a>    <span class="k">def</span> <span class="nf">fsStart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Used to parse &lt;fs&gt; elements in the XML representation.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="nb">type</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">TYPE</span><span class="p">)</span>
+        <span class="n">fs</span> <span class="o">=</span> <span class="n">PyFeatureStructure</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fs_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fs</span><span class="p">)</span>
+        
+</div>
+<div class="viewcode-block" id="PyGraphParser.fsEnd"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.fsEnd">[docs]</a>    <span class="k">def</span> <span class="nf">fsEnd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Used to parse &lt;/fs&gt; elements in the XML representation.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_f_stack</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">fs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fs_stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_f_stack</span><span class="p">)</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_f_stack</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_f_stack</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">fs</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="PyGraphParser.featureStart"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.featureStart">[docs]</a>    <span class="k">def</span> <span class="nf">featureStart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Used to parse start features elements in the XML representation.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">name</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">NAME</span><span class="p">)</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">VALUE</span><span class="p">)</span>
+        
+        <span class="n">f</span> <span class="o">=</span> <span class="n">PyFeature</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_f_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="PyGraphParser.featureEnd"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.featureEnd">[docs]</a>    <span class="k">def</span> <span class="nf">featureEnd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Used to parse end features elements in the XML representation.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_f_stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fs_stack</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">fs</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fs_stack</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fs_stack</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">fs</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">SAXException</span><span class="p">(</span><span class="s">&quot;Unable to attach feature to a feature structure:&quot;</span> 
+                        <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="n">f</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+        <span class="n">fs</span><span class="o">.</span><span class="n">addFeature</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>                 
+
+    </div>
+<div class="viewcode-block" id="PyGraphParser.ASStart"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.ASStart">[docs]</a>    <span class="k">def</span> <span class="nf">ASStart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Used to parse start &lt;as/ ...&gt; elements in the XML representation.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="nb">type</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">TYPE</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">type</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SAXException</span><span class="p">(</span><span class="s">&quot;No type specified for as element.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_current_annotation_set</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">getAnnotationSet</span><span class="p">(</span>
+                                                                    <span class="nb">type</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="PyGraphParser.ASEnd"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.ASEnd">[docs]</a>    <span class="k">def</span> <span class="nf">ASEnd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Used to parse end /as&gt; elements in the XML representation.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_annotation_set</span> <span class="o">=</span> <span class="bp">None</span>
+
+</div>
+<div class="viewcode-block" id="PyGraphParser.linkStart"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.linkStart">[docs]</a>    <span class="k">def</span> <span class="nf">linkStart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Used to parse link elements in the XML representation.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">links</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">TARGETS</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_relations</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_current_node</span><span class="p">,</span> <span class="n">links</span><span class="p">))</span>
+
+</div>
+<div class="viewcode-block" id="PyGraphParser.dependsOnStart"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.dependsOnStart">[docs]</a>    <span class="k">def</span> <span class="nf">dependsOnStart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Used to parse dependsOn elements in the XML representation.</span>
+<span class="sd">        Finds other XML annotation files on which depend the current </span>
+<span class="sd">        XML file. Parses the dependency files and adds the resulting graph </span>
+<span class="sd">        to the current graph.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="nb">type</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">TYPE</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">type</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SAXException</span><span class="p">(</span><span class="s">&quot;No annotation type defined&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">type</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parsed</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parsed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+
+
+        <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_header</span><span class="o">.</span><span class="n">getLocation</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SAXException</span><span class="p">(</span><span class="s">&quot;Unable to get path for dependency of type&quot;</span>
+                                 <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nb">type</span><span class="p">)</span>
+
+
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">PyGraphParser</span><span class="p">()</span>
+        <span class="n">dependency</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parsed</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">a_set</span> <span class="ow">in</span> <span class="n">dependency</span><span class="o">.</span><span class="n">annotationSets</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">addAnnotationSet</span><span class="p">(</span><span class="n">a_set</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">dependency</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">addNode</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_node_map</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
+
+        <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">dependency</span><span class="o">.</span><span class="n">edges</span><span class="p">():</span>
+            <span class="nb">id</span> <span class="o">=</span> <span class="n">edge</span><span class="o">.</span><span class="n">_id</span>
+            <span class="n">from_id</span> <span class="o">=</span> <span class="n">edge</span><span class="o">.</span><span class="n">getFrom</span><span class="p">()</span><span class="o">.</span><span class="n">_id</span>
+            <span class="n">to_id</span> <span class="o">=</span> <span class="n">edge</span><span class="o">.</span><span class="n">getTo</span><span class="p">()</span><span class="o">.</span><span class="n">_id</span>
+            <span class="n">e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">addEdgeToFromID</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">from_id</span><span class="p">,</span> <span class="n">to_id</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">edge</span><span class="o">.</span><span class="n">annotations</span><span class="p">():</span>
+                <span class="n">e</span><span class="o">.</span><span class="n">addAnnotation</span><span class="p">(</span><span class="n">PyAnnotation</span><span class="o">.</span><span class="n">fromAnnotation</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+
+        <span class="k">for</span> <span class="n">region</span> <span class="ow">in</span> <span class="n">dependency</span><span class="o">.</span><span class="n">regions</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">addRegion</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="PyGraphParser.rootStart"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.rootStart">[docs]</a>    <span class="k">def</span> <span class="nf">rootStart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Used to parse start root elements in the XML representation. </span>
+<span class="sd">        The root characters are processed by the characters() method and </span>
+<span class="sd">        stored in self._buffer.</span>
+<span class="sd">        </span>
+<span class="sd">        self._root_element is a flag indicating the presence of a root.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_root_element</span> <span class="o">=</span> <span class="mi">1</span>
+</div>
+<div class="viewcode-block" id="PyGraphParser.rootEnd"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.rootEnd">[docs]</a>    <span class="k">def</span> <span class="nf">rootEnd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Used to parse end root elements in the XML representation.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_root_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_root_element</span> <span class="o">=</span> <span class="mi">0</span>
+
+</div></div>
+<div class="viewcode-block" id="EdgeInfo"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.EdgeInfo">[docs]</a><span class="k">class</span> <span class="nc">EdgeInfo</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Used to store information about edges when parsing the GrAF XML </span>
+<span class="sd">    representation.</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">fromID</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">toID</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="nb">id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_from</span> <span class="o">=</span> <span class="n">fromID</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_to</span> <span class="o">=</span> <span class="n">toID</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../index.html">Graf-Python 2 documentation</a> &raquo;</li>
+          <li><a href="index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, A.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

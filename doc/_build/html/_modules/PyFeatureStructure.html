@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>PyFeatureStructure &mdash; Graf-Python 2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Graf-Python 2 documentation" href="../index.html" />
+    <link rel="up" title="Module code" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../index.html">Graf-Python 2 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for PyFeatureStructure</h1><div class="highlight"><pre>
+<span class="c"># Natural Language Toolkit: GrAF API</span>
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2001-2010 NLTK Project</span>
+<span class="c"># Author: Keith Suderman &lt;suderman:cs.vassar.edu&gt; (Original API)</span>
+<span class="c">#         Stephen Matysik &lt;smatysik:gmail.com&gt; (Conversion to Python)</span>
+<span class="c"># URL: &lt;http://www.nltk.org/&gt;</span>
+<span class="c"># For license information, see LICENSE.TXT</span>
+<span class="c">#</span>
+
+<div class="viewcode-block" id="PyFeatureStructure"><a class="viewcode-back" href="../pyfeaturestructure.html#PyFeatureStructure.PyFeatureStructure">[docs]</a><span class="k">class</span> <span class="nc">PyFeatureStructure</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A list of C{PyFeature}s indexed by name.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PyFeatureStructure.__init__"><a class="viewcode-back" href="../pyfeaturestructure.html#PyFeatureStructure.PyFeatureStructure.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor for C{PyFeatureStructure}.</span>
+
+<span class="sd">        :param type: C{str}</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_type</span> <span class="o">=</span> <span class="nb">type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span> <span class="o">=</span> <span class="p">{}</span>
+</div>
+<div class="viewcode-block" id="PyFeatureStructure.from_fs"><a class="viewcode-back" href="../pyfeaturestructure.html#PyFeatureStructure.PyFeatureStructure.from_fs">[docs]</a>    <span class="k">def</span> <span class="nf">from_fs</span><span class="p">(</span><span class="n">fs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructs a new C{PyFeatureStructure} from input.</span>
+
+<span class="sd">        :param fs: C{PyFeatureStructure}</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">newFS</span> <span class="o">=</span> <span class="n">PyFeatureStructure</span><span class="p">(</span><span class="n">fs</span><span class="o">.</span><span class="n">getType</span><span class="p">())</span>
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fs</span><span class="o">.</span><span class="n">features</span><span class="p">():</span>
+            <span class="n">newF</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">is_atomic</span><span class="p">():</span>
+                <span class="n">newF</span> <span class="o">=</span> <span class="n">PyFeature</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="n">f</span><span class="o">.</span><span class="n">getStringValue</span><span class="p">())</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">copy</span> <span class="o">=</span> <span class="n">PyFeatureStructure</span><span class="o">.</span><span class="n">from_fs</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">getFSValue</span><span class="p">())</span>
+                <span class="n">newF</span> <span class="o">=</span> <span class="n">PyFeature</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="n">copy</span><span class="p">)</span>
+            <span class="n">newFS</span><span class="o">.</span><span class="n">_elements</span><span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">getName</span><span class="p">()]</span> <span class="o">=</span> <span class="n">newF</span>
+        <span class="k">return</span> <span class="n">newFS</span>
+</div>
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&quot;FeatureStructureType = &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_type</span>
+
+    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">PyFeatureStructure</span><span class="o">.</span><span class="n">from_fs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PyFeatureStructure.find"><a class="viewcode-back" href="../pyfeaturestructure.html#PyFeatureStructure.PyFeatureStructure.find">[docs]</a>    <span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">create</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Removes &#39;/&#39; chars at start or end of name</span>
+<span class="sd">        so it is not done repeatedly during recursive search.</span>
+
+<span class="sd">        :param name: C{str}</span>
+<span class="sd">        :param create: C{bool}</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;/&#39;</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">length</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">name</span><span class="p">[</span><span class="n">length</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;/&#39;</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">length</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c">#find_loop does the real work</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_loop</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">create</span><span class="p">)</span>
+</div>
+    <span class="k">def</span> <span class="nf">find_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">create</span><span class="p">):</span>
+        <span class="n">slash</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">slash</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">create</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">PyFeature</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">result</span>
+
+        <span class="n">head</span> <span class="o">=</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">slash</span><span class="p">]</span>
+        <span class="n">tail</span> <span class="o">=</span> <span class="n">name</span><span class="p">[</span><span class="n">slash</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)]</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">head</span><span class="p">)</span>
+        <span class="n">fs</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">if</span> <span class="n">f</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">is_atomic</span><span class="p">():</span>
+                <span class="k">return</span> <span class="bp">None</span>
+            <span class="n">fs</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">getFSValue</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">create</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">None</span>
+            <span class="n">fs</span> <span class="o">=</span> <span class="n">PyFeatureStructure</span><span class="p">()</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">PyFeature</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">fs</span><span class="o">.</span><span class="n">find_loop</span><span class="p">(</span><span class="n">tail</span><span class="p">,</span> <span class="n">create</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="PyFeatureStructure.add"><a class="viewcode-back" href="../pyfeaturestructure.html#PyFeatureStructure.PyFeatureStructure.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Creates a new feature and adds it to this</span>
+<span class="sd">        C{PyFeatureStructure}&#39;s list of elements.</span>
+
+<span class="sd">        :param name: C{str}</span>
+<span class="sd">        :param value: C{str}</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">f</span>
+
+</div>
+    <span class="k">def</span> <span class="nf">add_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">iterator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">itervalues</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">features</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="bp">None</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">equals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">PyFeatureStructure</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_type</span> <span class="o">==</span> <span class="n">o</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">subsumes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fs2</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">f1</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">():</span>
+            <span class="n">f2</span> <span class="o">=</span> <span class="n">fs2</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">f1</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+            <span class="k">if</span> <span class="n">f2</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="s">&quot;f2 == None&quot;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">False</span>
+            <span class="k">if</span> <span class="n">f1</span><span class="o">.</span><span class="n">is_atomic</span><span class="p">():</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">f2</span><span class="o">.</span><span class="n">is_atomic</span><span class="p">():</span>
+                    <span class="k">print</span><span class="p">(</span><span class="s">&quot;f1 is_atomic, fs is not atomic&quot;</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="bp">False</span>
+                <span class="n">f1Value</span> <span class="o">=</span> <span class="n">f1</span><span class="o">.</span><span class="n">getStringValue</span><span class="p">()</span>
+                <span class="n">f2Value</span> <span class="o">=</span> <span class="n">f2</span><span class="o">.</span><span class="n">getStringValue</span><span class="p">()</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">f1Value</span> <span class="o">==</span> <span class="n">f2Value</span><span class="p">:</span>
+                    <span class="k">print</span><span class="p">(</span><span class="s">&quot;f1Value != fsValue&quot;</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="bp">False</span>
+            <span class="c"># This feature value is present in fs2</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">f2</span><span class="o">.</span><span class="n">is_atomic</span><span class="p">():</span>
+                    <span class="k">print</span><span class="p">(</span><span class="s">&quot;feature value is present, fs is atomic&quot;</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="bp">False</span>
+                <span class="c"># Get the feature structures that form the values</span>
+                <span class="c"># of these features and check them</span>
+                <span class="n">f1fs</span> <span class="o">=</span> <span class="n">f1</span><span class="o">.</span><span class="n">getFSValue</span><span class="p">()</span>
+                <span class="n">f2fs</span> <span class="o">=</span> <span class="n">f2</span><span class="o">.</span><span class="n">getFSValue</span><span class="p">()</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">f1fs</span><span class="o">.</span><span class="n">subsumes</span><span class="p">(</span><span class="n">f2fs</span><span class="p">):</span>
+                    <span class="k">print</span><span class="p">(</span><span class="s">&quot;f1fs does not subsume f2fs&quot;</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+
+
+    <span class="k">def</span> <span class="nf">unify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>
+        <span class="n">fsType</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_type</span> <span class="o">==</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">fsType</span> <span class="o">==</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_type</span> <span class="o">!=</span><span class="n">fsType</span><span class="p">:</span>
+            <span class="c">#One, but not both, of the types are None</span>
+            <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_type</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c">#fsType must be non-None</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_type</span> <span class="o">!=</span> <span class="n">fsType</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">None</span>
+
+        <span class="c"># make a copy of this feature structure</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">PyFeatureStructure</span><span class="o">.</span><span class="n">from_fs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c"># Add all the features from fs to the result</span>
+        <span class="k">for</span> <span class="n">f1</span> <span class="ow">in</span> <span class="n">fs</span><span class="o">.</span><span class="n">features</span><span class="p">():</span>
+            <span class="n">f2</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">f1</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+            <span class="k">if</span> <span class="n">f2</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">PyFeature</span><span class="o">.</span><span class="n">from_feature</span><span class="p">(</span><span class="n">f1</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c"># A feature with the same name is already present in the result.</span>
+                <span class="c"># If this is an atomic feature the values must match or unification fails</span>
+                <span class="k">if</span> <span class="n">f1</span><span class="o">.</span><span class="n">is_atomic</span><span class="p">()</span> <span class="ow">and</span> <span class="n">f2</span><span class="o">.</span><span class="n">is_atomic</span><span class="p">():</span>
+                    <span class="n">fVal</span> <span class="o">=</span> <span class="n">f1</span><span class="o">.</span><span class="n">getStringValue</span><span class="p">()</span>
+                    <span class="n">f2Val</span> <span class="o">=</span> <span class="n">f2</span><span class="o">.</span><span class="n">getStringValue</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">fVal</span> <span class="o">==</span> <span class="n">f2Val</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="bp">None</span>
+                <span class="k">elif</span> <span class="n">f1</span><span class="o">.</span><span class="n">is_atomic</span><span class="p">()</span> <span class="ow">or</span> <span class="n">f2</span><span class="o">.</span><span class="n">is_atomic</span><span class="p">():</span>
+                    <span class="c"># They are not both atomic (handled above) so unification also fails</span>
+                    <span class="k">return</span> <span class="bp">None</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c"># they are both feature structures so see if they unify</span>
+                    <span class="n">f1fs</span> <span class="o">=</span> <span class="n">f1</span><span class="o">.</span><span class="n">getFSValue</span><span class="p">()</span>
+                    <span class="n">f2fs</span> <span class="o">=</span> <span class="n">f2</span><span class="o">.</span><span class="n">getFSValue</span><span class="p">()</span>
+                    <span class="n">u</span> <span class="o">=</span> <span class="n">f1fs</span><span class="o">.</span><span class="n">unify</span><span class="p">(</span><span class="n">f2fs</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">u</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="bp">None</span>
+                    <span class="c"># They do unify, so add the unified structure to the result</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">f1</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="n">u</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../index.html">Graf-Python 2 documentation</a> &raquo;</li>
+          <li><a href="index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, A.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

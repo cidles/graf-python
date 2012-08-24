@@ -1,41 +1,41 @@
-# Natural Language Toolkit: GrAF API
 #
 # Copyright (C) 2001-2010 NLTK Project
-# Author: Keith Suderman <suderman@cs.vassar.edu> (Original API)
-#         Stephen Matysik <smatysik@gmail.com> (Conversion to Python)
+# Natural Language Toolkit: GrAF API
+# Author: Keith Suderman <suderman:cs.vassar.edu> (Original API)
+#         Stephen Matysik <smatysik:gmail.com> (Conversion to Python)
 # URL: <http://www.nltk.org/>
 # For license information, see LICENSE.TXT
 #
 
-from PyAnchor import *
-from PyNode import *
-
 class PyRegion:
     """
     The area in the text file being annotated.  A region is defined 
-    by a sequence of C{PyAnchor} objects
+    by a sequence of C{PyAnchor} objects.
+    
     """
 
     def __init__(self, id, anchors=None):
+        """Constructor for C{PyRegion}.
+        
+        :param id: C{str}
+        :param anchors: C{list} of C{PyAnchor}
+        
         """
-        Constructor for C{PyRegion}
-        @param id: C{str}
-        @param anchors: C{list} of C{PyAnchor}
-        """
+        
         self._id = id
         self._nodes = []
         if anchors is None:
             self._anchors = [] 
         elif len(anchors) < 2:
             #add exception
-            print "Regions must be bound by at least two anchors"
+            print("Regions must be bound by at least two anchors")
         else:
             self._anchors = anchors
 
-    def fromRegion(region):
+    def from_region(region):
         return PyRegion(region._id, region._anchors)
 
-    def fromStartEnd(id, start, end):
+    def from_start_end(id, start, end):
         return PyRegion(id, [start, end])
 
     def __repr__(self):
@@ -44,33 +44,33 @@ class PyRegion:
     def add(self, offset):
         self._anchors = [anchor.add(offset) for anchor in self._anchors]
 
-    def addAnchor(self, anchor):
+    def add_anchor(self, anchor):
         self._anchors.append(anchor)
 
-    def addNode(self, node):
+    def add_node(self, node):
         if not node in self._nodes:
             self._nodes.append(node)
         
     def compareTo(self, region):
         thisSize = len(self._anchors)
-        regionSize = region.getNumAnchors()
+        regionSize = region.get_num_anchors()
         ##better alg?
         if thisSize != regionSize:
             return thisSize - regionSize
 
         if thisSize == 2:
-            result = self.getStart().compareTo(region.getStart())
+            result = self.get_start().compare_to(region.get_start())
             if result != 0:
                 return result
 
-            return region.getEnd().compareTo(self.getEnd()) 
+            return region.get_end().compare_to(self.get_end())
         
         #python iterator?
         tempIndex = 0
-        regionAnchors = region.getAnchors()
+        regionAnchors = region.get_anchors()
 
         for anchor, regionAnchor in zip(self._anchors, regionAnchors):
-            result = thisAnchor.compareTo(regionAnchor)
+            result = thisAnchor.compare_to(regionAnchor)
             if result != 0:
                 return result
         return 0
@@ -81,51 +81,50 @@ class PyRegion:
         return self.compareTo(object) == 0
 
 
-    def getAnchor(self, index):
+    def get_anchor(self, index):
         if index < 0 or index > (len(self._anchors)-1):
             return None
         return self._anchors[index]
 
-    def getAnchors(self):
+    def get_anchors(self):
         #need to make this unmodifiable
         new_anchors = list(self._anchors)
         return new_anchors
         
-    def getEnd(self):
+    def get_end(self):
         return self._anchors[len(self._anchors)-1]
     
-    def getNumAnchors(self):
+    def get_num_anchors(self):
         return len(self._anchors)
     
-    def getStart(self):
+    def get_start(self):
         return self._anchors[0]
     
-    def removeAnchor(self, anchor):
+    def remove_anchor(self, anchor):
         self._anchors.remove(anchor)
 
-    def setAnchor(self, index, anchor):
+    def set_anchor(self, index, anchor):
+        """Sets the anchors at the given index.
+        
         """
-        Sets the anchors at the given index
-        """
+        
         if index < 0 or len(self._anchors) <= index:
-            print "Index out of bounds"
+            print("Index out of bounds")
             return None
         self._anchors[index] = anchor
 
-    def setAnchors(self, anchors):
+    def set_anchors(self, anchors):
+        """Sets the list of anchors that bounds the region.
+        
         """
-        Sets the list of anchors that bounds the region
-        """
+        
         self._anchors = anchors
 
-    def setEnd(self, anchor):
-        self.setAnchor(len(self._anchors) - 1, anchor)
+    def set_end(self, anchor):
+        self.set_anchor(len(self._anchors) - 1, anchor)
 
-    def setStart(self, anchor):
-        self.setAnchor(0, anchor)
+    def set_start(self, anchor):
+        self.set_anchor(0, anchor)
 
     def subtract(self, offset):
         [anchor.subtract(offset) for anchor in self._anchors]
-
-
-

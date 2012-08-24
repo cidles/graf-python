@@ -1,0 +1,229 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>PyAnnotationSpace &mdash; Graf-Python 2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Graf-Python 2 documentation" href="../index.html" />
+    <link rel="up" title="Module code" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../index.html">Graf-Python 2 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for PyAnnotationSpace</h1><div class="highlight"><pre>
+<span class="c"># Natural Language Toolkit: GrAF API</span>
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2001-2010 NLTK Project</span>
+<span class="c"># Author: Keith Suderman &lt;suderman@cs.vassar.edu&gt; (Original API)</span>
+<span class="c">#         Stephen Matysik &lt;smatysik@gmail.com&gt; (Conversion to Python)</span>
+<span class="c"># URL: &lt;http://www.nltk.org/&gt;</span>
+<span class="c"># For license information, see LICENSE.TXT</span>
+<span class="c">#</span>
+
+<span class="kn">from</span> <span class="nn">PyAnnotation</span> <span class="kn">import</span> <span class="o">*</span>
+
+<div class="viewcode-block" id="PyAnnotationSpace"><a class="viewcode-back" href="../pyannotationspace.html#PyAnnotationSpace.PyAnnotationSpace">[docs]</a><span class="k">class</span> <span class="nc">PyAnnotationSpace</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A set of PyAnnotations.  Each PyAnnotation set has a name (C{Str})</span>
+<span class="sd">    and a type (C{URI}) and a set of annotations.</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="PyAnnotationSpace.__init__"><a class="viewcode-back" href="../pyannotationspace.html#PyAnnotationSpace.PyAnnotationSpace.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor for C{PyAnnotationSpace}</span>
+<span class="sd">        :param name: C{str}</span>
+<span class="sd">        :param type: C{str}</span>
+<span class="sd">        :param annotations: C{str} of C{PyAnnotation}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_type</span> <span class="o">=</span> <span class="nb">type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_annotations</span> <span class="o">=</span> <span class="p">[]</span>
+</div>
+<div class="viewcode-block" id="PyAnnotationSpace.fromAS"><a class="viewcode-back" href="../pyannotationspace.html#PyAnnotationSpace.PyAnnotationSpace.fromAS">[docs]</a>    <span class="k">def</span> <span class="nf">fromAS</span><span class="p">(</span><span class="n">aSet</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructs a new C{PyAnnotationSpace} from </span>
+<span class="sd">        an existing C{PyAnnotationSpace}</span>
+<span class="sd">        :param aSet: C{PyAnnotationSpace}</span>
+<span class="sd">        :return: C{PyAnnotationSpace}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">newAS</span> <span class="o">=</span> <span class="n">PyAnnotationSpace</span><span class="p">(</span><span class="n">aSet</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="n">aSet</span><span class="o">.</span><span class="n">_type</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">aSet</span><span class="o">.</span><span class="n">annotations</span><span class="p">():</span>
+            <span class="n">newAS</span><span class="o">.</span><span class="n">addAnnotation</span><span class="p">(</span><span class="n">PyAnnotation</span><span class="o">.</span><span class="n">fromAnnotation</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">newAS</span>
+</div>
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&quot;PyAnnSet name= &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">+</span> <span class="s">&quot; type= &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_type</span>
+
+<div class="viewcode-block" id="PyAnnotationSpace.add"><a class="viewcode-back" href="../pyannotationspace.html#PyAnnotationSpace.PyAnnotationSpace.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a new annotation with specified label, adds it </span>
+<span class="sd">        to this annotation set, and returns the new annotation</span>
+<span class="sd">        :param label: C{str}</span>
+<span class="sd">        :return: C{PyAnnotation}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">annotation</span> <span class="o">=</span> <span class="n">PyAnnotation</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">addAnnotation</span><span class="p">(</span><span class="n">annotation</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">annotation</span>
+</div>
+<div class="viewcode-block" id="PyAnnotationSpace.addAnnotation"><a class="viewcode-back" href="../pyannotationspace.html#PyAnnotationSpace.PyAnnotationSpace.addAnnotation">[docs]</a>    <span class="k">def</span> <span class="nf">addAnnotation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds a C{PyAnnotation} to the annotations list of </span>
+<span class="sd">        this C{PyAnnotationSpace}</span>
+<span class="sd">        :param a: C{PyAnnotation}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="n">a</span><span class="o">.</span><span class="n">_set</span> <span class="o">=</span> <span class="bp">self</span>
+</div>
+<div class="viewcode-block" id="PyAnnotationSpace.getAnnotationsLabel"><a class="viewcode-back" href="../pyannotationspace.html#PyAnnotationSpace.PyAnnotationSpace.getAnnotationsLabel">[docs]</a>    <span class="k">def</span> <span class="nf">getAnnotationsLabel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the C{PyAnnotation} with the given label</span>
+<span class="sd">        :param label: C{str}</span>
+<span class="sd">        :return: C{PyAnnotation}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_annotations</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="n">a</span><span class="o">.</span><span class="n">_label</span><span class="p">:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+</div>
+<div class="viewcode-block" id="PyAnnotationSpace.getAnnotations"><a class="viewcode-back" href="../pyannotationspace.html#PyAnnotationSpace.PyAnnotationSpace.getAnnotations">[docs]</a>    <span class="k">def</span> <span class="nf">getAnnotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the C{PyAnnotation} with the given label, </span>
+<span class="sd">        in the given C{PyFeatureStructure}</span>
+<span class="sd">        :param label: C{str}</span>
+<span class="sd">        :param fs: C{PyFeatureStructure}</span>
+<span class="sd">        return: C{PyFeatureStructure}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_annotations</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">label</span> <span class="o">==</span> <span class="n">a</span><span class="o">.</span><span class="n">getLabel</span><span class="p">()</span> 
+                            <span class="ow">and</span> <span class="n">fs</span><span class="o">.</span><span class="n">subsumes</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">getFeatureStructure</span><span class="p">())):</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+</div>
+<div class="viewcode-block" id="PyAnnotationSpace.removeAnnotation"><a class="viewcode-back" href="../pyannotationspace.html#PyAnnotationSpace.PyAnnotationSpace.removeAnnotation">[docs]</a>    <span class="k">def</span> <span class="nf">removeAnnotation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Remove the given C{PyAnnotation}</span>
+<span class="sd">        :param a: C{PyAnnotation}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_annotations</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&quot;Error: Annotation not in set&quot;</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="PyAnnotationSpace.removeAnnotationsLabel"><a class="viewcode-back" href="../pyannotationspace.html#PyAnnotationSpace.PyAnnotationSpace.removeAnnotationsLabel">[docs]</a>    <span class="k">def</span> <span class="nf">removeAnnotationsLabel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Remove the C{PyAnnotation} with the given label</span>
+<span class="sd">        :param label: C{str}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_annotations</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="n">a</span><span class="o">.</span><span class="n">getLabel</span><span class="p">():</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_annotations</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+</div>
+<div class="viewcode-block" id="PyAnnotationSpace.removeAnnotations"><a class="viewcode-back" href="../pyannotationspace.html#PyAnnotationSpace.PyAnnotationSpace.removeAnnotations">[docs]</a>    <span class="k">def</span> <span class="nf">removeAnnotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Remove the C{PyAnnotation}s with the given label in </span>
+<span class="sd">        the given C{PyFeatureStructure}</span>
+<span class="sd">        :param label: C{str}</span>
+<span class="sd">        :param fs: C{PyFeatureStructure}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_annotations</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">label</span> <span class="o">==</span> <span class="n">a</span><span class="o">.</span><span class="n">getLabel</span><span class="p">()</span> 
+                            <span class="ow">and</span> <span class="n">fs</span><span class="o">.</span><span class="n">subsumes</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">getFeatureStructure</span><span class="p">())):</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_annotations</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+</div>
+    <span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_annotations</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../index.html">Graf-Python 2 documentation</a> &raquo;</li>
+          <li><a href="index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, A.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

@@ -7,24 +7,25 @@
 # For license information, see LICENSE.TXT
 #
 
-import sys
-
-from PyGraph import *
-from PyXML import *
-from PyIndentManager import *
-from GRAF import *
-
-"""
-Renders a GrAF XML representation that can be read back by an instance 
-of L{PyGraphParser}
-version: 1.0
-"""
+from graf.PyXML import PyXML
+from graf.PyIndentManager import PyIndentManager
+from graf.GRAF import GRAF
+from graf.PyNode import PyNode
 
 class PyGrafRenderer:
+    """
+    Renders a GrAF XML representation that can be read back by an instance 
+    of L{PyGraphParser}.
+    
+    Version: 1.0.
+    
+    """
+    
     def __init__(self, filename):
+        """Create an instance of a PyGrafRenderer.
+        
         """
-        Create an instance of a PyGrafRenderer
-        """
+        
         self._xml = PyXML()
         self._indent = PyIndentManager()
         self._FILE = open(filename, "w")
@@ -34,10 +35,11 @@ class PyGrafRenderer:
         self._UTF16 = "UTF-16"
         self._encoding = self._UTF8
 
-    def renderNode(self, n):
+    def render_node(self, n):
+        """Used to render the node elements of the PyGraph.
+        
         """
-        Used to render the node elements of the PyGraph
-        """
+        
         self._FILE.write(str(self._indent) + "<" + self._g.NODE + " ")
         self._FILE.write(self._g.ID + "=\"" + n._id + "\"")
         if n._annotationRoot:
@@ -46,7 +48,7 @@ class PyGrafRenderer:
             self._FILE.write( ">" + self._g.EOL)
             self._indent.more()
             for link in n._links:
-                self.renderLink(link)
+                self.render_link(link)
             self._indent.less()
             self._FILE.write(str(self._indent) + 
                         "</" + self._g.NODE + ">" + self._g.EOL)
@@ -54,12 +56,13 @@ class PyGrafRenderer:
             self._FILE.write( "/>" + self._g.EOL)
 
         for a in n._annotations:
-            self.renderAnn(a)
+            self.render_ann(a)
 
-    def renderLink(self, link):
+    def render_link(self, link):
+        """Used to render the link elements of the PyGraph.
+        
         """
-        Used to render the link elements of the PyGraph
-        """
+        
         targets = ""
         if len(link._regions) == 0:
             return
@@ -70,19 +73,21 @@ class PyGrafRenderer:
                 + self._xml.attribute("targets", targets) + "/>" + 
                 self._g.EOL)
 
-    def renderRegion(self, region):
+    def render_region(self, region):
+        """Used to render the region elements of the PyGraph.
+        
         """
-        Used to render the region elements of the PyGraph
-        """
+        
         self._FILE.write(str(self._indent) + "<" + self._g.REGION + " " 
                 + self._g.ID + "=\"" + region._id + "\" " 
-                + self._g.ANCHORS + "=\"" + self.getAnchors(region)
+                + self._g.ANCHORS + "=\"" + self.get_anchors(region)
                 + "\"/>" + self._g.EOL)
 
-    def renderEdge(self, e):
+    def render_edge(self, e):
+        """Used to render the edge elements of the PyGraph.
+        
         """
-        Used to render the edge elements of the PyGraph
-        """
+        
         self._FILE.write(str(self._indent) + "<" + self._g.EDGE + " " 
                 + self._g.ID 
                 + "=\"" + e._id + "\" " + self._g.FROM + "=\"" 
@@ -93,33 +98,35 @@ class PyGrafRenderer:
             self._FILE.write(">" + self._g.EOL)
             self._indent.more()
             for a in e.annotations():
-                self.renderAnn(a)
+                self.render_ann(a)
             self._indent.less()
             self._FILE.write(str(self._indent) + "</" + self._g.EDGE + ">" 
                                      + self._g.EOL)
         else:
             self._FILE.write("/>" + self._g.EOL)
 
-    def renderAS(self, aSet):
+    def render_as(self, aSet):
+        """Used to render the annotation set elements of the PyGraph.
+        
         """
-        Used to render the annotation set elements of the PyGraph
-        """
+        
         atts = ""
-        self.addAttribute(atts, self._g.NAME, aSet.getName())
+        self.add_attribute(atts, self._g.NAME, aSet.getName())
 
         self.FILE.write(str(self._indent) + "<" + self._g.ASET 
                         + atts + ">" + self._g.EOL)
         self._indent.more()
         for a in aSet.annotations():
-            self.renderAnn(a)
+            self.render_ann(a)
         self._indent.less()
         self.FILE.write(str(self._indent) + "</" + self._g.ASET 
                         + ">" + self._g.EOL)
 
-    def renderAnn(self, a):
+    def render_ann(self, a):
+        """Used to render the annotation elements of the PyGraph.
+        
         """
-        Used to render the annotation elements of the PyGraph
-        """
+        
         label = self._xml.encode(a._label)
         self._FILE.write(str(self._indent) + "<" + self._g.ANNOTATION 
                         + " " 
@@ -134,17 +141,18 @@ class PyGrafRenderer:
         if fs.size() > 0:
             self._FILE.write( ">" + self._g.EOL)
             self._indent.more()
-            self.renderFS(fs)
+            self.render_fs(fs)
             self._indent.less()
             self._FILE.write(str(self._indent) + "</" 
                             + self._g.ANNOTATION + ">" + self._g.EOL)
         else:
             self._FILE.write("/>" + self._g.EOL)
 
-    def renderFS(self, fs):
+    def render_fs(self, fs):
+        """Used to render the feature structure elements of the PyGraph.
+        
         """
-        Used to render the feature structure elements of the PyGraph.
-        """
+        
         if fs.size() == 0:
             return
         type = fs._type #
@@ -154,19 +162,20 @@ class PyGrafRenderer:
         self._FILE.write( ">" + self._g.EOL)
         self._indent.more()
         for f in fs.features():
-            self.renderFeature(f)
+            self.render_feature(f)
         self._indent.less()
 
         self._FILE.write(str(self._indent) + "</" + self._g.FS + ">" 
                             + self._g.EOL)
 
 
-    def renderFeature(self, f):
+    def render_feature(self, f):
+        """Used to render the features elements of the PyGraph.
+        
         """
-        Used to render the features elements of the PyGraph
-        """
+        
         name = f._name
-        if f.isAtomic():
+        if f.is_atomic():
             value = f._stringValue
             self._FILE.write(str(self._indent) + "<" + self._g.FEATURE 
                     + " " 
@@ -185,31 +194,33 @@ class PyGrafRenderer:
             self._FILE.write(str(self._indent) + "</" + self._g.FEATURE 
                             + ">" + self._g.EOL)
 
-    def getAnchors(self, region):
+    def get_anchors(self, region):
+        """Gathers the anchors from a region in the PyGraph, 
+        creates a string listing all of them, separated by spaces.
+        
         """
-        Gathers the anchors from a region in the PyGraph, 
-        creates a string listing
-        all of them, separated by spaces
-        """
+        
         buffer = ""
-        for a in region.getAnchors():
-            buffer = buffer + " " + a.toString()
+        for a in region.get_anchors():
+            buffer = buffer + " " + a.to_string()
         return buffer[1:len(buffer)]
 
-    def writeOpenGraphElement(self):
+    def write_open_graph_element(self):
+        """Writes the header of the XML file.
+        
         """
-        Writes the header of the XML file
-        """
+        
         self._FILE.write("<?xml version=\"1.0\" encoding=\"" 
                         + self._encoding + "\"?>" + self._g.EOL)
         self._FILE.write(
             "<" + self._g.GRAPH + " xmlns=\"" + self._g.NAMESPACE + "\"")
         self._FILE.write( ">" + self._g.EOL)
 
-    def addAttribute(self, b, type, value):
+    def add_attribute(self, b, type, value):
+        """Adds an attribute to an XML element.
+        
         """
-        Adds an attribute to an XML element
-        """
+        
         if value is None:
             return
         b.append(" ")
@@ -218,25 +229,27 @@ class PyGrafRenderer:
         b.append(value)
         b.append("\"")
 
-    def writeHeader(self, g):
+    def write_header(self, g):
+        """Writes the header tag at the beginning of the XML file.
+        
         """
-        Writes the header tag at the beginning of the XML file
-        """
-        header = g.getHeader()
+        
+        header = g.get_header()
         self._FILE.write(str(self._indent) + "<" + self._g.HEADER 
                         + ">" + self._g.EOL)
         self._indent.more()
-        self.renderTagUsage(g)
-        self.writeXML(header)
+        self.render_tag_usage(g)
+        self.write_xml(header)
         self._indent.less()
         self._FILE.write(str(self._indent) + "</" + self._g.HEADER 
                         + ">" + self._g.EOL)
 
-    def writeXML(self, header):
+    def write_xml(self, header):
+        """Helper method for write_header.
+        
         """
-        Helper method for writeHeader
-        """
-        roots = header.getRoots()
+        
+        roots = header.get_roots()
         if len(roots) > 0:
             self._FILE.write(str(self._indent) + "<" + self._g.ROOTS + ">" 
                                      + self._g.EOL)
@@ -250,7 +263,7 @@ class PyGrafRenderer:
             self._FILE.write(str(self._indent) + "</" + self._g.ROOTS 
                             + ">" + self._g.EOL)
 
-        dependsOn = header.getDependsOn()
+        dependsOn = header.get_depends_on()
         if len(dependsOn) > 0:
             self._FILE.write(str(self._indent) + "<" 
                             + self._g.DEPENDENCIES + ">" + self._g.EOL)
@@ -261,7 +274,7 @@ class PyGrafRenderer:
             self._FILE.write(str(self._indent) + "</" 
                             + self._g.DEPENDENCIES + ">" + self._g.EOL)
 
-        annotationSets = header.getAnnotationSets()
+        annotationSets = header.get_annotation_sets()
         if len(annotationSets) > 0:
             self._FILE.write(str(self._indent) + "<" 
                     + self._g.ANNOTATION_SETS + ">" + self._g.EOL)
@@ -272,8 +285,8 @@ class PyGrafRenderer:
                 self._FILE.write(self._xml.attribute(self._g.NAME, 
                                 aSet._name))
                 self._FILE.write(" ")
-                print aSet._name
-                print str(aSet._type)
+                print(aSet._name)
+                print(str(aSet._type))
                 self._FILE.write(self._xml.attribute(self._g.TYPE, 
                                      str(aSet._type)))
                 self._FILE.write( "/>" + self._g.EOL)
@@ -283,24 +296,26 @@ class PyGrafRenderer:
 
 
     def elements(self, file, indent, name, uris):
+        """Creates XML tags for elements in uris.
+        
         """
-        Creates XML tags for elements in uris
-        """
+        
         if uris is None:
             return
         for uri in uris:
             self.element(file, indent, name, uri)
 
     def element(self, file, indent, name, loc):
+        """Helper method for elements(), creates an XML tag for an element.
+        
         """
-        Helper method for elements(), creates an XML tag for an element
-        """
+        
         if loc is None:
             return
         file.write(str(indent) + "<" + name + " " + self._g.TYPE + "=\"" 
                     + loc + "\"/>" + self._g.EOL)
 
-    def countTagUsage(self, g):
+    def count_tag_usage(self, g):
         annotations = {}
         for node in g.nodes():
             for a in node._annotations:
@@ -311,13 +326,13 @@ class PyGrafRenderer:
                 counter.increment()
         return annotations
 
-    def renderTagUsage(self, g):
-        annotations = self.countTagUsage(g)
+    def render_tag_usage(self, g):
+        annotations = self.count_tag_usage(g)
 
         self._FILE.write(str(self._indent) + "<" + self._g.TAGSDECL + ">" 
                         + self._g.EOL)
         self._indent.more()
-        for k, v in annotations.iteritems():
+        for k, v in annotations.items():
             self._FILE.write(str(self._indent) + "<" 
                             + self._g.TAGUSAGE + " " 
                             + self._g.GI + "=\"" + str(k) + "\" " 
@@ -331,30 +346,31 @@ class PyGrafRenderer:
         self._FILE.close()
 
     def render(self, g):
-        self.writeOpenGraphElement()
+        self.write_open_graph_element()
 
-        self.writeHeader(g)
+        self.write_header(g)
 
         """ add any features of the graph """
-        fs = g.getFeatures()
+        fs = g.get_features()
         if fs is not None:
-            self.renderFS(fs)
+            self.render_fs(fs)
 
         """ render the regions """
-        list = g.getRegions()
-        list.sort()
+        list = g.get_regions()
+        #list.sort() - OLD VERSION
         for region in list:
-            self.renderRegion(region)
+            self.render_region(region)
 
         """ render the nodes """
         nodes = g.nodes()
-        nodes = sorted(nodes, cmp = PyNode.compareTo)
+        #nodes = sorted(nodes, cmp = PyNode.compare_to) - OLD VERSION Working in Python2
+        #nodes = sorted(nodes, cmp = PyNode.compare_to(nodes)) - NEW VERSION
         for node in nodes:
-            self.renderNode(node)
+            self.render_node(node)
 
         """ render the edges """
         for edge in g.edges():
-            self.renderEdge(edge)
+            self.render_edge(edge)
 
         self._FILE.write( "</graph>" + self._g.EOL)
 
