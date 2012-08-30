@@ -3,12 +3,15 @@
 # Copyright (C) 2001-2010 NLTK Project
 # Author: Keith Suderman <suderman@cs.vassar.edu> (Original API)
 #         Stephen Matysik <smatysik@gmail.com> (Conversion to Python)
+#         Antonio Lopes <alopes@cidles.eu> (Edited and Updated to
+#         Python 3 and added new functionalites)
 # URL: <http://www.nltk.org/>
 # For license information, see LICENSE.TXT
 #
 
-from graf.PyLink import PyLink
-from graf.PyGraphElement import PyGraphElement
+from PyLink import *
+from PyGraphElement import PyGraphElement
+
 
 class PyNode(PyGraphElement):
     """
@@ -17,8 +20,7 @@ class PyNode(PyGraphElement):
     Each collection is backed by two data structures:
         1. A list (for traversals)
         2. A hash map
-    Nodes may also contain one or more C{PyAnnotation} objects.
-    
+    Nodes may also contain one or more C{PyAnnotation} objects
     """
 
     def __init__(self, id = ""):
@@ -80,7 +82,7 @@ class PyNode(PyGraphElement):
         return len(self._inEdgeList) + len(self._outEdgeList)
 
     def get_in_edge(self, index):
-        if isinstance(index, str):
+        if isinstance(index, basestring):
             return self._inEdges.get(index)
         else:
             if len(self._inEdgeList) <= index:
@@ -89,7 +91,7 @@ class PyNode(PyGraphElement):
                 return self._inEdgeList[index]
 
     def get_out_edge(self, index):
-        if isinstance(index, str):
+        if isinstance(index, basestring):
             return self._outEdges.get(index)
         else:
             if len(self._outEdgeList) <= index:

@@ -1,8 +1,10 @@
+# Natural Language Toolkit: GrAF API
 #
 # Copyright (C) 2001-2010 NLTK Project
-# Natural Language Toolkit: GrAF API
-# Author: Keith Suderman <suderman:cs.vassar.edu> (Original API)
-#         Stephen Matysik <smatysik:gmail.com> (Conversion to Python)
+# Author: Keith Suderman <suderman@cs.vassar.edu> (Original API)
+#         Stephen Matysik <smatysik@gmail.com> (Conversion to Python)
+#         Antonio Lopes <alopes@cidles.eu> (Edited and Updated to
+#         Python 3 and added new functionalites)
 # URL: <http://www.nltk.org/>
 # For license information, see LICENSE.TXT
 #
@@ -10,25 +12,22 @@
 class PyRegion:
     """
     The area in the text file being annotated.  A region is defined 
-    by a sequence of C{PyAnchor} objects.
-    
+    by a sequence of C{PyAnchor} objects
     """
 
     def __init__(self, id, anchors=None):
-        """Constructor for C{PyRegion}.
-        
-        :param id: C{str}
-        :param anchors: C{list} of C{PyAnchor}
-        
         """
-        
+        Constructor for C{PyRegion}
+        @param id: C{str}
+        @param anchors: C{list} of C{PyAnchor}
+        """
         self._id = id
         self._nodes = []
         if anchors is None:
             self._anchors = [] 
         elif len(anchors) < 2:
             #add exception
-            print("Regions must be bound by at least two anchors")
+            print "Regions must be bound by at least two anchors"
         else:
             self._anchors = anchors
 
@@ -51,7 +50,7 @@ class PyRegion:
         if not node in self._nodes:
             self._nodes.append(node)
         
-    def compareTo(self, region):
+    def compare_to(self, region):
         thisSize = len(self._anchors)
         regionSize = region.get_num_anchors()
         ##better alg?
@@ -78,7 +77,7 @@ class PyRegion:
     def equals(self, object):
         if not isinstance(object, PyRegion) or object is None:
             return False
-        return self.compareTo(object) == 0
+        return self.compare_to(object) == 0
 
 
     def get_anchor(self, index):
@@ -104,20 +103,18 @@ class PyRegion:
         self._anchors.remove(anchor)
 
     def set_anchor(self, index, anchor):
-        """Sets the anchors at the given index.
-        
         """
-        
+        Sets the anchors at the given index
+        """
         if index < 0 or len(self._anchors) <= index:
-            print("Index out of bounds")
+            print "Index out of bounds"
             return None
         self._anchors[index] = anchor
 
     def set_anchors(self, anchors):
-        """Sets the list of anchors that bounds the region.
-        
         """
-        
+        Sets the list of anchors that bounds the region
+        """
         self._anchors = anchors
 
     def set_end(self, anchor):
@@ -128,3 +125,6 @@ class PyRegion:
 
     def subtract(self, offset):
         [anchor.subtract(offset) for anchor in self._anchors]
+
+
+

@@ -3,6 +3,8 @@
 # Copyright (C) 2001-2010 NLTK Project
 # Author: Keith Suderman <suderman@cs.vassar.edu> (Original API)
 #         Stephen Matysik <smatysik@gmail.com> (Conversion to Python)
+#         Antonio Lopes <alopes@cidles.eu> (Edited and Updated to
+#         Python 3 and added new functionalites)
 # URL: <http://www.nltk.org/>
 # For license information, see LICENSE.TXT
 #
@@ -48,12 +50,15 @@ class GRAF:
         self.MEDIUM = "medium"
         self.ANCHOR_TYPES = "anchorTypes"
         self.ANCHOR_TYPE = "anchorType"
-        self.ANNOTATION_SETS = "annotation_sets"
+        self.ANNOTATION_SETS = "annotationSets"
         self.ANNOTATION_SET = "annotationSet"
+        self.ANNOTATION_SPACE = "annotationSpace"
         self.NAME = "name"
         self.VALUE = "value"
         self.ID = "xml:id"
         self.TYPE = "type"
+        self.TYPE_F_ID = "f.id"
+        self.AS_ID = "as.id"
         self.START = "start"
         self.END = "end"
         self.FROM = "from"

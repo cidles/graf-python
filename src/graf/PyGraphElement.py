@@ -1,37 +1,34 @@
 # Natural Language Toolkit: GrAF API
 #
 # Copyright (C) 2001-2010 NLTK Project
-# Author: Keith Suderman <suderman:cs.vassar.edu> (Original API)
-#         Stephen Matysik <smatysik:gmail.com> (Conversion to Python)
+# Author: Keith Suderman <suderman@cs.vassar.edu> (Original API)
+#         Stephen Matysik <smatysik@gmail.com> (Conversion to Python)
+#         Antonio Lopes <alopes@cidles.eu> (Edited and Updated to
+#         Python 3 and added new functionalites)
 # URL: <http://www.nltk.org/>
 # For license information, see LICENSE.TXT
 #
 
+from PyAnnotationSet import *
+from PyFeature import *
+
 class PyGraphElement:
-    """
-    Class of elements in the PyGraph.
-    
-    """
-    
+
     def __init__(self, id = ""):
-        """Constructor for C{PyGraphElement}.
-        
-        :param id: C{str}
-        
         """
-        
+        Constructor for C{PyGraphElement}
+        @param id: C{str}
+        """
         self._id = id
         self._userObject = None
         self._visited = False
         self._annotations = []
 
     def from_node(node):
-        """Constructs a new C{PyGraphElement} from an existing node.
-        
-        :param node: C{PyNode}
-        
         """
-        
+        Constructs a new C{PyGraphElement} from an existing node
+        @param node: C{PyNode}
+        """
         newGE = PyGraphElement(node.getID())
         for a in node.annotations():
             newGE.add_annotation(a)
@@ -39,12 +36,10 @@ class PyGraphElement:
         return newGE
 
     def from_edge(edge):
-        """Constructs a new C{PyGraphElement} from an existing edge.
-        
-        :param edge: C{PyEdge}
-        
         """
-        
+        Constructs a new C{PyGraphElement} from an existing edge
+        @param edge: C{PyEdge}
+        """
         newGE = PyGraphElement(edge.getID())
         for a in edge.annotations():
             newGE.addAnnotations(a)
@@ -59,12 +54,10 @@ class PyGraphElement:
         a._element = self
 
     def add_annotation_create(self, label):
-        """Creates an adds an annotation to this C{PyGraphElement}.
-        
-        :param label: C{str}
-        
         """
-        
+        Creates an adds an annotation to this C{PyGraphElement}
+        @param label: C{str}
+        """
         a = PyAnnotation(label)
         self.add_annotation(a)
         return a
@@ -76,12 +69,10 @@ class PyGraphElement:
         self._visited = False
 
     def equals(self, o):
-        """Comparison of two graph elements by ID.
-        
-        :param o: C{PyGraphElement}
-        
         """
-        
+        Comparison of two graph elements by ID
+        @param o: C{PyGraphElement}
+        """
         if not isinstance(o, PyGraphElement) or o == None:
             return False
         else:

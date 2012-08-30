@@ -1,8 +1,10 @@
 # Natural Language Toolkit: GrAF API
 #
 # Copyright (C) 2001-2010 NLTK Project
-# Author: Keith Suderman <suderman:cs.vassar.edu> (Original API)
-#         Stephen Matysik <smatysik:gmail.com> (Conversion to Python)
+# Author: Keith Suderman <suderman@cs.vassar.edu> (Original API)
+#         Stephen Matysik <smatysik@gmail.com> (Conversion to Python)
+#         Antonio Lopes <alopes@cidles.eu> (Edited and Updated to
+#         Python 3 and added new functionalites)
 # URL: <http://www.nltk.org/>
 # For license information, see LICENSE.TXT
 #
@@ -11,28 +13,26 @@ from xml.sax import make_parser, SAXException
 from xml.sax.handler import ContentHandler
 import os
 
-from graf.PyGraph import PyGraph
-from graf.GRAF import GRAF
-from graf.PyDocumentHeader import PyDocumentHeader
+from PyGraph import *
+from GRAF import *
+from PyDocumentHeader import *
 
 class PyGraphParser(ContentHandler):
     """
     Used to parse the GrAF XML representation and construct the instance 
     of C{PyGraph} objects.
-    
-    version: 1.0.
-    
+    version: 1.0
     """
 
     def __init__(self):
-        """Create a new C{PyGraphParser} instance.
-        
         """
-        
+        Create a new C{PyGraphParser} instance
+        """
         self._parser = make_parser()
         self._parser.setContentHandler(self)
         self._g = GRAF()
         self._annotation_set_map = {}
+        self._annotation_space_map = {} # Added AL
         self._buffer = ""
         self._current_annotation = None
         self._current_annotation_set = None
@@ -53,11 +53,11 @@ class PyGraphParser(ContentHandler):
 
 
     def parse(self, file, parsed = None):
-        """Parses the XML file at the given path.
+        """
+        Parses the XML file at the given path
     
-        :return: a PyGraph representing the annotated text in GrAF format
-        :rtype: PyGraph
-        
+        @return: a PyGraph representing the annotated text in GrAF format
+        @rtype: PyGraph
         """
         if parsed is None:
             parsed = []
@@ -81,10 +81,9 @@ class PyGraphParser(ContentHandler):
         return result
 
     def startElement(self, name, attrs):
-        """Processes the opening xml tags, according to their type.
-        
         """
-        
+        Processes the opening xml tags, according to their type
+        """
         if name == self._g.GRAPH:
             self.graph_start(attrs)
         elif name == self._g.NODE:
@@ -103,6 +102,8 @@ class PyGraphParser(ContentHandler):
             self.depends_on_start(attrs)
         elif name == self._g.ANNOTATION_SET:
             self.annotation_set_start(attrs)
+        elif name == self._g.ANNOTATION_SPACE:
+            self.annotation_space_start(attrs)
         elif name == self._g.ROOT:
             self.root_start(attrs)
 
@@ -114,19 +115,17 @@ class PyGraphParser(ContentHandler):
             pass
 
     def characters(self, ch):
-        """Processes any characters within the xml file.
-        
         """
-        
+        Processes any characters within the xml file
+        """
         #check for root node
         if self._root_element == 1:
             self._buffer += ch
     
     def endElement(self, name):
-        """Processes the end xml tags, according to their type.
-        
         """
-        
+        Processes the end xml tags, according to their type
+        """
         if name == self._g.GRAPH:
             self.graph_end()
         elif name == self._g.NODE:
@@ -145,12 +144,11 @@ class PyGraphParser(ContentHandler):
             self.root_end()
 
     def graph_start(self, attrs):
-        """Executes when the parser encounters the begin graph tag
+        """
+        Executes when the parser encounters the begin graph tag
         Initializes the data structures used to construct the graph.
         The element attributes are added to the new graph as features.
-        
         """
-        
         del self._edges[:]
         del self._fs_stack[:]
         self._node_map.clear()
@@ -159,22 +157,25 @@ class PyGraphParser(ContentHandler):
         del self._relations[:]
         self._graph = PyGraph()
         n = attrs.getLength() - 1
-        for i in range(0, n):
-            name = attrs.getQName(i)
-            value = attrs.get_value(i)
-            if self._g.ROOT == name:
-                self._root_id = value
-            elif self._g.VERSION != name:
-                self._graph.add_feature(name, value)
+        # This is never used with any of the MASC Versions
+        # name = attrs.getQName(i)
+        # Gives error to each version
+        #for i in range(0, n):
+        #    attrs.getQName(i)
+        #    name = attrs.getQName(i)
+        #    value = attrs.getValue(i)
+        #    if self._g.ROOT == name:
+        #        self._root_id = value
+        #    elif self._g.VERSION != name:
+        #        self._graph.add_feature(name, value)
 
     def graph_end(self):
-        """Executes when the parser encounters the end graph tag.
+        """
+        Executes when the parser encounters the end graph tag.
         Sets the root node and adds all the edges to the graph. 
         Neither of these tasks can be safely performed until all nodes 
         have been added.
-        
         """
-        
         """Create and add the edges"""
         for edge in self._edges:
             from_node = self._node_map.get(edge._from)
@@ -207,12 +208,11 @@ class PyGraphParser(ContentHandler):
 
 
     def node_start(self, attrs):
-        """Used to parse the node start tag.
-        Creates a new self._current_node, of type PyNode.
-        
         """
-        
-        id = attrs.get_value(self._g.ID)
+        Used to parse the node start tag.
+        Creates a new self._current_node, of type PyNode
+        """
+        id = attrs.getValue(self._g.ID)
         isRoot = attrs.get(self._g.ROOT) ##?
         self._current_node = PyNode(id)
 
@@ -222,23 +222,21 @@ class PyGraphParser(ContentHandler):
         self._node_map[id] = self._current_node
 
     def node_end(self):
-        """Adds the current_node to the graph being constructed and
-        sets self._current_node to None.
-        
         """
-        
+        Adds the current_node to the graph being constructed and
+        sets self._current_node to None.
+        """
         self._graph.add_node(self._current_node)
         self._current_node = None
 
 
     def annotation_set_start(self, attrs):
-        """Used to parse <annotationSet .../> elements in the XML 
-        representation.
-        
         """
-        
-        name = attrs.get_value(self._g.NAME)
-        type = attrs.get_value(self._g.TYPE)
+        Used to parse <annotationSet .../> elements in the XML 
+        representation.
+        """
+        name = attrs.getValue(self._g.NAME)
+        type = attrs.getValue(self._g.TYPE)
         sets = self._graph.get_annotation_sets()
         for set in sets:
             if set._name == name:
@@ -250,28 +248,47 @@ class PyGraphParser(ContentHandler):
         a_set = self._graph.add_as_create(name, type)
         self._annotation_set_map[name] = a_set
 
+    # Added AL
+    def annotation_space_start(self, attrs):
+        """
+        Added because there's no annotation set anymore
+        """
+        as_id = attrs.getValue(self._g.AS_ID)
+        sets = self._graph.get_annotation_sets()
+        for set in sets:
+            if set._as_id == as_id:
+                if set._type != type:
+                    raise SAXException("Annotation set type mismatch for "
+                    + as_id)
+                self._annotation_space_map[as_id] = set
+                return
+        a_set = self._graph.add_aspace_create(as_id)
+        self._annotation_space_map[as_id] = a_set
+
     def ann_start(self, attrs):
-        label = attrs.get_value(self._g.LABEL)
+        label = attrs.getValue(self._g.LABEL)
         self._current_annotation = PyAnnotation(label)
 
         if label is None:
             SAXException("Required attribute " + self._g.LABEL + 
                     " missing on annotation")
 
-        node_id = attrs.get_value(self._g.REF)
+        node_id = attrs.getValue(self._g.REF)
         if node_id is None:
             raise SAXException("Annotation is not associate with a node")
         set_name = attrs.get(self._g.ASET)
         if set_name is not None:
             a_set = self._annotation_set_map.get(set_name)
             if a_set is None:
-                raise SAXException("Unknown annotation set name " 
-                                    + set_name)
+                a_set = self._annotation_space_map.get(set_name)
+            elif a_set is None:
+                raise SAXException("Unknown annotation set name "
+                + set_name)
             self._current_annotation._set = a_set
             a_set.add_annotation(self._current_annotation)
 
         if self._current_annotation_set is not None:
-            self._current_annotation_set.addAnnotation(
+            self._current_annotation_set.add_annotation(
                                                 self._current_annotation)
             self._current_annotation.setAnnotationSet(
                                                 self.current_annotation_set)
@@ -291,28 +308,26 @@ class PyGraphParser(ContentHandler):
         self._current_annotation = None
 
     def edge_start(self, attrs):
-        """Used to parse edge elements in the XML representation.
+        """
+        Used to parse edge elements in the XML representation.
         Edge information is stored and the edges are added after 
         all nodes/spans have been parsed.
-        
         """
-        
-        from_id = attrs.get_value(self._g.FROM)
-        to_id = attrs.get_value(self._g.TO)
-        id = attrs.get_value(self._g.ID)
+        from_id = attrs.getValue(self._g.FROM)
+        to_id = attrs.getValue(self._g.TO)
+        id = attrs.getValue(self._g.ID)
         self._edges.append(EdgeInfo(id, from_id, to_id))
 
     def region_start(self, attrs):
-        """Used to pare the region elements in the XML representation.
+        """
+        Used to pare the region elements in the XML representation.
         A tolkenizer is used to separate the anchors listed in the XML tag,
         and a new PyAnchor instance is created for each one.  
         A PyRegion instance is then created with the id from the 
         XML tag and added to the graph.
-        
         """
-        
-        id = attrs.get_value(self._g.ID)
-        att = attrs.get_value(self._g.ANCHORS)
+        id = attrs.getValue(self._g.ID)
+        att = attrs.getValue(self._g.ANCHORS)
         tokenizer = att.split()
         if len(tokenizer) < 2:
             raise SAXException("Invalid number of anchors for the regions")
@@ -328,25 +343,23 @@ class PyGraphParser(ContentHandler):
 
         try:
             region = PyRegion(id, anchors)
-            self._graph.add_region(region)
+            self._graph.addRegion(region)
         except:
             raise SAXException("Could not add the region to the graph")
 
     def fs_start(self, attrs):
-        """Used to parse <fs> elements in the XML representation.
-        
         """
-        
+        Used to parse <fs> elements in the XML representation.
+        """
         type = attrs.get(self._g.TYPE)
         fs = PyFeatureStructure(type)
         self._fs_stack.append(fs)
         
 
     def fs_end(self):
-        """Used to parse </fs> elements in the XML representation.
-        
         """
-        
+        Used to parse </fs> elements in the XML representation.
+        """
         if len(self._f_stack) != 0:
             fs = self._fs_stack.pop()
             if len(self._f_stack) -1 >= 0:
@@ -355,13 +368,21 @@ class PyGraphParser(ContentHandler):
 
 
     def feature_start(self, attrs):
-        """Used to parse start features elements in the XML representation.
-        
         """
-        
-        name = attrs.get_value(self._g.NAME)
-        value = attrs.get_value(self._g.VALUE)
-        
+        Used to parse start features elements in the XML representation.
+        """
+        name = attrs.getValue(self._g.NAME)
+
+        # In the new MASC version the values aren't attributes
+        # any more.
+        try:
+            value = attrs.getValue(self._g.VALUE)
+        except Exception as inst:
+            try:
+                value = attrs.getValueByQName(self._g.NAME)
+            except Exception as inst:
+                print(inst)
+
         f = PyFeature(name)
 
         if value is not None:
@@ -370,10 +391,9 @@ class PyGraphParser(ContentHandler):
         self._f_stack.append(f)
 
     def feature_end(self):
-        """Used to parse end features elements in the XML representation.
-        
         """
-        
+        Used to parse end features elements in the XML representation.
+        """
         f = self._f_stack.pop()
         n = len(self._fs_stack)-1
         if n < 0:
@@ -383,15 +403,14 @@ class PyGraphParser(ContentHandler):
         if fs is None:
             SAXException("Unable to attach feature to a feature structure:" 
                         + " " + f.getName())
-        fs.addFeature(f)                 
+        fs.add_feature(f)
 
     
     def as_start(self, attrs):
-        """Used to parse start <as/ ...> elements in the XML representation.
-        
         """
-        
-        type = attrs.get_value(self._g.TYPE)
+        Used to parse start <as/ ...> elements in the XML representation.
+        """
+        type = attrs.getValue(self._g.TYPE)
         if type is None:
             raise SAXException("No type specified for as element.")
         else:
@@ -399,30 +418,44 @@ class PyGraphParser(ContentHandler):
                                                                     type)
 
     def as_end(self):
-        """Used to parse end /as> elements in the XML representation.
-        
         """
-        
+        Used to parse end /as> elements in the XML representation.
+        """
         self._current_annotation_set = None
 
 
     def link_start(self, attrs):
-        """Used to parse link elements in the XML representation.
-        
         """
-        
-        links = attrs.get_value(self._g.TARGETS)
+        Used to parse link elements in the XML representation.
+        """
+        links = attrs.getValue(self._g.TARGETS)
         self._relations.append((self._current_node, links))
 
 
     def depends_on_start(self, attrs):
-        """Used to parse dependsOn elements in the XML representation.
+        """
+        Used to parse dependsOn elements in the XML representation.
         Finds other XML annotation files on which depend the current 
         XML file. Parses the dependency files and adds the resulting graph 
-        to the current graph.
+        to the current graph
         """
-        
-        type = attrs.get_value(self._g.TYPE)
+
+        # In MASC version 1 in the graph header on
+        # <dependencies>
+        #   <dependsOn type="seg"/>
+        # </dependencies>
+        # Now in MASC version 3 the depencies here
+        # changed to
+        # <dependsOn f.id="seg"/>
+
+        try:
+            type = attrs.getValue(self._g.TYPE)
+        except Exception as inst:
+            try:
+                type = attrs.getValue(self._g.TYPE_F_ID)
+            except Exception as inst:
+                print(inst)
+
         if type is None:
             raise SAXException("No annotation type defined")
 
@@ -432,7 +465,7 @@ class PyGraphParser(ContentHandler):
         self._parsed.append(type)
 
 
-        path = self._header.getLocation(type)
+        path = self._header.get_location(type)
         if path is None:
             raise SAXException("Unable to get path for dependency of type"
                                  + " " + type)
@@ -452,44 +485,46 @@ class PyGraphParser(ContentHandler):
             id = edge._id
             from_id = edge.getFrom()._id
             to_id = edge.getTo()._id
-            e = self._graph.add_edge_to_from_id(id, from_id, to_id)
+            e = self._graph.add_edgeToFromID(id, from_id, to_id)
             for a in edge.annotations():
                 e.add_annotation(PyAnnotation.from_annotation(a))
 
         for region in dependency.regions():
-            self._graph.add_region(region)
+            self._graph.addRegion(region)
 
 
     def root_start(self, attrs):
-        """Used to parse start root elements in the XML representation. 
+        """
+        Used to parse start root elements in the XML representation.
         The root characters are processed by the characters() method and 
         stored in self._buffer.
-        
         self._root_element is a flag indicating the presence of a root.
-        
         """
-        
         self._buffer = ""
         self._root_element = 1
 
     def root_end(self):
-        """Used to parse end root elements in the XML representation.
-        
         """
-        
+        Used to parse end root elements in the XML representation.
+        """
         self._root_id = self._buffer
         self._buffer = ""
         self._root_element = 0
 
-
 class EdgeInfo:
     """
-    Used to store information about edges when parsing the GrAF XML 
+    Used to store information about edges when parsing the GrAF XML
     representation.
-    
+
     """
-    
+
     def __init__(self, id = "", fromID = "", toID = ""):
         self._id = id
         self._from = fromID
         self._to = toID
+        
+            
+
+
+
+
