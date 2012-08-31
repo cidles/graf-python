@@ -12,22 +12,25 @@
 class PyRegion:
     """
     The area in the text file being annotated.  A region is defined 
-    by a sequence of C{PyAnchor} objects
+    by a sequence of C{PyAnchor} objects.
+
     """
 
     def __init__(self, id, anchors=None):
+        """Constructor for C{PyRegion}.
+
+        :param id: C{str}
+        :param anchors: C{list} of C{PyAnchor}
+
         """
-        Constructor for C{PyRegion}
-        @param id: C{str}
-        @param anchors: C{list} of C{PyAnchor}
-        """
+
         self._id = id
         self._nodes = []
         if anchors is None:
             self._anchors = [] 
         elif len(anchors) < 2:
-            #add exception
-            print "Regions must be bound by at least two anchors"
+            # Add exception
+            print('Regions must be bound by at least two anchors')
         else:
             self._anchors = anchors
 
@@ -103,18 +106,20 @@ class PyRegion:
         self._anchors.remove(anchor)
 
     def set_anchor(self, index, anchor):
+        """Sets the anchors at the given index.
+
         """
-        Sets the anchors at the given index
-        """
+
         if index < 0 or len(self._anchors) <= index:
-            print "Index out of bounds"
+            print('Index out of bounds')
             return None
         self._anchors[index] = anchor
 
     def set_anchors(self, anchors):
+        """Sets the list of anchors that bounds the region.
+
         """
-        Sets the list of anchors that bounds the region
-        """
+
         self._anchors = anchors
 
     def set_end(self, anchor):
@@ -125,6 +130,3 @@ class PyRegion:
 
     def subtract(self, offset):
         [anchor.subtract(offset) for anchor in self._anchors]
-
-
-

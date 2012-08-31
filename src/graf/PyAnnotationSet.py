@@ -19,22 +19,24 @@ class PyAnnotationSet:
     """
 
     def __init__(self, name, type):
+        """Constructor for C{PyAnnotationSet}
+
+        :param name: C{str}
+        :param type: C{str}
+        :param annotations: C{str} of C{PyAnnotation}
+
         """
-        Constructor for C{PyAnnotationSet}
-        @param name: C{str}
-        @param type: C{str}
-        @param annotations: C{str} of C{PyAnnotation}
-        """
+
         self._name = name
         self._type = type
         self._annotations = []
 
     def from_as(aSet):
-        """Constructs a new C{PyAnnotationSpace} from
-        an existing C{PyAnnotationSpace}.
+        """Constructs a new C{PyAnnotationSet} from
+        an existing C{PyAnnotationSet}.
 
-        :param aSet: C{PyAnnotationSpace}
-        :return: C{PyAnnotationSpace}
+        :param aSet: C{PyAnnotationSet}
+        :return: C{PyAnnotationSet}
 
         """
 
@@ -61,7 +63,7 @@ class PyAnnotationSet:
 
     def add_annotation(self, a):
         """Adds a C{PyAnnotation} to the annotations list of
-        this C{PyAnnotationSpace}.
+        this C{PyAnnotationSet}.
 
         :param a: PyAnnotation
 
@@ -101,23 +103,25 @@ class PyAnnotationSet:
                 result.append(a)
         return result
 
-
     def remove_annotation(self, a):
         """Remove the given C{PyAnnotation}.
 
         :param a: PyAnnotation
 
         """
+
         try:
             return self._annotations.remove(a)
         except ValueError:
             print('Error: Annotation not in set')
 
     def remove_annotations_label(self, label):
+        """Remove the C{PyAnnotation} with the given label
+
+        :param label: C{str}
+
         """
-        Remove the C{PyAnnotation} with the given label
-        @param label: C{str}
-        """
+
         result = []
         for a in self._annotations:
             if label == a.getLabel():
@@ -128,12 +132,14 @@ class PyAnnotationSet:
         return result
 
     def remove_annotations(self, label, fs):
-        """
-        Remove the C{PyAnnotation}s with the given label in 
+        """Remove the C{PyAnnotation}s with the given label in
         the given C{PyFeatureStructure}
-        @param label: C{str}
-        @param fs: C{PyFeatureStructure}
+
+        :param label: C{str}
+        :param fs: C{PyFeatureStructure}
+
         """
+
         result = []
         for a in self._annotations:
             if (label == a.getLabel() 
