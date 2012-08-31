@@ -55,6 +55,8 @@
 <span class="c"># Copyright (C) 2001-2010 NLTK Project</span>
 <span class="c"># Author: Keith Suderman &lt;suderman@cs.vassar.edu&gt; (Original API)</span>
 <span class="c">#         Stephen Matysik &lt;smatysik@gmail.com&gt; (Conversion to Python)</span>
+<span class="c">#         Antonio Lopes &lt;alopes@cidles.eu&gt; (Edited and Updated to</span>
+<span class="c">#         Python 3 and added new functionalites)</span>
 <span class="c"># URL: &lt;http://www.nltk.org/&gt;</span>
 <span class="c"># For license information, see LICENSE.TXT</span>
 <span class="c">#</span>
@@ -65,30 +67,31 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class of edges in PyGraph:</span>
 <span class="sd">    - Each edge maintains the source (from) C{PyNode} and the destination.</span>
-<span class="sd">      (to) C{PyNode}. </span>
+<span class="sd">      (to) C{PyNode}.</span>
 <span class="sd">    - Edges may also contain one or more C{PyAnnotation} objects.</span>
-<span class="sd">    </span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="PyEdge.__init__"><a class="viewcode-back" href="../pyedge.html#PyEdge.PyEdge.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">fromNode</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">toNode</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;C{PyEdge} Constructor.</span>
-<span class="sd">        </span>
+
 <span class="sd">        :param id: C{str}</span>
 <span class="sd">        :param fromNode: C{PyNode}</span>
 <span class="sd">        :param toNode: C{PyNode}</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">PyGraphElement</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fromNode</span> <span class="o">=</span> <span class="n">fromNode</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_toNode</span> <span class="o">=</span> <span class="n">toNode</span>
 </div>
-<div class="viewcode-block" id="PyEdge.fromEdge"><a class="viewcode-back" href="../pyedge.html#PyEdge.PyEdge.fromEdge">[docs]</a>    <span class="k">def</span> <span class="nf">fromEdge</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+<div class="viewcode-block" id="PyEdge.from_edge"><a class="viewcode-back" href="../pyedge.html#PyEdge.PyEdge.from_edge">[docs]</a>    <span class="k">def</span> <span class="nf">from_edge</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;C{PyEdge} Constructor from an existing C{PyEdge}.</span>
-<span class="sd">        </span>
+
 <span class="sd">        :param e: C{PyEdge}</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">return</span> <span class="n">PyEdge</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">_fromNode</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">_toNode</span><span class="p">)</span>
 </div>
     <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

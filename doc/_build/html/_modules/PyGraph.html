@@ -53,8 +53,10 @@
 <span class="c"># Natural Language Toolkit: GrAF API</span>
 <span class="c">#</span>
 <span class="c"># Copyright (C) 2001-2010 NLTK Project</span>
-<span class="c"># Author: Keith Suderman &lt;suderman:cs.vassar.edu&gt; (Original API)</span>
-<span class="c">#         Stephen Matysik &lt;smatysik:gmail.com&gt; (Conversion to Python)</span>
+<span class="c"># Author: Keith Suderman &lt;suderman@cs.vassar.edu&gt; (Original API)</span>
+<span class="c">#         Stephen Matysik &lt;smatysik@gmail.com&gt; (Conversion to Python)</span>
+<span class="c">#         Antonio Lopes &lt;alopes@cidles.eu&gt; (Edited and Updated to</span>
+<span class="c">#         Python 3 and added new functionalites)</span>
 <span class="c"># URL: &lt;http://www.nltk.org/&gt;</span>
 <span class="c"># For license information, see LICENSE.TXT</span>
 <span class="c">#</span>
@@ -67,80 +69,101 @@
 <span class="sd">quickly based on their ID</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">PyAnchor</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">PyAnnotationSpace</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">PyAnnotationSet</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">PyEdge</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">PyFeature</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">PyFeatureStructure</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">PyNode</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">PyRegion</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">PyStandoffHeader</span> <span class="kn">import</span> <span class="o">*</span>    
-
+<span class="kn">from</span> <span class="nn">PyStandoffHeader</span> <span class="kn">import</span> <span class="o">*</span>
 
 <div class="viewcode-block" id="PyGraph"><a class="viewcode-back" href="../pygraph.html#PyGraph.PyGraph">[docs]</a><span class="k">class</span> <span class="nc">PyGraph</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class of PyGraph.</span>
-<span class="sd">    </span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
 <div class="viewcode-block" id="PyGraph.__init__"><a class="viewcode-back" href="../pygraph.html#PyGraph.PyGraph.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructor for PyGraph.</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_edgeCount</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_features</span> <span class="o">=</span> <span class="n">PyFeatureStructure</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_nodeSet</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_edgeSet</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_regions</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_annotationSets</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_annotationSpaces</span> <span class="o">=</span> <span class="p">{}</span> <span class="c"># Added AL</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_content</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_header</span> <span class="o">=</span> <span class="n">PyStandoffHeader</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_userObject</span> <span class="o">=</span> <span class="bp">None</span>
 </div>
-<div class="viewcode-block" id="PyGraph.addAnnotationSet"><a class="viewcode-back" href="../pygraph.html#PyGraph.PyGraph.addAnnotationSet">[docs]</a>    <span class="k">def</span> <span class="nf">addAnnotationSet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">set</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add given C{PyAnnotationSpace} to this C{PyGraph}.</span>
-<span class="sd">        </span>
-<span class="sd">        :param set: C{PyAnnotationSpace}</span>
-<span class="sd">        </span>
+<div class="viewcode-block" id="PyGraph.add_annotation_set"><a class="viewcode-back" href="../pygraph.html#PyGraph.PyGraph.add_annotation_set">[docs]</a>    <span class="k">def</span> <span class="nf">add_annotation_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">set</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add given C{PyAnnotationSet} to this C{PyGraph}.</span>
+
+<span class="sd">        :param set: C{PyAnnotationSet}</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_annotationSets</span><span class="p">[</span><span class="nb">set</span><span class="o">.</span><span class="n">_name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_header</span><span class="o">.</span><span class="n">addAnnotationSetCreate</span><span class="p">(</span><span class="nb">set</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="nb">set</span><span class="o">.</span><span class="n">_type</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_header</span><span class="o">.</span><span class="n">add_annotation_set_create</span><span class="p">(</span><span class="nb">set</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="nb">set</span><span class="o">.</span><span class="n">_type</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="PyGraph.addASCreate"><a class="viewcode-back" href="../pygraph.html#PyGraph.PyGraph.addASCreate">[docs]</a>    <span class="k">def</span> <span class="nf">addASCreate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create C{PyAnnotationSpace} from given name, value and </span>
+<div class="viewcode-block" id="PyGraph.add_as_create"><a class="viewcode-back" href="../pygraph.html#PyGraph.PyGraph.add_as_create">[docs]</a>    <span class="k">def</span> <span class="nf">add_as_create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create C{PyAnnotationSet} from given name, value and</span>
 <span class="sd">        add it to this C{PyGraph}.</span>
-<span class="sd">        </span>
+
 <span class="sd">        :param name: C{str}</span>
 <span class="sd">        :param type: C{str}</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
-        <span class="n">aSet</span> <span class="o">=</span> <span class="n">PyAnnotationSpace</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">addAnnotationSet</span><span class="p">(</span><span class="n">aSet</span><span class="p">)</span>
+
+        <span class="n">aSet</span> <span class="o">=</span> <span class="n">PyAnnotationSet</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_annotation_set</span><span class="p">(</span><span class="n">aSet</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">aSet</span>
+
+    <span class="c"># Added AL</span></div>
+<div class="viewcode-block" id="PyGraph.add_annotation_space"><a class="viewcode-back" href="../pygraph.html#PyGraph.PyGraph.add_annotation_space">[docs]</a>    <span class="k">def</span> <span class="nf">add_annotation_space</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">set</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add given C{PyAnnotationSpace} to this C{PyGraph}.</span>
+
+<span class="sd">        :param set: C{PyAnnotationSpace}</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_annotationSpaces</span><span class="p">[</span><span class="nb">set</span><span class="o">.</span><span class="n">_as_id</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_header</span><span class="o">.</span><span class="n">add_annotation_space_create</span><span class="p">(</span><span class="nb">set</span><span class="o">.</span><span class="n">_as_id</span><span class="p">)</span>
+
+    <span class="c"># Added AL</span></div>
+<div class="viewcode-block" id="PyGraph.add_aspace_create"><a class="viewcode-back" href="../pygraph.html#PyGraph.PyGraph.add_aspace_create">[docs]</a>    <span class="k">def</span> <span class="nf">add_aspace_create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">as_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create C{PyAnnotationSpace} from given name, value and</span>
+<span class="sd">        add it to this C{PyGraph}.</span>
+
+<span class="sd">        :param name: C{str}</span>
+<span class="sd">        :param type: C{str}</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">aSet</span> <span class="o">=</span> <span class="n">PyAnnotationSpace</span><span class="p">(</span><span class="n">as_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_annotation_space</span><span class="p">(</span><span class="n">aSet</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">aSet</span>
 </div>
-<div class="viewcode-block" id="PyGraph.addEdge"><a class="viewcode-back" href="../pygraph.html#PyGraph.PyGraph.addEdge">[docs]</a>    <span class="k">def</span> <span class="nf">addEdge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge</span><span class="p">):</span>
+<div class="viewcode-block" id="PyGraph.add_edge"><a class="viewcode-back" href="../pygraph.html#PyGraph.PyGraph.add_edge">[docs]</a>    <span class="k">def</span> <span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add C{PyEdge} to this C{PyGraph}.</span>
-<span class="sd">        </span>
+
 <span class="sd">        :param edge: C{PyEdge}</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_edgeSet</span><span class="p">[</span><span class="n">edge</span><span class="o">.</span><span class="n">_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">edge</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">updateNode</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_node</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="PyGraph.addEdgeCreate"><a class="viewcode-back" href="../pygraph.html#PyGraph.PyGraph.addEdgeCreate">[docs]</a>    <span class="k">def</span> <span class="nf">addEdgeCreate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">fromNode</span> <span class="o">=</span> <span class="bp">None</span> <span class="p">,</span> <span class="n">toNode</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="PyGraph.add_edge_create"><a class="viewcode-back" href="../pygraph.html#PyGraph.PyGraph.add_edge_create">[docs]</a>    <span class="k">def</span> <span class="nf">add_edge_create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">fromNode</span> <span class="o">=</span> <span class="bp">None</span> <span class="p">,</span> <span class="n">toNode</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create C{PyEdge} from id, fromNode, toNode and add it to</span>
 <span class="sd">        this C{PyGraph}.</span>
-<span class="sd">        </span>
+
 <span class="sd">        :param id: C{str}</span>
 <span class="sd">        :param fromNode: C{PyNode}</span>
 <span class="sd">        :param toNode: C{PyNode}</span>
-<span class="sd">        </span>
-<span class="sd">        &quot;&quot;&quot;</span> 
-        
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodeSet</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">fromNode</span><span class="o">.</span><span class="n">getID</span><span class="p">())</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_nodeSet</span><span class="p">[</span><span class="n">fromNode</span><span class="o">.</span><span class="n">getID</span><span class="p">()]</span> <span class="o">=</span> <span class="n">fromNode</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodeSet</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">toNode</span><span class="o">.</span><span class="n">getID</span><span class="p">())</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
@@ -148,48 +171,48 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_edgeCount</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">newEdge</span> <span class="o">=</span> <span class="n">PyEdge</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">fromNode</span><span class="p">,</span> <span class="n">toNode</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_edgeSet</span><span class="p">[</span><span class="n">newEdge</span><span class="o">.</span><span class="n">getID</span><span class="p">()]</span> <span class="o">=</span> <span class="n">newEdge</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">updateNode</span><span class="p">(</span><span class="n">newEdge</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_node</span><span class="p">(</span><span class="n">newEdge</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">newEdge</span>
         </div>
-<div class="viewcode-block" id="PyGraph.addEdgeFromTo"><a class="viewcode-back" href="../pygraph.html#PyGraph.PyGraph.addEdgeFromTo">[docs]</a>    <span class="k">def</span> <span class="nf">addEdgeFromTo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fromNode</span><span class="p">,</span> <span class="n">toNode</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create C{PyEdge} from fromNode, toNode and add it to </span>
+<div class="viewcode-block" id="PyGraph.add_edge_from_to"><a class="viewcode-back" href="../pygraph.html#PyGraph.PyGraph.add_edge_from_to">[docs]</a>    <span class="k">def</span> <span class="nf">add_edge_from_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fromNode</span><span class="p">,</span> <span class="n">toNode</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create C{PyEdge} from fromNode, toNode and add it to</span>
 <span class="sd">        this C{PyGraph} id is created.</span>
-<span class="sd">        </span>
+
 <span class="sd">        :param fromNode: C{PyNode}</span>
 <span class="sd">        :param toNode: C{PyNode}</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">addEdgeCreate</span><span class="p">(</span><span class="s">&quot;e&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edgeCount</span><span class="p">),</span> 
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_edge_create</span><span class="p">(</span><span class="s">&quot;e&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edgeCount</span><span class="p">),</span>
                                 <span class="n">fromNode</span><span class="p">,</span> <span class="n">toNode</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="PyGraph.addEdgeToFromID"><a class="viewcode-back" href="../pygraph.html#PyGraph.PyGraph.addEdgeToFromID">[docs]</a>    <span class="k">def</span> <span class="nf">addEdgeToFromID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">fromID</span><span class="p">,</span> <span class="n">toID</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create C{PyEdge} from id, fromID, toID and add it to </span>
+<div class="viewcode-block" id="PyGraph.add_edgeToFromID"><a class="viewcode-back" href="../pygraph.html#PyGraph.PyGraph.add_edgeToFromID">[docs]</a>    <span class="k">def</span> <span class="nf">add_edgeToFromID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">fromID</span><span class="p">,</span> <span class="n">toID</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create C{PyEdge} from id, fromID, toID and add it to</span>
 <span class="sd">        this C{PyGraph}.</span>
-<span class="sd">        </span>
+
 <span class="sd">        :param id: C{str}</span>
 <span class="sd">        :param fromID: C{str}</span>
 <span class="sd">        :param toID: C{str}</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">fromNode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodeSet</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">fromID</span><span class="p">)</span>
         <span class="n">toNode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodeSet</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">toID</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">fromNode</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">toNode</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">None</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">addEdge</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">fromNode</span><span class="p">,</span> <span class="n">toNode</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">fromNode</span><span class="p">,</span> <span class="n">toNode</span><span class="p">)</span>
 </div>
-    <span class="k">def</span> <span class="nf">addFeature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">add_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
-<div class="viewcode-block" id="PyGraph.addNode"><a class="viewcode-back" href="../pygraph.html#PyGraph.PyGraph.addNode">[docs]</a>    <span class="k">def</span> <span class="nf">addNode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="PyGraph.add_node"><a class="viewcode-back" href="../pygraph.html#PyGraph.PyGraph.add_node">[docs]</a>    <span class="k">def</span> <span class="nf">add_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add C{PyNode} to this C{PyGraph}.</span>
-<span class="sd">        </span>
+
 <span class="sd">        :param node: C{PyNode} or C{str}</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
             <span class="n">newNode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodeSet</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">newNode</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
                 <span class="n">newNode</span> <span class="o">=</span> <span class="n">PyNode</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
@@ -201,26 +224,30 @@
     <span class="k">def</span> <span class="nf">addRegion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">region</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_regions</span><span class="p">[</span><span class="n">region</span><span class="o">.</span><span class="n">_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">region</span>
 
-    <span class="k">def</span> <span class="nf">annotationSets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">annotation_sets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_annotationSets</span><span class="o">.</span><span class="n">itervalues</span><span class="p">()</span>
+
+    <span class="c"># Added AL</span>
+    <span class="k">def</span> <span class="nf">annotation_spaces</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_annotationSpaces</span><span class="o">.</span><span class="n">itervalues</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">edges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edgeSet</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">findEdgeFromID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">find_edge_from_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edgeSet</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
 
-<div class="viewcode-block" id="PyGraph.findEdge"><a class="viewcode-back" href="../pygraph.html#PyGraph.PyGraph.findEdge">[docs]</a>    <span class="k">def</span> <span class="nf">findEdge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fromNode</span><span class="p">,</span> <span class="n">toNode</span><span class="p">):</span>
+<div class="viewcode-block" id="PyGraph.find_edge"><a class="viewcode-back" href="../pygraph.html#PyGraph.PyGraph.find_edge">[docs]</a>    <span class="k">def</span> <span class="nf">find_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fromNode</span><span class="p">,</span> <span class="n">toNode</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Search for C{PyEdge} with its fromNode, toNode, either nodes or ids.</span>
-<span class="sd">        </span>
+
 <span class="sd">        :param fromNode: C{PyNode} or C{str}</span>
 <span class="sd">        :param toNode: C{PyNode} or C{str}</span>
 <span class="sd">        :return: C{PyEdge}</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
-        <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">fromNode</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> 
-                    <span class="nb">isinstance</span><span class="p">(</span><span class="n">toNode</span><span class="p">,</span> <span class="nb">str</span><span class="p">)):</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">fromNode</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">)</span> <span class="ow">and</span> 
+                    <span class="nb">isinstance</span><span class="p">(</span><span class="n">toNode</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">)):</span>
             <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodeSet</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">fromNode</span><span class="p">)</span>
             <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodeSet</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">toNode</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">f</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">t</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
@@ -233,65 +260,73 @@
                     <span class="k">return</span> <span class="n">e</span>
             <span class="k">return</span> <span class="bp">None</span>
 </div>
-    <span class="k">def</span> <span class="nf">findNode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">find_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodeSet</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">getAnnotationSet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_annotation_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_annotationSets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">getAnnotationSets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_annotation_sets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_annotationSets</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">getContent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c"># Added AL</span>
+    <span class="k">def</span> <span class="nf">get_annotation_space</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">as_id</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_annotationSpaces</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">as_id</span><span class="p">)</span>
+
+    <span class="c"># Added AL</span>
+    <span class="k">def</span> <span class="nf">get_annotation_spaces</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_annotationSpaces</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">get_content</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_content</span>
 
-    <span class="k">def</span> <span class="nf">getEdgeSetSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_edge_set_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edgeSet</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">getFeature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">getFeatures</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_features</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_features</span>
 
-    <span class="k">def</span> <span class="nf">getHeader</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_header</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_header</span>
 
-    <span class="k">def</span> <span class="nf">getNodeSetSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_node_set_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_nodeSet</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">getRegion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_region</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">region</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">regions</span><span class="p">():</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">start</span><span class="o">.</span><span class="n">compareTo</span><span class="p">(</span><span class="n">region</span><span class="o">.</span><span class="n">getStart</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> 
-                <span class="n">end</span><span class="o">.</span><span class="n">compareTo</span><span class="p">(</span><span class="n">region</span><span class="o">.</span><span class="n">getEnd</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">start</span><span class="o">.</span><span class="n">compare_to</span><span class="p">(</span><span class="n">region</span><span class="o">.</span><span class="n">get_start</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span>
+                <span class="n">end</span><span class="o">.</span><span class="n">compare_to</span><span class="p">(</span><span class="n">region</span><span class="o">.</span><span class="n">get_end</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">region</span>
         <span class="k">return</span> <span class="bp">None</span>
 
-    <span class="k">def</span> <span class="nf">getRegionFromID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_region_from_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_regions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">getRegions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_regions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_regions</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">getRoot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getHeader</span><span class="p">()</span>
-        <span class="n">roots</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">getRoots</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">get_root</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_header</span><span class="p">()</span>
+        <span class="n">roots</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get_roots</span><span class="p">()</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">roots</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">None</span>
         <span class="nb">id</span> <span class="o">=</span> <span class="n">roots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodeSet</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>        
 
-    <span class="k">def</span> <span class="nf">getRoots</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_roots</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">roots</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getHeader</span><span class="p">()</span>
-        <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">h</span><span class="o">.</span><span class="n">getRoots</span><span class="p">():</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_header</span><span class="p">()</span>
+        <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">h</span><span class="o">.</span><span class="n">get_roots</span><span class="p">():</span>
             <span class="n">roots</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_nodeSet</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">roots</span>
 
-    <span class="k">def</span> <span class="nf">getUserObject</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_user_object</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_userObject</span>
 
-    <span class="k">def</span> <span class="nf">insertEdge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">insert_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_edgeSet</span><span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">getID</span><span class="p">()]</span> <span class="o">=</span> <span class="n">e</span>
 
     <span class="k">def</span> <span class="nf">nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -300,32 +335,32 @@
     <span class="k">def</span> <span class="nf">regions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_regions</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">removeRegion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">region</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">remove_region</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">region</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_regions</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span> 
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_regions</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">region</span><span class="o">.</span><span class="n">getID</span><span class="p">(),</span> <span class="bp">None</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">roots</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getRoots</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_roots</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">setContent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">set_content</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_content</span> <span class="o">=</span> <span class="n">content</span>
 
-    <span class="k">def</span> <span class="nf">setHeader</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">set_header</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_header</span> <span class="o">=</span> <span class="n">header</span>
 
-    <span class="k">def</span> <span class="nf">setRoot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_header</span><span class="o">.</span><span class="n">clearRoots</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_header</span><span class="o">.</span><span class="n">addRoot</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">_id</span><span class="p">)</span> 
+    <span class="k">def</span> <span class="nf">set_root</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_header</span><span class="o">.</span><span class="n">clear_roots</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_header</span><span class="o">.</span><span class="n">add_root</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">_id</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">setUserObject</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">set_user_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_userObject</span> <span class="o">=</span> <span class="nb">object</span>
 
-    <span class="k">def</span> <span class="nf">updateNode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge</span><span class="p">):</span>
-        <span class="n">edge</span><span class="o">.</span><span class="n">_fromNode</span><span class="o">.</span><span class="n">addOutEdge</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
-        <span class="n">edge</span><span class="o">.</span><span class="n">_toNode</span><span class="o">.</span><span class="n">addInEdge</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span></div>
-</pre></div>
+    <span class="k">def</span> <span class="nf">update_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge</span><span class="p">):</span>
+        <span class="n">edge</span><span class="o">.</span><span class="n">_fromNode</span><span class="o">.</span><span class="n">add_out_edge</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+        <span class="n">edge</span><span class="o">.</span><span class="n">_toNode</span><span class="o">.</span><span class="n">add_in_edge</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+</pre></div></div>
 
           </div>
         </div>

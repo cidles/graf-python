@@ -60,7 +60,7 @@
 <dl class="class">
 <dt id="PyGraphParser.EdgeInfo">
 <em class="property">class </em><tt class="descclassname">PyGraphParser.</tt><tt class="descname">EdgeInfo</tt><big>(</big><em>id=''</em>, <em>fromID=''</em>, <em>toID=''</em><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#EdgeInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.EdgeInfo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Used to store information about edges when parsing the GrAF XML 
+<dd><p>Used to store information about edges when parsing the GrAF XML
 representation.</p>
 </dd></dl>
 
@@ -78,88 +78,97 @@ of C{PyGraph} objects.</p>
 
 <dl class="method">
 <dt id="PyGraphParser.PyGraphParser.annotation_set_start">
-<tt class="descname">annotation_set_start</tt><big>(</big><em>attrs</em><big>)</big><a class="headerlink" href="#PyGraphParser.PyGraphParser.annotation_set_start" title="Permalink to this definition">¶</a></dt>
-<dd><p>Used to parse &lt;annotationSet .../&gt; elements in the XML 
+<tt class="descname">annotation_set_start</tt><big>(</big><em>attrs</em><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#PyGraphParser.annotation_set_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.PyGraphParser.annotation_set_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to parse &lt;annotationSet .../&gt; elements in the XML
+representation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGraphParser.PyGraphParser.annotation_space_start">
+<tt class="descname">annotation_space_start</tt><big>(</big><em>attrs</em><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#PyGraphParser.annotation_space_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.PyGraphParser.annotation_space_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to parse &lt;annotationSpace .../&gt; elements in the XML
 representation.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyGraphParser.PyGraphParser.as_end">
-<tt class="descname">as_end</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGraphParser.PyGraphParser.as_end" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">as_end</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#PyGraphParser.as_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.PyGraphParser.as_end" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used to parse end /as&gt; elements in the XML representation.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyGraphParser.PyGraphParser.as_start">
-<tt class="descname">as_start</tt><big>(</big><em>attrs</em><big>)</big><a class="headerlink" href="#PyGraphParser.PyGraphParser.as_start" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">as_start</tt><big>(</big><em>attrs</em><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#PyGraphParser.as_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.PyGraphParser.as_start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used to parse start &lt;as/ ...&gt; elements in the XML representation.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyGraphParser.PyGraphParser.characters">
 <tt class="descname">characters</tt><big>(</big><em>ch</em><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#PyGraphParser.characters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.PyGraphParser.characters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Processes any characters within the xml file.</p>
+<dd><p>Processes any characters within the xml file.
+It&#8217;s a method from ContentHandler class.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyGraphParser.PyGraphParser.depends_on_start">
-<tt class="descname">depends_on_start</tt><big>(</big><em>attrs</em><big>)</big><a class="headerlink" href="#PyGraphParser.PyGraphParser.depends_on_start" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">depends_on_start</tt><big>(</big><em>attrs</em><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#PyGraphParser.depends_on_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.PyGraphParser.depends_on_start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used to parse dependsOn elements in the XML representation.
-Finds other XML annotation files on which depend the current 
-XML file. Parses the dependency files and adds the resulting graph 
+Finds other XML annotation files on which depend the current
+XML file. Parses the dependency files and adds the resulting graph
 to the current graph.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyGraphParser.PyGraphParser.edge_start">
-<tt class="descname">edge_start</tt><big>(</big><em>attrs</em><big>)</big><a class="headerlink" href="#PyGraphParser.PyGraphParser.edge_start" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">edge_start</tt><big>(</big><em>attrs</em><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#PyGraphParser.edge_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.PyGraphParser.edge_start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used to parse edge elements in the XML representation.
-Edge information is stored and the edges are added after 
+Edge information is stored and the edges are added after
 all nodes/spans have been parsed.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyGraphParser.PyGraphParser.endElement">
 <tt class="descname">endElement</tt><big>(</big><em>name</em><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#PyGraphParser.endElement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.PyGraphParser.endElement" title="Permalink to this definition">¶</a></dt>
-<dd><p>Processes the end xml tags, according to their type.</p>
+<dd><p>Processes the end xml tags, according to their type.
+It&#8217;s a method from ContentHandler class.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyGraphParser.PyGraphParser.feature_end">
-<tt class="descname">feature_end</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGraphParser.PyGraphParser.feature_end" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">feature_end</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#PyGraphParser.feature_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.PyGraphParser.feature_end" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used to parse end features elements in the XML representation.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyGraphParser.PyGraphParser.feature_start">
-<tt class="descname">feature_start</tt><big>(</big><em>attrs</em><big>)</big><a class="headerlink" href="#PyGraphParser.PyGraphParser.feature_start" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">feature_start</tt><big>(</big><em>attrs</em><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#PyGraphParser.feature_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.PyGraphParser.feature_start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used to parse start features elements in the XML representation.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyGraphParser.PyGraphParser.fs_end">
-<tt class="descname">fs_end</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGraphParser.PyGraphParser.fs_end" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">fs_end</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#PyGraphParser.fs_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.PyGraphParser.fs_end" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used to parse &lt;/fs&gt; elements in the XML representation.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyGraphParser.PyGraphParser.fs_start">
-<tt class="descname">fs_start</tt><big>(</big><em>attrs</em><big>)</big><a class="headerlink" href="#PyGraphParser.PyGraphParser.fs_start" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">fs_start</tt><big>(</big><em>attrs</em><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#PyGraphParser.fs_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.PyGraphParser.fs_start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used to parse &lt;fs&gt; elements in the XML representation.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyGraphParser.PyGraphParser.graph_end">
-<tt class="descname">graph_end</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGraphParser.PyGraphParser.graph_end" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">graph_end</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#PyGraphParser.graph_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.PyGraphParser.graph_end" title="Permalink to this definition">¶</a></dt>
 <dd><p>Executes when the parser encounters the end graph tag.
-Sets the root node and adds all the edges to the graph. 
-Neither of these tasks can be safely performed until all nodes 
+Sets the root node and adds all the edges to the graph.
+Neither of these tasks can be safely performed until all nodes
 have been added.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyGraphParser.PyGraphParser.graph_start">
-<tt class="descname">graph_start</tt><big>(</big><em>attrs</em><big>)</big><a class="headerlink" href="#PyGraphParser.PyGraphParser.graph_start" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">graph_start</tt><big>(</big><em>attrs</em><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#PyGraphParser.graph_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.PyGraphParser.graph_start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Executes when the parser encounters the begin graph tag
 Initializes the data structures used to construct the graph.
 The element attributes are added to the new graph as features.</p>
@@ -167,20 +176,20 @@ The element attributes are added to the new graph as features.</p>
 
 <dl class="method">
 <dt id="PyGraphParser.PyGraphParser.link_start">
-<tt class="descname">link_start</tt><big>(</big><em>attrs</em><big>)</big><a class="headerlink" href="#PyGraphParser.PyGraphParser.link_start" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">link_start</tt><big>(</big><em>attrs</em><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#PyGraphParser.link_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.PyGraphParser.link_start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used to parse link elements in the XML representation.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyGraphParser.PyGraphParser.node_end">
-<tt class="descname">node_end</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGraphParser.PyGraphParser.node_end" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">node_end</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#PyGraphParser.node_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.PyGraphParser.node_end" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds the current_node to the graph being constructed and
 sets self._current_node to None.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyGraphParser.PyGraphParser.node_start">
-<tt class="descname">node_start</tt><big>(</big><em>attrs</em><big>)</big><a class="headerlink" href="#PyGraphParser.PyGraphParser.node_start" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">node_start</tt><big>(</big><em>attrs</em><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#PyGraphParser.node_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.PyGraphParser.node_start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used to parse the node start tag.
 Creates a new self._current_node, of type PyNode.</p>
 </dd></dl>
@@ -203,25 +212,25 @@ Creates a new self._current_node, of type PyNode.</p>
 
 <dl class="method">
 <dt id="PyGraphParser.PyGraphParser.region_start">
-<tt class="descname">region_start</tt><big>(</big><em>attrs</em><big>)</big><a class="headerlink" href="#PyGraphParser.PyGraphParser.region_start" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">region_start</tt><big>(</big><em>attrs</em><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#PyGraphParser.region_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.PyGraphParser.region_start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used to pare the region elements in the XML representation.
 A tolkenizer is used to separate the anchors listed in the XML tag,
-and a new PyAnchor instance is created for each one.  
-A PyRegion instance is then created with the id from the 
+and a new PyAnchor instance is created for each one.
+A PyRegion instance is then created with the id from the
 XML tag and added to the graph.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyGraphParser.PyGraphParser.root_end">
-<tt class="descname">root_end</tt><big>(</big><big>)</big><a class="headerlink" href="#PyGraphParser.PyGraphParser.root_end" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">root_end</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#PyGraphParser.root_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.PyGraphParser.root_end" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used to parse end root elements in the XML representation.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyGraphParser.PyGraphParser.root_start">
-<tt class="descname">root_start</tt><big>(</big><em>attrs</em><big>)</big><a class="headerlink" href="#PyGraphParser.PyGraphParser.root_start" title="Permalink to this definition">¶</a></dt>
-<dd><p>Used to parse start root elements in the XML representation. 
-The root characters are processed by the characters() method and 
+<tt class="descname">root_start</tt><big>(</big><em>attrs</em><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#PyGraphParser.root_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.PyGraphParser.root_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to parse start root elements in the XML representation.
+The root characters are processed by the characters() method and
 stored in self._buffer.</p>
 <p>self._root_element is a flag indicating the presence of a root.</p>
 </dd></dl>
@@ -229,7 +238,8 @@ stored in self._buffer.</p>
 <dl class="method">
 <dt id="PyGraphParser.PyGraphParser.startElement">
 <tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>attrs</em><big>)</big><a class="reference internal" href="_modules/PyGraphParser.html#PyGraphParser.startElement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraphParser.PyGraphParser.startElement" title="Permalink to this definition">¶</a></dt>
-<dd><p>Processes the opening xml tags, according to their type.</p>
+<dd><p>Processes the opening xml tags, according to their type.
+It&#8217;s a method from ContentHandler class.</p>
 </dd></dl>
 
 </dd></dl>

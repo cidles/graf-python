@@ -74,7 +74,21 @@ quickly based on their ID</p>
 
 <dl class="method">
 <dt id="PyGraph.PyGraph.add_annotation_set">
-<tt class="descname">add_annotation_set</tt><big>(</big><em>set</em><big>)</big><a class="headerlink" href="#PyGraph.PyGraph.add_annotation_set" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_annotation_set</tt><big>(</big><em>set</em><big>)</big><a class="reference internal" href="_modules/PyGraph.html#PyGraph.add_annotation_set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraph.PyGraph.add_annotation_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add given C{PyAnnotationSet} to this C{PyGraph}.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>set</strong> &#8211; C{PyAnnotationSet}</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGraph.PyGraph.add_annotation_space">
+<tt class="descname">add_annotation_space</tt><big>(</big><em>set</em><big>)</big><a class="reference internal" href="_modules/PyGraph.html#PyGraph.add_annotation_space"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraph.PyGraph.add_annotation_space" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add given C{PyAnnotationSpace} to this C{PyGraph}.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -88,8 +102,27 @@ quickly based on their ID</p>
 
 <dl class="method">
 <dt id="PyGraph.PyGraph.add_as_create">
-<tt class="descname">add_as_create</tt><big>(</big><em>name</em>, <em>type</em><big>)</big><a class="headerlink" href="#PyGraph.PyGraph.add_as_create" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create C{PyAnnotationSpace} from given name, value and 
+<tt class="descname">add_as_create</tt><big>(</big><em>name</em>, <em>type</em><big>)</big><a class="reference internal" href="_modules/PyGraph.html#PyGraph.add_as_create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraph.PyGraph.add_as_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create C{PyAnnotationSet} from given name, value and
+add it to this C{PyGraph}.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; C{str}</li>
+<li><strong>type</strong> &#8211; C{str}</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyGraph.PyGraph.add_aspace_create">
+<tt class="descname">add_aspace_create</tt><big>(</big><em>as_id</em><big>)</big><a class="reference internal" href="_modules/PyGraph.html#PyGraph.add_aspace_create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraph.PyGraph.add_aspace_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create C{PyAnnotationSpace} from given name, value and
 add it to this C{PyGraph}.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -107,7 +140,7 @@ add it to this C{PyGraph}.</p>
 
 <dl class="method">
 <dt id="PyGraph.PyGraph.add_edge">
-<tt class="descname">add_edge</tt><big>(</big><em>edge</em><big>)</big><a class="headerlink" href="#PyGraph.PyGraph.add_edge" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_edge</tt><big>(</big><em>edge</em><big>)</big><a class="reference internal" href="_modules/PyGraph.html#PyGraph.add_edge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraph.PyGraph.add_edge" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add C{PyEdge} to this C{PyGraph}.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -120,9 +153,29 @@ add it to this C{PyGraph}.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="PyGraph.PyGraph.add_edgeToFromID">
+<tt class="descname">add_edgeToFromID</tt><big>(</big><em>id</em>, <em>fromID</em>, <em>toID</em><big>)</big><a class="reference internal" href="_modules/PyGraph.html#PyGraph.add_edgeToFromID"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraph.PyGraph.add_edgeToFromID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create C{PyEdge} from id, fromID, toID and add it to
+this C{PyGraph}.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>id</strong> &#8211; C{str}</li>
+<li><strong>fromID</strong> &#8211; C{str}</li>
+<li><strong>toID</strong> &#8211; C{str}</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="PyGraph.PyGraph.add_edge_create">
-<tt class="descname">add_edge_create</tt><big>(</big><em>id</em>, <em>fromNode=None</em>, <em>toNode=None</em><big>)</big><a class="headerlink" href="#PyGraph.PyGraph.add_edge_create" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create C{PyEdge} from id, from_node, toNode and add it to
+<tt class="descname">add_edge_create</tt><big>(</big><em>id</em>, <em>fromNode=None</em>, <em>toNode=None</em><big>)</big><a class="reference internal" href="_modules/PyGraph.html#PyGraph.add_edge_create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraph.PyGraph.add_edge_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create C{PyEdge} from id, fromNode, toNode and add it to
 this C{PyGraph}.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -141,8 +194,8 @@ this C{PyGraph}.</p>
 
 <dl class="method">
 <dt id="PyGraph.PyGraph.add_edge_from_to">
-<tt class="descname">add_edge_from_to</tt><big>(</big><em>fromNode</em>, <em>toNode</em><big>)</big><a class="headerlink" href="#PyGraph.PyGraph.add_edge_from_to" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create C{PyEdge} from from_node, toNode and add it to
+<tt class="descname">add_edge_from_to</tt><big>(</big><em>fromNode</em>, <em>toNode</em><big>)</big><a class="reference internal" href="_modules/PyGraph.html#PyGraph.add_edge_from_to"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraph.PyGraph.add_edge_from_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create C{PyEdge} from fromNode, toNode and add it to
 this C{PyGraph} id is created.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -159,28 +212,8 @@ this C{PyGraph} id is created.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="PyGraph.PyGraph.add_edge_to_from_id">
-<tt class="descname">add_edge_to_from_id</tt><big>(</big><em>id</em>, <em>fromID</em>, <em>toID</em><big>)</big><a class="headerlink" href="#PyGraph.PyGraph.add_edge_to_from_id" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create C{PyEdge} from id, fromID, toID and add it to 
-this C{PyGraph}.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>id</strong> &#8211; C{str}</li>
-<li><strong>fromID</strong> &#8211; C{str}</li>
-<li><strong>toID</strong> &#8211; C{str}</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="PyGraph.PyGraph.add_node">
-<tt class="descname">add_node</tt><big>(</big><em>node</em><big>)</big><a class="headerlink" href="#PyGraph.PyGraph.add_node" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_node</tt><big>(</big><em>node</em><big>)</big><a class="reference internal" href="_modules/PyGraph.html#PyGraph.add_node"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraph.PyGraph.add_node" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add C{PyNode} to this C{PyGraph}.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -194,8 +227,8 @@ this C{PyGraph}.</p>
 
 <dl class="method">
 <dt id="PyGraph.PyGraph.find_edge">
-<tt class="descname">find_edge</tt><big>(</big><em>fromNode</em>, <em>toNode</em><big>)</big><a class="headerlink" href="#PyGraph.PyGraph.find_edge" title="Permalink to this definition">¶</a></dt>
-<dd><p>Search for C{PyEdge} with its from_node, toNode, either nodes or ids.</p>
+<tt class="descname">find_edge</tt><big>(</big><em>fromNode</em>, <em>toNode</em><big>)</big><a class="reference internal" href="_modules/PyGraph.html#PyGraph.find_edge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyGraph.PyGraph.find_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for C{PyEdge} with its fromNode, toNode, either nodes or ids.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />

@@ -53,8 +53,10 @@
 <span class="c"># Natural Language Toolkit: GrAF API</span>
 <span class="c">#</span>
 <span class="c"># Copyright (C) 2001-2010 NLTK Project</span>
-<span class="c"># Author: Keith Suderman &lt;suderman:cs.vassar.edu&gt; (Original API)</span>
-<span class="c">#         Stephen Matysik &lt;smatysik:gmail.com&gt; (Conversion to Python)</span>
+<span class="c"># Author: Keith Suderman &lt;suderman@cs.vassar.edu&gt; (Original API)</span>
+<span class="c">#         Stephen Matysik &lt;smatysik@gmail.com&gt; (Conversion to Python)</span>
+<span class="c">#         Antonio Lopes &lt;alopes@cidles.eu&gt; (Edited and Updated to</span>
+<span class="c">#         Python 3 and added new functionalites)</span>
 <span class="c"># URL: &lt;http://www.nltk.org/&gt;</span>
 <span class="c"># For license information, see LICENSE.TXT</span>
 <span class="c">#</span>
@@ -65,34 +67,34 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A name/value pair.  The &quot;value&quot; of a C{PyFeature} may be a string or </span>
 <span class="sd">    another Py{FeatureStructure} object.</span>
-<span class="sd">    </span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="PyFeature.__init__"><a class="viewcode-back" href="../pyfeature.html#PyFeature.PyFeature.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructor for C{PyFeature}.</span>
-<span class="sd">        </span>
+
 <span class="sd">        :param name: C{str}</span>
 <span class="sd">        :param value: C{str} or C{PyFeatureStructure}</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_stringValue</span> <span class="o">=</span> <span class="n">value</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_fsValue</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="k">else</span><span class="p">:</span> 
             <span class="bp">self</span><span class="o">.</span><span class="n">_fsValue</span> <span class="o">=</span> <span class="n">value</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_stringValue</span> <span class="o">=</span> <span class="bp">None</span>
 </div>
-<div class="viewcode-block" id="PyFeature.fromFeature"><a class="viewcode-back" href="../pyfeature.html#PyFeature.PyFeature.fromFeature">[docs]</a>    <span class="k">def</span> <span class="nf">fromFeature</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+<div class="viewcode-block" id="PyFeature.from_feature"><a class="viewcode-back" href="../pyfeature.html#PyFeature.PyFeature.from_feature">[docs]</a>    <span class="k">def</span> <span class="nf">from_feature</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructs a new C{PyFeature} from an existing C{PyFeature}.</span>
-<span class="sd">        </span>
+
 <span class="sd">        :param f: C{PyFeature}</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">newF</span> <span class="o">=</span> <span class="n">PyFeature</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
-        <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">isAtomic</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">is_atomic</span><span class="p">():</span>
             <span class="n">newF</span><span class="o">.</span><span class="n">_stringValue</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">getStringValue</span><span class="p">()</span>
             <span class="n">newF</span><span class="o">.</span><span class="n">_fsValue</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="k">else</span><span class="p">:</span>
@@ -108,21 +110,22 @@
             <span class="k">return</span> <span class="p">(</span><span class="s">&quot;FeatureName = &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">+</span> <span class="s">&quot; fsValue = &quot;</span> <span class="o">+</span> 
                     <span class="bp">self</span><span class="o">.</span><span class="n">_fsValue</span><span class="p">)</span>
 
-<div class="viewcode-block" id="PyFeature.compareTo"><a class="viewcode-back" href="../pyfeature.html#PyFeature.PyFeature.compareTo">[docs]</a>    <span class="k">def</span> <span class="nf">compareTo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+<div class="viewcode-block" id="PyFeature.compare_to"><a class="viewcode-back" href="../pyfeature.html#PyFeature.PyFeature.compare_to">[docs]</a>    <span class="k">def</span> <span class="nf">compare_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Compare the values.</span>
-<span class="sd">        </span>
+
 <span class="sd">        :param f: C{PyFeatureStructure}</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">return</span> <span class="nb">cmp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
 </div>
 <div class="viewcode-block" id="PyFeature.copy"><a class="viewcode-back" href="../pyfeature.html#PyFeature.PyFeature.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Copy this C{PyFeatureStructure}.</span>
-<span class="sd">        </span>
+
 <span class="sd">        :return: C{PyFeatureStructure}</span>
-<span class="sd">                </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stringValue</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">fs</span> <span class="o">=</span> <span class="n">PyFeatureStructure</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fsValue</span><span class="p">)</span> 
             <span class="k">return</span> <span class="n">PyFeature</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
@@ -130,35 +133,38 @@
 </div>
 <div class="viewcode-block" id="PyFeature.equals"><a class="viewcode-back" href="../pyfeature.html#PyFeature.PyFeature.equals">[docs]</a>    <span class="k">def</span> <span class="nf">equals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Compare the values.</span>
-<span class="sd">        </span>
+
 <span class="sd">        :param e: C{PyFeature}</span>
 <span class="sd">        :return: C{bool}</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">result</span> <span class="o">=</span> <span class="bp">False</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">PyFeature</span><span class="p">):</span>
             <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">==</span> <span class="n">e</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">result</span>
     </div>
-    <span class="k">def</span> <span class="nf">getValue</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stringValue</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stringValue</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsValue</span>
 
-    <span class="k">def</span> <span class="nf">isAtomic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">is_atomic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stringValue</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
 
-    <span class="k">def</span> <span class="nf">setValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">set_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_stringValue</span> <span class="o">=</span> <span class="n">value</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_fsValue</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">PyFeatureStructure</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_fsValue</span> <span class="o">=</span> <span class="n">value</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_stringValue</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="k">else</span><span class="p">:</span> 
-            <span class="k">print</span> <span class="p">(</span><span class="s">&quot;Error in setValue(), value must be string or&quot;</span> <span class="o">+</span> 
-                    <span class="s">&quot; PyFeatureStructure object&quot;</span><span class="p">)</span></div>
+            <span class="k">print</span><span class="p">(</span><span class="s">&#39;Error in set_value(), value must be string or&#39;</span> <span class="o">+</span>
+                    <span class="s">&#39; PyFeatureStructure object&#39;</span><span class="p">)</span>
+    
+
+        </div>
 </pre></div>
 
           </div>

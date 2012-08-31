@@ -59,20 +59,20 @@
 <span id="pyannotation-module-pyannotationspace-py"></span><h1>PyAnnotation Module - <cite>PyAnnotationSpace.py</cite><a class="headerlink" href="#module-PyAnnotationSpace" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="PyAnnotationSpace.PyAnnotationSpace">
-<em class="property">class </em><tt class="descclassname">PyAnnotationSpace.</tt><tt class="descname">PyAnnotationSpace</tt><big>(</big><em>name</em>, <em>type</em><big>)</big><a class="reference internal" href="_modules/PyAnnotationSpace.html#PyAnnotationSpace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyAnnotationSpace.PyAnnotationSpace" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">PyAnnotationSpace.</tt><tt class="descname">PyAnnotationSpace</tt><big>(</big><em>as_id</em><big>)</big><a class="reference internal" href="_modules/PyAnnotationSpace.html#PyAnnotationSpace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyAnnotationSpace.PyAnnotationSpace" title="Permalink to this definition">¶</a></dt>
 <dd><p>A set of PyAnnotations.  Each PyAnnotation set has a name (C{Str})
 and a type (C{URI}) and a set of annotations.</p>
+<p>:note : It&#8217;s should replace the AnnotationSet</p>
 <dl class="method">
 <dt id="PyAnnotationSpace.PyAnnotationSpace.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>name</em>, <em>type</em><big>)</big><a class="reference internal" href="_modules/PyAnnotationSpace.html#PyAnnotationSpace.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyAnnotationSpace.PyAnnotationSpace.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructor for C{PyAnnotationSpace}.</p>
+<tt class="descname">__init__</tt><big>(</big><em>as_id</em><big>)</big><a class="reference internal" href="_modules/PyAnnotationSpace.html#PyAnnotationSpace.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyAnnotationSpace.PyAnnotationSpace.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor for C{PyAnnotationSpace}</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> &#8211; C{str}</li>
-<li><strong>type</strong> &#8211; C{str}</li>
+<li><strong>as_id</strong> &#8211; C{str}</li>
 <li><strong>annotations</strong> &#8211; C{str} of C{PyAnnotation}</li>
 </ul>
 </td>
@@ -84,7 +84,7 @@ and a type (C{URI}) and a set of annotations.</p>
 <dl class="method">
 <dt id="PyAnnotationSpace.PyAnnotationSpace.add">
 <tt class="descname">add</tt><big>(</big><em>label</em><big>)</big><a class="reference internal" href="_modules/PyAnnotationSpace.html#PyAnnotationSpace.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyAnnotationSpace.PyAnnotationSpace.add" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates a new annotation with specified label, adds it 
+<dd><p>Creates a new annotation with specified label, adds it
 to this annotation set, and returns the new annotation.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -100,8 +100,8 @@ to this annotation set, and returns the new annotation.</p>
 
 <dl class="method">
 <dt id="PyAnnotationSpace.PyAnnotationSpace.add_annotation">
-<tt class="descname">add_annotation</tt><big>(</big><em>a</em><big>)</big><a class="headerlink" href="#PyAnnotationSpace.PyAnnotationSpace.add_annotation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds a C{PyAnnotation} to the annotations list of 
+<tt class="descname">add_annotation</tt><big>(</big><em>a</em><big>)</big><a class="reference internal" href="_modules/PyAnnotationSpace.html#PyAnnotationSpace.add_annotation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyAnnotationSpace.PyAnnotationSpace.add_annotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a C{PyAnnotation} to the annotations list of
 this C{PyAnnotationSpace}.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -115,8 +115,8 @@ this C{PyAnnotationSpace}.</p>
 
 <dl class="method">
 <dt id="PyAnnotationSpace.PyAnnotationSpace.from_as">
-<tt class="descname">from_as</tt><big>(</big><em>aSet</em><big>)</big><a class="headerlink" href="#PyAnnotationSpace.PyAnnotationSpace.from_as" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructs a new C{PyAnnotationSpace} from 
+<tt class="descname">from_as</tt><big>(</big><em>aSet</em><big>)</big><a class="reference internal" href="_modules/PyAnnotationSpace.html#PyAnnotationSpace.from_as"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyAnnotationSpace.PyAnnotationSpace.from_as" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new C{PyAnnotationSpace} from
 an existing C{PyAnnotationSpace}.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -132,8 +132,8 @@ an existing C{PyAnnotationSpace}.</p>
 
 <dl class="method">
 <dt id="PyAnnotationSpace.PyAnnotationSpace.get_annotations">
-<tt class="descname">get_annotations</tt><big>(</big><em>label</em>, <em>fs</em><big>)</big><a class="headerlink" href="#PyAnnotationSpace.PyAnnotationSpace.get_annotations" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the C{PyAnnotation} with the given label, 
+<tt class="descname">get_annotations</tt><big>(</big><em>label</em>, <em>fs</em><big>)</big><a class="reference internal" href="_modules/PyAnnotationSpace.html#PyAnnotationSpace.get_annotations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyAnnotationSpace.PyAnnotationSpace.get_annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the C{PyAnnotation} with the given label,
 in the given C{PyFeatureStructure}.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -154,7 +154,7 @@ in the given C{PyFeatureStructure}.</p>
 
 <dl class="method">
 <dt id="PyAnnotationSpace.PyAnnotationSpace.get_annotations_label">
-<tt class="descname">get_annotations_label</tt><big>(</big><em>label</em><big>)</big><a class="headerlink" href="#PyAnnotationSpace.PyAnnotationSpace.get_annotations_label" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get_annotations_label</tt><big>(</big><em>label</em><big>)</big><a class="reference internal" href="_modules/PyAnnotationSpace.html#PyAnnotationSpace.get_annotations_label"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyAnnotationSpace.PyAnnotationSpace.get_annotations_label" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the C{PyAnnotation} with the given label.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -170,7 +170,7 @@ in the given C{PyFeatureStructure}.</p>
 
 <dl class="method">
 <dt id="PyAnnotationSpace.PyAnnotationSpace.remove_annotation">
-<tt class="descname">remove_annotation</tt><big>(</big><em>a</em><big>)</big><a class="headerlink" href="#PyAnnotationSpace.PyAnnotationSpace.remove_annotation" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">remove_annotation</tt><big>(</big><em>a</em><big>)</big><a class="reference internal" href="_modules/PyAnnotationSpace.html#PyAnnotationSpace.remove_annotation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyAnnotationSpace.PyAnnotationSpace.remove_annotation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove the given C{PyAnnotation}.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -184,9 +184,9 @@ in the given C{PyFeatureStructure}.</p>
 
 <dl class="method">
 <dt id="PyAnnotationSpace.PyAnnotationSpace.remove_annotations">
-<tt class="descname">remove_annotations</tt><big>(</big><em>label</em>, <em>fs</em><big>)</big><a class="headerlink" href="#PyAnnotationSpace.PyAnnotationSpace.remove_annotations" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove the C{PyAnnotation}s with the given label in 
-the given C{PyFeatureStructure}.</p>
+<tt class="descname">remove_annotations</tt><big>(</big><em>label</em>, <em>fs</em><big>)</big><a class="reference internal" href="_modules/PyAnnotationSpace.html#PyAnnotationSpace.remove_annotations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyAnnotationSpace.PyAnnotationSpace.remove_annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the C{PyAnnotation}s with the given label in
+the given C{PyFeatureStructure}</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -203,7 +203,7 @@ the given C{PyFeatureStructure}.</p>
 
 <dl class="method">
 <dt id="PyAnnotationSpace.PyAnnotationSpace.remove_annotations_label">
-<tt class="descname">remove_annotations_label</tt><big>(</big><em>label</em><big>)</big><a class="headerlink" href="#PyAnnotationSpace.PyAnnotationSpace.remove_annotations_label" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">remove_annotations_label</tt><big>(</big><em>label</em><big>)</big><a class="reference internal" href="_modules/PyAnnotationSpace.html#PyAnnotationSpace.remove_annotations_label"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyAnnotationSpace.PyAnnotationSpace.remove_annotations_label" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove the C{PyAnnotation} with the given label</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
