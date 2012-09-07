@@ -12,7 +12,6 @@
 from PyLink import *
 from PyGraphElement import PyGraphElement
 
-
 class PyNode(PyGraphElement):
     """
     Class for nodes within a C{PyGraph} instance.
@@ -20,7 +19,8 @@ class PyNode(PyGraphElement):
     Each collection is backed by two data structures:
         1. A list (for traversals)
         2. A hash map
-    Nodes may also contain one or more C{PyAnnotation} objects
+    Nodes may also contain one or more C{PyAnnotation} objects.
+
     """
 
     def __init__(self, id = ""):

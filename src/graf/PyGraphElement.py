@@ -13,22 +13,34 @@ from PyAnnotationSet import *
 from PyFeature import *
 
 class PyGraphElement:
+    """
+    Class of edges in PyGraph:
+
+    - Each edge maintains the source (from) C{PyNode} and the destination.
+      (to) C{PyNode}.
+    - Edges may also contain one or more C{PyAnnotation} objects.
+
+    """
 
     def __init__(self, id = ""):
+        """Constructor for C{PyGraphElement}.
+
+        :param id: C{str}
+
         """
-        Constructor for C{PyGraphElement}
-        @param id: C{str}
-        """
+
         self._id = id
         self._userObject = None
         self._visited = False
         self._annotations = []
 
     def from_node(node):
+        """Constructs a new C{PyGraphElement} from an existing node.
+
+        :param node: C{PyNode}
+
         """
-        Constructs a new C{PyGraphElement} from an existing node
-        @param node: C{PyNode}
-        """
+
         newGE = PyGraphElement(node.getID())
         for a in node.annotations():
             newGE.add_annotation(a)
@@ -36,10 +48,12 @@ class PyGraphElement:
         return newGE
 
     def from_edge(edge):
+        """Constructs a new C{PyGraphElement} from an existing edge.
+
+        :param edge: C{PyEdge}
+
         """
-        Constructs a new C{PyGraphElement} from an existing edge
-        @param edge: C{PyEdge}
-        """
+
         newGE = PyGraphElement(edge.getID())
         for a in edge.annotations():
             newGE.addAnnotations(a)
@@ -54,10 +68,12 @@ class PyGraphElement:
         a._element = self
 
     def add_annotation_create(self, label):
+        """Creates an adds an annotation to this C{PyGraphElement}.
+
+        :param label: C{str}
+
         """
-        Creates an adds an annotation to this C{PyGraphElement}
-        @param label: C{str}
-        """
+
         a = PyAnnotation(label)
         self.add_annotation(a)
         return a
@@ -69,10 +85,12 @@ class PyGraphElement:
         self._visited = False
 
     def equals(self, o):
+        """Comparison of two graph elements by ID.
+
+        :param o: C{PyGraphElement}
+
         """
-        Comparison of two graph elements by ID
-        @param o: C{PyGraphElement}
-        """
+
         if not isinstance(o, PyGraphElement) or o == None:
             return False
         else:

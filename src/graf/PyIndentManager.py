@@ -9,7 +9,6 @@
 # For license information, see LICENSE.TXT
 #
 
-
 class PyIndentManager:
     def __init__(self):
         self._indent = "    "

@@ -60,10 +60,11 @@
 <dl class="class">
 <dt id="PyEdge.PyEdge">
 <em class="property">class </em><tt class="descclassname">PyEdge.</tt><tt class="descname">PyEdge</tt><big>(</big><em>id</em>, <em>fromNode=None</em>, <em>toNode=None</em><big>)</big><a class="reference internal" href="_modules/PyEdge.html#PyEdge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyEdge.PyEdge" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class of edges in PyGraph:</p>
+<dd><p>Class of edges in PyGraph:
+- Each edge maintains the source (from) C{PyNode} and the destination.</p>
+<blockquote>
+<div>(to) C{PyNode}.</div></blockquote>
 <ul class="simple">
-<li>Each edge maintains the source (from) C{PyNode} and the destination.
-(to) C{PyNode}.</li>
 <li>Edges may also contain one or more C{PyAnnotation} objects.</li>
 </ul>
 <dl class="method">
@@ -87,7 +88,7 @@
 
 <dl class="method">
 <dt id="PyEdge.PyEdge.from_edge">
-<tt class="descname">from_edge</tt><big>(</big><em>e</em><big>)</big><a class="headerlink" href="#PyEdge.PyEdge.from_edge" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">from_edge</tt><big>(</big><em>e</em><big>)</big><a class="reference internal" href="_modules/PyEdge.html#PyEdge.from_edge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyEdge.PyEdge.from_edge" title="Permalink to this definition">¶</a></dt>
 <dd><p>C{PyEdge} Constructor from an existing C{PyEdge}.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

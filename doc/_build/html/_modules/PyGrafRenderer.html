@@ -55,6 +55,8 @@
 <span class="c"># Copyright (C) 2001-2010 NLTK Project</span>
 <span class="c"># Author: Keith Suderman &lt;suderman@cs.vassar.edu&gt; (Original API)</span>
 <span class="c">#         Stephen Matysik &lt;smatysik@gmail.com&gt; (Conversion to Python)</span>
+<span class="c">#         Antonio Lopes &lt;alopes@cidles.eu&gt; (Edited and Updated to</span>
+<span class="c">#         Python 3 and added new functionalites)</span>
 <span class="c"># URL: &lt;http://www.nltk.org/&gt;</span>
 <span class="c"># For license information, see LICENSE.TXT</span>
 <span class="c">#</span>
@@ -68,18 +70,18 @@
 
 <div class="viewcode-block" id="PyGrafRenderer"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer">[docs]</a><span class="k">class</span> <span class="nc">PyGrafRenderer</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Renders a GrAF XML representation that can be read back by an instance </span>
+<span class="sd">    Renders a GrAF XML representation that can be read back by an instance</span>
 <span class="sd">    of L{PyGraphParser}.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Version: 1.0.</span>
-<span class="sd">    </span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
 <div class="viewcode-block" id="PyGrafRenderer.__init__"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create an instance of a PyGrafRenderer.</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_xml</span> <span class="o">=</span> <span class="n">PyXML</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_indent</span> <span class="o">=</span> <span class="n">PyIndentManager</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">)</span>
@@ -89,11 +91,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_UTF16</span> <span class="o">=</span> <span class="s">&quot;UTF-16&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_encoding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_UTF8</span>
 </div>
-<div class="viewcode-block" id="PyGrafRenderer.renderNode"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.renderNode">[docs]</a>    <span class="k">def</span> <span class="nf">renderNode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<div class="viewcode-block" id="PyGrafRenderer.render_node"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.render_node">[docs]</a>    <span class="k">def</span> <span class="nf">render_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Used to render the node elements of the PyGraph.</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&lt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">NODE</span> <span class="o">+</span> <span class="s">&quot; &quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ID</span> <span class="o">+</span> <span class="s">&quot;=</span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">+</span> <span class="n">n</span><span class="o">.</span><span class="n">_id</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">_annotationRoot</span><span class="p">:</span>
@@ -102,7 +104,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span> <span class="s">&quot;&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="o">.</span><span class="n">more</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">n</span><span class="o">.</span><span class="n">_links</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">renderLink</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">render_link</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="o">.</span><span class="n">less</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span> <span class="o">+</span> 
                         <span class="s">&quot;&lt;/&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">NODE</span> <span class="o">+</span> <span class="s">&quot;&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
@@ -110,13 +112,13 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span> <span class="s">&quot;/&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">n</span><span class="o">.</span><span class="n">_annotations</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">renderAnn</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">render_ann</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="PyGrafRenderer.renderLink"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.renderLink">[docs]</a>    <span class="k">def</span> <span class="nf">renderLink</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">link</span><span class="p">):</span>
+<div class="viewcode-block" id="PyGrafRenderer.render_link"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.render_link">[docs]</a>    <span class="k">def</span> <span class="nf">render_link</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">link</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Used to render the link elements of the PyGraph.</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">targets</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">link</span><span class="o">.</span><span class="n">_regions</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span>
@@ -127,21 +129,21 @@
                 <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_xml</span><span class="o">.</span><span class="n">attribute</span><span class="p">(</span><span class="s">&quot;targets&quot;</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;/&gt;&quot;</span> <span class="o">+</span> 
                 <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="PyGrafRenderer.renderRegion"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.renderRegion">[docs]</a>    <span class="k">def</span> <span class="nf">renderRegion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">region</span><span class="p">):</span>
+<div class="viewcode-block" id="PyGrafRenderer.render_region"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.render_region">[docs]</a>    <span class="k">def</span> <span class="nf">render_region</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">region</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Used to render the region elements of the PyGraph.</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&lt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">REGION</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> 
                 <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ID</span> <span class="o">+</span> <span class="s">&quot;=</span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">+</span> <span class="n">region</span><span class="o">.</span><span class="n">_id</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s"> &quot;</span> 
-                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ANCHORS</span> <span class="o">+</span> <span class="s">&quot;=</span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">getAnchors</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ANCHORS</span> <span class="o">+</span> <span class="s">&quot;=</span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_anchors</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
                 <span class="o">+</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">/&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="PyGrafRenderer.renderEdge"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.renderEdge">[docs]</a>    <span class="k">def</span> <span class="nf">renderEdge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
+<div class="viewcode-block" id="PyGrafRenderer.render_edge"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.render_edge">[docs]</a>    <span class="k">def</span> <span class="nf">render_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Used to render the edge elements of the PyGraph.</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&lt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EDGE</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> 
                 <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ID</span> 
                 <span class="o">+</span> <span class="s">&quot;=</span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="n">_id</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s"> &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">FROM</span> <span class="o">+</span> <span class="s">&quot;=</span><span class="se">\&quot;</span><span class="s">&quot;</span> 
@@ -152,35 +154,35 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="o">.</span><span class="n">more</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">e</span><span class="o">.</span><span class="n">annotations</span><span class="p">():</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">renderAnn</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">render_ann</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="o">.</span><span class="n">less</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&lt;/&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EDGE</span> <span class="o">+</span> <span class="s">&quot;&gt;&quot;</span> 
                                      <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;/&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="PyGrafRenderer.renderAS"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.renderAS">[docs]</a>    <span class="k">def</span> <span class="nf">renderAS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aSet</span><span class="p">):</span>
+<div class="viewcode-block" id="PyGrafRenderer.render_as"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.render_as">[docs]</a>    <span class="k">def</span> <span class="nf">render_as</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aSet</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Used to render the annotation set elements of the PyGraph.</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">atts</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">addAttribute</span><span class="p">(</span><span class="n">atts</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="n">aSet</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_attribute</span><span class="p">(</span><span class="n">atts</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="n">aSet</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&lt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ASET</span> 
                         <span class="o">+</span> <span class="n">atts</span> <span class="o">+</span> <span class="s">&quot;&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="o">.</span><span class="n">more</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">aSet</span><span class="o">.</span><span class="n">annotations</span><span class="p">():</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">renderAnn</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">render_ann</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="o">.</span><span class="n">less</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&lt;/&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ASET</span> 
                         <span class="o">+</span> <span class="s">&quot;&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="PyGrafRenderer.renderAnn"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.renderAnn">[docs]</a>    <span class="k">def</span> <span class="nf">renderAnn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+<div class="viewcode-block" id="PyGrafRenderer.render_ann"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.render_ann">[docs]</a>    <span class="k">def</span> <span class="nf">render_ann</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Used to render the annotation elements of the PyGraph.</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_xml</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">_label</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&lt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ANNOTATION</span> 
                         <span class="o">+</span> <span class="s">&quot; &quot;</span> 
@@ -195,18 +197,18 @@
         <span class="k">if</span> <span class="n">fs</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span> <span class="s">&quot;&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="o">.</span><span class="n">more</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">renderFS</span><span class="p">(</span><span class="n">fs</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">render_fs</span><span class="p">(</span><span class="n">fs</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="o">.</span><span class="n">less</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&lt;/&quot;</span> 
                             <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ANNOTATION</span> <span class="o">+</span> <span class="s">&quot;&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;/&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="PyGrafRenderer.renderFS"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.renderFS">[docs]</a>    <span class="k">def</span> <span class="nf">renderFS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>
+<div class="viewcode-block" id="PyGrafRenderer.render_fs"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.render_fs">[docs]</a>    <span class="k">def</span> <span class="nf">render_fs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Used to render the feature structure elements of the PyGraph.</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">if</span> <span class="n">fs</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="nb">type</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">_type</span> <span class="c">#</span>
@@ -216,20 +218,20 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span> <span class="s">&quot;&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="o">.</span><span class="n">more</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fs</span><span class="o">.</span><span class="n">features</span><span class="p">():</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">renderFeature</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">render_feature</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="o">.</span><span class="n">less</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&lt;/&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">FS</span> <span class="o">+</span> <span class="s">&quot;&gt;&quot;</span> 
                             <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
 
 </div>
-<div class="viewcode-block" id="PyGrafRenderer.renderFeature"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.renderFeature">[docs]</a>    <span class="k">def</span> <span class="nf">renderFeature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+<div class="viewcode-block" id="PyGrafRenderer.render_feature"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.render_feature">[docs]</a>    <span class="k">def</span> <span class="nf">render_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Used to render the features elements of the PyGraph.</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="n">name</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">_name</span>
-        <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">isAtomic</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">is_atomic</span><span class="p">():</span>
             <span class="n">value</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">_stringValue</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&lt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">FEATURE</span> 
                     <span class="o">+</span> <span class="s">&quot; &quot;</span> 
@@ -248,33 +250,33 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&lt;/&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">FEATURE</span> 
                             <span class="o">+</span> <span class="s">&quot;&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="PyGrafRenderer.getAnchors"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.getAnchors">[docs]</a>    <span class="k">def</span> <span class="nf">getAnchors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">region</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Gathers the anchors from a region in the PyGraph, </span>
+<div class="viewcode-block" id="PyGrafRenderer.get_anchors"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.get_anchors">[docs]</a>    <span class="k">def</span> <span class="nf">get_anchors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">region</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Gathers the anchors from a region in the PyGraph,</span>
 <span class="sd">        creates a string listing all of them, separated by spaces.</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="nb">buffer</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
-        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">region</span><span class="o">.</span><span class="n">getAnchors</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">region</span><span class="o">.</span><span class="n">get_anchors</span><span class="p">():</span>
             <span class="nb">buffer</span> <span class="o">=</span> <span class="nb">buffer</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="n">a</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
         <span class="k">return</span> <span class="nb">buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="nb">buffer</span><span class="p">)]</span>
 </div>
-<div class="viewcode-block" id="PyGrafRenderer.writeOpenGraphElement"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.writeOpenGraphElement">[docs]</a>    <span class="k">def</span> <span class="nf">writeOpenGraphElement</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PyGrafRenderer.write_open_graph_element"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.write_open_graph_element">[docs]</a>    <span class="k">def</span> <span class="nf">write_open_graph_element</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Writes the header of the XML file.</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;&lt;?xml version=</span><span class="se">\&quot;</span><span class="s">1.0</span><span class="se">\&quot;</span><span class="s"> encoding=</span><span class="se">\&quot;</span><span class="s">&quot;</span> 
                         <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encoding</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">?&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
             <span class="s">&quot;&lt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">GRAPH</span> <span class="o">+</span> <span class="s">&quot; xmlns=</span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">NAMESPACE</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span> <span class="s">&quot;&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="PyGrafRenderer.addAttribute"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.addAttribute">[docs]</a>    <span class="k">def</span> <span class="nf">addAttribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<div class="viewcode-block" id="PyGrafRenderer.add_attribute"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.add_attribute">[docs]</a>    <span class="k">def</span> <span class="nf">add_attribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Adds an attribute to an XML element.</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">)</span>
@@ -283,27 +285,27 @@
         <span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
         <span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="PyGrafRenderer.writeHeader"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.writeHeader">[docs]</a>    <span class="k">def</span> <span class="nf">writeHeader</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">g</span><span class="p">):</span>
+<div class="viewcode-block" id="PyGrafRenderer.write_header"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.write_header">[docs]</a>    <span class="k">def</span> <span class="nf">write_header</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">g</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Writes the header tag at the beginning of the XML file.</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
-        <span class="n">header</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">getHeader</span><span class="p">()</span>
+
+        <span class="n">header</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">get_header</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&lt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">HEADER</span> 
                         <span class="o">+</span> <span class="s">&quot;&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="o">.</span><span class="n">more</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">renderTagUsage</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">writeXML</span><span class="p">(</span><span class="n">header</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">render_tag_usage</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_xml</span><span class="p">(</span><span class="n">header</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="o">.</span><span class="n">less</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&lt;/&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">HEADER</span> 
                         <span class="o">+</span> <span class="s">&quot;&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="PyGrafRenderer.writeXML"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.writeXML">[docs]</a>    <span class="k">def</span> <span class="nf">writeXML</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Helper method for writeHeader.</span>
-<span class="sd">        </span>
+<div class="viewcode-block" id="PyGrafRenderer.write_xml"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.write_xml">[docs]</a>    <span class="k">def</span> <span class="nf">write_xml</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Helper method for write_header.</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
-        <span class="n">roots</span> <span class="o">=</span> <span class="n">header</span><span class="o">.</span><span class="n">getRoots</span><span class="p">()</span>
+
+        <span class="n">roots</span> <span class="o">=</span> <span class="n">header</span><span class="o">.</span><span class="n">get_roots</span><span class="p">()</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">roots</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&lt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ROOTS</span> <span class="o">+</span> <span class="s">&quot;&gt;&quot;</span> 
                                      <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
@@ -317,7 +319,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&lt;/&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ROOTS</span> 
                             <span class="o">+</span> <span class="s">&quot;&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
 
-        <span class="n">dependsOn</span> <span class="o">=</span> <span class="n">header</span><span class="o">.</span><span class="n">getDependsOn</span><span class="p">()</span>
+        <span class="n">dependsOn</span> <span class="o">=</span> <span class="n">header</span><span class="o">.</span><span class="n">get_depends_on</span><span class="p">()</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dependsOn</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&lt;&quot;</span> 
                             <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">DEPENDENCIES</span> <span class="o">+</span> <span class="s">&quot;&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
@@ -328,7 +330,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&lt;/&quot;</span> 
                             <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">DEPENDENCIES</span> <span class="o">+</span> <span class="s">&quot;&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
 
-        <span class="n">annotationSets</span> <span class="o">=</span> <span class="n">header</span><span class="o">.</span><span class="n">getAnnotationSets</span><span class="p">()</span>
+        <span class="n">annotationSets</span> <span class="o">=</span> <span class="n">header</span><span class="o">.</span><span class="n">get_annotation_sets</span><span class="p">()</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">annotationSets</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&lt;&quot;</span> 
                     <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">ANNOTATION_SETS</span> <span class="o">+</span> <span class="s">&quot;&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
@@ -351,9 +353,9 @@
 </div>
 <div class="viewcode-block" id="PyGrafRenderer.elements"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.elements">[docs]</a>    <span class="k">def</span> <span class="nf">elements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">file</span><span class="p">,</span> <span class="n">indent</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">uris</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Creates XML tags for elements in uris.</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">if</span> <span class="n">uris</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="k">for</span> <span class="n">uri</span> <span class="ow">in</span> <span class="n">uris</span><span class="p">:</span>
@@ -361,15 +363,15 @@
 </div>
 <div class="viewcode-block" id="PyGrafRenderer.element"><a class="viewcode-back" href="../pygrafrender.html#PyGrafRenderer.PyGrafRenderer.element">[docs]</a>    <span class="k">def</span> <span class="nf">element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">file</span><span class="p">,</span> <span class="n">indent</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Helper method for elements(), creates an XML tag for an element.</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">if</span> <span class="n">loc</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">indent</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&lt;&quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">TYPE</span> <span class="o">+</span> <span class="s">&quot;=</span><span class="se">\&quot;</span><span class="s">&quot;</span> 
                     <span class="o">+</span> <span class="n">loc</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">/&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
 </div>
-    <span class="k">def</span> <span class="nf">countTagUsage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">g</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">count_tag_usage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">g</span><span class="p">):</span>
         <span class="n">annotations</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">_annotations</span><span class="p">:</span>
@@ -380,8 +382,8 @@
                 <span class="n">counter</span><span class="o">.</span><span class="n">increment</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">annotations</span>
 
-    <span class="k">def</span> <span class="nf">renderTagUsage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">g</span><span class="p">):</span>
-        <span class="n">annotations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">countTagUsage</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">render_tag_usage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">g</span><span class="p">):</span>
+        <span class="n">annotations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">count_tag_usage</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&lt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">TAGSDECL</span> <span class="o">+</span> <span class="s">&quot;&gt;&quot;</span> 
                         <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
@@ -400,30 +402,30 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">g</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">writeOpenGraphElement</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_open_graph_element</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">writeHeader</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_header</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
 
-        <span class="sd">&quot;&quot;&quot; add any features of the graph &quot;&quot;&quot;</span>
-        <span class="n">fs</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">()</span>
+        <span class="c"># Add any features of the graph</span>
+        <span class="n">fs</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">get_features</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">fs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">renderFS</span><span class="p">(</span><span class="n">fs</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">render_fs</span><span class="p">(</span><span class="n">fs</span><span class="p">)</span>
 
-        <span class="sd">&quot;&quot;&quot; render the regions &quot;&quot;&quot;</span>
-        <span class="nb">list</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">getRegions</span><span class="p">()</span>
+        <span class="c"># Render the regions</span>
+        <span class="nb">list</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">get_regions</span><span class="p">()</span>
         <span class="nb">list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">region</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">renderRegion</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">render_region</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
 
-        <span class="sd">&quot;&quot;&quot; render the nodes &quot;&quot;&quot;</span>
+        <span class="c"># Render the nodes</span>
         <span class="n">nodes</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
-        <span class="n">nodes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="nb">cmp</span> <span class="o">=</span> <span class="n">PyNode</span><span class="o">.</span><span class="n">compareTo</span><span class="p">)</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="nb">cmp</span> <span class="o">=</span> <span class="n">PyNode</span><span class="o">.</span><span class="n">compare_to</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">renderNode</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">render_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
 
-        <span class="sd">&quot;&quot;&quot; render the edges &quot;&quot;&quot;</span>
+        <span class="c"># Render the edges</span>
         <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">():</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">renderEdge</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">render_edge</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span> <span class="s">&quot;&lt;/graph&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">EOL</span><span class="p">)</span>
 
@@ -437,7 +439,6 @@
 
     <span class="k">def</span> <span class="nf">increment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">+=</span> <span class="mi">1</span>
-    
 </pre></div>
 
           </div>

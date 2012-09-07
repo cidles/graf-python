@@ -53,11 +53,15 @@
 <span class="c"># Natural Language Toolkit: GrAF API</span>
 <span class="c">#</span>
 <span class="c"># Copyright (C) 2001-2010 NLTK Project</span>
-<span class="c"># Author: Keith Suderman &lt;suderman:cs.vassar.edu&gt; (Original API)</span>
-<span class="c">#         Stephen Matysik &lt;smatysik:gmail.com&gt; (Conversion to Python)</span>
+<span class="c"># Author: Keith Suderman &lt;suderman@cs.vassar.edu&gt; (Original API)</span>
+<span class="c">#         Stephen Matysik &lt;smatysik@gmail.com&gt; (Conversion to Python)</span>
+<span class="c">#         Antonio Lopes &lt;alopes@cidles.eu&gt; (Edited and Updated to</span>
+<span class="c">#         Python 3 and added new functionalites)</span>
 <span class="c"># URL: &lt;http://www.nltk.org/&gt;</span>
 <span class="c"># For license information, see LICENSE.TXT</span>
 <span class="c">#</span>
+
+<span class="kn">from</span> <span class="nn">PyAnchor</span> <span class="kn">import</span> <span class="o">*</span>
 
 <div class="viewcode-block" id="PyFeatureStructure"><a class="viewcode-back" href="../pyfeaturestructure.html#PyFeatureStructure.PyFeatureStructure">[docs]</a><span class="k">class</span> <span class="nc">PyFeatureStructure</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -173,7 +177,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">None</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="bp">None</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">None</span>
@@ -187,28 +191,28 @@
         <span class="k">for</span> <span class="n">f1</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">():</span>
             <span class="n">f2</span> <span class="o">=</span> <span class="n">fs2</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">f1</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
             <span class="k">if</span> <span class="n">f2</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
-                <span class="k">print</span><span class="p">(</span><span class="s">&quot;f2 == None&quot;</span><span class="p">)</span>
+                <span class="k">print</span><span class="p">(</span><span class="s">&#39;f2 == None&#39;</span><span class="p">)</span>
                 <span class="k">return</span> <span class="bp">False</span>
             <span class="k">if</span> <span class="n">f1</span><span class="o">.</span><span class="n">is_atomic</span><span class="p">():</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">f2</span><span class="o">.</span><span class="n">is_atomic</span><span class="p">():</span>
-                    <span class="k">print</span><span class="p">(</span><span class="s">&quot;f1 is_atomic, fs is not atomic&quot;</span><span class="p">)</span>
+                    <span class="k">print</span><span class="p">(</span><span class="s">&#39;f1 is_atomic, fs is not atomic&#39;</span><span class="p">)</span>
                     <span class="k">return</span> <span class="bp">False</span>
                 <span class="n">f1Value</span> <span class="o">=</span> <span class="n">f1</span><span class="o">.</span><span class="n">getStringValue</span><span class="p">()</span>
                 <span class="n">f2Value</span> <span class="o">=</span> <span class="n">f2</span><span class="o">.</span><span class="n">getStringValue</span><span class="p">()</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">f1Value</span> <span class="o">==</span> <span class="n">f2Value</span><span class="p">:</span>
-                    <span class="k">print</span><span class="p">(</span><span class="s">&quot;f1Value != fsValue&quot;</span><span class="p">)</span>
+                    <span class="k">print</span><span class="p">(</span><span class="s">&#39;f1Value != fsValue&#39;</span><span class="p">)</span>
                     <span class="k">return</span> <span class="bp">False</span>
             <span class="c"># This feature value is present in fs2</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">f2</span><span class="o">.</span><span class="n">is_atomic</span><span class="p">():</span>
-                    <span class="k">print</span><span class="p">(</span><span class="s">&quot;feature value is present, fs is atomic&quot;</span><span class="p">)</span>
+                    <span class="k">print</span><span class="p">(</span><span class="s">&#39;feature value is present, fs is atomic&#39;</span><span class="p">)</span>
                     <span class="k">return</span> <span class="bp">False</span>
                 <span class="c"># Get the feature structures that form the values</span>
                 <span class="c"># of these features and check them</span>
                 <span class="n">f1fs</span> <span class="o">=</span> <span class="n">f1</span><span class="o">.</span><span class="n">getFSValue</span><span class="p">()</span>
                 <span class="n">f2fs</span> <span class="o">=</span> <span class="n">f2</span><span class="o">.</span><span class="n">getFSValue</span><span class="p">()</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">f1fs</span><span class="o">.</span><span class="n">subsumes</span><span class="p">(</span><span class="n">f2fs</span><span class="p">):</span>
-                    <span class="k">print</span><span class="p">(</span><span class="s">&quot;f1fs does not subsume f2fs&quot;</span><span class="p">)</span>
+                    <span class="k">print</span><span class="p">(</span><span class="s">&#39;f1fs does not subsume f2fs&#39;</span><span class="p">)</span>
                     <span class="k">return</span> <span class="bp">False</span>
         <span class="k">return</span> <span class="bp">True</span>
 
@@ -252,7 +256,9 @@
                         <span class="k">return</span> <span class="bp">None</span>
                     <span class="c"># They do unify, so add the unified structure to the result</span>
                     <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">f1</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="n">u</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">result</span></div>
+        <span class="k">return</span> <span class="n">result</span>
+</div>
+<span class="kn">from</span> <span class="nn">PyFeature</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 
           </div>

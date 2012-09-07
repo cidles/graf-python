@@ -53,44 +53,43 @@
 <span class="c"># Natural Language Toolkit: GrAF API</span>
 <span class="c">#</span>
 <span class="c"># Copyright (C) 2001-2010 NLTK Project</span>
-<span class="c"># Author: Keith Suderman &lt;suderman:cs.vassar.edu&gt; (Original API)</span>
-<span class="c">#         Stephen Matysik &lt;smatysik:gmail.com&gt; (Conversion to Python)</span>
+<span class="c"># Author: Keith Suderman &lt;suderman@cs.vassar.edu&gt; (Original API)</span>
+<span class="c">#         Stephen Matysik &lt;smatysik@gmail.com&gt; (Conversion to Python)</span>
+<span class="c">#         Antonio Lopes &lt;alopes@cidles.eu&gt; (Edited and Updated to</span>
+<span class="c">#         Python 3 and added new functionalites)</span>
 <span class="c"># URL: &lt;http://www.nltk.org/&gt;</span>
 <span class="c"># For license information, see LICENSE.TXT</span>
 <span class="c">#</span>
-
-<span class="kn">from</span> <span class="nn">PyAnchor</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">PyNode</span> <span class="kn">import</span> <span class="o">*</span>
 
 <div class="viewcode-block" id="PyRegion"><a class="viewcode-back" href="../pyregion.html#PyRegion.PyRegion">[docs]</a><span class="k">class</span> <span class="nc">PyRegion</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The area in the text file being annotated.  A region is defined </span>
 <span class="sd">    by a sequence of C{PyAnchor} objects.</span>
-<span class="sd">    </span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="PyRegion.__init__"><a class="viewcode-back" href="../pyregion.html#PyRegion.PyRegion.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">anchors</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructor for C{PyRegion}.</span>
-<span class="sd">        </span>
+
 <span class="sd">        :param id: C{str}</span>
 <span class="sd">        :param anchors: C{list} of C{PyAnchor}</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="nb">id</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="n">anchors</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_anchors</span> <span class="o">=</span> <span class="p">[]</span> 
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">anchors</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="c">#add exception</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">&quot;Regions must be bound by at least two anchors&quot;</span><span class="p">)</span>
+            <span class="c"># Add exception</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&#39;Regions must be bound by at least two anchors&#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_anchors</span> <span class="o">=</span> <span class="n">anchors</span>
 </div>
-    <span class="k">def</span> <span class="nf">fromRegion</span><span class="p">(</span><span class="n">region</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">from_region</span><span class="p">(</span><span class="n">region</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">PyRegion</span><span class="p">(</span><span class="n">region</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="n">region</span><span class="o">.</span><span class="n">_anchors</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">fromStartEnd</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">from_start_end</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">PyRegion</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="p">[</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">])</span>
 
     <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -99,33 +98,33 @@
     <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_anchors</span> <span class="o">=</span> <span class="p">[</span><span class="n">anchor</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span> <span class="k">for</span> <span class="n">anchor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_anchors</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">addAnchor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">anchor</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">add_anchor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">anchor</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_anchors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">anchor</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">addNode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">add_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
         
-    <span class="k">def</span> <span class="nf">compareTo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">region</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">compare_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">region</span><span class="p">):</span>
         <span class="n">thisSize</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_anchors</span><span class="p">)</span>
-        <span class="n">regionSize</span> <span class="o">=</span> <span class="n">region</span><span class="o">.</span><span class="n">getNumAnchors</span><span class="p">()</span>
+        <span class="n">regionSize</span> <span class="o">=</span> <span class="n">region</span><span class="o">.</span><span class="n">get_num_anchors</span><span class="p">()</span>
         <span class="c">##better alg?</span>
         <span class="k">if</span> <span class="n">thisSize</span> <span class="o">!=</span> <span class="n">regionSize</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">thisSize</span> <span class="o">-</span> <span class="n">regionSize</span>
 
         <span class="k">if</span> <span class="n">thisSize</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getStart</span><span class="p">()</span><span class="o">.</span><span class="n">compareTo</span><span class="p">(</span><span class="n">region</span><span class="o">.</span><span class="n">getStart</span><span class="p">())</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_start</span><span class="p">()</span><span class="o">.</span><span class="n">compare_to</span><span class="p">(</span><span class="n">region</span><span class="o">.</span><span class="n">get_start</span><span class="p">())</span>
             <span class="k">if</span> <span class="n">result</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">result</span>
 
-            <span class="k">return</span> <span class="n">region</span><span class="o">.</span><span class="n">getEnd</span><span class="p">()</span><span class="o">.</span><span class="n">compareTo</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getEnd</span><span class="p">())</span> 
+            <span class="k">return</span> <span class="n">region</span><span class="o">.</span><span class="n">get_end</span><span class="p">()</span><span class="o">.</span><span class="n">compare_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_end</span><span class="p">())</span>
         
         <span class="c">#python iterator?</span>
         <span class="n">tempIndex</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">regionAnchors</span> <span class="o">=</span> <span class="n">region</span><span class="o">.</span><span class="n">getAnchors</span><span class="p">()</span>
+        <span class="n">regionAnchors</span> <span class="o">=</span> <span class="n">region</span><span class="o">.</span><span class="n">get_anchors</span><span class="p">()</span>
 
         <span class="k">for</span> <span class="n">anchor</span><span class="p">,</span> <span class="n">regionAnchor</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_anchors</span><span class="p">,</span> <span class="n">regionAnchors</span><span class="p">):</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">thisAnchor</span><span class="o">.</span><span class="n">compareTo</span><span class="p">(</span><span class="n">regionAnchor</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">thisAnchor</span><span class="o">.</span><span class="n">compare_to</span><span class="p">(</span><span class="n">regionAnchor</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">result</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">result</span>
         <span class="k">return</span> <span class="mi">0</span>
@@ -133,53 +132,53 @@
     <span class="k">def</span> <span class="nf">equals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">PyRegion</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">object</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">False</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">compareTo</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">compare_to</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
 
 
-    <span class="k">def</span> <span class="nf">getAnchor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_anchor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">index</span> <span class="o">&gt;</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_anchors</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">None</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_anchors</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">getAnchors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_anchors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c">#need to make this unmodifiable</span>
         <span class="n">new_anchors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_anchors</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">new_anchors</span>
         
-    <span class="k">def</span> <span class="nf">getEnd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_anchors</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_anchors</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     
-    <span class="k">def</span> <span class="nf">getNumAnchors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_num_anchors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_anchors</span><span class="p">)</span>
     
-    <span class="k">def</span> <span class="nf">getStart</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_anchors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     
-    <span class="k">def</span> <span class="nf">removeAnchor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">anchor</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">remove_anchor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">anchor</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_anchors</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">anchor</span><span class="p">)</span>
 
-<div class="viewcode-block" id="PyRegion.setAnchor"><a class="viewcode-back" href="../pyregion.html#PyRegion.PyRegion.setAnchor">[docs]</a>    <span class="k">def</span> <span class="nf">setAnchor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">anchor</span><span class="p">):</span>
+<div class="viewcode-block" id="PyRegion.set_anchor"><a class="viewcode-back" href="../pyregion.html#PyRegion.PyRegion.set_anchor">[docs]</a>    <span class="k">def</span> <span class="nf">set_anchor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">anchor</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Sets the anchors at the given index.</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_anchors</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">index</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">&quot;Index out of bounds&quot;</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&#39;Index out of bounds&#39;</span><span class="p">)</span>
             <span class="k">return</span> <span class="bp">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_anchors</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">anchor</span>
 </div>
-<div class="viewcode-block" id="PyRegion.setAnchors"><a class="viewcode-back" href="../pyregion.html#PyRegion.PyRegion.setAnchors">[docs]</a>    <span class="k">def</span> <span class="nf">setAnchors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">anchors</span><span class="p">):</span>
+<div class="viewcode-block" id="PyRegion.set_anchors"><a class="viewcode-back" href="../pyregion.html#PyRegion.PyRegion.set_anchors">[docs]</a>    <span class="k">def</span> <span class="nf">set_anchors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">anchors</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Sets the list of anchors that bounds the region.</span>
-<span class="sd">        </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_anchors</span> <span class="o">=</span> <span class="n">anchors</span>
 </div>
-    <span class="k">def</span> <span class="nf">setEnd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">anchor</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setAnchor</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_anchors</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">anchor</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">set_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">anchor</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_anchor</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_anchors</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">anchor</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">setStart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">anchor</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setAnchor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">anchor</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">set_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">anchor</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_anchor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">anchor</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">subtract</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
         <span class="p">[</span><span class="n">anchor</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span> <span class="k">for</span> <span class="n">anchor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_anchors</span><span class="p">]</span></div>
