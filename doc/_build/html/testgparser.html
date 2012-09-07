@@ -1,0 +1,600 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Graf-Python Test Module - test_pygraphparser.py &mdash; Graf-Python 2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Graf-Python 2 documentation" href="index.html" />
+    <link rel="prev" title="Graf-Python Test Module - test_pygraph.py" href="testgraph.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="testgraph.html" title="Graf-Python Test Module - test_pygraph.py"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Graf-Python 2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-test_pygraphparser">
+<span id="graf-python-test-module-test-pygraphparser-py"></span><h1>Graf-Python Test Module - <cite>test_pygraphparser.py</cite><a class="headerlink" href="#module-test_pygraphparser" title="Permalink to this headline">¶</a></h1>
+<p>This module contains the tests to the class
+PyGraphParser in module PyGraphParser.</p>
+<p>This test serves to ensure the viability of the
+methods of the class PyGraphParser in PyGraphParser.py.</p>
+<dl class="class">
+<dt id="test_pygraphparser.TestPyGraphParser">
+<em class="property">class </em><tt class="descclassname">test_pygraphparser.</tt><tt class="descname">TestPyGraphParser</tt><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class contain the test methods if the class PyGraphParser.</p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_ann_end">
+<tt class="descname">test_ann_end</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_ann_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_ann_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t set annotation end.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<p class="last"><strong>If can&#8217;t set the value.</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_ann_start">
+<tt class="descname">test_ann_start</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_ann_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_ann_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t set annotation start.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<p class="last"><strong>If can&#8217;t set the value.</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_annotation_set_start">
+<tt class="descname">test_annotation_set_start</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_annotation_set_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_annotation_set_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t set the annotation set
+start.</p>
+<p>Used to parse &lt;annotationSet .../&gt; elements in the XML
+representation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<p class="last"><strong>If can&#8217;t set the value.</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_annotation_space_start">
+<tt class="descname">test_annotation_space_start</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_annotation_space_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_annotation_space_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t set the annotation sapce
+start.</p>
+<p>Used to parse &lt;annotationSpace .../&gt; elements in the XML
+representation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<p class="last"><strong>If can&#8217;t set the value.</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_as_end">
+<tt class="descname">test_as_end</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_as_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_as_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t set the end of the
+annotation set.</p>
+<p>Used to parse end /as&gt; elements in the XML representation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<p class="last"><strong>If can&#8217;t set the value.</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_as_start">
+<tt class="descname">test_as_start</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_as_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_as_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t set the start of the
+annotation set.</p>
+<p>Used to parse start &lt;as/ ...&gt; elements in the XML representation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<p class="last"><strong>If can&#8217;t set the value.</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_characters">
+<tt class="descname">test_characters</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_characters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_characters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t set the character.</p>
+<p>Processes any characters within the xml file.
+It&#8217;s a method from ContentHandler class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<blockquote class="last">
+<div><p>If can&#8217;t set the character.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_depends_on_start">
+<tt class="descname">test_depends_on_start</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_depends_on_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_depends_on_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t set the dependencies.</p>
+<p>Used to parse dependsOn elements in the XML representation.
+Finds other XML annotation files on which depend the current
+XML file. Parses the dependency files and adds the resulting graph
+to the current graph.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<p class="last"><strong>If can&#8217;t set the value.</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_edge_start">
+<tt class="descname">test_edge_start</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_edge_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_edge_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t set edge.</p>
+<p>Used to parse edge elements in the XML representation.
+Edge information is stored and the edges are added after
+all nodes/spans have been parsed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<p class="last"><strong>If can&#8217;t set the value.</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_endElement">
+<tt class="descname">test_endElement</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_endElement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_endElement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t find the node to end.</p>
+<p>Processes the end xml tags, according to their type.
+It&#8217;s a method from ContentHandler class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<blockquote class="last">
+<div><p>If value is not the expected.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_feature_end">
+<tt class="descname">test_feature_end</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_feature_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_feature_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t set the feature end.</p>
+<p>Used to parse end features elements in the XML representation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<p class="last"><strong>If can&#8217;t set the value.</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_feature_start">
+<tt class="descname">test_feature_start</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_feature_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_feature_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t set feature start.</p>
+<p>Used to parse start features elements in the XML
+representation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<p class="last"><strong>If can&#8217;t set the value.</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_fs_end">
+<tt class="descname">test_fs_end</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_fs_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_fs_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t set inside feature end.</p>
+<p>Used to parse &lt;/fs&gt; elements in the XML representation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<p class="last"><strong>If can&#8217;t set the value.</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_fs_start">
+<tt class="descname">test_fs_start</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_fs_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_fs_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t set inside feature start.</p>
+<p>Used to parse &lt;fs&gt; elements in the XML representation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<p class="last"><strong>If can&#8217;t set the value.</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_graph_end">
+<tt class="descname">test_graph_end</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_graph_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_graph_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t set the tag value.</p>
+<p>Executes when the parser encounters the end graph tag.
+Sets the root node and adds all the edges to the graph.
+Neither of these tasks can be safely performed until all nodes
+have been added.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<blockquote class="last">
+<div><p>If can&#8217;t set the tag value.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_graph_start">
+<tt class="descname">test_graph_start</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_graph_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_graph_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t set the tag value.</p>
+<p>Processes the opening xml tags, according to their type.
+It&#8217;s a method from ContentHandler class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<blockquote class="last">
+<div><p>If can&#8217;t set the tag value.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_link_start">
+<tt class="descname">test_link_start</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_link_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_link_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t set the link.</p>
+<p>Used to parse link elements in the XML representation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<p class="last"><strong>If can&#8217;t set the value.</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_node_end">
+<tt class="descname">test_node_end</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_node_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_node_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t set the tag value.</p>
+<p>Executes when the parser encounters the end graph tag.
+Sets the root node and adds all the edges to the graph.
+Neither of these tasks can be safely performed until all nodes
+have been added.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<blockquote class="last">
+<div><p>If can&#8217;t set the tag value.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_node_start">
+<tt class="descname">test_node_start</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_node_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_node_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t set the tag value.</p>
+<p>Executes when the parser encounters the end graph tag.
+Sets the root node and adds all the edges to the graph.
+Neither of these tasks can be safely performed until all nodes
+have been added.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<blockquote class="last">
+<div><p>If can&#8217;t set the tag value.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_parse">
+<tt class="descname">test_parse</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_parse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t find a file.</p>
+<p>Return a PyGraph.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<blockquote class="last">
+<div><p>If the can&#8217;t find the file.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_region_start">
+<tt class="descname">test_region_start</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_region_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_region_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t set region.</p>
+<p>Used to pare the region elements in the XML representation.
+A tolkenizer is used to separate the anchors listed in the XML tag,
+and a new PyAnchor instance is created for each one.
+A PyRegion instance is then created with the id from the
+XML tag and added to the graph.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<p class="last"><strong>If can&#8217;t set the value.</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_root_end">
+<tt class="descname">test_root_end</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_root_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_root_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t find the end root.</p>
+<p>Used to parse end root elements in the XML representation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<blockquote class="last">
+<div><p>If can&#8217;t set the value.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_root_start">
+<tt class="descname">test_root_start</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_root_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_root_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t find the start root.</p>
+<p>Used to parse start root elements in the XML representation.
+The root characters are processed by the characters() method
+and stored in self._buffer.</p>
+<p>self._root_element is a flag indicating the presence of a root.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<blockquote class="last">
+<div><p>If can&#8217;t set the value.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_pygraphparser.TestPyGraphParser.test_startElement">
+<tt class="descname">test_startElement</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_pygraphparser.html#TestPyGraphParser.test_startElement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_pygraphparser.TestPyGraphParser.test_startElement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t set the tag value.</p>
+<p>Processes the opening xml tags, according to their type.
+It&#8217;s a method from ContentHandler class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<blockquote class="last">
+<div><p>If can&#8217;t set the tag value.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Graf-Python Test Module - <cite>test_pygraphparser.py</cite></a><ul>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="testgraph.html"
+                        title="previous chapter">Graf-Python Test Module - <cite>test_pygraph.py</cite></a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/testgparser.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="testgraph.html" title="Graf-Python Test Module - test_pygraph.py"
+             >previous</a> |</li>
+        <li><a href="index.html">Graf-Python 2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, A.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

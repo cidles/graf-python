@@ -621,13 +621,6 @@ class TestPyGraph:
         assert(graph.set_user_object(object),error_message)
 
 class ExtraMethGraph:
-    """
-    This class contain the remain methods of the class
-    PyGraph.
-
-    This methods doesn't need to be tested for now.
-    """
-
     #def test_remove_region(self):
     def remove_region(self):
         """Raise an assertion if can't remove region.

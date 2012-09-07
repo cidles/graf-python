@@ -160,7 +160,7 @@ class PyGraph:
 
         """
 
-        if isinstance(node, basestring):
+        if isinstance(node, str):
             newNode = self._nodeSet.get(node)
             if newNode is None:
                 newNode = PyNode(node)
@@ -169,7 +169,7 @@ class PyGraph:
         else:
             self._nodeSet[node._id] = node
 
-    def addRegion(self, region):
+    def add_region(self, region):
         self._regions[region._id] = region
 
     def annotation_sets(self):
@@ -194,8 +194,8 @@ class PyGraph:
 
         """
 
-        if (isinstance(fromNode, basestring) and 
-                    isinstance(toNode, basestring)):
+        if (isinstance(fromNode, str) and
+                    isinstance(toNode, str)):
             f = self._nodeSet.get(fromNode)
             t = self._nodeSet.get(toNode)
             if f is None or t is None:
@@ -284,7 +284,7 @@ class PyGraph:
         return self._regions.values()
 
     def remove_region(self, region):
-        if isinstance(region, basestring):
+        if isinstance(region, str):
             return self._regions.pop(region, None)
         else: 
             return self._regions.pop(region.getID(), None)

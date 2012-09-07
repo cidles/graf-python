@@ -1,6 +1,6 @@
-=======================================
-PyAnnotation Module - `PyAnnotation.py`
-=======================================
+======================================
+Graf-Python Module - `PyAnnotation.py`
+======================================
    
 .. automodule:: PyAnnotation
    :members:

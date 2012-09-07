@@ -1,6 +1,6 @@
-===================================
-PyAnnotation Module - `PyRegion.py`
-===================================
+==================================
+Graf-Python Module - `PyRegion.py`
+==================================
    
 .. automodule:: PyRegion
    :members:

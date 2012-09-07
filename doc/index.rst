@@ -6,8 +6,13 @@
 Welcome to Graf-Python's documentation!
 =======================================
 
-Contents:
+This document has the purpose present the documentation modules and tests that the project Graf-Python has.
 
+Contents
+--------
+
+Modules
+```````
 .. toctree::
    :maxdepth: 2
 
@@ -23,7 +28,16 @@ Contents:
    pygraphparser
    pynode
    pyregion
-   
+
+Tests
+`````
+.. toctree::
+   :maxdepth: 2
+
+   testmasc
+   testgraph
+   testgparser
+
 Indices and tables
 ==================
 

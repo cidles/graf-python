@@ -1,6 +1,6 @@
-=========================================
-PyAnnotation Module - `PyGrafRenderer.py`
-=========================================
+========================================
+Graf-Python Module - `PyGrafRenderer.py`
+========================================
    
 .. automodule:: PyGrafRenderer
    :members:

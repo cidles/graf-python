@@ -1,6 +1,6 @@
-=================================
-PyAnnotation Module - `PyEdge.py`
-=================================
+================================
+Graf-Python Module - `PyEdge.py`
+================================
    
 .. automodule:: PyEdge
    :members:

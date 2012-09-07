@@ -1,0 +1,294 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Graf-Python Test Module - test_masc.py &mdash; Graf-Python 2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Graf-Python 2 documentation" href="index.html" />
+    <link rel="next" title="Graf-Python Test Module - test_pygraph.py" href="testgraph.html" />
+    <link rel="prev" title="Graf-Python Module - PyRegion.py" href="pyregion.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="testgraph.html" title="Graf-Python Test Module - test_pygraph.py"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pyregion.html" title="Graf-Python Module - PyRegion.py"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Graf-Python 2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-test_masc">
+<span id="graf-python-test-module-test-masc-py"></span><h1>Graf-Python Test Module - <cite>test_masc.py</cite><a class="headerlink" href="#module-test_masc" title="Permalink to this headline">¶</a></h1>
+<p>A reader for corpora that consist of documents in
+the ISO GrAF format.</p>
+<p>All the test use the MASC version 1.0.3</p>
+<dl class="class">
+<dt id="test_masc.TestMascCorpusReader">
+<em class="property">class </em><tt class="descclassname">test_masc.</tt><tt class="descname">TestMascCorpusReader</tt><a class="reference internal" href="_modules/test_masc.html#TestMascCorpusReader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_masc.TestMascCorpusReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class contain the test methods if the class masc.py.</p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="test_masc.TestMascCorpusReader.test_nouns">
+<tt class="descname">test_nouns</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_masc.html#TestMascCorpusReader.test_nouns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_masc.TestMascCorpusReader.test_nouns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t retrieve a list of nouns
+from a given file.</p>
+<p>Return the given file(s) as a list of nouns.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<blockquote class="last">
+<div><p>If can&#8217;t retrieve the list of nouns.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_masc.TestMascCorpusReader.test_paras">
+<tt class="descname">test_paras</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_masc.html#TestMascCorpusReader.test_paras"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_masc.TestMascCorpusReader.test_paras" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t retrieve a list of paragraphs
+from a given file.</p>
+<p>Return the given file(s) as a list of paragraphs, each encoded
+as a list of sentences, which are in turn encoded as lists of
+word strings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<blockquote class="last">
+<div><p>If can&#8217;t retrieve the list of strings.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_masc.TestMascCorpusReader.test_persons">
+<tt class="descname">test_persons</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_masc.html#TestMascCorpusReader.test_persons"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_masc.TestMascCorpusReader.test_persons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t retrieve a list of persons
+from a given file.</p>
+<p>Return the given file(s) as a list of persons.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<blockquote class="last">
+<div><p>If can&#8217;t retrieve the list of persons.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_masc.TestMascCorpusReader.test_raw">
+<tt class="descname">test_raw</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_masc.html#TestMascCorpusReader.test_raw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_masc.TestMascCorpusReader.test_raw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t retrieve the file.</p>
+<p>Return given file(s) as a single string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<blockquote class="last">
+<div><p>If can&#8217;t retrieve a string.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_masc.TestMascCorpusReader.test_sents">
+<tt class="descname">test_sents</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_masc.html#TestMascCorpusReader.test_sents"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_masc.TestMascCorpusReader.test_sents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t retrieve a list of sentences
+from a given file.</p>
+<p>Return the given file(s) as a list of sentences or utterances,
+each encoded as a list of word strings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<blockquote class="last">
+<div><p>If can&#8217;t retrieve the list of sentences.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_masc.TestMascCorpusReader.test_verbs">
+<tt class="descname">test_verbs</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_masc.html#TestMascCorpusReader.test_verbs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_masc.TestMascCorpusReader.test_verbs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t retrieve a list of verbs
+from a given file.</p>
+<p>Return the given file(s) as a list of verbs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<blockquote class="last">
+<div><p>If can&#8217;t retrieve the list of verbs.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="test_masc.TestMascCorpusReader.test_words">
+<tt class="descname">test_words</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/test_masc.html#TestMascCorpusReader.test_words"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#test_masc.TestMascCorpusReader.test_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an assertion if can&#8217;t retrieve a list of strings
+from a given file.</p>
+<p>Return the given file(s) as a list of words and
+punctuation symbols.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>AssertionError</strong> :</p>
+<blockquote class="last">
+<div><p>If can&#8217;t retrieve the list of string.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Graf-Python Test Module - <cite>test_masc.py</cite></a><ul>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pyregion.html"
+                        title="previous chapter">Graf-Python Module - <cite>PyRegion.py</cite></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="testgraph.html"
+                        title="next chapter">Graf-Python Test Module - <cite>test_pygraph.py</cite></a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/testmasc.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="testgraph.html" title="Graf-Python Test Module - test_pygraph.py"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pyregion.html" title="Graf-Python Module - PyRegion.py"
+             >previous</a> |</li>
+        <li><a href="index.html">Graf-Python 2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, A.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

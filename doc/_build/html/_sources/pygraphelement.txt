@@ -1,6 +1,6 @@
-=========================================
-PyAnnotation Module - `PyGraphElement.py`
-=========================================
+========================================
+Graf-Python Module - `PyGraphElement.py`
+========================================
    
 .. automodule:: PyGraphElement
    :members:

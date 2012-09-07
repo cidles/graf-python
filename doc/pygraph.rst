@@ -1,6 +1,6 @@
-==================================
-PyAnnotation Module - `PyGraph.py`
-==================================
+=================================
+Graf-Python Module - `PyGraph.py`
+=================================
    
 .. automodule:: PyGraph
    :members:

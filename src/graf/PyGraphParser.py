@@ -362,7 +362,7 @@ class PyGraphParser(ContentHandler):
 
         try:
             region = PyRegion(id, anchors)
-            self._graph.addRegion(region)
+            self._graph.add_region(region)
         except:
             raise SAXException("Could not add the region to the graph")
 
@@ -509,7 +509,7 @@ class PyGraphParser(ContentHandler):
                 e.add_annotation(PyAnnotation.from_annotation(a))
 
         for region in dependency.regions():
-            self._graph.addRegion(region)
+            self._graph.add_region(region)
 
 
     def root_start(self, attrs):

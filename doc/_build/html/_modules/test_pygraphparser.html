@@ -1,0 +1,738 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>test_pygraphparser &mdash; Graf-Python 2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Graf-Python 2 documentation" href="../index.html" />
+    <link rel="up" title="Module code" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../index.html">Graf-Python 2 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for test_pygraphparser</h1><div class="highlight"><pre>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c">#</span>
+<span class="c"># Poio Tools for Linguists</span>
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2009-2012 Poio Project</span>
+<span class="c"># Author: António Lopes &lt;alopes@cidles.eu&gt;</span>
+<span class="c"># URL: &lt;http://www.cidles.eu/ltll/poio&gt;</span>
+<span class="c"># For license information, see LICENSE.TXT</span>
+<span class="sd">&quot;&quot;&quot;This module contains the tests to the class</span>
+<span class="sd">PyGraphParser in module PyGraphParser.</span>
+
+<span class="sd">This test serves to ensure the viability of the</span>
+<span class="sd">methods of the class PyGraphParser in PyGraphParser.py.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">graf.PyDocumentHeader</span> <span class="kn">import</span> <span class="n">PyDocumentHeader</span>
+<span class="kn">from</span> <span class="nn">graf.PyGraphParser</span> <span class="kn">import</span> <span class="n">PyGraphParser</span>
+
+<span class="kn">import</span> <span class="nn">xml</span>
+
+<span class="c"># Create the Graph Parser</span>
+<span class="n">gparser</span> <span class="o">=</span> <span class="n">PyGraphParser</span><span class="p">()</span>
+
+<div class="viewcode-block" id="TestPyGraphParser"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser">[docs]</a><span class="k">class</span> <span class="nc">TestPyGraphParser</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This class contain the test methods if the class PyGraphParser.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="TestPyGraphParser.test_parse"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_parse">[docs]</a>    <span class="k">def</span> <span class="nf">test_parse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t find a file.</span>
+
+<span class="sd">        Return a PyGraph.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">            If the can&#39;t find the file.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Test values</span>
+        <span class="c"># Initialize the graph parser</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">PyGraphParser</span><span class="p">()</span>
+
+        <span class="c"># Change directory</span>
+        <span class="nb">file</span> <span class="o">=</span> <span class="s">&#39;/home/alopes/nltk_data/corpora/masc/spoken/Day3PMSession-vc.xml&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="bp">None</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_startElement"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_startElement">[docs]</a>    <span class="k">def</span> <span class="nf">test_startElement</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t set the tag value.</span>
+
+<span class="sd">        Processes the opening xml tags, according to their type.</span>
+<span class="sd">        It&#39;s a method from ContentHandler class.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">            If can&#39;t set the tag value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Test values</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s">&#39;graph&#39;</span> <span class="c"># This value changes among the results.</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;xmlns&#39;</span><span class="p">:</span> <span class="s">&#39;http://www.xces.org/ns/GrAF/1.0/&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="c"># If name variable change to newname requires the graph_&#39;newname&#39;</span>
+        <span class="k">assert</span><span class="p">(</span><span class="n">gparser</span><span class="o">.</span><span class="n">startElement</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span> <span class="o">==</span> <span class="n">gparser</span><span class="o">.</span><span class="n">graph_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_endElement"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_endElement">[docs]</a>    <span class="k">def</span> <span class="nf">test_endElement</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t find the node to end.</span>
+
+<span class="sd">        Processes the end xml tags, according to their type.</span>
+<span class="sd">        It&#39;s a method from ContentHandler class.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">            If value is not the expected.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Test values</span>
+        <span class="c"># Initialize a new GraphParser</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">PyGraphParser</span><span class="p">()</span>
+
+        <span class="n">name</span> <span class="o">=</span> <span class="s">&#39;graph&#39;</span> <span class="c"># This value changes among the results.</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;xmlns&#39;</span><span class="p">:</span> <span class="s">&#39;http://www.xces.org/ns/GrAF/1.0/&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="c"># Is need to start at least one node</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">startElement</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span>
+
+        <span class="c"># If name variable change to newname requires the graph_&#39;newname&#39;</span>
+        <span class="k">assert</span><span class="p">(</span><span class="n">parser</span><span class="o">.</span><span class="n">endElement</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="o">==</span> <span class="n">parser</span><span class="o">.</span><span class="n">graph_end</span><span class="p">())</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_characters"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_characters">[docs]</a>    <span class="k">def</span> <span class="nf">test_characters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t set the character.</span>
+
+<span class="sd">        Processes any characters within the xml file.</span>
+<span class="sd">        It&#39;s a method from ContentHandler class.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">            If can&#39;t set the character.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Test values</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
+
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - Processing the characteres&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">gparser</span><span class="o">.</span><span class="n">characters</span><span class="p">(</span><span class="n">ch</span><span class="p">),</span><span class="n">error_message</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_graph_start"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_graph_start">[docs]</a>    <span class="k">def</span> <span class="nf">test_graph_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t set the tag value.</span>
+
+<span class="sd">        Processes the opening xml tags, according to their type.</span>
+<span class="sd">        It&#39;s a method from ContentHandler class.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">            If can&#39;t set the tag value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Test values</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;xmlns&#39;</span><span class="p">:</span> <span class="s">&#39;http://www.xces.org/ns/GrAF/1.0/&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - Starting the graph&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">gparser</span><span class="o">.</span><span class="n">graph_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">),</span><span class="n">error_message</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_graph_end"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_graph_end">[docs]</a>    <span class="k">def</span> <span class="nf">test_graph_end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t set the tag value.</span>
+
+<span class="sd">        Executes when the parser encounters the end graph tag.</span>
+<span class="sd">        Sets the root node and adds all the edges to the graph.</span>
+<span class="sd">        Neither of these tasks can be safely performed until all nodes</span>
+<span class="sd">        have been added.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">            If can&#39;t set the tag value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Test values</span>
+        <span class="c"># Initialize a new GraphParser</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">PyGraphParser</span><span class="p">()</span>
+
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;xmlns&#39;</span><span class="p">:</span> <span class="s">&#39;http://www.xces.org/ns/GrAF/1.0/&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="c"># Initialize the annotations arrays</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">graph_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - Ending the graph&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">parser</span><span class="o">.</span><span class="n">graph_end</span><span class="p">(),</span> <span class="n">error_message</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_fs_start"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_fs_start">[docs]</a>    <span class="k">def</span> <span class="nf">test_fs_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t set inside feature start.</span>
+
+<span class="sd">        Used to parse &lt;fs&gt; elements in the XML representation.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">        If can&#39;t set the value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Test values</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;xml:id&#39;</span><span class="p">:</span> <span class="s">&#39;penn-n0&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - Parsing the start of fs&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">gparser</span><span class="o">.</span><span class="n">fs_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">),</span><span class="n">error_message</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_fs_end"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_fs_end">[docs]</a>    <span class="k">def</span> <span class="nf">test_fs_end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t set inside feature end.</span>
+
+<span class="sd">        Used to parse &lt;/fs&gt; elements in the XML representation.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">        If can&#39;t set the value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Test values</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;xml:id&#39;</span><span class="p">:</span> <span class="s">&#39;penn-n0&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="c"># First is need to create the inner fs</span>
+        <span class="n">gparser</span><span class="o">.</span><span class="n">fs_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - Parsing the end of fs&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">gparser</span><span class="o">.</span><span class="n">fs_end</span><span class="p">(),</span> <span class="n">error_message</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_root_start"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_root_start">[docs]</a>    <span class="k">def</span> <span class="nf">test_root_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t find the start root.</span>
+
+<span class="sd">        Used to parse start root elements in the XML representation.</span>
+<span class="sd">        The root characters are processed by the characters() method</span>
+<span class="sd">        and stored in self._buffer.</span>
+
+<span class="sd">        self._root_element is a flag indicating the presence of a root.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">            If can&#39;t set the value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Test values</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;xml:id&#39;</span><span class="p">:</span> <span class="s">&#39;penn-n0&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - Starting the root&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">gparser</span><span class="o">.</span><span class="n">root_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">),</span><span class="n">error_message</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_root_end"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_root_end">[docs]</a>    <span class="k">def</span> <span class="nf">test_root_end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t find the end root.</span>
+
+<span class="sd">        Used to parse end root elements in the XML representation.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">            If can&#39;t set the value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - Ending the root&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">gparser</span><span class="o">.</span><span class="n">root_end</span><span class="p">(),</span><span class="n">error_message</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_node_start"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_node_start">[docs]</a>    <span class="k">def</span> <span class="nf">test_node_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t set the tag value.</span>
+
+<span class="sd">        Executes when the parser encounters the end graph tag.</span>
+<span class="sd">        Sets the root node and adds all the edges to the graph.</span>
+<span class="sd">        Neither of these tasks can be safely performed until all nodes</span>
+<span class="sd">        have been added.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">            If can&#39;t set the tag value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Test values</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;xml:id&#39;</span><span class="p">:</span> <span class="s">&#39;penn-n0&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - Starting a node&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">gparser</span><span class="o">.</span><span class="n">node_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">),</span><span class="n">error_message</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_node_end"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_node_end">[docs]</a>    <span class="k">def</span> <span class="nf">test_node_end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t set the tag value.</span>
+
+<span class="sd">        Executes when the parser encounters the end graph tag.</span>
+<span class="sd">        Sets the root node and adds all the edges to the graph.</span>
+<span class="sd">        Neither of these tasks can be safely performed until all nodes</span>
+<span class="sd">        have been added.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">            If can&#39;t set the tag value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Test values</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;xml:id&#39;</span><span class="p">:</span> <span class="s">&#39;penn-n0&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="c"># This test is mandatory the existence of at least</span>
+        <span class="c"># a node. So a node is created to test the method.</span>
+        <span class="n">gparser</span><span class="o">.</span><span class="n">node_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - Ending a node&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">gparser</span><span class="o">.</span><span class="n">node_end</span><span class="p">(),</span><span class="n">error_message</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_annotation_space_start"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_annotation_space_start">[docs]</a>    <span class="k">def</span> <span class="nf">test_annotation_space_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t set the annotation sapce</span>
+<span class="sd">        start.</span>
+
+<span class="sd">        Used to parse &lt;annotationSpace .../&gt; elements in the XML</span>
+<span class="sd">        representation.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">        If can&#39;t set the value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Test values</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;xmlns&#39;</span><span class="p">:</span> <span class="s">&#39;http://www.xces.org/ns/GrAF/1.0/&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="c"># Initialize the annotations arrays</span>
+        <span class="n">gparser</span><span class="o">.</span><span class="n">graph_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="c"># Attributes for to start the Annotation Space</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;as.id&#39;</span><span class="p">:</span> <span class="s">&#39;xces&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - Setting the Annotation Space&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">gparser</span><span class="o">.</span><span class="n">annotation_space_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">),</span><span class="n">error_message</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_depends_on_start"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_depends_on_start">[docs]</a>    <span class="k">def</span> <span class="nf">test_depends_on_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t set the dependencies.</span>
+
+<span class="sd">        Used to parse dependsOn elements in the XML representation.</span>
+<span class="sd">        Finds other XML annotation files on which depend the current</span>
+<span class="sd">        XML file. Parses the dependency files and adds the resulting graph</span>
+<span class="sd">        to the current graph.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">        If can&#39;t set the value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Test values</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="s">&#39;penn&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="c"># Is need too that the header in PyGraphParser have a location</span>
+        <span class="c"># file (any file) to see if the type in tag have some kind of</span>
+        <span class="c"># dependency in a file (set in header)</span>
+        <span class="nb">file</span> <span class="o">=</span> <span class="s">&#39;/home/alopes/nltk_data/corpora/masc/&#39;</span>\
+               <span class="s">&#39;spoken/Day3PMSession&#39;</span>
+
+        <span class="n">gparser</span><span class="o">.</span><span class="n">_header</span> <span class="o">=</span> <span class="n">PyDocumentHeader</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
+
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - Verifying the dependencies&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">gparser</span><span class="o">.</span><span class="n">depends_on_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">),</span><span class="n">error_message</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_region_start"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_region_start">[docs]</a>    <span class="k">def</span> <span class="nf">test_region_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t set region.</span>
+
+<span class="sd">        Used to pare the region elements in the XML representation.</span>
+<span class="sd">        A tolkenizer is used to separate the anchors listed in the XML tag,</span>
+<span class="sd">        and a new PyAnchor instance is created for each one.</span>
+<span class="sd">        A PyRegion instance is then created with the id from the</span>
+<span class="sd">        XML tag and added to the graph.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">        If can&#39;t set the value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Test values</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;xml:id&#39;</span><span class="p">:</span> <span class="s">&#39;seg-r0&#39;</span><span class="p">,</span> <span class="s">&#39;anchors&#39;</span><span class="p">:</span> <span class="s">&#39;5 7&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - Starting the region&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">gparser</span><span class="o">.</span><span class="n">region_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">),</span><span class="n">error_message</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_as_start"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_as_start">[docs]</a>    <span class="k">def</span> <span class="nf">test_as_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t set the start of the</span>
+<span class="sd">        annotation set.</span>
+
+<span class="sd">        Used to parse start &lt;as/ ...&gt; elements in the XML representation.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">        If can&#39;t set the value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Test values</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="s">&#39;penn&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - Parsing the start of elements&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">gparser</span><span class="o">.</span><span class="n">as_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">),</span> <span class="n">error_message</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_as_end"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_as_end">[docs]</a>    <span class="k">def</span> <span class="nf">test_as_end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t set the end of the</span>
+<span class="sd">        annotation set.</span>
+
+<span class="sd">        Used to parse end /as&gt; elements in the XML representation.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">        If can&#39;t set the value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - Parsing the Annotation Set End&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">gparser</span><span class="o">.</span><span class="n">as_end</span><span class="p">(),</span><span class="n">error_message</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_link_start"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_link_start">[docs]</a>    <span class="k">def</span> <span class="nf">test_link_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t set the link.</span>
+
+<span class="sd">        Used to parse link elements in the XML representation.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">        If can&#39;t set the value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Test values</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="s">&#39;seg-r0&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - Link the elements in parsing&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">gparser</span><span class="o">.</span><span class="n">link_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">),</span> <span class="n">error_message</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_ann_end"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_ann_end">[docs]</a>    <span class="k">def</span> <span class="nf">test_ann_end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t set annotation end.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">        If can&#39;t set the value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - Setting the Annotation Set end&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">gparser</span><span class="o">.</span><span class="n">ann_end</span><span class="p">(),</span><span class="n">error_message</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_feature_start"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_feature_start">[docs]</a>    <span class="k">def</span> <span class="nf">test_feature_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t set feature start.</span>
+
+<span class="sd">        Used to parse start features elements in the XML</span>
+<span class="sd">        representation.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">        If can&#39;t set the value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Test values</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;msd&#39;</span><span class="p">,</span> <span class="s">&#39;value&#39;</span><span class="p">:</span> <span class="s">&#39;IN&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - Parsing the feature start&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">gparser</span><span class="o">.</span><span class="n">feature_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">),</span><span class="n">error_message</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_feature_end"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_feature_end">[docs]</a>    <span class="k">def</span> <span class="nf">test_feature_end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t set the feature end.</span>
+
+<span class="sd">        Used to parse end features elements in the XML representation.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">        If can&#39;t set the value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Test values</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;msd&#39;</span><span class="p">,</span> <span class="s">&#39;value&#39;</span><span class="p">:</span> <span class="s">&#39;IN&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="c"># First is need to start a feature to close it</span>
+        <span class="n">gparser</span><span class="o">.</span><span class="n">feature_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="c"># Creating inner feature values fs</span>
+        <span class="n">fs_attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;xml:id&#39;</span><span class="p">:</span> <span class="s">&#39;penn-n0&#39;</span><span class="p">}</span>
+        <span class="n">fs_attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">fs_attrs</span><span class="p">)</span>
+
+        <span class="c"># Is need to create at least on fs to have values in</span>
+        <span class="c"># _fs_stack</span>
+        <span class="n">gparser</span><span class="o">.</span><span class="n">fs_start</span><span class="p">(</span><span class="n">fs_attrs</span><span class="p">)</span>
+
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - Parsing the feature end&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">gparser</span><span class="o">.</span><span class="n">feature_end</span><span class="p">(),</span><span class="n">error_message</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_edge_start"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_edge_start">[docs]</a>    <span class="k">def</span> <span class="nf">test_edge_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t set edge.</span>
+
+<span class="sd">        Used to parse edge elements in the XML representation.</span>
+<span class="sd">        Edge information is stored and the edges are added after</span>
+<span class="sd">        all nodes/spans have been parsed.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">        If can&#39;t set the value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Test values</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;to&#39;</span><span class="p">:</span> <span class="s">&#39;penn-n3853&#39;</span><span class="p">,</span> <span class="s">&#39;xml:id&#39;</span><span class="p">:</span> <span class="s">&#39;lnk4679&#39;</span><span class="p">,</span> <span class="s">&#39;from&#39;</span><span class="p">:</span> <span class="s">&#39;n569&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - Setting the edges&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">gparser</span><span class="o">.</span><span class="n">edge_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">),</span> <span class="n">error_message</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_annotation_set_start"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_annotation_set_start">[docs]</a>    <span class="k">def</span> <span class="nf">test_annotation_set_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t set the annotation set</span>
+<span class="sd">        start.</span>
+
+<span class="sd">        Used to parse &lt;annotationSet .../&gt; elements in the XML</span>
+<span class="sd">        representation.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">        If can&#39;t set the value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Test values</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;xmlns&#39;</span><span class="p">:</span> <span class="s">&#39;http://www.xces.org/ns/GrAF/1.0/&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="c"># Initialize the annotations arrays</span>
+        <span class="n">gparser</span><span class="o">.</span><span class="n">graph_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="c"># Attributes for to start the Annotation Set</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="s">&#39;http://www.xces.org/schema/2003&#39;</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;xces&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - To Start Annotation Set&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">gparser</span><span class="o">.</span><span class="n">annotation_set_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">),</span><span class="n">error_message</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TestPyGraphParser.test_ann_start"><a class="viewcode-back" href="../testgparser.html#test_pygraphparser.TestPyGraphParser.test_ann_start">[docs]</a>    <span class="k">def</span> <span class="nf">test_ann_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t set annotation start.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        AssertionError</span>
+<span class="sd">        If can&#39;t set the value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Test values</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;xmlns&#39;</span><span class="p">:</span> <span class="s">&#39;http://www.xces.org/ns/GrAF/1.0/&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="c"># Initialize the annotations arrays</span>
+        <span class="n">gparser</span><span class="o">.</span><span class="n">graph_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="c"># Attributes for to start the Annotation Set</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="s">&#39;http://www.xces.org/schema/2003&#39;</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;xces&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="n">gparser</span><span class="o">.</span><span class="n">annotation_set_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="c"># Attributes for to start the Annotations it&#39;s important</span>
+        <span class="c"># to have the label tag</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;as&#39;</span><span class="p">:</span> <span class="s">&#39;xces&#39;</span><span class="p">,</span> <span class="s">&#39;ref&#39;</span><span class="p">:</span> <span class="s">&#39;penn-n10002&#39;</span><span class="p">,</span> <span class="s">&#39;label&#39;</span><span class="p">:</span> <span class="s">&#39;tok&#39;</span><span class="p">}</span>
+
+        <span class="c"># Is need to instance the value to the SAX type</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - To Start Annotation&#39;</span>
+
+        <span class="k">assert</span><span class="p">(</span><span class="n">gparser</span><span class="o">.</span><span class="n">ann_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">),</span><span class="n">error_message</span><span class="p">)</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../index.html">Graf-Python 2 documentation</a> &raquo;</li>
+          <li><a href="index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, A.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

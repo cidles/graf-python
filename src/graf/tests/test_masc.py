@@ -16,6 +16,10 @@ All the test use the MASC version 1.0.3
 import nltk
 
 class TestMascCorpusReader:
+    """
+    This class contain the test methods if the class masc.py.
+
+    """
 
     def test_raw(self):
         """Raise an assertion if can't retrieve the file.

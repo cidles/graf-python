@@ -1,6 +1,6 @@
-=============================================
-PyAnnotation Module - `PyFeatureStructure.py`
-=============================================
+============================================
+Graf-Python Module - `PyFeatureStructure.py`
+============================================
    
 .. automodule:: PyFeatureStructure
    :members:

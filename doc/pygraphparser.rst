@@ -1,6 +1,6 @@
-========================================
-PyAnnotation Module - `PyGraphParser.py`
-========================================
+=======================================
+Graf-Python Module - `PyGraphParser.py`
+=======================================
    
 .. automodule:: PyGraphParser
    :members:

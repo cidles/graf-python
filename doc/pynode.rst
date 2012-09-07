@@ -1,6 +1,6 @@
-=================================
-PyAnnotation Module - `PyNode.py`
-=================================
+================================
+Graf-Python Module - `PyNode.py`
+================================
    
 .. automodule:: PyNode
    :members:
