@@ -27,7 +27,7 @@ class PyFeature:
         """
 
         self._name = name
-        if isinstance(value, basestring):
+        if isinstance(value, str):
             self._stringValue = value
             self._fsValue = None
         else: 
@@ -101,7 +101,7 @@ class PyFeature:
         return self._stringValue is not None
 
     def set_value(self, value):
-        if isinstance(value, basestring):
+        if isinstance(value, str):
             self._stringValue = value
             self._fsValue = None
         elif isinstance(value, PyFeatureStructure):

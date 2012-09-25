@@ -125,7 +125,7 @@ class PyFeatureStructure:
         return self._elements.values()
 
     def remove(self, element):
-        if isinstance(element, basestring):
+        if isinstance(element, str):
             return self._elements.pop(element, None) != None
         else:
             return self._elements.pop(element.getName(), None) != None
@@ -206,6 +206,6 @@ class PyFeatureStructure:
                     result.add(f1.getName(), u)
         return result
 
-from PyFeature import *
+from graf.PyFeature import *
 
 

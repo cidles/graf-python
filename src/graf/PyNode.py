@@ -82,7 +82,7 @@ class PyNode(PyGraphElement):
         return len(self._inEdgeList) + len(self._outEdgeList)
 
     def get_in_edge(self, index):
-        if isinstance(index, basestring):
+        if isinstance(index, str):
             return self._inEdges.get(index)
         else:
             if len(self._inEdgeList) <= index:
@@ -91,7 +91,7 @@ class PyNode(PyGraphElement):
                 return self._inEdgeList[index]
 
     def get_out_edge(self, index):
-        if isinstance(index, basestring):
+        if isinstance(index, str):
             return self._outEdges.get(index)
         else:
             if len(self._outEdgeList) <= index:
