@@ -13,9 +13,9 @@ from xml.sax import make_parser, SAXException
 from xml.sax.handler import ContentHandler
 import os
 
-from PyGraph import *
-from GRAF import *
-from PyDocumentHeader import *
+from graf.PyGraph import *
+from graf.GRAF import *
+from graf.PyDocumentHeader import *
 
 class PyGraphParser(ContentHandler):
     """

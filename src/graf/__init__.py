@@ -17,10 +17,10 @@ text file.  So, to parse the annotations we must first construct the
 GrAF representation of the file, and then retrieve the annotations.
 """
 
-from api import *
-from util import *
+from graf.api import *
+from graf.util import *
 
-from PyGraphParser import *
+from graf.PyGraphParser import *
 
 
 __all__ = [

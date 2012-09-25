@@ -9,7 +9,7 @@
 # For license information, see LICENSE.TXT
 #
 
-from PyAnchor import *
+from graf.PyAnchor import *
 
 class PyFeatureStructure:
     """

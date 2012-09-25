@@ -11,10 +11,10 @@
 
 import sys
 
-from PyGraph import *
-from PyXML import *
-from PyIndentManager import *
-from GRAF import *
+from graf.PyGraph import *
+from graf.PyXML import *
+from graf.PyIndentManager import *
+from graf.GRAF import *
 
 class PyGrafRenderer:
     """

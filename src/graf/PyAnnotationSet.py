@@ -9,7 +9,7 @@
 # For license information, see LICENSE.TXT
 #
 
-from PyAnnotation import *
+from graf.PyAnnotation import *
 
 class PyAnnotationSet:
     """

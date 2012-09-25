@@ -17,10 +17,10 @@ allow for quick traversals, and a hash map so nodes/edges can be found
 quickly based on their ID
 """
 
-from PyAnnotationSet import *
-from PyEdge import *
-from PyNode import *
-from PyStandoffHeader import *
+from graf.PyAnnotationSet import *
+from graf.PyEdge import *
+from graf.PyNode import *
+from graf.PyStandoffHeader import *
 
 class PyGraph:
     """

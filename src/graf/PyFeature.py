@@ -9,7 +9,7 @@
 # For license information, see LICENSE.TXT
 #
 
-from PyFeatureStructure import *
+from graf.PyFeatureStructure import *
 
 class PyFeature:
     """

@@ -9,8 +9,8 @@
 # For license information, see LICENSE.TXT
 #
 
-from PyAnnotationSet import *
-from PyAnnotationSpace import *
+from graf.PyAnnotationSet import *
+from graf.PyAnnotationSpace import *
 
 class PyStandoffHeader:
     def __init__(self):

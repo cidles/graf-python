@@ -9,8 +9,8 @@
 # For license information, see LICENSE.TXT
 #
 
-from PyLink import *
-from PyGraphElement import PyGraphElement
+from graf.PyLink import *
+from graf.PyGraphElement import PyGraphElement
 
 class PyNode(PyGraphElement):
     """
