@@ -12,6 +12,7 @@
 from xml.sax import make_parser, SAXException
 from xml.sax.handler import ContentHandler
 import os
+import codecs
 
 from graf.PyGraph import *
 from graf.GRAF import *
@@ -404,7 +405,7 @@ class PyGraphParser(ContentHandler):
         f = PyFeature(name)
 
         if value is not None:
-            f.set_value(value)
+            f.set_value(codecs.encode(value,'utf-8'))
 
         self._f_stack.append(f)
 
