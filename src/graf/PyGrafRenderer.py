@@ -342,7 +342,7 @@ class PyGrafRenderer:
         self._FILE.write(str(self._indent) + "<" + self._g.TAGSDECL + ">" 
                         + self._g.EOL)
         self._indent.more()
-        for k, v in annotations.iteritems():
+        for k, v in annotations.items():
             self._FILE.write(str(self._indent) + "<" 
                             + self._g.TAGUSAGE + " " 
                             + self._g.GI + "=\"" + str(k) + "\" " 
@@ -367,13 +367,19 @@ class PyGrafRenderer:
 
         # Render the regions
         list = g.get_regions()
-        list.sort()
+
+        if sys.version_info < (3, 0):
+            list.sort()
+
         for region in list:
             self.render_region(region)
 
         # Render the nodes
         nodes = g.nodes()
-        nodes = sorted(nodes, cmp = PyNode.compare_to)
+
+        if sys.version_info < (3, 0):
+            nodes = sorted(nodes, cmp = PyNode.compare_to)
+
         for node in nodes:
             self.render_node(node)
 
