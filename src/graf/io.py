@@ -111,7 +111,7 @@ class IndentManager(object):
         self._indent += "    "
 
     def less(self):
-        self._indent = self._indent[0:len(self._indent)-4]
+        self._indent = self._indent[0:-4]
 
 
 class DocumentHeader(object):
@@ -124,7 +124,7 @@ class DocumentHeader(object):
 
     def set_basepath(self, filename):
         if filename.endswith(".anc") or filename.endswith(".txt"):
-            self._basename = filename[0:len(filename)-4]
+            self._basename = filename[0:-4]
             return
         elif filename.endswith(".xml"):
             n = filename.rfind('-')
@@ -200,7 +200,7 @@ class GrafRenderer(object):
             return
         for link in link._regions:
             targets = targets + " " + link._id
-        targets = targets[1:len(targets)]
+        targets = targets[1:]
         self._FILE.write(str(self._indent) + "<" + self._g.LINK + " " 
                 + self._xml.attribute("targets", targets) + "/>" + 
                 self._g.EOL)
@@ -335,7 +335,7 @@ class GrafRenderer(object):
         buffer = ""
         for a in region.get_anchors():
             buffer = buffer + " " + a.toString()
-        return buffer[1:len(buffer)]
+        return buffer[1:]
 
     def write_open_graph_element(self):
         """Writes the header of the XML file.

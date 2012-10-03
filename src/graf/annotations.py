@@ -536,11 +536,10 @@ class FeatureStructure(object):
 
         """
 
-        length = len(name)
         if name[0] == '/':
-            name = name[1:length]
-        if name[length-1] == '/':
-            name = name[0:length-1]
+            name = name[1:]
+        if name[-1] == '/':
+            name = name[0:-1]
         #find_loop does the real work
         return self.find_loop(name, create)
 
@@ -554,7 +553,7 @@ class FeatureStructure(object):
             return result
 
         head = name[0:slash]
-        tail = name[slash+1:len(name)]
+        tail = name[slash + 1:]
         f = self._elements.get(head)
         fs = None
         if f != None:
