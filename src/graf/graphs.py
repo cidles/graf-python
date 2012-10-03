@@ -11,40 +11,40 @@
 
 """
 Graph structure backing the ISO GrAF format.
-The graph is undirected, composed of C{PyNode}s and C{PyEdge}s, each
+The graph is undirected, composed of C{Node}s and C{Edge}s, each
 backed by a C{list} to maintain the order of the nodes/edges and to
 allow for quick traversals, and a hash map so nodes/edges can be found
 quickly based on their ID
 """
 
-from annotations import PyFeatureStructure, PyAnnotationSet, PyAnnotationSpace, PyAnnotation
+from annotations import FeatureStructure, AnnotationSet, AnnotationSpace, Annotation
 
-class PyGraph:
+class Graph:
     """
-    Class of PyGraph.
+    Class of Graph.
 
     """
 
     def __init__(self):
-        """Constructor for PyGraph.
+        """Constructor for Graph.
 
         """
 
         self._edgeCount = 0
-        self._features = PyFeatureStructure()
+        self._features = FeatureStructure()
         self._nodeSet = {}
         self._edgeSet = {}
         self._regions = {}
         self._annotationSets = {}
         self._annotationSpaces = {} # Added AL
         self._content = None
-        self._header = PyStandoffHeader()
+        self._header = StandoffHeader()
         self._userObject = None
 
     def add_annotation_set(self, set):
-        """Add given C{PyAnnotationSet} to this C{PyGraph}.
+        """Add given C{AnnotationSet} to this C{Graph}.
 
-        :param set: C{PyAnnotationSet}
+        :param set: C{AnnotationSet}
 
         """
 
@@ -52,23 +52,23 @@ class PyGraph:
         self._header.add_annotation_set_create(set._name, set._type)
 
     def add_as_create(self, name, type):
-        """Create C{PyAnnotationSet} from given name, value and
-        add it to this C{PyGraph}.
+        """Create C{AnnotationSet} from given name, value and
+        add it to this C{Graph}.
 
         :param name: C{str}
         :param type: C{str}
 
         """
 
-        aSet = PyAnnotationSet(name, type)
+        aSet = AnnotationSet(name, type)
         self.add_annotation_set(aSet)
         return aSet
 
     # Added AL
     def add_annotation_space(self, set):
-        """Add given C{PyAnnotationSpace} to this C{PyGraph}.
+        """Add given C{AnnotationSpace} to this C{Graph}.
 
-        :param set: C{PyAnnotationSpace}
+        :param set: C{AnnotationSpace}
 
         """
 
@@ -77,22 +77,22 @@ class PyGraph:
 
     # Added AL
     def add_aspace_create(self, as_id):
-        """Create C{PyAnnotationSpace} from given name, value and
-        add it to this C{PyGraph}.
+        """Create C{AnnotationSpace} from given name, value and
+        add it to this C{Graph}.
 
         :param name: C{str}
         :param type: C{str}
 
         """
 
-        aSet = PyAnnotationSpace(as_id)
+        aSet = AnnotationSpace(as_id)
         self.add_annotation_space(aSet)
         return aSet
 
     def add_edge(self, edge):
-        """Add C{PyEdge} to this C{PyGraph}.
+        """Add C{Edge} to this C{Graph}.
 
-        :param edge: C{PyEdge}
+        :param edge: C{Edge}
 
         """
 
@@ -100,12 +100,12 @@ class PyGraph:
         self.update_node(edge)
 
     def add_edge_create(self, id, fromNode = None , toNode = None):
-        """Create C{PyEdge} from id, fromNode, toNode and add it to
-        this C{PyGraph}.
+        """Create C{Edge} from id, fromNode, toNode and add it to
+        this C{Graph}.
 
         :param id: C{str}
-        :param fromNode: C{PyNode}
-        :param toNode: C{PyNode}
+        :param fromNode: C{Node}
+        :param toNode: C{Node}
 
         """
 
@@ -114,17 +114,17 @@ class PyGraph:
         if self._nodeSet.get(toNode.getID()) is None:
             self._nodeSet[toNode.getID()] = toNode
         self._edgeCount += 1
-        newEdge = PyEdge(id, fromNode, toNode)
+        newEdge = Edge(id, fromNode, toNode)
         self._edgeSet[newEdge.getID()] = newEdge
         self.update_node(newEdge)
         return newEdge
         
     def add_edge_from_to(self, fromNode, toNode):
-        """Create C{PyEdge} from fromNode, toNode and add it to
-        this C{PyGraph} id is created.
+        """Create C{Edge} from fromNode, toNode and add it to
+        this C{Graph} id is created.
 
-        :param fromNode: C{PyNode}
-        :param toNode: C{PyNode}
+        :param fromNode: C{Node}
+        :param toNode: C{Node}
 
         """
 
@@ -132,8 +132,8 @@ class PyGraph:
                                 fromNode, toNode)
 
     def add_edgeToFromID(self, id, fromID, toID):
-        """Create C{PyEdge} from id, fromID, toID and add it to
-        this C{PyGraph}.
+        """Create C{Edge} from id, fromID, toID and add it to
+        this C{Graph}.
 
         :param id: C{str}
         :param fromID: C{str}
@@ -151,16 +151,16 @@ class PyGraph:
         self._features.add(name, value)
 
     def add_node(self, node):
-        """Add C{PyNode} to this C{PyGraph}.
+        """Add C{Node} to this C{Graph}.
 
-        :param node: C{PyNode} or C{str}
+        :param node: C{Node} or C{str}
 
         """
 
         if isinstance(node, str):
             newNode = self._nodeSet.get(node)
             if newNode is None:
-                newNode = PyNode(node)
+                newNode = Node(node)
                 self._nodeSet[node] = newNode
             return newNode
         else:
@@ -183,11 +183,11 @@ class PyGraph:
         return self._edgeSet.get(id)
 
     def find_edge(self, fromNode, toNode):
-        """Search for C{PyEdge} with its fromNode, toNode, either nodes or ids.
+        """Search for C{Edge} with its fromNode, toNode, either nodes or ids.
 
-        :param fromNode: C{PyNode} or C{str}
-        :param toNode: C{PyNode} or C{str}
-        :return: C{PyEdge}
+        :param fromNode: C{Node} or C{str}
+        :param toNode: C{Node} or C{str}
+        :return: C{Edge}
 
         """
 
@@ -306,18 +306,18 @@ class PyGraph:
         edge._fromNode.add_out_edge(edge)
         edge._toNode.add_in_edge(edge)
 
-class PyGraphElement:
+class GraphElement:
     """
-    Class of edges in PyGraph:
+    Class of edges in Graph:
 
-    - Each edge maintains the source (from) C{PyNode} and the destination.
-      (to) C{PyNode}.
-    - Edges may also contain one or more C{PyAnnotation} objects.
+    - Each edge maintains the source (from) C{Node} and the destination.
+      (to) C{Node}.
+    - Edges may also contain one or more C{Annotation} objects.
 
     """
 
     def __init__(self, id = ""):
-        """Constructor for C{PyGraphElement}.
+        """Constructor for C{GraphElement}.
 
         :param id: C{str}
 
@@ -329,46 +329,46 @@ class PyGraphElement:
         self._annotations = []
 
     def from_node(node):
-        """Constructs a new C{PyGraphElement} from an existing node.
+        """Constructs a new C{GraphElement} from an existing node.
 
-        :param node: C{PyNode}
+        :param node: C{Node}
 
         """
 
-        newGE = PyGraphElement(node.getID())
+        newGE = GraphElement(node.getID())
         for a in node.annotations():
             newGE.add_annotation(a)
         newGE.set_user_object(node.get_user_object)
         return newGE
 
     def from_edge(edge):
-        """Constructs a new C{PyGraphElement} from an existing edge.
+        """Constructs a new C{GraphElement} from an existing edge.
 
-        :param edge: C{PyEdge}
+        :param edge: C{Edge}
 
         """
 
-        newGE = PyGraphElement(edge.getID())
+        newGE = GraphElement(edge.getID())
         for a in edge.annotations():
             newGE.addAnnotations(a)
         newGE.set_user_object(edge.get_user_object())
         return newGE
 
     def __repr__(self):
-        return "PyGraphElement id = " + self._id
+        return "GraphElement id = " + self._id
 
     def add_annotation(self, a):
         self._annotations.append(a)
         a._element = self
 
     def add_annotation_create(self, label):
-        """Creates an adds an annotation to this C{PyGraphElement}.
+        """Creates an adds an annotation to this C{GraphElement}.
 
         :param label: C{str}
 
         """
 
-        a = PyAnnotation(label)
+        a = Annotation(label)
         self.add_annotation(a)
         return a
 
@@ -381,11 +381,11 @@ class PyGraphElement:
     def equals(self, o):
         """Comparison of two graph elements by ID.
 
-        :param o: C{PyGraphElement}
+        :param o: C{GraphElement}
 
         """
 
-        if not isinstance(o, PyGraphElement) or o == None:
+        if not isinstance(o, GraphElement) or o == None:
             return False
         else:
             return self._id == o.getID()
@@ -444,19 +444,19 @@ class PyGraphElement:
         return self._visited            
 
 
-class PyNode(PyGraphElement):
+class Node(GraphElement):
     """
-    Class for nodes within a C{PyGraph} instance.
+    Class for nodes within a C{Graph} instance.
     Each node keeps a list of in-edges and out-edges.
     Each collection is backed by two data structures:
         1. A list (for traversals)
         2. A hash map
-    Nodes may also contain one or more C{PyAnnotation} objects.
+    Nodes may also contain one or more C{Annotation} objects.
 
     """
 
     def __init__(self, id = ""):
-        PyGraphElement.__init__(self, id)
+        GraphElement.__init__(self, id)
         self._inEdgeList = []
         self._outEdgeList = []
         self._inEdges = {}
@@ -465,7 +465,7 @@ class PyNode(PyGraphElement):
         self._annotationRoot = False
 
     def from_node(node):
-        newNode = PyNode(node._id)
+        newNode = Node(node._id)
         newNode._annotationRoot = node._annotationRoot
         return newNode
 
@@ -490,7 +490,7 @@ class PyNode(PyGraphElement):
         if len(self._links) > 0:
             link = self._links[len(self._links)-1]
         else:
-            link = PyLink()
+            link = Link()
             self._links.append(link)
         link.add_target(region)
         region.add_node(self)
@@ -544,42 +544,42 @@ class PyNode(PyGraphElement):
         return len(self._outEdgeList)
 
 
-class PyEdge(PyGraphElement):
+class Edge(GraphElement):
     """
-    Class of edges in PyGraph:
-    - Each edge maintains the source (from) C{PyNode} and the destination.
-      (to) C{PyNode}.
-    - Edges may also contain one or more C{PyAnnotation} objects.
+    Class of edges in Graph:
+    - Each edge maintains the source (from) C{Node} and the destination.
+      (to) C{Node}.
+    - Edges may also contain one or more C{Annotation} objects.
 
     """
 
     def __init__(self, id, fromNode = None, toNode = None):
-        """C{PyEdge} Constructor.
+        """C{Edge} Constructor.
 
         :param id: C{str}
-        :param fromNode: C{PyNode}
-        :param toNode: C{PyNode}
+        :param fromNode: C{Node}
+        :param toNode: C{Node}
 
         """
 
-        PyGraphElement.__init__(self, id)
+        GraphElement.__init__(self, id)
         self._fromNode = fromNode
         self._toNode = toNode
 
     def from_edge(e):
-        """C{PyEdge} Constructor from an existing C{PyEdge}.
+        """C{Edge} Constructor from an existing C{Edge}.
 
-        :param e: C{PyEdge}
+        :param e: C{Edge}
 
         """
 
-        return PyEdge(e._id, e._fromNode, e._toNode)
+        return Edge(e._id, e._fromNode, e._toNode)
 
     def __repr__(self):
         return "Edge id = " + self._id
 
 
-class PyLink:
+class Link:
     def __init__(self):
         self._regions = []
 
@@ -590,7 +590,7 @@ class PyLink:
         self._regions.append(region)
 
 
-class PyStandoffHeader:
+class StandoffHeader:
     def __init__(self):
         self._annotationSets = {}
         self._annotationSpaces = {}
@@ -604,7 +604,7 @@ class PyStandoffHeader:
         self._annotationSets[aSet.getName()] = aSet
 
     def add_annotation_set_create(self, name, type):
-        aSet = PyAnnotationSet(name, type)
+        aSet = AnnotationSet(name, type)
         self._annotationSets[name] = aSet
         return aSet
 
@@ -614,7 +614,7 @@ class PyStandoffHeader:
 
     # Added AL
     def add_annotation_space_create(self, as_id):
-        aSet = PyAnnotationSpace(as_id)
+        aSet = AnnotationSpace(as_id)
         self._annotationSpaces[as_id] = aSet
         return aSet
 
@@ -632,7 +632,7 @@ class PyStandoffHeader:
         self._roots = list(header.get_roots())
         del self._annotationSets[:]
         for aSet in header.get_annotation_sets():
-            copy = PyAnnotationSet.from_as(aSet)
+            copy = AnnotationSet.from_as(aSet)
             self._annotationSets[copy.getName()] = copy
 
     def get_annotation_set(self, name):

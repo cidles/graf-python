@@ -12,8 +12,8 @@ import os
 from xml.sax import make_parser, SAXException
 from xml.sax.handler import ContentHandler
 
-from graphs import PyGraph, PyEdge, PyLink, PyNode
-from annotations import PyAnnotation
+from graphs import Graph, Edge, Link, Node
+from annotations import Annotation
 
 class GRAF:
     """
@@ -84,7 +84,7 @@ class GRAF:
         self.DEFAULT = "default"
 
 
-class PyXML:
+class XML:
 
     def __init__(self):
         pass
@@ -100,7 +100,7 @@ class PyXML:
         return name + "=\"" + self.encode(value) + "\""
 
 
-class PyIndentManager:
+class IndentManager:
     def __init__(self):
         self._indent = "    "
 
@@ -114,7 +114,7 @@ class PyIndentManager:
         self._indent = self._indent[0:len(self._indent)-4]
 
 
-class PyDocumentHeader:
+class DocumentHeader:
 
     def __init__(self, path):
         self._basename = ""
@@ -144,22 +144,22 @@ class PyDocumentHeader:
         return None
 
                  
-class PyGrafRenderer:
+class GrafRenderer:
     """
     Renders a GrAF XML representation that can be read back by an instance
-    of L{PyGraphParser}.
+    of L{GraphParser}.
 
     Version: 1.0.
 
     """
 
     def __init__(self, filename):
-        """Create an instance of a PyGrafRenderer.
+        """Create an instance of a GrafRenderer.
 
         """
 
-        self._xml = PyXML()
-        self._indent = PyIndentManager()
+        self._xml = XML()
+        self._indent = IndentManager()
         self._FILE = open(filename, "w")
         self._g = GRAF()
         self._VERSION = self._g.VERSION
@@ -168,7 +168,7 @@ class PyGrafRenderer:
         self._encoding = self._UTF8
 
     def render_node(self, n):
-        """Used to render the node elements of the PyGraph.
+        """Used to render the node elements of the Graph.
 
         """
 
@@ -191,7 +191,7 @@ class PyGrafRenderer:
             self.render_ann(a)
 
     def render_link(self, link):
-        """Used to render the link elements of the PyGraph.
+        """Used to render the link elements of the Graph.
 
         """
 
@@ -206,7 +206,7 @@ class PyGrafRenderer:
                 self._g.EOL)
 
     def render_region(self, region):
-        """Used to render the region elements of the PyGraph.
+        """Used to render the region elements of the Graph.
 
         """
 
@@ -216,7 +216,7 @@ class PyGrafRenderer:
                 + "\"/>" + self._g.EOL)
 
     def render_edge(self, e):
-        """Used to render the edge elements of the PyGraph.
+        """Used to render the edge elements of the Graph.
 
         """
 
@@ -238,7 +238,7 @@ class PyGrafRenderer:
             self._FILE.write("/>" + self._g.EOL)
 
     def render_as(self, aSet):
-        """Used to render the annotation set elements of the PyGraph.
+        """Used to render the annotation set elements of the Graph.
 
         """
 
@@ -255,7 +255,7 @@ class PyGrafRenderer:
                         + ">" + self._g.EOL)
 
     def render_ann(self, a):
-        """Used to render the annotation elements of the PyGraph.
+        """Used to render the annotation elements of the Graph.
 
         """
 
@@ -281,7 +281,7 @@ class PyGrafRenderer:
             self._FILE.write("/>" + self._g.EOL)
 
     def render_fs(self, fs):
-        """Used to render the feature structure elements of the PyGraph.
+        """Used to render the feature structure elements of the Graph.
 
         """
 
@@ -302,7 +302,7 @@ class PyGrafRenderer:
 
 
     def render_feature(self, f):
-        """Used to render the features elements of the PyGraph.
+        """Used to render the features elements of the Graph.
 
         """
 
@@ -327,7 +327,7 @@ class PyGrafRenderer:
                             + ">" + self._g.EOL)
 
     def get_anchors(self, region):
-        """Gathers the anchors from a region in the PyGraph,
+        """Gathers the anchors from a region in the Graph,
         creates a string listing all of them, separated by spaces.
 
         """
@@ -495,7 +495,7 @@ class PyGrafRenderer:
 
         # Render the nodes
         nodes = g.nodes()
-        nodes = sorted(nodes, cmp = PyNode.compare_to)
+        nodes = sorted(nodes, cmp = Node.compare_to)
         for node in nodes:
             self.render_node(node)
 
@@ -517,17 +517,17 @@ class Counter:
         self._count += 1
 
 
-class PyGraphParser(ContentHandler):
+class GraphParser(ContentHandler):
     """
     Used to parse the GrAF XML representation and construct the instance 
-    of C{PyGraph} objects.
+    of C{Graph} objects.
 
     version: 1.0.
 
     """
 
     def __init__(self):
-        """Create a new C{PyGraphParser} instance.
+        """Create a new C{GraphParser} instance.
 
         """
 
@@ -558,8 +558,8 @@ class PyGraphParser(ContentHandler):
     def parse(self, file, parsed = None):
         """Parses the XML file at the given path.
 
-        :return: a PyGraph representing the annotated text in GrAF format
-        :rtype: PyGraph
+        :return: a Graph representing the annotated text in GrAF format
+        :rtype: Graph
 
         """
 
@@ -568,7 +568,7 @@ class PyGraphParser(ContentHandler):
         #print "parsing " + file
         delete_header = False
         if self._header is None:
-            self._header = PyDocumentHeader(os.path.abspath(file))
+            self._header = DocumentHeader(os.path.abspath(file))
             delete_header = True
 
         self._parsed = parsed
@@ -665,7 +665,7 @@ class PyGraphParser(ContentHandler):
         self._current_node = None
         self._root_id = None
         del self._relations[:]
-        self._graph = PyGraph()
+        self._graph = Graph()
         n = attrs.getLength() - 1
         # Remove it when tested
         # This is never used with any of the MASC Versions
@@ -692,7 +692,7 @@ class PyGraphParser(ContentHandler):
         for edge in self._edges:
             from_node = self._node_map.get(edge._from)
             to_node = self._node_map.get(edge._to)
-            self._graph.add_edge(PyEdge(edge._id, from_node, to_node))
+            self._graph.add_edge(Edge(edge._id, from_node, to_node))
     
         # Add annotations to any edges
         for s, a in self._edge_annotations:
@@ -704,7 +704,7 @@ class PyGraphParser(ContentHandler):
 
         # Link nodes to regions
         for n, s in self._relations:
-            link = PyLink()
+            link = Link()
             for target in s.split():
                 region = self._graph.get_region_from_id(target)
                 if region is not None:
@@ -721,13 +721,13 @@ class PyGraphParser(ContentHandler):
 
     def node_start(self, attrs):
         """ Used to parse the node start tag.
-        Creates a new self._current_node, of type PyNode.
+        Creates a new self._current_node, of type Node.
 
         """
 
         id = attrs.getValue(self._g.ID)
         isRoot = attrs.get(self._g.ROOT) ##?
-        self._current_node = PyNode(id)
+        self._current_node = Node(id)
 
         if isRoot is not None and "true" is isRoot:
             self._current_node._annotationRoot = True
@@ -784,7 +784,7 @@ class PyGraphParser(ContentHandler):
 
     def ann_start(self, attrs):
         label = attrs.getValue(self._g.LABEL)
-        self._current_annotation = PyAnnotation(label)
+        self._current_annotation = Annotation(label)
 
         if label is None:
             SAXException("Required attribute " + self._g.LABEL + 
@@ -839,8 +839,8 @@ class PyGraphParser(ContentHandler):
     def region_start(self, attrs):
         """Used to pare the region elements in the XML representation.
         A tolkenizer is used to separate the anchors listed in the XML tag,
-        and a new PyAnchor instance is created for each one.
-        A PyRegion instance is then created with the id from the
+        and a new Anchor instance is created for each one.
+        A Region instance is then created with the id from the
         XML tag and added to the graph.
 
         """
@@ -854,14 +854,14 @@ class PyGraphParser(ContentHandler):
         for t in tokenizer:
             anchor = None
             try:
-                anchor = PyAnchor(t)
+                anchor = Anchor(t)
             except:
                 raise SAXException("Unable to create an anchor for " + t)
 
             anchors.append(anchor)
 
         try:
-            region = PyRegion(id, anchors)
+            region = Region(id, anchors)
             self._graph.add_region(region)
         except:
             raise SAXException("Could not add the region to the graph")
@@ -872,7 +872,7 @@ class PyGraphParser(ContentHandler):
         """
 
         type = attrs.get(self._g.TYPE)
-        fs = PyFeatureStructure(type)
+        fs = FeatureStructure(type)
         self._fs_stack.append(fs)
 
     def fs_end(self):
@@ -901,7 +901,7 @@ class PyGraphParser(ContentHandler):
         except KeyError as inst:
             value = attrs.getValueByQName(self._g.NAME)
 
-        f = PyFeature(name)
+        f = Feature(name)
 
         if value is not None:
             f.set_value(value)
@@ -990,7 +990,7 @@ class PyGraphParser(ContentHandler):
             raise SAXException("Unable to get path for dependency of type"
                                  + " " + type)
 
-        parser = PyGraphParser()
+        parser = GraphParser()
         dependency = parser.parse(path, self._parsed)
 
         for a_set in dependency.annotation_sets():
@@ -1006,7 +1006,7 @@ class PyGraphParser(ContentHandler):
             to_id = edge.getTo()._id
             e = self._graph.add_edgeToFromID(id, from_id, to_id)
             for a in edge.annotations():
-                e.add_annotation(PyAnnotation.from_annotation(a))
+                e.add_annotation(Annotation.from_annotation(a))
 
         for region in dependency.regions():
             self._graph.add_region(region)

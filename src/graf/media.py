@@ -9,11 +9,11 @@
 # For license information, see LICENSE.TXT
 #
 
-class PyAnchor:
+class Anchor:
     """
-    Class for the PyAnchor elements of a PyGraph.
+    Class for the Anchor elements of a Graph.
     These are used to represent character offsets in a region of text.
-    Each PyAnchor contains an offset, which is a number (int) that 
+    Each Anchor contains an offset, which is a number (int) that 
     corresponds to a character position in a text file.
 
     """
@@ -52,7 +52,7 @@ class PyAnchor:
         return 1
 
     def equals(self, a):
-        if isinstance(a, PyAnchor):
+        if isinstance(a, Anchor):
             return self._offset == a._offset()
         return False
 
@@ -72,18 +72,18 @@ class PyAnchor:
 # For license information, see LICENSE.TXT
 #
 
-class PyRegion:
+class Region:
     """
     The area in the text file being annotated.  A region is defined 
-    by a sequence of C{PyAnchor} objects.
+    by a sequence of C{Anchor} objects.
 
     """
 
     def __init__(self, id, anchors=None):
-        """Constructor for C{PyRegion}.
+        """Constructor for C{Region}.
 
         :param id: C{str}
-        :param anchors: C{list} of C{PyAnchor}
+        :param anchors: C{list} of C{Anchor}
 
         """
 
@@ -98,10 +98,10 @@ class PyRegion:
             self._anchors = anchors
 
     def from_region(region):
-        return PyRegion(region._id, region._anchors)
+        return Region(region._id, region._anchors)
 
     def from_start_end(id, start, end):
-        return PyRegion(id, [start, end])
+        return Region(id, [start, end])
 
     def __repr__(self):
         return "RegionID = " + self._id
@@ -141,7 +141,7 @@ class PyRegion:
         return 0
 
     def equals(self, object):
-        if not isinstance(object, PyRegion) or object is None:
+        if not isinstance(object, Region) or object is None:
             return False
         return self.compare_to(object) == 0
 

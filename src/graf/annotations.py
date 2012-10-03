@@ -9,21 +9,21 @@
 # For license information, see LICENSE.TXT
 #
 
-class PyAnnotation:
+class Annotation:
     """
-    A PyAnnotation is the artifcat being annotated.  An annotation is a
+    A Annotation is the artifcat being annotated.  An annotation is a
     labelled feature structure.  The annotation class/interface also
     provides convenience methods for setting and getting values
     from a feature structure.
 
     """
-    def __init__(self, label, features = PyFeatureStructure()):
-        """Construct a new C{PyAnnotation}.
+    def __init__(self, label, features = FeatureStructure()):
+        """Construct a new C{Annotation}.
 
         :param label: C{str}
-        :param features: C{list} of C{PyFeature} objects
-        :param set: this C{PyAnnotation}'s C{PyAnnotationSet}
-        :param element: a C{PyGraphElement} object
+        :param features: C{list} of C{Feature} objects
+        :param set: this C{Annotation}'s C{AnnotationSet}
+        :param element: a C{GraphElement} object
 
         """
 
@@ -33,31 +33,31 @@ class PyAnnotation:
         self._element = None
 
     def from_annotation(a):
-        """Construct a new C{PyAnnotation}.
+        """Construct a new C{Annotation}.
 
-        :param a: a C{PyAnnotation} object
+        :param a: a C{Annotation} object
 
         """
-        return PyAnnotation(a.getLabel(), 
-                            PyFeatureStructure.from_fs(a.getFeatures()))
+        return Annotation(a.getLabel(), 
+                            FeatureStructure.from_fs(a.getFeatures()))
 
     def __repr__(self):
         return "Annotation label = " + self._label
 
     def add(self, name, value):
-        """Creates and adda a C{PyFeature} to this C{PyAnnotation}.
+        """Creates and adda a C{Feature} to this C{Annotation}.
 
-        :param name: name of the C{PyFeature} to be added
-        :param value: value of the C{PyFeature} to be added
+        :param name: name of the C{Feature} to be added
+        :param value: value of the C{Feature} to be added
 
         """
 
         return self._features.add(name, value)        	
 
     def add_feature(self, f):
-        """Adds the passed C{PyFeature} to this C{PyAnnotation}.
+        """Adds the passed C{Feature} to this C{Annotation}.
 
-        :param f: C{PyFeature} object
+        :param f: C{Feature} object
 
         """
 
@@ -66,25 +66,25 @@ class PyAnnotation:
     def features(self):
         """Returns the features.
 
-        :return: C{list} of the C{PyFeature}s of this C{PyAnnotation}
+        :return: C{list} of the C{Feature}s of this C{Annotation}
 
         """
 
         return self._features.features()
 
     def get_feature(self, name):
-        """Searches for a C{PyFeature} in this
-        C{PyAnnotation}'s C{list} by name.
+        """Searches for a C{Feature} in this
+        C{Annotation}'s C{list} by name.
 
         :param name: C{str}
-        :return: C{PyFeature}
+        :return: C{Feature}
 
         return self._features.get(name)
         """
 
     def get_feature_value(self, name):
-        """Searches for a C{PyFeature} in this C{PyAnnotation}'s C{list}
-        by name, returns that C{PyFeature}'s value.
+        """Searches for a C{Feature} in this C{Annotation}'s C{list}
+        by name, returns that C{Feature}'s value.
 
         :param: C{str}
         :return: C{str} or None
@@ -97,19 +97,19 @@ class PyAnnotation:
         return None
 
 
-class PyAnnotationSet:
+class AnnotationSet:
     """
-    A set of PyAnnotations.  Each PyAnnotation set has a name (C{Str})
+    A set of Annotations.  Each Annotation set has a name (C{Str})
     and a type (C{URI}) and a set of annotations.
 
     """
 
     def __init__(self, name, type):
-        """Constructor for C{PyAnnotationSet}
+        """Constructor for C{AnnotationSet}
 
         :param name: C{str}
         :param type: C{str}
-        :param annotations: C{str} of C{PyAnnotation}
+        :param annotations: C{str} of C{Annotation}
 
         """
 
@@ -118,40 +118,40 @@ class PyAnnotationSet:
         self._annotations = []
 
     def from_as(aSet):
-        """Constructs a new C{PyAnnotationSet} from
-        an existing C{PyAnnotationSet}.
+        """Constructs a new C{AnnotationSet} from
+        an existing C{AnnotationSet}.
 
-        :param aSet: C{PyAnnotationSet}
-        :return: C{PyAnnotationSet}
+        :param aSet: C{AnnotationSet}
+        :return: C{AnnotationSet}
 
         """
 
-        newAS = PyAnnotationSet(aSet._name, aSet._type)
+        newAS = AnnotationSet(aSet._name, aSet._type)
         for a in aSet.annotations():
-            newAS.add_annotation(PyAnnotation.from_annotation(a))
+            newAS.add_annotation(Annotation.from_annotation(a))
         return newAS
 
     def __repr__(self):
-        return "PyAnnSet name= " + self._name + " type= " + self._type
+        return "AnnSet name= " + self._name + " type= " + self._type
 
     def add(self, label):
         """Creates a new annotation with specified label, adds it
         to this annotation set, and returns the new annotation.
 
         :param label: str
-        :return: PyAnnotation
+        :return: Annotation
 
         """
 
-        annotation = PyAnnotation(label)
+        annotation = Annotation(label)
         self.add_annotation(annotation)
         return annotation
 
     def add_annotation(self, a):
-        """Adds a C{PyAnnotation} to the annotations list of
-        this C{PyAnnotationSet}.
+        """Adds a C{Annotation} to the annotations list of
+        this C{AnnotationSet}.
 
-        :param a: PyAnnotation
+        :param a: Annotation
 
         """
 
@@ -159,10 +159,10 @@ class PyAnnotationSet:
         a._set = self
 
     def get_annotations_label(self, label):
-        """Returns the C{PyAnnotation} with the given label.
+        """Returns the C{Annotation} with the given label.
 
         :param label: str
-        :return: PyAnnotation
+        :return: Annotation
 
         """
 
@@ -173,12 +173,12 @@ class PyAnnotationSet:
         return result
 
     def get_annotations(self, label, fs):
-        """Returns the C{PyAnnotation} with the given label,
-        in the given C{PyFeatureStructure}.
+        """Returns the C{Annotation} with the given label,
+        in the given C{FeatureStructure}.
 
         :param label: str
-        :param fs: PyFeatureStructure
-        :return: PyFeatureStructure
+        :param fs: FeatureStructure
+        :return: FeatureStructure
 
         """
 
@@ -190,9 +190,9 @@ class PyAnnotationSet:
         return result
 
     def remove_annotation(self, a):
-        """Remove the given C{PyAnnotation}.
+        """Remove the given C{Annotation}.
 
-        :param a: PyAnnotation
+        :param a: Annotation
 
         """
 
@@ -202,7 +202,7 @@ class PyAnnotationSet:
             print('Error: Annotation not in set')
 
     def remove_annotations_label(self, label):
-        """Remove the C{PyAnnotation} with the given label
+        """Remove the C{Annotation} with the given label
 
         :param label: C{str}
 
@@ -218,11 +218,11 @@ class PyAnnotationSet:
         return result
 
     def remove_annotations(self, label, fs):
-        """Remove the C{PyAnnotation}s with the given label in
-        the given C{PyFeatureStructure}
+        """Remove the C{Annotation}s with the given label in
+        the given C{FeatureStructure}
 
         :param label: C{str}
-        :param fs: C{PyFeatureStructure}
+        :param fs: C{FeatureStructure}
 
         """
 
@@ -240,9 +240,9 @@ class PyAnnotationSet:
         return len(self._annotations)
 
 
-class PyAnnotationSpace:
+class AnnotationSpace:
     """
-    A set of PyAnnotations.  Each PyAnnotation set has a name (C{Str})
+    A set of Annotations.  Each Annotation set has a name (C{Str})
     and a type (C{URI}) and a set of annotations.
 
     :note : It's should replace the AnnotationSet
@@ -250,10 +250,10 @@ class PyAnnotationSpace:
     """
 
     def __init__(self, as_id):
-        """Constructor for C{PyAnnotationSpace}
+        """Constructor for C{AnnotationSpace}
 
         :param as_id: C{str}
-        :param annotations: C{str} of C{PyAnnotation}
+        :param annotations: C{str} of C{Annotation}
 
         """
 
@@ -261,40 +261,40 @@ class PyAnnotationSpace:
         self._annotations = []
 
     def from_as(aSet):
-        """Constructs a new C{PyAnnotationSpace} from
-        an existing C{PyAnnotationSpace}.
+        """Constructs a new C{AnnotationSpace} from
+        an existing C{AnnotationSpace}.
 
-        :param aSet: C{PyAnnotationSpace}
-        :return: C{PyAnnotationSpace}
+        :param aSet: C{AnnotationSpace}
+        :return: C{AnnotationSpace}
 
         """
 
-        newAS = PyAnnotationSpace(aSet._as_id)
+        newAS = AnnotationSpace(aSet._as_id)
         for a in aSet.annotations():
-            newAS.add_annotation(PyAnnotation.from_annotation(a))
+            newAS.add_annotation(Annotation.from_annotation(a))
         return newAS
 
     def __repr__(self):
-        return "PyAnnSpace as_id= " + self._as_id
+        return "AnnSpace as_id= " + self._as_id
 
     def add(self, label):
         """Creates a new annotation with specified label, adds it
         to this annotation set, and returns the new annotation.
 
         :param label: str
-        :return: PyAnnotation
+        :return: Annotation
 
         """
 
-        annotation = PyAnnotation(label)
+        annotation = Annotation(label)
         self.add_annotation(annotation)
         return annotation
 
     def add_annotation(self, a):
-        """Adds a C{PyAnnotation} to the annotations list of
-        this C{PyAnnotationSpace}.
+        """Adds a C{Annotation} to the annotations list of
+        this C{AnnotationSpace}.
 
-        :param a: PyAnnotation
+        :param a: Annotation
 
         """
 
@@ -302,10 +302,10 @@ class PyAnnotationSpace:
         a._set = self
 
     def get_annotations_label(self, label):
-        """Returns the C{PyAnnotation} with the given label.
+        """Returns the C{Annotation} with the given label.
 
         :param label: str
-        :return: PyAnnotation
+        :return: Annotation
 
         """
 
@@ -316,12 +316,12 @@ class PyAnnotationSpace:
         return result
 
     def get_annotations(self, label, fs):
-        """Returns the C{PyAnnotation} with the given label,
-        in the given C{PyFeatureStructure}.
+        """Returns the C{Annotation} with the given label,
+        in the given C{FeatureStructure}.
 
         :param label: str
-        :param fs: PyFeatureStructure
-        :return: PyFeatureStructure
+        :param fs: FeatureStructure
+        :return: FeatureStructure
 
         """
 
@@ -333,9 +333,9 @@ class PyAnnotationSpace:
         return result
 
     def remove_annotation(self, a):
-        """Remove the given C{PyAnnotation}.
+        """Remove the given C{Annotation}.
 
-        :param a: PyAnnotation
+        :param a: Annotation
 
         """
 
@@ -345,7 +345,7 @@ class PyAnnotationSpace:
             print('Error: Annotation not in set')
 
     def remove_annotations_label(self, label):
-        """Remove the C{PyAnnotation} with the given label
+        """Remove the C{Annotation} with the given label
 
         :param label: C{str}
 
@@ -361,11 +361,11 @@ class PyAnnotationSpace:
         return result
 
     def remove_annotations(self, label, fs):
-        """Remove the C{PyAnnotation}s with the given label in
-        the given C{PyFeatureStructure}
+        """Remove the C{Annotation}s with the given label in
+        the given C{FeatureStructure}
 
         :param label: C{str}
-        :param fs: C{PyFeatureStructure}
+        :param fs: C{FeatureStructure}
 
         """
 
@@ -383,18 +383,18 @@ class PyAnnotationSpace:
         return len(self._annotations)
 
 
-class PyFeature:
+class Feature:
     """
-    A name/value pair.  The "value" of a C{PyFeature} may be a string or 
+    A name/value pair.  The "value" of a C{Feature} may be a string or 
     another Py{FeatureStructure} object.
 
     """
 
     def __init__(self, name = None, value = None):
-        """Constructor for C{PyFeature}.
+        """Constructor for C{Feature}.
 
         :param name: C{str}
-        :param value: C{str} or C{PyFeatureStructure}
+        :param value: C{str} or C{FeatureStructure}
 
         """
 
@@ -407,19 +407,19 @@ class PyFeature:
             self._stringValue = None
 
     def from_feature(f):
-        """Constructs a new C{PyFeature} from an existing C{PyFeature}.
+        """Constructs a new C{Feature} from an existing C{Feature}.
 
-        :param f: C{PyFeature}
+        :param f: C{Feature}
 
         """
 
-        newF = PyFeature(f.getName())
+        newF = Feature(f.getName())
         if f.is_atomic():
             newF._stringValue = f.getStringValue()
             newF._fsValue = None
         else:
             newF._stringValue = None
-            newF._fsValue = PyFeatureStructure(f.getFSValue())
+            newF._fsValue = FeatureStructure(f.getFSValue())
         return newF
 
     def __repr__(self):
@@ -433,34 +433,34 @@ class PyFeature:
     def compare_to(self, f):
         """Compare the values.
 
-        :param f: C{PyFeatureStructure}
+        :param f: C{FeatureStructure}
 
         """
 
         return cmp(self._name, f.getName())
 
     def copy(self):
-        """Copy this C{PyFeatureStructure}.
+        """Copy this C{FeatureStructure}.
 
-        :return: C{PyFeatureStructure}
+        :return: C{FeatureStructure}
 
         """
 
         if self._stringValue is None:
-            fs = PyFeatureStructure(self._fsValue) 
-            return PyFeature(self._name, fs)
-        return PyFeature(self._name, self._stringValue)
+            fs = FeatureStructure(self._fsValue) 
+            return Feature(self._name, fs)
+        return Feature(self._name, self._stringValue)
 
     def equals(self, e):
         """Compare the values.
 
-        :param e: C{PyFeature}
+        :param e: C{Feature}
         :return: C{bool}
 
         """
 
         result = False
-        if isinstance(e, PyFeature):
+        if isinstance(e, Feature):
             result = self._name == e.getName()
         return result
     
@@ -476,22 +476,22 @@ class PyFeature:
         if isinstance(value, basestring):
             self._stringValue = value
             self._fsValue = None
-        elif isinstance(value, PyFeatureStructure):
+        elif isinstance(value, FeatureStructure):
             self._fsValue = value
             self._stringValue = None
         else: 
             print('Error in set_value(), value must be string or' +
-                    ' PyFeatureStructure object')
+                    ' FeatureStructure object')
 
 
-class PyFeatureStructure:
+class FeatureStructure:
     """
-    A list of C{PyFeature}s indexed by name.
+    A list of C{Feature}s indexed by name.
 
     """
 
     def __init__(self, type = None):
-        """Constructor for C{PyFeatureStructure}.
+        """Constructor for C{FeatureStructure}.
 
         :param type: C{str}
 
@@ -501,20 +501,20 @@ class PyFeatureStructure:
         self._elements = {}
 
     def from_fs(fs):
-        """Constructs a new C{PyFeatureStructure} from input.
+        """Constructs a new C{FeatureStructure} from input.
 
-        :param fs: C{PyFeatureStructure}
+        :param fs: C{FeatureStructure}
 
         """
 
-        newFS = PyFeatureStructure(fs.getType())
+        newFS = FeatureStructure(fs.getType())
         for f in fs.features():
             newF = None
             if f.is_atomic():
-                newF = PyFeature(f.getName(), f.getStringValue())
+                newF = Feature(f.getName(), f.getStringValue())
             else:
-                copy = PyFeatureStructure.from_fs(f.getFSValue())
-                newF = PyFeature(f.getName(), copy)
+                copy = FeatureStructure.from_fs(f.getFSValue())
+                newF = Feature(f.getName(), copy)
             newFS._elements[f.getName()] = newF
         return newFS
 
@@ -522,7 +522,7 @@ class PyFeatureStructure:
         return "FeatureStructureType = " + self._type
 
     def copy(self):
-        return PyFeatureStructure.from_fs(self)
+        return FeatureStructure.from_fs(self)
 
     def size(self):
         return len(self._elements)
@@ -549,7 +549,7 @@ class PyFeatureStructure:
         if slash < 0:
             result = self._elements.get(name)
             if result == None and create:
-                result = PyFeature(name)
+                result = Feature(name)
                 self.add_feature(result)
             return result
 
@@ -564,8 +564,8 @@ class PyFeatureStructure:
         else:
             if not create:
                 return None
-            fs = PyFeatureStructure()
-            f = PyFeature(head, fs)
+            fs = FeatureStructure()
+            f = Feature(head, fs)
             self.add_feature(f)
 
         return fs.find_loop(tail, create)
@@ -573,7 +573,7 @@ class PyFeatureStructure:
 
     def add(self, name, value):
         """Creates a new feature and adds it to this
-        C{PyFeatureStructure}'s list of elements.
+        C{FeatureStructure}'s list of elements.
 
         :param name: C{str}
         :param value: C{str}
@@ -604,7 +604,7 @@ class PyFeatureStructure:
             return self._elements.pop(element.getName(), None) != None
 
     def equals(self, o):
-        if not isinstance(o, PyFeatureStructure):
+        if not isinstance(o, FeatureStructure):
             return False
         return self._type == o.getType()
 
@@ -648,13 +648,13 @@ class PyFeatureStructure:
                 return None
 
         # make a copy of this feature structure
-        result = PyFeatureStructure.from_fs(self)
+        result = FeatureStructure.from_fs(self)
 
         # Add all the features from fs to the result
         for f1 in fs.features():
             f2 = result.get(f1.getName())
             if f2 == None:
-                result.add_feature(PyFeature.from_feature(f1))
+                result.add_feature(Feature.from_feature(f1))
             else:
                 # A feature with the same name is already present in the result.
                 # If this is an atomic feature the values must match or unification fails
