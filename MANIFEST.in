@@ -1,0 +1,4 @@
+nclude LICENSE.txt CHANGES.txt README.rst MANIFEST.in
+include setup.py distribute_setup.py
+include src/graf/VERSION
+global-exclude *~

@@ -24,6 +24,7 @@ setup(
     description = "Python GrAF API",
     version = grafpython_version,
     url = "https://github.com/cidles/graf-python",
+    download_url = "https://github.com/downloads/cidles/graf-python/graf-python-{0}.tar.gz".format(grafpython_version),
     long_description = "Python implementation of the Graph Annotation Framework. (http://www.americannationalcorpus.org/graf-wiki)",
     license = "Apache License, Version 2.0",
     keywords = ['NLP', 'CL', 'natural language processing',
