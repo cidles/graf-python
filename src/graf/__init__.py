@@ -20,7 +20,7 @@ GrAF representation of the file, and then retrieve the annotations.
 from api import *
 from util import *
 
-from PyGraphParser import *
+from io import PyGraphParser
 
 
 __all__ = [
