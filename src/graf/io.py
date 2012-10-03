@@ -13,7 +13,8 @@ from xml.sax import make_parser, SAXException
 from xml.sax.handler import ContentHandler
 
 from graphs import Graph, Edge, Link, Node
-from annotations import Annotation
+from annotations import Annotation, FeatureStructure, Feature
+from media import Anchor, Region
 
 class Constants(object):
     """
