@@ -15,73 +15,72 @@ from xml.sax.handler import ContentHandler
 from graphs import Graph, Edge, Link, Node
 from annotations import Annotation
 
-class GRAF(object):
+class Constants(object):
     """
     A list of constants used in the GrafRenderer
     """
-    def __init__(self):
-        self.VERSION = "1.0"
-        self.NAMESPACE = "http://www.xces.org/ns/GrAF/" + self.VERSION + "/"
-        self.EOL = "\n"
-        self.DEFAULT = "DEFAULT"    	
-        self.IMPLEMENTATION = "org.xces.graf.api.Implementation"
-        self.DEFAULT_IMPLEMENTATION = ("org.xces.graf.impl." + 
-                                        "DefaultImplementation")
-        self.LANGUAGE = "org.xces.graf.lang"
-        self.GRAPH = "graph"
-        self.NODESET = "nodeSet"
-        self.EDGESET = "edgeSet"
-        self.NODE = "node"
-        self.EDGE = "edge"
-        self.ASET = "as"
-        self.ANNOTATION = "a"
-        self.FS = "fs"
-        self.FEATURE = "f"
-        self.REGION = "region"
-        self.LINK = "link"
-        self.HEADER = "header"
-        self.DEPENDENCIES = "dependencies"
-        self.PRIMARY_DATA = "primaryData"
-        self.BASE_SEGMENTATION = "baseSegmentation"
-        self.BASE_ANNOTATION = "baseAnnotation"
-        self.DEPENDS_ON = "dependsOn"
-        self.REFERENCED_BY = "referencedBy"
-        self.EXTERNAL_DOCS = "externalDocumentation"
-        self.ANNOTATION_DESC = "annotationDescription"
-        self.TAGSDECL = "tagsDecl"
-        self.TAGUSAGE = "tagUsage"
-        self.ROOTS = "roots"
-        self.ROOT = "root"
-        self.MEDIA = "media"
-        self.MEDIUM = "medium"
-        self.ANCHOR_TYPES = "anchorTypes"
-        self.ANCHOR_TYPE = "anchorType"
-        self.ANNOTATION_SETS = "annotationSets"
-        self.ANNOTATION_SET = "annotationSet"
-        self.ANNOTATION_SPACE = "annotationSpace"
-        self.NAME = "name"
-        self.VALUE = "value"
-        self.ID = "xml:id"
-        self.TYPE = "type"
-        self.TYPE_F_ID = "f.id"
-        self.AS_ID = "as.id"
-        self.START = "start"
-        self.END = "end"
-        self.FROM = "from"
-        self.TO = "to"
-        self.ROOT = "root"
-        self.LABEL = "label"
-        self.ANCHORS = "anchors"
-        self.VERSION = "version"
-        self.GI = "gi"
-        self.OCCURS = "occurs"
-        self.LOC = "loc"
-        self.LAYER = "layer"
-        self.REF = "ref"
-        self.ASET = "as"
-        self.TARGETS = "targets"
-        self.MEDIA = "media"
-        self.DEFAULT = "default"
+    __slots__ = ()
+    VERSION = "1.0"
+    NAMESPACE = "http://www.xces.org/ns/GrAF/" + VERSION + "/"
+    EOL = "\n"
+    DEFAULT = "DEFAULT"    	
+    IMPLEMENTATION = "org.xces.graf.api.Implementation"
+    DEFAULT_IMPLEMENTATION = "org.xces.graf.impl.DefaultImplementation"
+    LANGUAGE = "org.xces.graf.lang"
+    GRAPH = "graph"
+    NODESET = "nodeSet"
+    EDGESET = "edgeSet"
+    NODE = "node"
+    EDGE = "edge"
+    ASET = "as"
+    ANNOTATION = "a"
+    FS = "fs"
+    FEATURE = "f"
+    REGION = "region"
+    LINK = "link"
+    HEADER = "header"
+    DEPENDENCIES = "dependencies"
+    PRIMARY_DATA = "primaryData"
+    BASE_SEGMENTATION = "baseSegmentation"
+    BASE_ANNOTATION = "baseAnnotation"
+    DEPENDS_ON = "dependsOn"
+    REFERENCED_BY = "referencedBy"
+    EXTERNAL_DOCS = "externalDocumentation"
+    ANNOTATION_DESC = "annotationDescription"
+    TAGSDECL = "tagsDecl"
+    TAGUSAGE = "tagUsage"
+    ROOTS = "roots"
+    ROOT = "root"
+    MEDIA = "media"
+    MEDIUM = "medium"
+    ANCHOR_TYPES = "anchorTypes"
+    ANCHOR_TYPE = "anchorType"
+    ANNOTATION_SETS = "annotationSets"
+    ANNOTATION_SET = "annotationSet"
+    ANNOTATION_SPACE = "annotationSpace"
+    NAME = "name"
+    VALUE = "value"
+    ID = "xml:id"
+    TYPE = "type"
+    TYPE_F_ID = "f.id"
+    AS_ID = "as.id"
+    START = "start"
+    END = "end"
+    FROM = "from"
+    TO = "to"
+    ROOT = "root"
+    LABEL = "label"
+    ANCHORS = "anchors"
+    VERSION = "version"
+    GI = "gi"
+    OCCURS = "occurs"
+    LOC = "loc"
+    LAYER = "layer"
+    REF = "ref"
+    ASET = "as"
+    TARGETS = "targets"
+    MEDIA = "media"
+    DEFAULT = "default"
 
 
 class XML(object):
@@ -153,7 +152,7 @@ class GrafRenderer(object):
 
     """
 
-    def __init__(self, filename):
+    def __init__(self, filename, constants=Constants):
         """Create an instance of a GrafRenderer.
 
         """
@@ -161,7 +160,7 @@ class GrafRenderer(object):
         self._xml = XML()
         self._indent = IndentManager()
         self._FILE = open(filename, "w")
-        self._g = GRAF()
+        self._g = Constants
         self._VERSION = self._g.VERSION
         self._UTF8 = "UTF-8"
         self._UTF16 = "UTF-16"
@@ -526,14 +525,14 @@ class GraphParser(ContentHandler):
 
     """
 
-    def __init__(self):
+    def __init__(self, constants=Constants):
         """Create a new C{GraphParser} instance.
 
         """
 
         self._parser = make_parser()
         self._parser.setContentHandler(self)
-        self._g = GRAF()
+        self._g = Constants
         self._annotation_set_map = {}
         self._annotation_space_map = {} # Added AL
         self._buffer = ""
