@@ -7,6 +7,7 @@
 # URL: <http://www.cidles.eu/ltll/poio>
 # For license information, see LICENSE.TXT
 
+import sys
 from graf import Node, Graph, Edge, Feature, FeatureStructure, Annotation, GrafRenderer
 
 # Create three nodes
@@ -51,5 +52,5 @@ annotation.add('feature3', 'value_3')
 node_one.add_annotation(annotation)
 
 # Rendering the Graph
-graf_render = GrafRenderer('test.xml') # Change directory
+graf_render = GrafRenderer(sys.stdout)
 graf_render.render(graph)

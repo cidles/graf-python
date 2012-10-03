@@ -152,14 +152,14 @@ class GrafRenderer(object):
 
     """
 
-    def __init__(self, filename, constants=Constants):
+    def __init__(self, out, constants=Constants):
         """Create an instance of a GrafRenderer.
 
         """
 
         self._xml = XML()
         self._indent = IndentManager()
-        self._FILE = open(filename, "w")
+        self._FILE = out if hasattr(out, 'write') else open(out, "w")
         self._g = Constants
         self._VERSION = self._g.VERSION
         self._UTF8 = "UTF-8"
