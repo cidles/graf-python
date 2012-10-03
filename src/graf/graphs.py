@@ -19,7 +19,7 @@ quickly based on their ID
 
 from annotations import FeatureStructure, AnnotationSet, AnnotationSpace, Annotation
 
-class Graph:
+class Graph(object):
     """
     Class of Graph.
 
@@ -306,7 +306,7 @@ class Graph:
         edge._fromNode.add_out_edge(edge)
         edge._toNode.add_in_edge(edge)
 
-class GraphElement:
+class GraphElement(object):
     """
     Class of edges in Graph:
 
@@ -579,7 +579,7 @@ class Edge(GraphElement):
         return "Edge id = " + self._id
 
 
-class Link:
+class Link(object):
     def __init__(self):
         self._regions = []
 
@@ -590,7 +590,7 @@ class Link:
         self._regions.append(region)
 
 
-class StandoffHeader:
+class StandoffHeader(object):
     def __init__(self):
         self._annotationSets = {}
         self._annotationSpaces = {}

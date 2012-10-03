@@ -9,7 +9,7 @@
 # For license information, see LICENSE.TXT
 #
 
-class Annotation:
+class Annotation(object):
     """
     A Annotation is the artifcat being annotated.  An annotation is a
     labelled feature structure.  The annotation class/interface also
@@ -97,7 +97,7 @@ class Annotation:
         return None
 
 
-class AnnotationSet:
+class AnnotationSet(object):
     """
     A set of Annotations.  Each Annotation set has a name (C{Str})
     and a type (C{URI}) and a set of annotations.
@@ -240,7 +240,7 @@ class AnnotationSet:
         return len(self._annotations)
 
 
-class AnnotationSpace:
+class AnnotationSpace(object):
     """
     A set of Annotations.  Each Annotation set has a name (C{Str})
     and a type (C{URI}) and a set of annotations.
@@ -383,7 +383,7 @@ class AnnotationSpace:
         return len(self._annotations)
 
 
-class Feature:
+class Feature(object):
     """
     A name/value pair.  The "value" of a C{Feature} may be a string or 
     another Py{FeatureStructure} object.
@@ -484,7 +484,7 @@ class Feature:
                     ' FeatureStructure object')
 
 
-class FeatureStructure:
+class FeatureStructure(object):
     """
     A list of C{Feature}s indexed by name.
 

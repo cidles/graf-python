@@ -9,7 +9,7 @@
 # For license information, see LICENSE.TXT
 #
 
-class Anchor:
+class Anchor(object):
     """
     Class for the Anchor elements of a Graph.
     These are used to represent character offsets in a region of text.
@@ -72,7 +72,7 @@ class Anchor:
 # For license information, see LICENSE.TXT
 #
 
-class Region:
+class Region(object):
     """
     The area in the text file being annotated.  A region is defined 
     by a sequence of C{Anchor} objects.

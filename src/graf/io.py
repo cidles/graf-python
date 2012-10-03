@@ -15,7 +15,7 @@ from xml.sax.handler import ContentHandler
 from graphs import Graph, Edge, Link, Node
 from annotations import Annotation
 
-class GRAF:
+class GRAF(object):
     """
     A list of constants used in the GrafRenderer
     """
@@ -84,7 +84,7 @@ class GRAF:
         self.DEFAULT = "default"
 
 
-class XML:
+class XML(object):
 
     def __init__(self):
         pass
@@ -100,7 +100,7 @@ class XML:
         return name + "=\"" + self.encode(value) + "\""
 
 
-class IndentManager:
+class IndentManager(object):
     def __init__(self):
         self._indent = "    "
 
@@ -114,7 +114,7 @@ class IndentManager:
         self._indent = self._indent[0:len(self._indent)-4]
 
 
-class DocumentHeader:
+class DocumentHeader(object):
 
     def __init__(self, path):
         self._basename = ""
@@ -144,7 +144,7 @@ class DocumentHeader:
         return None
 
                  
-class GrafRenderer:
+class GrafRenderer(object):
     """
     Renders a GrAF XML representation that can be read back by an instance
     of L{GraphParser}.
@@ -506,7 +506,7 @@ class GrafRenderer:
         self._FILE.write( "</graph>" + self._g.EOL)
 
 
-class Counter:
+class Counter(object):
     def __init__(self):
         self._count = 0
 
@@ -1034,7 +1034,7 @@ class GraphParser(ContentHandler):
         self._root_element = 0
 
 
-class EdgeInfo:
+class EdgeInfo(object):
     """
     Used to store information about edges when parsing the GrAF XML
     representation.
