@@ -17,7 +17,7 @@ class Annotation(object):
     from a feature structure.
 
     """
-    def __init__(self, label, features = FeatureStructure()):
+    def __init__(self, label, features = None):
         """Construct a new C{Annotation}.
 
         :param label: C{str}
@@ -28,7 +28,7 @@ class Annotation(object):
         """
 
         self._label = label
-        self._features = features
+        self._features = features or FeatureStructure()
         self._set = None
         self._element = None
 

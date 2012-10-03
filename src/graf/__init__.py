@@ -17,29 +17,25 @@ text file.  So, to parse the annotations we must first construct the
 GrAF representation of the file, and then retrieve the annotations.
 """
 
-from api import *
+from media import Anchor, Region
+from annotations import Annotation, AnnotationSet, AnnotationSpace, Feature, FeatureStructure
+from graphs import Edge, Graph, Node, Link
+from io import GraphParser, GrafRenderer
 from util import *
 
-from io import GraphParser
 
 
 __all__ = [
-    'GRAF',
     'Anchor', 
     'Annotation',
-    'AnnotationObj',
     'AnnotationSet',
     'AnnotationSpace',
-    'DocumentHeader',
     'Edge',
     'Feature',
     'FeatureStructure',
     'GrafRenderer',
     'Graph'
     'GraphParser',
-    'IndentManager',
     'Link',
     'Node',
-    'Region',
-    'StandoffHeader',
-    'XML',]
+    'Region',]
