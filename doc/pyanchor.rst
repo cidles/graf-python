@@ -1,6 +1,6 @@
-===================================
-Graf-Python Module - `PyAnchor.py`
-===================================
+=============
+`PyAnchor.py`
+=============
    
 .. automodule:: PyAnchor
    :members:

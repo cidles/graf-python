@@ -1,6 +1,6 @@
-=======================================
-Graf-Python Module - `PyGraphParser.py`
-=======================================
+==================
+`PyGraphParser.py`
+==================
    
 .. automodule:: PyGraphParser
    :members:

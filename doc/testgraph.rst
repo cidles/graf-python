@@ -1,6 +1,6 @@
-===========================================
-Graf-Python Test Module - `test_pygraph.py`
-===========================================
+=================
+`test_pygraph.py`
+=================
    
 .. automodule:: test_pygraph
    :members:

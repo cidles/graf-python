@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>PyEdge.py &mdash; Graf-Python 2 documentation</title>
+    <title>Graf-Python Tests &mdash; Graf-Python 2 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -27,9 +27,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="Graf-Python 2 documentation" href="index.html" />
-    <link rel="up" title="Graf-Python Modules" href="modules.html" />
-    <link rel="next" title="PyFeature.py" href="pyfeature.html" />
-    <link rel="prev" title="PyAnnotationSpace.py" href="pyannotationspace.html" /> 
+    <link rel="next" title="test_masc.py" href="testmasc.html" />
+    <link rel="prev" title="PyRegion.py" href="pyregion.html" /> 
   </head>
   <body>
     <div class="related">
@@ -45,13 +44,12 @@
           <a href="np-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="pyfeature.html" title="PyFeature.py"
+          <a href="testmasc.html" title="test_masc.py"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="pyannotationspace.html" title="PyAnnotationSpace.py"
+          <a href="pyregion.html" title="PyRegion.py"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Graf-Python 2 documentation</a> &raquo;</li>
-          <li><a href="modules.html" accesskey="U">Graf-Python Modules</a> &raquo;</li> 
+        <li><a href="index.html">Graf-Python 2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -60,54 +58,24 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="module-PyEdge">
-<span id="pyedge-py"></span><h1><cite>PyEdge.py</cite><a class="headerlink" href="#module-PyEdge" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="PyEdge.PyEdge">
-<em class="property">class </em><tt class="descclassname">PyEdge.</tt><tt class="descname">PyEdge</tt><big>(</big><em>id</em>, <em>fromNode=None</em>, <em>toNode=None</em><big>)</big><a class="reference internal" href="_modules/PyEdge.html#PyEdge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyEdge.PyEdge" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class of edges in PyGraph:
-- Each edge maintains the source (from) C{PyNode} and the destination.</p>
-<blockquote>
-<div>(to) C{PyNode}.</div></blockquote>
-<ul class="simple">
-<li>Edges may also contain one or more C{PyAnnotation} objects.</li>
+  <div class="section" id="graf-python-tests">
+<h1>Graf-Python Tests<a class="headerlink" href="#graf-python-tests" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="testmasc.html"><cite>test_masc.py</cite></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="testmasc.html#indices-and-tables">Indices and tables</a></li>
 </ul>
-<p class="rubric">Methods</p>
-<dl class="method">
-<dt id="PyEdge.PyEdge.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>id</em>, <em>fromNode=None</em>, <em>toNode=None</em><big>)</big><a class="reference internal" href="_modules/PyEdge.html#PyEdge.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyEdge.PyEdge.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>C{PyEdge} Constructor.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>id</strong> &#8211; C{str}</li>
-<li><strong>fromNode</strong> &#8211; C{PyNode}</li>
-<li><strong>toNode</strong> &#8211; C{PyNode}</li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testgraph.html"><cite>test_pygraph.py</cite></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="testgraph.html#indices-and-tables">Indices and tables</a></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="PyEdge.PyEdge.from_edge">
-<tt class="descname">from_edge</tt><big>(</big><em>e</em><big>)</big><a class="reference internal" href="_modules/PyEdge.html#PyEdge.from_edge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyEdge.PyEdge.from_edge" title="Permalink to this definition">¶</a></dt>
-<dd><p>C{PyEdge} Constructor from an existing C{PyEdge}.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>e</strong> &#8211; C{PyEdge}</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testgparser.html"><cite>test_pygraphparser.py</cite></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="testgparser.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="indices-and-tables">
 <h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -126,21 +94,21 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#"><cite>PyEdge.py</cite></a><ul>
+<li><a class="reference internal" href="#">Graf-Python Tests</a><ul>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="pyannotationspace.html"
-                        title="previous chapter"><cite>PyAnnotationSpace.py</cite></a></p>
+  <p class="topless"><a href="pyregion.html"
+                        title="previous chapter"><cite>PyRegion.py</cite></a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="pyfeature.html"
-                        title="next chapter"><cite>PyFeature.py</cite></a></p>
+  <p class="topless"><a href="testmasc.html"
+                        title="next chapter"><cite>test_masc.py</cite></a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/pyedge.txt"
+    <li><a href="_sources/tests.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -173,13 +141,12 @@
           <a href="np-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="pyfeature.html" title="PyFeature.py"
+          <a href="testmasc.html" title="test_masc.py"
              >next</a> |</li>
         <li class="right" >
-          <a href="pyannotationspace.html" title="PyAnnotationSpace.py"
+          <a href="pyregion.html" title="PyRegion.py"
              >previous</a> |</li>
-        <li><a href="index.html">Graf-Python 2 documentation</a> &raquo;</li>
-          <li><a href="modules.html" >Graf-Python Modules</a> &raquo;</li> 
+        <li><a href="index.html">Graf-Python 2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

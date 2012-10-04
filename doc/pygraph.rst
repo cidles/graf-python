@@ -1,6 +1,6 @@
-=================================
-Graf-Python Module - `PyGraph.py`
-=================================
+============
+`PyGraph.py`
+============
    
 .. automodule:: PyGraph
    :members:

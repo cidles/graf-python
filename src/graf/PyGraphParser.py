@@ -57,6 +57,9 @@ class PyGraphParser(ContentHandler):
         self._root_id = ""
         self._root_element = 0
 
+        # New elements
+        self.map = {}
+        self.tag = ''
 
     def parse(self, file, parsed = None):
         """Parses the XML file at the given path.
@@ -68,7 +71,6 @@ class PyGraphParser(ContentHandler):
 
         if parsed is None:
             parsed = []
-        #print "parsing " + file
         delete_header = False
         if self._header is None:
             self._header = PyDocumentHeader(os.path.abspath(file))
@@ -92,6 +94,9 @@ class PyGraphParser(ContentHandler):
         It's a method from ContentHandler class.
 
         """
+        self.map[name] = ''
+        self.tag = name
+
         if name == self._g.GRAPH:
             self.graph_start(attrs)
         elif name == self._g.NODE:
@@ -127,6 +132,8 @@ class PyGraphParser(ContentHandler):
         It's a method from ContentHandler class.
 
         """
+
+        self.map[self.tag] += ch
 
         # Check for root node
         if self._root_element == 1:
@@ -169,19 +176,6 @@ class PyGraphParser(ContentHandler):
         self._root_id = None
         del self._relations[:]
         self._graph = PyGraph()
-        n = attrs.getLength() - 1
-        # Remove it when tested
-        # This is never used with any of the MASC Versions
-        # name = attrs.getQName(i)
-        # Gives error to each version
-        #for i in range(0, n):
-        #    attrs.getQName(i)
-        #    name = attrs.getQName(i)
-        #    value = attrs.getValue(i)
-        #    if self._g.ROOT == name:
-        #        self._root_id = value
-        #    elif self._g.VERSION != name:
-        #        self._graph.add_feature(name, value)
 
     def graph_end(self):
         """Executes when the parser encounters the end graph tag.
@@ -397,12 +391,10 @@ class PyGraphParser(ContentHandler):
 
         name = attrs.getValue(self._g.NAME)
 
-        # In the new MASC version the values aren't attributes
-        # any more. So with this way the value is granted
         try:
             value = attrs.getValue(self._g.VALUE)
         except KeyError as inst:
-            value = attrs.getValueByQName(self._g.NAME)
+            value = ''
 
         f = PyFeature(name)
 
@@ -419,7 +411,16 @@ class PyGraphParser(ContentHandler):
 
         """
 
+        value = self.map[self.tag]
+
         f = self._f_stack.pop()
+
+        if value != '':
+            if sys.version_info < (3, 0):
+                f.set_value(codecs.encode(value,'utf-8'))
+            else:
+                f.set_value(str(value))
+
         n = len(self._fs_stack)-1
         if n < 0:
             fs = None
@@ -465,14 +466,6 @@ class PyGraphParser(ContentHandler):
         to the current graph.
 
         """
-
-        # In MASC version 1 in the graph header on
-        # <dependencies>
-        #   <dependsOn type="seg"/>
-        # </dependencies>
-        # Now in MASC version 3 the depencies here
-        # changed to
-        # <dependsOn f.id="seg"/>
 
         try:
             type = attrs.getValue(self._g.TYPE)

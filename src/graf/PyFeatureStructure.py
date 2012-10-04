@@ -10,7 +10,6 @@
 #
 
 from graf.PyAnchor import *
-from graf.PyFeature import *
 
 class PyFeatureStructure:
     """
@@ -207,4 +206,4 @@ class PyFeatureStructure:
                     result.add(f1.getName(), u)
         return result
 
-
+from graf.PyFeature import *
