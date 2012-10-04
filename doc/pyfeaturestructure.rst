@@ -1,6 +1,6 @@
-============================================
-Graf-Python Module - `PyFeatureStructure.py`
-============================================
+=======================
+`PyFeatureStructure.py`
+=======================
    
 .. automodule:: PyFeatureStructure
    :members:

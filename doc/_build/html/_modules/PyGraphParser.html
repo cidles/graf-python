@@ -67,10 +67,13 @@
 <span class="kn">from</span> <span class="nn">xml.sax</span> <span class="kn">import</span> <span class="n">make_parser</span><span class="p">,</span> <span class="n">SAXException</span>
 <span class="kn">from</span> <span class="nn">xml.sax.handler</span> <span class="kn">import</span> <span class="n">ContentHandler</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">codecs</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 
-<span class="kn">from</span> <span class="nn">PyGraph</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">GRAF</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">PyDocumentHeader</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">graf.PyGraph</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">graf.GRAF</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">graf.PyDocumentHeader</span> <span class="kn">import</span> <span class="o">*</span>
+
 
 <div class="viewcode-block" id="PyGraphParser"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser">[docs]</a><span class="k">class</span> <span class="nc">PyGraphParser</span><span class="p">(</span><span class="n">ContentHandler</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -109,6 +112,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_root_id</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_root_element</span> <span class="o">=</span> <span class="mi">0</span>
 
+        <span class="c"># New elements</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">map</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
 </div>
 <div class="viewcode-block" id="PyGraphParser.parse"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">file</span><span class="p">,</span> <span class="n">parsed</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Parses the XML file at the given path.</span>
@@ -120,7 +126,6 @@
 
         <span class="k">if</span> <span class="n">parsed</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">parsed</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="c">#print &quot;parsing &quot; + file</span>
         <span class="n">delete_header</span> <span class="o">=</span> <span class="bp">False</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_header</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_header</span> <span class="o">=</span> <span class="n">PyDocumentHeader</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="nb">file</span><span class="p">))</span>
@@ -144,6 +149,9 @@
 <span class="sd">        It&#39;s a method from ContentHandler class.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="n">name</span>
+
         <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">GRAPH</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">graph_start</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">NODE</span><span class="p">:</span>
@@ -179,6 +187,8 @@
 <span class="sd">        It&#39;s a method from ContentHandler class.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span> <span class="o">+=</span> <span class="n">ch</span>
 
         <span class="c"># Check for root node</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_root_element</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -221,19 +231,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_root_id</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_relations</span><span class="p">[:]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span> <span class="o">=</span> <span class="n">PyGraph</span><span class="p">()</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getLength</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
-        <span class="c"># Remove it when tested</span>
-        <span class="c"># This is never used with any of the MASC Versions</span>
-        <span class="c"># name = attrs.getQName(i)</span>
-        <span class="c"># Gives error to each version</span>
-        <span class="c">#for i in range(0, n):</span>
-        <span class="c">#    attrs.getQName(i)</span>
-        <span class="c">#    name = attrs.getQName(i)</span>
-        <span class="c">#    value = attrs.getValue(i)</span>
-        <span class="c">#    if self._g.ROOT == name:</span>
-        <span class="c">#        self._root_id = value</span>
-        <span class="c">#    elif self._g.VERSION != name:</span>
-        <span class="c">#        self._graph.add_feature(name, value)</span>
 </div>
 <div class="viewcode-block" id="PyGraphParser.graph_end"><a class="viewcode-back" href="../pygraphparser.html#PyGraphParser.PyGraphParser.graph_end">[docs]</a>    <span class="k">def</span> <span class="nf">graph_end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Executes when the parser encounters the end graph tag.</span>
@@ -449,17 +446,18 @@
 
         <span class="n">name</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">NAME</span><span class="p">)</span>
 
-        <span class="c"># In the new MASC version the values aren&#39;t attributes</span>
-        <span class="c"># any more. So with this way the value is granted</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">value</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">VALUE</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">inst</span><span class="p">:</span>
-            <span class="n">value</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getValueByQName</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">NAME</span><span class="p">)</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
 
         <span class="n">f</span> <span class="o">=</span> <span class="n">PyFeature</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">f</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">codecs</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="s">&#39;utf-8&#39;</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_f_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </div>
@@ -468,7 +466,16 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
 
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span>
+
         <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_f_stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">value</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">codecs</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="s">&#39;utf-8&#39;</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
         <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fs_stack</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
         <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">fs</span> <span class="o">=</span> <span class="bp">None</span>
@@ -514,14 +521,6 @@
 <span class="sd">        to the current graph.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="c"># In MASC version 1 in the graph header on</span>
-        <span class="c"># &lt;dependencies&gt;</span>
-        <span class="c">#   &lt;dependsOn type=&quot;seg&quot;/&gt;</span>
-        <span class="c"># &lt;/dependencies&gt;</span>
-        <span class="c"># Now in MASC version 3 the depencies here</span>
-        <span class="c"># changed to</span>
-        <span class="c"># &lt;dependsOn f.id=&quot;seg&quot;/&gt;</span>
 
         <span class="k">try</span><span class="p">:</span>
             <span class="nb">type</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_g</span><span class="o">.</span><span class="n">TYPE</span><span class="p">)</span>

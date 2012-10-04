@@ -110,6 +110,6 @@ class PyFeature:
         else: 
             print('Error in set_value(), value must be string or' +
                     ' PyFeatureStructure object')
-    
+
 
         

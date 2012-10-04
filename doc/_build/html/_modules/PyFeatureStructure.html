@@ -64,7 +64,8 @@
 <span class="c"># For license information, see LICENSE.TXT</span>
 <span class="c">#</span>
 
-<span class="kn">from</span> <span class="nn">PyAnchor</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">graf.PyAnchor</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">graf.PyFeature</span> <span class="kn">import</span> <span class="o">*</span>
 
 <div class="viewcode-block" id="PyFeatureStructure"><a class="viewcode-back" href="../pyfeaturestructure.html#PyFeatureStructure.PyFeatureStructure">[docs]</a><span class="k">class</span> <span class="nc">PyFeatureStructure</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -180,7 +181,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">None</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="bp">None</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">None</span>
@@ -259,9 +260,7 @@
                         <span class="k">return</span> <span class="bp">None</span>
                     <span class="c"># They do unify, so add the unified structure to the result</span>
                     <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">f1</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="n">u</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">result</span>
-</div>
-<span class="kn">from</span> <span class="nn">PyFeature</span> <span class="kn">import</span> <span class="o">*</span>
+        <span class="k">return</span> <span class="n">result</span></div>
 </pre></div>
 
           </div>

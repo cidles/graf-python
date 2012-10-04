@@ -675,16 +675,9 @@
 
         <span class="k">assert</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">set_user_object</span><span class="p">(</span><span class="nb">object</span><span class="p">),</span><span class="n">error_message</span><span class="p">)</span>
 </div></div>
-<div class="viewcode-block" id="ExtraMethGraph"><a class="viewcode-back" href="../testgraph.html#test_pygraph.ExtraMethGraph">[docs]</a><span class="k">class</span> <span class="nc">ExtraMethGraph</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This class contain the remain methods of the class</span>
-<span class="sd">    PyGraph.</span>
-
-<span class="sd">    This methods doesn&#39;t need to be tested for now.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
+<span class="k">class</span> <span class="nc">ExtraMethGraph</span><span class="p">:</span>
     <span class="c">#def test_remove_region(self):</span>
-<div class="viewcode-block" id="ExtraMethGraph.remove_region"><a class="viewcode-back" href="../testgraph.html#test_pygraph.ExtraMethGraph.remove_region">[docs]</a>    <span class="k">def</span> <span class="nf">remove_region</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">remove_region</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t remove region.</span>
 
 <span class="sd">        Raises</span>
@@ -709,8 +702,8 @@
 
         <span class="k">assert</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">remove_region</span><span class="p">(</span><span class="n">region</span><span class="p">),</span><span class="n">error_message</span><span class="p">)</span>
 
-    <span class="c">#def test_find_edge(self):</span></div>
-<div class="viewcode-block" id="ExtraMethGraph.find_edge"><a class="viewcode-back" href="../testgraph.html#test_pygraph.ExtraMethGraph.find_edge">[docs]</a>    <span class="k">def</span> <span class="nf">find_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c">#def test_find_edge(self):</span>
+    <span class="k">def</span> <span class="nf">find_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t return a specific edge.</span>
 
 <span class="sd">        Raises</span>
@@ -729,8 +722,8 @@
 
         <span class="k">assert</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">find_edge</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span><span class="n">tnode</span><span class="p">),</span><span class="n">error_message</span><span class="p">)</span>
 
-    <span class="c">#def test_insert_edge(self):</span></div>
-<div class="viewcode-block" id="ExtraMethGraph.insert_edge"><a class="viewcode-back" href="../testgraph.html#test_pygraph.ExtraMethGraph.insert_edge">[docs]</a>    <span class="k">def</span> <span class="nf">insert_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c">#def test_insert_edge(self):</span>
+    <span class="k">def</span> <span class="nf">insert_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t insert a edge.</span>
 
 <span class="sd">        Raises</span>
@@ -746,8 +739,8 @@
 
         <span class="k">assert</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">insert_edge</span><span class="p">(</span><span class="n">edge</span><span class="p">),</span><span class="n">error_message</span><span class="p">)</span>
 
-    <span class="c">#def test_get_region(self):</span></div>
-<div class="viewcode-block" id="ExtraMethGraph.get_region"><a class="viewcode-back" href="../testgraph.html#test_pygraph.ExtraMethGraph.get_region">[docs]</a>    <span class="k">def</span> <span class="nf">get_region</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c">#def test_get_region(self):</span>
+    <span class="k">def</span> <span class="nf">get_region</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t return a region.</span>
 
 <span class="sd">        Raises</span>
@@ -761,8 +754,8 @@
 
         <span class="k">assert</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">get_region</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span><span class="n">error_message</span><span class="p">)</span>
 
-    <span class="c">#def test_update_node(self):</span></div>
-<div class="viewcode-block" id="ExtraMethGraph.update_node"><a class="viewcode-back" href="../testgraph.html#test_pygraph.ExtraMethGraph.update_node">[docs]</a>    <span class="k">def</span> <span class="nf">update_node</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c">#def test_update_node(self):</span>
+    <span class="k">def</span> <span class="nf">update_node</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t update node.</span>
 
 <span class="sd">        Raises</span>
@@ -778,8 +771,8 @@
 
         <span class="k">assert</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">update_node</span><span class="p">(</span><span class="n">edge</span><span class="p">),</span><span class="n">error_message</span><span class="p">)</span>
 
-    <span class="c">#def test_add_edge_create(self):</span></div>
-<div class="viewcode-block" id="ExtraMethGraph.add_edge_create"><a class="viewcode-back" href="../testgraph.html#test_pygraph.ExtraMethGraph.add_edge_create">[docs]</a>    <span class="k">def</span> <span class="nf">add_edge_create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c">#def test_add_edge_create(self):</span>
+    <span class="k">def</span> <span class="nf">add_edge_create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t return a new edge.</span>
 
 <span class="sd">        Raises</span>
@@ -799,8 +792,8 @@
 
         <span class="k">assert</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">add_edge_create</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">fnode</span><span class="p">,</span> <span class="n">tnode</span><span class="p">),</span><span class="n">error_message</span><span class="p">)</span>
 
-    <span class="c">#def test_add_edge_from_to(self):</span></div>
-<div class="viewcode-block" id="ExtraMethGraph.add_edge_from_to"><a class="viewcode-back" href="../testgraph.html#test_pygraph.ExtraMethGraph.add_edge_from_to">[docs]</a>    <span class="k">def</span> <span class="nf">add_edge_from_to</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c">#def test_add_edge_from_to(self):</span>
+    <span class="k">def</span> <span class="nf">add_edge_from_to</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Raise an assertion if can&#39;t return a new edge.</span>
 
 <span class="sd">        Raises</span>
@@ -820,7 +813,7 @@
 
         <span class="n">error_message</span> <span class="o">=</span> <span class="s">&#39;Fail - Returning the edge from place&#39;</span>
 
-        <span class="k">assert</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">add_edge_from_to</span><span class="p">(</span><span class="n">fnode</span><span class="p">,</span> <span class="n">tnode</span><span class="p">),</span><span class="n">error_message</span><span class="p">)</span></div></div>
+        <span class="k">assert</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">add_edge_from_to</span><span class="p">(</span><span class="n">fnode</span><span class="p">,</span> <span class="n">tnode</span><span class="p">),</span><span class="n">error_message</span><span class="p">)</span>
 </pre></div>
 
           </div>

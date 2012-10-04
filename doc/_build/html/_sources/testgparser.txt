@@ -1,6 +1,6 @@
-=================================================
-Graf-Python Test Module - `test_pygraphparser.py`
-=================================================
+=======================
+`test_pygraphparser.py`
+=======================
    
 .. automodule:: test_pygraphparser
    :members:

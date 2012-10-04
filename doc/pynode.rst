@@ -1,6 +1,6 @@
-================================
-Graf-Python Module - `PyNode.py`
-================================
+===========
+`PyNode.py`
+===========
    
 .. automodule:: PyNode
    :members:

@@ -8,35 +8,14 @@ Welcome to Graf-Python's documentation!
 
 This document has the purpose present the documentation modules and tests that the project Graf-Python has.
 
-Contents
---------
+**Contents**
 
-Modules
-```````
 .. toctree::
    :maxdepth: 2
 
-   pyanchor
-   pyannotation
-   pyannotationspace
-   pyedge
-   pyfeature
-   pyfeaturestructure
-   pygrafrender
-   pygraph
-   pygraphelement
-   pygraphparser
-   pynode
-   pyregion
+   modules
+   tests
 
-Tests
-`````
-.. toctree::
-   :maxdepth: 2
-
-   testmasc
-   testgraph
-   testgparser
 
 Indices and tables
 ==================

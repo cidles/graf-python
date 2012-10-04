@@ -1,6 +1,6 @@
-================================
-Graf-Python Module - `PyEdge.py`
-================================
+===========
+`PyEdge.py`
+===========
    
 .. automodule:: PyEdge
    :members:

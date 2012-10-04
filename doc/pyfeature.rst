@@ -1,6 +1,6 @@
-===================================
-Graf-Python Module - `PyFeature.py`
-===================================
+==============
+`PyFeature.py`
+==============
    
 .. automodule:: PyFeature
    :members:

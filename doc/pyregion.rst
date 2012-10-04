@@ -1,6 +1,6 @@
-==================================
-Graf-Python Module - `PyRegion.py`
-==================================
+=============
+`PyRegion.py`
+=============
    
 .. automodule:: PyRegion
    :members:

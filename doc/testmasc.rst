@@ -1,6 +1,6 @@
-========================================
-Graf-Python Test Module - `test_masc.py`
-========================================
+==============
+`test_masc.py`
+==============
    
 .. automodule:: test_masc
    :members:
