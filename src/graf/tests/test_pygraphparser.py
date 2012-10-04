@@ -182,7 +182,7 @@ class TestPyGraphParser:
         Raises
         ------
         AssertionError
-        If can't set the value.
+            If can't set the value.
 
         """
 
@@ -204,7 +204,7 @@ class TestPyGraphParser:
         Raises
         ------
         AssertionError
-        If can't set the value.
+            If can't set the value.
 
         """
 
@@ -327,7 +327,7 @@ class TestPyGraphParser:
         Raises
         ------
         AssertionError
-        If can't set the value.
+            If can't set the value.
 
         """
 
@@ -361,7 +361,7 @@ class TestPyGraphParser:
         Raises
         ------
         AssertionError
-        If can't set the value.
+            If can't set the value.
 
         """
 
@@ -395,7 +395,7 @@ class TestPyGraphParser:
         Raises
         ------
         AssertionError
-        If can't set the value.
+            If can't set the value.
 
         """
 
@@ -418,7 +418,7 @@ class TestPyGraphParser:
         Raises
         ------
         AssertionError
-        If can't set the value.
+            If can't set the value.
 
         """
 
@@ -441,7 +441,7 @@ class TestPyGraphParser:
         Raises
         ------
         AssertionError
-        If can't set the value.
+            If can't set the value.
 
         """
 
@@ -457,7 +457,7 @@ class TestPyGraphParser:
         Raises
         ------
         AssertionError
-        If can't set the value.
+            If can't set the value.
 
         """
 
@@ -477,7 +477,7 @@ class TestPyGraphParser:
         Raises
         ------
         AssertionError
-        If can't set the value.
+            If can't set the value.
 
         """
 
@@ -494,7 +494,7 @@ class TestPyGraphParser:
         Raises
         ------
         AssertionError
-        If can't set the value.
+            If can't set the value.
 
         """
 
@@ -516,7 +516,7 @@ class TestPyGraphParser:
         Raises
         ------
         AssertionError
-        If can't set the value.
+            If can't set the value.
 
         """
 
@@ -551,7 +551,7 @@ class TestPyGraphParser:
         Raises
         ------
         AssertionError
-        If can't set the value.
+            If can't set the value.
 
         """
 
@@ -575,7 +575,7 @@ class TestPyGraphParser:
         Raises
         ------
         AssertionError
-        If can't set the value.
+            If can't set the value.
 
         """
 
@@ -604,7 +604,7 @@ class TestPyGraphParser:
         Raises
         ------
         AssertionError
-        If can't set the value.
+            If can't set the value.
 
         """
 

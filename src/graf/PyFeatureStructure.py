@@ -10,6 +10,7 @@
 #
 
 from graf.PyAnchor import *
+from graf.PyFeature import *
 
 class PyFeatureStructure:
     """
@@ -205,7 +206,5 @@ class PyFeatureStructure:
                     # They do unify, so add the unified structure to the result
                     result.add(f1.getName(), u)
         return result
-
-from graf.PyFeature import *
 
 
