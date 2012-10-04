@@ -18,7 +18,7 @@ GrAF representation of the file, and then retrieve the annotations.
 """
 
 from media import Anchor, Region
-from annotations import Annotation, AnnotationSet, AnnotationSpace, Feature, FeatureStructure
+from annotations import Annotation, AnnotationSpace, FeatureStructure
 from graphs import Edge, Graph, Node, Link
 from io import GraphParser, GrafRenderer
 from util import *
@@ -28,10 +28,8 @@ from util import *
 __all__ = [
     'Anchor', 
     'Annotation',
-    'AnnotationSet',
     'AnnotationSpace',
     'Edge',
-    'Feature',
     'FeatureStructure',
     'GrafRenderer',
     'Graph'

@@ -8,7 +8,7 @@
 # For license information, see LICENSE.TXT
 
 import sys
-from graf import Node, Graph, Edge, Feature, FeatureStructure, Annotation, GrafRenderer
+from graf import Node, Graph, Edge, FeatureStructure, Annotation, GrafRenderer
 
 # Create three nodes
 node_one = Node('node_one')
@@ -30,23 +30,19 @@ edge = Edge(node_one, node_three)
 #graph.add_edge(edge)
 
 # Add Features
-feature = Feature('another_feature') # Type to write in the strucutre
 feature_strct = FeatureStructure() # Structure
 
 # Adding two features
 # There are two ways to it.
 # Use the simple first
 # Setting up all the features to the annotation
-feature_strct.add('feature1', 'value_1')
-feature_strct.add('feature2', 'value_2')
-
-# Setting one value to the defined Feature
-feature.set_value('value_another')
+feature_strct['feature1'] = 'value_1'
+feature_strct['feature2'] = 'value_2'
 
 # Adding the features to annotations
-annotation = Annotation('label',feature_strct)
-annotation.add_feature(feature)
-annotation.add('feature3', 'value_3')
+annotation = Annotation('label', feature_strct)
+annotation.features['another_feature'] = 'value_another'
+annotation.features['feature3'] = 'value_3'
 
 # Adding the annotations to the node
 node_one.add_annotation(annotation)

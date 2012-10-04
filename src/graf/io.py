@@ -13,7 +13,7 @@ from xml.sax import make_parser, SAXException
 from xml.sax.handler import ContentHandler
 
 from graphs import Graph, Edge, Link, Node
-from annotations import Annotation, FeatureStructure, Feature
+from annotations import Annotation, FeatureStructure
 from media import Anchor, Region
 
 class Constants(object):
@@ -243,12 +243,12 @@ class GrafRenderer(object):
         """
 
         atts = ""
-        self.add_attribute(atts, self._g.NAME, aSet.getName())
+        self.add_attribute(atts, self._g.NAME, aSet.name)
 
         self.FILE.write(str(self._indent) + "<" + self._g.ASET 
                         + atts + ">" + self._g.EOL)
         self._indent.more()
-        for a in aSet.annotations():
+        for a in aSet:
             self.render_ann(a)
         self._indent.less()
         self.FILE.write(str(self._indent) + "</" + self._g.ASET 
@@ -259,18 +259,18 @@ class GrafRenderer(object):
 
         """
 
-        label = self._xml.encode(a._label)
+        label = self._xml.encode(a.label)
         self._FILE.write(str(self._indent) + "<" + self._g.ANNOTATION 
                         + " " 
                         + self._xml.attribute("label", label) + " " 
-                        + self._xml.attribute("ref", a._element._id))
-        set = a._set
-        if set is not None:
+                        + self._xml.attribute("ref", a.element._id))
+        aspace = a.aspace
+        if aspace is not None:
             self._FILE.write(" " + 
-                    self._xml.attribute(self._g.ASET, set._name))
+                    self._xml.attribute(self._g.ASET, aspace.name))
         
-        fs = a._features
-        if fs.size() > 0:
+        fs = a.features
+        if fs:
             self._FILE.write( ">" + self._g.EOL)
             self._indent.more()
             self.render_fs(fs)
@@ -285,46 +285,43 @@ class GrafRenderer(object):
 
         """
 
-        if fs.size() == 0:
+        if not fs:
             return
-        type = fs._type #
+        type = fs.type
         self._FILE.write(str(self._indent) + "<" + self._g.FS)
         if type is not None:
             self._FILE.write(" " + self._g.TYPE + "=\"" + type + "\">")
         self._FILE.write( ">" + self._g.EOL)
         self._indent.more()
-        for f in fs.features():
-            self.render_feature(f)
+        for name, value in fs.items():
+            self.render_feature(name, value)
         self._indent.less()
 
         self._FILE.write(str(self._indent) + "</" + self._g.FS + ">" 
                             + self._g.EOL)
 
 
-    def render_feature(self, f):
+    def render_feature(self, name, value):
         """Used to render the features elements of the Graph.
 
         """
 
-        name = f._name
-        if f.is_atomic():
-            value = f._stringValue
-            self._FILE.write(str(self._indent) + "<" + self._g.FEATURE 
-                    + " " 
-                    + self._g.NAME + "=\"" + name + "\" " 
-                    + self._g.VALUE + "=\"" + self._xml.encode(value) 
-                    + "\"/>" + self._g.EOL)
-        else:
-            value = f.getFSValue()
+        if hasattr(value, 'items'):
             self._FILE.write(str(self._indent) + "<" + self._g.FEATURE 
                             + " " 
                             + self._g.NAME + "=\"" + name + "\">" 
                             + self._g.EOL)
             self._indent.more()
-            renderFS(value)
+            self.render_fs(value)
             self._indent.less()
             self._FILE.write(str(self._indent) + "</" + self._g.FEATURE 
                             + ">" + self._g.EOL)
+        else:
+            self._FILE.write(str(self._indent) + "<" + self._g.FEATURE 
+                    + " " 
+                    + self._g.NAME + "=\"" + name + "\" " 
+                    + self._g.VALUE + "=\"" + self._xml.encode(value) 
+                    + "\"/>" + self._g.EOL)
 
     def get_anchors(self, region):
         """Gathers the anchors from a region in the Graph,
@@ -451,10 +448,10 @@ class GrafRenderer(object):
         annotations = {}
         for node in g.nodes():
             for a in node._annotations:
-                counter = annotations.get(a._label)
+                counter = annotations.get(a.label)
                 if counter is None:
                     counter = Counter()
-                    annotations[a._label] = counter
+                    annotations[a.label] = counter
                 counter.increment()
         return annotations
 
@@ -743,7 +740,6 @@ class GraphParser(ContentHandler):
         self._graph.add_node(self._current_node)
         self._current_node = None
 
-
     def annotation_set_start(self, attrs):
         """ Used to parse <annotationSet .../> elements in the XML
         representation.
@@ -821,7 +817,7 @@ class GraphParser(ContentHandler):
     def ann_end(self):
         if len(self._fs_stack) != 0:
             fs = self._fs_stack.pop()
-            self._current_annotation._features= fs
+            self._current_annotation.features= fs
         self._current_annotation = None
 
     def edge_start(self, attrs):
@@ -877,14 +873,13 @@ class GraphParser(ContentHandler):
 
     def fs_end(self):
         """Used to parse </fs> elements in the XML representation.
-
         """
-
-        if len(self._f_stack) != 0:
+        # FIXME: is this logic correct?
+        if self._f_stack:
             fs = self._fs_stack.pop()
-            if len(self._f_stack) -1 >= 0:
-                f = self._f_stack[len(self._f_stack)-1]
-                f.set_value(fs)
+            if self._f_stack:
+                name, value = self._f_stack.pop()
+                self._f_stack.append((name, fs))
 
 
     def feature_start(self, attrs):
@@ -898,32 +893,22 @@ class GraphParser(ContentHandler):
         # any more. So with this way the value is granted
         try:
             value = attrs.getValue(self._g.VALUE)
-        except KeyError as inst:
+        except KeyError:
             value = attrs.getValueByQName(self._g.NAME)
 
-        f = Feature(name)
-
-        if value is not None:
-            f.set_value(value)
-
-        self._f_stack.append(f)
+        self._f_stack.append((name, value))
 
     def feature_end(self):
         """Used to parse end features elements in the XML representation.
 
         """
 
-        f = self._f_stack.pop()
-        n = len(self._fs_stack)-1
-        if n < 0:
-            fs = None
-        else:
-            fs = self._fs_stack[len(self._fs_stack)-1]
-        if fs is None:
-            SAXException("Unable to attach feature to a feature structure:" 
-                        + " " + f.getName())
-        fs.add_feature(f)
-
+        key, value = self._f_stack.pop()
+        try:
+            fs = self._fs_stack[-1]
+        except IndexError:
+            raise SAXException("Unable to attach feature %r to a feature structure" % key)
+        fs[key] = value
     
     def as_start(self, attrs):
         """ Used to parse start <as/ ...> elements in the XML representation.

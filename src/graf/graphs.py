@@ -17,7 +17,7 @@ allow for quick traversals, and a hash map so nodes/edges can be found
 quickly based on their ID
 """
 
-from annotations import FeatureStructure, AnnotationSet, AnnotationSpace, Annotation
+from annotations import FeatureStructure, AnnotationSpace, Annotation
 
 class Graph(object):
     """
@@ -359,7 +359,7 @@ class GraphElement(object):
 
     def add_annotation(self, a):
         self._annotations.append(a)
-        a._element = self
+        a.element = self
 
     def add_annotation_create(self, label):
         """Creates an adds an annotation to this C{GraphElement}.

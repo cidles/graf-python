@@ -9,15 +9,19 @@
 # For license information, see LICENSE.TXT
 #
 
+import copy
+
 class Annotation(object):
     """
     A Annotation is the artifcat being annotated.  An annotation is a
     labelled feature structure.  The annotation class/interface also
     provides convenience methods for setting and getting values
     from a feature structure.
-
     """
-    def __init__(self, label, features = None):
+    __slots__ = ('id', 'label', 'features', 'aspace', 'element')
+    _ninsts = -1
+
+    def __init__(self, label, features=None, id=None):
         """Construct a new C{Annotation}.
 
         :param label: C{str}
@@ -27,82 +31,33 @@ class Annotation(object):
 
         """
 
-        self._label = label
-        self._features = features or FeatureStructure()
-        self._set = None
-        self._element = None
+        self.id = id if id is not None else self._next_id()
+        self.label = label
+        if not isinstance(features, FeatureStructure):
+            features = FeatureStructure(items=features)
+        self.features = features
+        self.aspace = None
+        self.element = None
 
-    def from_annotation(a):
-        """Construct a new C{Annotation}.
-
-        :param a: a C{Annotation} object
-
-        """
-        return Annotation(a.getLabel(), 
-                            FeatureStructure.from_fs(a.getFeatures()))
+    @classmethod
+    def _next_id(cls):
+        cls._ninsts += 1
+        return 'a-%d' % cls._ninsts
 
     def __repr__(self):
-        return "Annotation label = " + self._label
+        return "Annotation(%r, %r)" % (self.label, self.id)
 
-    def add(self, name, value):
-        """Creates and adda a C{Feature} to this C{Annotation}.
-
-        :param name: name of the C{Feature} to be added
-        :param value: value of the C{Feature} to be added
-
-        """
-
-        return self._features.add(name, value)        	
-
-    def add_feature(self, f):
-        """Adds the passed C{Feature} to this C{Annotation}.
-
-        :param f: C{Feature} object
-
-        """
-
-        self._features.add_feature(f)
-
-    def features(self):
-        """Returns the features.
-
-        :return: C{list} of the C{Feature}s of this C{Annotation}
-
-        """
-
-        return self._features.features()
-
-    def get_feature(self, name):
-        """Searches for a C{Feature} in this
-        C{Annotation}'s C{list} by name.
-
-        :param name: C{str}
-        :return: C{Feature}
-
-        return self._features.get(name)
-        """
-
-    def get_feature_value(self, name):
-        """Searches for a C{Feature} in this C{Annotation}'s C{list}
-        by name, returns that C{Feature}'s value.
-
-        :param: C{str}
-        :return: C{str} or None
-
-        """
-
-        f = self.get_feature(name)
-        if f is not None and f.is_atomic():
-            return f.getStringValue()
-        return None
+    #TODO: perhaps delegate __*item__, etc. methods to features
 
 
-class AnnotationSet(object):
+class AnnotationSpace(object):
     """
-    A set of Annotations.  Each Annotation set has a name (C{Str})
+    A collection of Annotations.  Each AnnotationSpace has a name (C{Str})
     and a type (C{URI}) and a set of annotations.
 
     """
+
+    __slots__ = ('name', 'type', '_elements')
 
     def __init__(self, name, type):
         """Constructor for C{AnnotationSet}
@@ -113,28 +68,32 @@ class AnnotationSet(object):
 
         """
 
-        self._name = name
-        self._type = type
-        self._annotations = []
+        self.name = name
+        self.type = type
+        self._elements = []
 
-    def from_as(aSet):
-        """Constructs a new C{AnnotationSet} from
-        an existing C{AnnotationSet}.
+    def __len__(self):
+        return len(self._elements)
 
-        :param aSet: C{AnnotationSet}
-        :return: C{AnnotationSet}
+    def __iter__(self):
+        return iter(self._elements)
 
-        """
-
-        newAS = AnnotationSet(aSet._name, aSet._type)
-        for a in aSet.annotations():
-            newAS.add_annotation(Annotation.from_annotation(a))
-        return newAS
+    def __copy__(self):
+        res = AnnotationSpace(self.name, self.type)
+        res.annotations = self.annotations[:]
+        return res
 
     def __repr__(self):
-        return "AnnSet name= " + self._name + " type= " + self._type
+        return "AnnotationSet(%r, %r)" % (self.name, self.type)
 
-    def add(self, label):
+    def add(self, ann):
+        """Adds a C{Annotation} to this C{AnnotationSpace}.
+        :param a: Annotation
+        """
+        self._elements.append(ann)
+        ann.aspace = self
+
+    def create(self, label):
         """Creates a new annotation with specified label, adds it
         to this annotation set, and returns the new annotation.
 
@@ -142,537 +101,233 @@ class AnnotationSet(object):
         :return: Annotation
 
         """
+        ann = Annotation(label)
+        self.add(ann)
+        return ann
 
-        annotation = Annotation(label)
-        self.add_annotation(annotation)
-        return annotation
-
-    def add_annotation(self, a):
-        """Adds a C{Annotation} to the annotations list of
-        this C{AnnotationSet}.
-
-        :param a: Annotation
-
-        """
-
-        self._annotations.append(a)
-        a._set = self
-
-    def get_annotations_label(self, label):
-        """Returns the C{Annotation} with the given label.
-
-        :param label: str
-        :return: Annotation
-
-        """
-
-        result = []
-        for a in self._annotations:
-            if label == a._label:
-                result.append(a)
-        return result
-
-    def get_annotations(self, label, fs):
-        """Returns the C{Annotation} with the given label,
-        in the given C{FeatureStructure}.
+    def select(self, label, fs=None):
+        """Generates C{Annotation} objects having the given label and features subsumed by the given C{FeatureStructure}.
 
         :param label: str
         :param fs: FeatureStructure
-        :return: FeatureStructure
-
+        :return: Annotation
         """
+        if fs is None:
+            subsumes = lambda ann: True
+        else:
+            subsumes = lambda ann: fs.subsumes(ann.features)
+        return (ann for ann in self._elements if ann.label == label and subsumes(ann))
 
-        result = []
-        for a in self._annotations:
-            if (label == a.getLabel() 
-                            and fs.subsumes(a.getFeatureStructure())):
-                result.append(a)
-        return result
+    def select_not(self, label, fs=None):
+        """
+        Generates those annotations that would not be returned by select() with the same arguments.
+        """
+        if fs is None:
+            subsumes = lambda ann: True
+        else:
+            subsumes = lambda ann: fs.subsumes(ann.features)
+        return (ann for ann in self._elements if ann.label != label or not subsumes(ann))
 
-    def remove_annotation(self, a):
-        """Remove the given C{Annotation}.
+    def remove(self, ann):
+        """Remove the given C{Annotation} object.
 
         :param a: Annotation
-
         """
-
         try:
-            return self._annotations.remove(a)
+            return self._elements.remove(ann)
         except ValueError:
             print('Error: Annotation not in set')
 
-    def remove_annotations_label(self, label):
-        """Remove the C{Annotation} with the given label
-
-        :param label: C{str}
-
-        """
-
-        result = []
-        for a in self._annotations:
-            if label == a.getLabel():
-                result.append(a)
-        if len(result) > 0:
-            for a in result:
-                self._annotations.remove(a)
-        return result
-
-    def remove_annotations(self, label, fs):
+    def remove_where(self, label, fs=None):
         """Remove the C{Annotation}s with the given label in
         the given C{FeatureStructure}
 
         :param label: C{str}
         :param fs: C{FeatureStructure}
-
         """
-
-        result = []
-        for a in self._annotations:
-            if (label == a.getLabel() 
-                            and fs.subsumes(a.getFeatureStructure())):
-                result.append(a)
-        if len(result) > 0:
-            for a in result:
-                self._annotations.remove(a)
-        return result
-
-    def size(self):
-        return len(self._annotations)
-
-
-class AnnotationSpace(object):
-    """
-    A set of Annotations.  Each Annotation set has a name (C{Str})
-    and a type (C{URI}) and a set of annotations.
-
-    :note : It's should replace the AnnotationSet
-
-    """
-
-    def __init__(self, as_id):
-        """Constructor for C{AnnotationSpace}
-
-        :param as_id: C{str}
-        :param annotations: C{str} of C{Annotation}
-
-        """
-
-        self._as_id = as_id
-        self._annotations = []
-
-    def from_as(aSet):
-        """Constructs a new C{AnnotationSpace} from
-        an existing C{AnnotationSpace}.
-
-        :param aSet: C{AnnotationSpace}
-        :return: C{AnnotationSpace}
-
-        """
-
-        newAS = AnnotationSpace(aSet._as_id)
-        for a in aSet.annotations():
-            newAS.add_annotation(Annotation.from_annotation(a))
-        return newAS
-
-    def __repr__(self):
-        return "AnnSpace as_id= " + self._as_id
-
-    def add(self, label):
-        """Creates a new annotation with specified label, adds it
-        to this annotation set, and returns the new annotation.
-
-        :param label: str
-        :return: Annotation
-
-        """
-
-        annotation = Annotation(label)
-        self.add_annotation(annotation)
-        return annotation
-
-    def add_annotation(self, a):
-        """Adds a C{Annotation} to the annotations list of
-        this C{AnnotationSpace}.
-
-        :param a: Annotation
-
-        """
-
-        self._annotations.append(a)
-        a._set = self
-
-    def get_annotations_label(self, label):
-        """Returns the C{Annotation} with the given label.
-
-        :param label: str
-        :return: Annotation
-
-        """
-
-        result = []
-        for a in self._annotations:
-            if label == a._label:
-                result.append(a)
-        return result
-
-    def get_annotations(self, label, fs):
-        """Returns the C{Annotation} with the given label,
-        in the given C{FeatureStructure}.
-
-        :param label: str
-        :param fs: FeatureStructure
-        :return: FeatureStructure
-
-        """
-
-        result = []
-        for a in self._annotations:
-            if (label == a.getLabel() 
-                            and fs.subsumes(a.getFeatureStructure())):
-                result.append(a)
-        return result
-
-    def remove_annotation(self, a):
-        """Remove the given C{Annotation}.
-
-        :param a: Annotation
-
-        """
-
-        try:
-            return self._annotations.remove(a)
-        except ValueError:
-            print('Error: Annotation not in set')
-
-    def remove_annotations_label(self, label):
-        """Remove the C{Annotation} with the given label
-
-        :param label: C{str}
-
-        """
-
-        result = []
-        for a in self._annotations:
-            if label == a.getLabel():
-                result.append(a)
-        if len(result) > 0:
-            for a in result:
-                self._annotations.remove(a)
-        return result
-
-    def remove_annotations(self, label, fs):
-        """Remove the C{Annotation}s with the given label in
-        the given C{FeatureStructure}
-
-        :param label: C{str}
-        :param fs: C{FeatureStructure}
-
-        """
-
-        result = []
-        for a in self._annotations:
-            if (label == a.getLabel() 
-                            and fs.subsumes(a.getFeatureStructure())):
-                result.append(a)
-        if len(result) > 0:
-            for a in result:
-                self._annotations.remove(a)
-        return result
-
-    def size(self):
-        return len(self._annotations)
-
-
-class Feature(object):
-    """
-    A name/value pair.  The "value" of a C{Feature} may be a string or 
-    another Py{FeatureStructure} object.
-
-    """
-
-    def __init__(self, name = None, value = None):
-        """Constructor for C{Feature}.
-
-        :param name: C{str}
-        :param value: C{str} or C{FeatureStructure}
-
-        """
-
-        self._name = name
-        if isinstance(value, basestring):
-            self._stringValue = value
-            self._fsValue = None
-        else: 
-            self._fsValue = value
-            self._stringValue = None
-
-    def from_feature(f):
-        """Constructs a new C{Feature} from an existing C{Feature}.
-
-        :param f: C{Feature}
-
-        """
-
-        newF = Feature(f.getName())
-        if f.is_atomic():
-            newF._stringValue = f.getStringValue()
-            newF._fsValue = None
-        else:
-            newF._stringValue = None
-            newF._fsValue = FeatureStructure(f.getFSValue())
-        return newF
-
-    def __repr__(self):
-        if self._stringValue is not None:
-            return ("FeatureName = " + self._name + " stringValue = " 
-                    + self._stringValue)
-        else:
-            return ("FeatureName = " + self._name + " fsValue = " + 
-                    self._fsValue)
-
-    def compare_to(self, f):
-        """Compare the values.
-
-        :param f: C{FeatureStructure}
-
-        """
-
-        return cmp(self._name, f.getName())
-
-    def copy(self):
-        """Copy this C{FeatureStructure}.
-
-        :return: C{FeatureStructure}
-
-        """
-
-        if self._stringValue is None:
-            fs = FeatureStructure(self._fsValue) 
-            return Feature(self._name, fs)
-        return Feature(self._name, self._stringValue)
-
-    def equals(self, e):
-        """Compare the values.
-
-        :param e: C{Feature}
-        :return: C{bool}
-
-        """
-
-        result = False
-        if isinstance(e, Feature):
-            result = self._name == e.getName()
-        return result
-    
-    def get_value(self):
-        if self._stringValue is not None:
-            return self._stringValue
-        return self._fsValue
-
-    def is_atomic(self):
-        return self._stringValue is not None
-
-    def set_value(self, value):
-        if isinstance(value, basestring):
-            self._stringValue = value
-            self._fsValue = None
-        elif isinstance(value, FeatureStructure):
-            self._fsValue = value
-            self._stringValue = None
-        else: 
-            print('Error in set_value(), value must be string or' +
-                    ' FeatureStructure object')
+        self._elements = list(self.select_not(label, fs))
 
 
 class FeatureStructure(object):
     """
-    A list of C{Feature}s indexed by name.
-
+    A dict of key -> feature, where feature is either a string or another FeatureStructure.
+    A FeatureStructure may also have a type.
+    When key is a tuple of names, or a string of names joined by '/', it is interpreted as the path to a nested feature structure.
+    Additionally, a FeatureStructure defines the operations 'subsumes' and 'unify'.
     """
 
-    def __init__(self, type = None):
+    __slots__ = ('type', '_elements')
+
+    def __init__(self, type=None, items=None):
         """Constructor for C{FeatureStructure}.
 
         :param type: C{str}
 
         """
-
-        self._type = type
+        self.type = type
         self._elements = {}
+        if items:
+            self.update(items)
 
-    def from_fs(fs):
-        """Constructs a new C{FeatureStructure} from input.
-
-        :param fs: C{FeatureStructure}
-
-        """
-
-        newFS = FeatureStructure(fs.getType())
-        for f in fs.features():
-            newF = None
-            if f.is_atomic():
-                newF = Feature(f.getName(), f.getStringValue())
-            else:
-                copy = FeatureStructure.from_fs(f.getFSValue())
-                newF = Feature(f.getName(), copy)
-            newFS._elements[f.getName()] = newF
-        return newFS
-
-    def __repr__(self):
-        return "FeatureStructureType = " + self._type
-
-    def copy(self):
-        return FeatureStructure.from_fs(self)
-
-    def size(self):
+    def __len__(self):
         return len(self._elements)
 
-    def find(self, name, create=True):
-        """Removes '/' chars at start or end of name
-        so it is not done repeatedly during recursive search.
+    def __repr__(self):
+        return "<FeatureStructure(%r) with %d elements>" % (self.type, len(self))
 
-        :param name: C{str}
-        :param create: C{bool}
+    def __copy__(self):
+        res = FeatureStructure(self.type)
+        res._elements = self._elements.copy()
+        return res
 
+    copy = __copy__
+
+    def __deepcopy__(self):
+        res = FeatureStructure(self.type)
+        res._elements = copy.deepcopy(self._elements)
+        return res
+
+    def __iter__(self):
+        return iter(self._elements)
+
+    if hasattr(dict, 'iterkeys'): # Python 2.x
+        def iterkeys(self):
+            return self._elements.iterkeys()
+
+        def iteritems(self):
+            return self._elements.iteritems()
+
+    if hasattr(dict, 'viewkeys'): # Python 2.7+
+        def viewkeys(self):
+            return self._elements.viewkeys()
+
+        def viewitems(self):
+            return self._elements.viewitems()
+
+    def keys(self):
+        return self._elements.keys()
+
+    def items(self):
+        return self._elements.items()
+
+    def _resolve_fs(self, path, create=False):
         """
-
-        if name[0] == '/':
-            name = name[1:]
-        if name[-1] == '/':
-            name = name[0:-1]
-        #find_loop does the real work
-        return self.find_loop(name, create)
-
-    def find_loop(self, name, create):
-        slash = name.find('/')
-        if slash < 0:
-            result = self._elements.get(name)
-            if result == None and create:
-                result = Feature(name)
-                self.add_feature(result)
-            return result
-
-        head = name[0:slash]
-        tail = name[slash + 1:]
-        f = self._elements.get(head)
-        fs = None
-        if f != None:
-            if f.is_atomic():
-                return None
-            fs = f.getFSValue()
-        else:
-            if not create:
-                return None
-            fs = FeatureStructure()
-            f = Feature(head, fs)
-            self.add_feature(f)
-
-        return fs.find_loop(tail, create)
-
-
-    def add(self, name, value):
-        """Creates a new feature and adds it to this
-        C{FeatureStructure}'s list of elements.
-
-        :param name: C{str}
-        :param value: C{str}
-
+        Resolves a list of keys to this or a descendent feature structure.
         """
+        fs = self
+        for name in path:
+            try:
+                fs = fs._elements[name]
+            except KeyError:
+                if create:
+                    fs = fs._elements[name] = FeatureStructure()
+                else:
+                    fs = None
+            if not isinstance(fs, FeatureStructure):
+                raise KeyError('Could not resolve feature structure for path %r. Got %r' % (path, fs))
+        return fs
 
-        f = self.find(name, True)
-        f.set_value(value)
-        return f
+    def _parse_key(self, key, create=False):
+        try:
+            key = key.strip('/').split('/')
+        except AttributeError:
+            # assume key is already list of path elements
+            pass
+        return self._resolve_fs(key[:-1], create), key[-1]
 
-
-    def add_feature(self, f):
-        self._elements[f._name] = f
-
-    def get(self, name):
-        return self.find(name, False)
-
-    def iterator(self):
-        return self._elements.itervalues()
-
-    def features(self):
-        return self._elements.values()
-
-    def remove(self, element):
-        if isinstance(element, basestring):
-            return self._elements.pop(element, None) != None
-        else:
-            return self._elements.pop(element.getName(), None) != None
-
-    def equals(self, o):
-        if not isinstance(o, FeatureStructure):
+    def __contains__(self, key):
+        try:
+            fs, key = self._parse_key(key)
+        except KeyError:
             return False
-        return self._type == o.getType()
+        return key in fs._elements
 
-    def subsumes(self, fs2):
-        for f1 in self.features():
-            f2 = fs2.get(f1.getName())
-            if f2 == None:
-                print('f2 == None')
+    def __getitem__(self, key):
+        fs, key = self._parse_key(key)
+        return fs._elements[key]
+
+    def get(self, key, default=None):
+        try:
+            return self[key]
+        except KeyError:
+            return default
+
+    def get_fs(self, key):
+        """Returns the value corresponding to key if it is a FeatureStructure, and otherwise throws a ValueError"""
+        val = self[key]
+        if not isinstance(val, FeatureStructure):
+            raise ValueError('Value for key %r is not a FeatureStructure' % key)
+        return val
+
+    def get_value(self, key):
+        """Returns the value corresponding to key but throws a ValueError if it is a FeatureStructure"""
+        val = self[key]
+        if isinstance(val, FeatureStructure):
+            raise ValueError('Value for key %r is a FeatureStructure' % key)
+        return val
+
+    def __setitem__(self, key, val):
+        fs, key = self._parse_key(key, create=True)
+        fs._elements[key] = val
+
+    def setdefault(self, key, default):
+        fs, key = self._parse_key(key, create=True)
+        return fs._elements.setdefault(key, default)
+
+    def update(self, other):
+        if hasattr(other, 'items'):
+            other = other.items()
+        for key, value in other:
+            self[key] = value
+
+    def __delitem__(self, key):
+        fs, key = self._parse_key(key)
+        del fs._elements[key]
+
+    def pop(self, key, default=None):
+        try:
+            fs, key = self._parse_key(key)
+            return fs._elements.pop(key, default)
+        except KeyError:
+            return default
+
+    def __eq__(self, other):
+        """
+        Equivalence is equivalent types (????)
+        """
+        try:
+            return self.type is other.type
+        except AttributeError:
+            return False
+
+    def subsumes(self, other):
+        for key, val in self.items():
+            try:
+                oval = other._elements[key]
+            except KeyError:
                 return False
-            if f1.is_atomic():
-                if not f2.is_atomic():
-                    print('f1 is_atomic, fs is not atomic')
+            if isinstance(val, FeatureStructure) and isinstance(oval, FeatureStructure):
+                if not val.subsumes(oval):
                     return False
-                f1Value = f1.getStringValue()
-                f2Value = f2.getStringValue()
-                if not f1Value == f2Value:
-                    print('f1Value != fsValue')
-                    return False
-            # This feature value is present in fs2
-            else:
-                if f2.is_atomic():
-                    print('feature value is present, fs is atomic')
-                    return False
-                # Get the feature structures that form the values
-                # of these features and check them
-                f1fs = f1.getFSValue()
-                f2fs = f2.getFSValue()
-                if not f1fs.subsumes(f2fs):
-                    print('f1fs does not subsume f2fs')
-                    return False
+            elif val is not oval: # assume val is FS or string
+                return False
         return True
 
-    def unify(self, fs):
-        fsType = fs.getType()
-        if (self._type == None or fsType == None) and self._type !=fsType:
-            #One, but not both, of the types are None
-            return None
-        if self._type != None:
-            #fsType must be non-None
-            if self._type != fsType:
-                return None
+    def unify(self, other):
+        if self.type != other.type and self.type is not None and other.type is not None:
+            raise ValueError('Cannot unify feature structues of different types: %r and %r' % (self.type, other.type))
 
-        # make a copy of this feature structure
-        result = FeatureStructure.from_fs(self)
+        res = copy.deepcopy(self)
 
-        # Add all the features from fs to the result
-        for f1 in fs.features():
-            f2 = result.get(f1.getName())
-            if f2 == None:
-                result.add_feature(Feature.from_feature(f1))
-            else:
-                # A feature with the same name is already present in the result.
-                # If this is an atomic feature the values must match or unification fails
-                if f1.is_atomic() and f2.is_atomic():
-                    fVal = f1.getStringValue()
-                    f2Val = f2.getStringValue()
-                    if not fVal == f2Val:
-                        return None
-                elif f1.is_atomic() or f2.is_atomic():
-                    # They are not both atomic (handled above) so unification also fails
-                    return None
-                else:
-                    # they are both feature structures so see if they unify
-                    f1fs = f1.getFSValue()
-                    f2fs = f2.getFSValue()
-                    u = f1fs.unify(f2fs)
-                    if u == None:
-                        return None
-                    # They do unify, so add the unified structure to the result
-                    result.add(f1.getName(), u)
-        return result
+        for name, oval in other.items():
+            if name not in res._elements:
+                res._elements[name] = copy.deepcopy(oval)
+                continue
+
+            val = res._elements[name]
+            if isinstance(val, FeatureStructure) and isinstance(oval, FeatureStructure):
+                res._elements[name] = val.unify(oval)
+            elif val != oval:
+                raise ValueError('Name %r exists but value %r != %r in unification' % (name, val, oval))
+        return res
 
