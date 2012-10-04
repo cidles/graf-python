@@ -9,7 +9,7 @@
 # For license information, see LICENSE.TXT
 #
 
-from PyRegion import *
+from graf.PyRegion import *
 
 class PyLink:
     def __init__(self):

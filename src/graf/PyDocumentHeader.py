@@ -9,7 +9,7 @@
 # For license information, see LICENSE.TXT
 #
 
-from PyGraph import *
+from graf.PyGraph import *
 
 class PyDocumentHeader:
 

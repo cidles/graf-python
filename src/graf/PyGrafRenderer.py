@@ -8,13 +8,14 @@
 # URL: <http://www.nltk.org/>
 # For license information, see LICENSE.TXT
 #
+import codecs
 
 import sys
 
-from PyGraph import *
-from PyXML import *
-from PyIndentManager import *
-from GRAF import *
+from graf.PyGraph import *
+from graf.PyXML import *
+from graf.PyIndentManager import *
+from graf.GRAF import *
 
 class PyGrafRenderer:
     """
@@ -138,8 +139,12 @@ class PyGrafRenderer:
                         + self._xml.attribute("ref", a._element._id))
         set = a._set
         if set is not None:
-            self._FILE.write(" " + 
-                    self._xml.attribute(self._g.ASET, set._name))
+            try:
+                self._FILE.write(" " +
+                        self._xml.attribute(self._g.ASET, set._name))
+            except :
+                self._FILE.write(" " +
+                        self._xml.attribute(self._g.ASET, 'graf'))
         
         fs = a._features
         if fs.size() > 0:
@@ -181,22 +186,23 @@ class PyGrafRenderer:
         name = f._name
         if f.is_atomic():
             value = f._stringValue
-            self._FILE.write(str(self._indent) + "<" + self._g.FEATURE 
-                    + " " 
-                    + self._g.NAME + "=\"" + name + "\" " 
-                    + self._g.VALUE + "=\"" + self._xml.encode(value) 
-                    + "\"/>" + self._g.EOL)
+            entry = str(self._indent) + '<' + self._g.FEATURE \
+                   + str(' ') + self._g.NAME + '="' + str(name) \
+                   + '">' + str(value) + '</'+ self._g.FEATURE \
+                   + '>' + self._g.EOL
+            self._FILE.write(entry)
         else:
             value = f.getFSValue()
-            self._FILE.write(str(self._indent) + "<" + self._g.FEATURE 
-                            + " " 
-                            + self._g.NAME + "=\"" + name + "\">" 
-                            + self._g.EOL)
+            entry = str(self._indent) + '<' + self._g.FEATURE\
+                    + str(' ') + self._g.NAME + '="' + str(name)\
+                    + '">' + str(value) + '</'+ self._g.FEATURE\
+                    + '>' + self._g.EOL
+            self._FILE.write(entry)
             self._indent.more()
             renderFS(value)
             self._indent.less()
-            self._FILE.write(str(self._indent) + "</" + self._g.FEATURE 
-                            + ">" + self._g.EOL)
+            self._FILE.write(str(self._indent) + '</' + self._g.FEATURE
+                            + '>' + self._g.EOL)
 
     def get_anchors(self, region):
         """Gathers the anchors from a region in the PyGraph,
@@ -206,7 +212,7 @@ class PyGrafRenderer:
 
         buffer = ""
         for a in region.get_anchors():
-            buffer = buffer + " " + a.toString()
+            buffer = buffer + " " + str(a)
         return buffer[1:len(buffer)]
 
     def write_open_graph_element(self):
@@ -214,11 +220,11 @@ class PyGrafRenderer:
 
         """
 
-        self._FILE.write("<?xml version=\"1.0\" encoding=\"" 
-                        + self._encoding + "\"?>" + self._g.EOL)
+        self._FILE.write('<?xml version="1.0" encoding="'
+                        + self._encoding + '"?>' + self._g.EOL)
         self._FILE.write(
-            "<" + self._g.GRAPH + " xmlns=\"" + self._g.NAMESPACE + "\"")
-        self._FILE.write( ">" + self._g.EOL)
+            '<' + self._g.GRAPH + ' xmlns="' + self._g.NAMESPACE + '"')
+        self._FILE.write( '>' + self._g.EOL)
 
     def add_attribute(self, b, type, value):
         """Adds an attribute to an XML element.
@@ -336,7 +342,7 @@ class PyGrafRenderer:
         self._FILE.write(str(self._indent) + "<" + self._g.TAGSDECL + ">" 
                         + self._g.EOL)
         self._indent.more()
-        for k, v in annotations.iteritems():
+        for k, v in annotations.items():
             self._FILE.write(str(self._indent) + "<" 
                             + self._g.TAGUSAGE + " " 
                             + self._g.GI + "=\"" + str(k) + "\" " 
@@ -361,13 +367,19 @@ class PyGrafRenderer:
 
         # Render the regions
         list = g.get_regions()
-        list.sort()
+
+        if sys.version_info < (3, 0):
+            list.sort()
+
         for region in list:
             self.render_region(region)
 
         # Render the nodes
         nodes = g.nodes()
-        nodes = sorted(nodes, cmp = PyNode.compare_to)
+
+        if sys.version_info < (3, 0):
+            nodes = sorted(nodes, cmp = PyNode.compare_to)
+
         for node in nodes:
             self.render_node(node)
 

@@ -17,10 +17,11 @@ allow for quick traversals, and a hash map so nodes/edges can be found
 quickly based on their ID
 """
 
-from PyAnnotationSet import *
-from PyEdge import *
-from PyNode import *
-from PyStandoffHeader import *
+from graf.PyAnnotationSet import *
+from graf.PyEdge import *
+from graf.PyNode import *
+from graf.PyStandoffHeader import *
+import sys
 
 class PyGraph:
     """
@@ -173,11 +174,17 @@ class PyGraph:
         self._regions[region._id] = region
 
     def annotation_sets(self):
-        return self._annotationSets.itervalues()
+        if sys.version_info < (3, 0):
+            return self._annotationSets.itervalues()
+        else:
+            return self._annotationSets.items()
 
     # Added AL
     def annotation_spaces(self):
-        return self._annotationSpaces.itervalues()
+        if sys.version_info < (3, 0):
+            return self._annotationSpaces.itervalues()
+        else:
+            return self._annotationSpaces.items()
 
     def edges(self):
         return self._edgeSet.values()

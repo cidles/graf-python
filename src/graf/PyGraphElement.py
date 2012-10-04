@@ -9,8 +9,8 @@
 # For license information, see LICENSE.TXT
 #
 
-from PyAnnotationSet import *
-from PyFeature import *
+from graf.PyAnnotationSet import *
+from graf.PyFeature import *
 
 class PyGraphElement:
     """

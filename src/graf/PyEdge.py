@@ -9,7 +9,7 @@
 # For license information, see LICENSE.TXT
 #
 
-from PyGraphElement import PyGraphElement
+from graf.PyGraphElement import PyGraphElement
 
 class PyEdge(PyGraphElement):
     """
