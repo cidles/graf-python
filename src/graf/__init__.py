@@ -19,7 +19,7 @@ GrAF representation of the file, and then retrieve the annotations.
 
 from media import Region
 from annotations import Annotation, AnnotationSpace, FeatureStructure
-from graphs import Edge, Graph, Node, Link
+from graphs import Edge, Graph, Node, Link, StandoffHeader
 from io import GraphParser, GrafRenderer
 from util import *
 
@@ -35,4 +35,6 @@ __all__ = [
     'GraphParser',
     'Link',
     'Node',
-    'Region',]
+    'Region',
+    'StandoffHeader',
+]

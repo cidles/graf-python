@@ -10,11 +10,11 @@
 #
 
 """
-Graph structure backing the ISO GrAF format.
-The graph is undirected, composed of C{Node}s and C{Edge}s, each
-backed by a C{list} to maintain the order of the nodes/edges and to
-allow for quick traversals, and a hash map so nodes/edges can be found
-quickly based on their ID
+An annotation graph is a directed graph that represents an annotation of
+arbitrary and application dependent size. A graph may cover a sentence,
+paragraph, document, or entire corpus. However, to keep processing feasible
+graphs are typically relatively small (sentences say) and then combined into
+larger graphs as needed.
 """
 
 from annotations import FeatureStructure, AnnotationList, AnnotationSpace
@@ -32,6 +32,9 @@ class IdDict(dict):
         __iter__ = dict.itervalues
     else:
         __iter__ = dict.values
+
+    def __contains__(self, obj):
+        return dict.__contains__(self, getattr(obj, self._id_field, obj))
 
 
 class GraphEdges(IdDict):
@@ -51,6 +54,7 @@ class GraphNodes(IdDict):
         if isinstance(obj, basestring):
             obj = Node(obj)
         IdDict.add(self, obj)
+
 
 class GraphASpaces(IdDict):
     __slots__ = ('_add_hook',)
@@ -121,8 +125,10 @@ class Graph(object):
         :return: C{Edge} or None
         """
         # resolve ids to nodes if necessary
-        from_node = self.nodes.get(from_node, from_node)
-        to_node = self.nodes.get(to_node, to_node)
+        if not isinstance(from_node, Node):
+            from_node = self.nodes[from_node]
+        if not isinstance(to_node, Node):
+            to_node = self.nodes[to_node]
 
         if len(from_node.out_edges) < len(to_node.in_edges):
             for edge in from_node.out_edges:
@@ -134,25 +140,28 @@ class Graph(object):
                     return edge
         return None
 
-    def get_region(self, start, end):
+    def get_region(self, *anchors):
         for region in self.regions:
-            if start == region.start and end == region.end:
+            if region.anchors == anchors:
                 return region
         return None
 
-    @property
-    def root(self):
+    def _get_root(self):
         try:
-            return self.iter_roots.next()
+            return self.iter_roots().next()
         except StopIteration:
             return None
+    def _set_root(self, node):
+        # FIXME: how should this interact with node.is_root
+        self.header.clear_roots()
+        if node.id not in self.nodes:
+            raise ValueError('The new root node is not in the graph: %r' % node)
+        self.header.roots.append(node.id)
+    root = property(_get_root, _set_root)
 
     def iter_roots(self):
         return (self.nodes[id] for id in self.header.roots)
 
-    def set_root(self, node):
-        self.header.clear_roots()
-        self.header.roots.append(node.id)
 
 
 class GraphElement(object):
@@ -283,7 +292,7 @@ class Node(GraphElement):
 
     def iter_parents(self):
         for edge in self.in_edges:
-            res = edge.getFrom()
+            res = edge.from_node
             if res is not None:
                 yield res
 
@@ -296,7 +305,7 @@ class Node(GraphElement):
 
     def iter_children(self):
         for edge in self.out_edges:
-            res = edge.getTo()
+            res = edge.to_node
             if res is not None:
                 yield res
         
