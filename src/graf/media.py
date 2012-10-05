@@ -56,11 +56,16 @@ class Region(object):
         if not isinstance(other, Region) or other is None:
             return False
         return not cmp(self, other)
-        
-    @property
-    def end(self):
+
+    def _get_end(self):
         return self.anchors[-1]
+    def _set_end(self, val):
+        self.anchors[-1] = val
+    end = property(_get_end, _set_end)
     
-    @property
-    def start(self):
+    def _get_start(self):
         return self.anchors[0]
+    def _set_start(self, val):
+        self.anchors[0] = val
+    start = property(_get_start, _set_start)
+    
