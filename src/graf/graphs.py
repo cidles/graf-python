@@ -20,10 +20,13 @@ quickly based on their ID
 from annotations import FeatureStructure, AnnotationList, AnnotationSpace
 
 class IdDict(dict):
-    __slots__ = ()
+    __slots__ = ('_id_field',)
+    def __init__(self, data=(), field='id'):
+        dict.__init__(self, data)
+        self._id_field = field
 
     def add(self, obj):
-        self[obj.id] = obj
+        self[getattr(obj, self._id_field)] = obj
 
     if hasattr(dict, 'itervalues'):
         __iter__ = dict.itervalues
@@ -49,6 +52,21 @@ class GraphNodes(IdDict):
             obj = Node(obj)
         IdDict.add(self, obj)
 
+class GraphASpaces(IdDict):
+    __slots__ = ('_add_hook',)
+    def __init__(self, add_hook):
+        IdDict.__init__(self, field='name')
+        self._add_hook = add_hook
+
+    def add(self, obj):
+        IdDict.add(self, obj)
+        self._add_hook(obj)
+
+    def create(self, name, type):
+        res = AnnotationSpace(name, type)
+        self.add(res)
+        return res
+
 
 class Graph(object):
     """
@@ -64,29 +82,9 @@ class Graph(object):
         self._top_edge_id = 0
         self.edges = GraphEdges()
         self.regions = IdDict()
-        self.annotation_spaces = {}
         self.content = None
         self.header = StandoffHeader()
-
-    def add_annotation_space(self, aspace):
-        """Add given C{AnnotationSpace} to this C{Graph}.
-
-        :param aspace: C{AnnotationSpace}
-        """
-        self.annotation_spaces[aspace.name] = aspace
-        self.header.add_annotation_space(aspace)
-
-    def create_annotation_space(self, name, type):
-        """Create C{AnnotationSpace} from given name, value and
-        add it to this C{Graph}.
-
-        :param name: C{str}
-        :param type: C{str}
-        """
-        # Is this method necessary?
-        aspace = AnnotationSpace(name, type)
-        self.add_annotation_space(aspace)
-        return aspace
+        self.annotation_spaces = GraphASpaces(self.header.add_annotation_space)
 
     def create_edge(self, from_node=None, to_node=None, id=None):
         """Create C{Edge} from id, from_node, to_node and add it to
