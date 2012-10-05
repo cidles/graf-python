@@ -271,7 +271,7 @@ class Node(GraphElement):
 
     def _add_regions(self, regions):
         for region in regions:
-            region.add_node(self)
+            region.nodes.append(self)
 
     def add_region(self, region):
         """Adds the given region to the first link for this node"""

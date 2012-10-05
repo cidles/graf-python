@@ -14,7 +14,7 @@ from xml.sax.handler import ContentHandler
 
 from graphs import Graph, Edge, Link, Node
 from annotations import Annotation, FeatureStructure
-from media import Anchor, Region
+from media import CharAnchor, Region
 
 class Constants(object):
     """
@@ -521,11 +521,12 @@ class GraphParser(ContentHandler):
 
     """
 
-    def __init__(self, constants=Constants):
+    def __init__(self, constants=Constants, anchor_cls=CharAnchor):
         """Create a new C{GraphParser} instance.
 
         """
 
+        self._anchor_cls = anchor_cls
         self._parser = make_parser()
         self._parser.setContentHandler(self)
         self._g = Constants
@@ -848,7 +849,7 @@ class GraphParser(ContentHandler):
         for t in tokenizer:
             anchor = None
             try:
-                anchor = Anchor(t)
+                anchor = self._anchor_cls(t)
             except:
                 raise SAXException("Unable to create an anchor for " + t)
 
