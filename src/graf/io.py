@@ -173,13 +173,13 @@ class GrafRenderer(object):
         """
 
         self._FILE.write(str(self._indent) + "<" + self._g.NODE + " ")
-        self._FILE.write(self._g.ID + "=\"" + n._id + "\"")
-        if n._annotationRoot:
+        self._FILE.write(self._g.ID + "=\"" + n.id + "\"")
+        if n.is_root:
             self._FILE.write(" " + self._g.ROOT + "=\"true\"")
-        if len(n._links) > 0:
+        if n.links:
             self._FILE.write( ">" + self._g.EOL)
             self._indent.more()
-            for link in n._links:
+            for link in n.links:
                 self.render_link(link)
             self._indent.less()
             self._FILE.write(str(self._indent) + 
@@ -187,7 +187,7 @@ class GrafRenderer(object):
         else:
             self._FILE.write( "/>" + self._g.EOL)
 
-        for a in n._annotations:
+        for a in n.annotations:
             self.render_ann(a)
 
     def render_link(self, link):
@@ -198,8 +198,8 @@ class GrafRenderer(object):
         targets = ""
         if len(link._regions) == 0:
             return
-        for link in link._regions:
-            targets = targets + " " + link._id
+        for region in link:
+            targets = targets + " " + region._id
         targets = targets[1:]
         self._FILE.write(str(self._indent) + "<" + self._g.LINK + " " 
                 + self._xml.attribute("targets", targets) + "/>" + 
@@ -222,9 +222,9 @@ class GrafRenderer(object):
 
         self._FILE.write(str(self._indent) + "<" + self._g.EDGE + " " 
                 + self._g.ID 
-                + "=\"" + e._id + "\" " + self._g.FROM + "=\"" 
-                + e._fromNode._id + "\" " + self._g.TO + "=\"" 
-                + e._toNode._id + "\"")
+                + "=\"" + e.id + "\" " + self._g.FROM + "=\"" 
+                + e.from_node.id + "\" " + self._g.TO + "=\"" 
+                + e.to_node.id + "\"")
 
         if e.annotated():
             self._FILE.write(">" + self._g.EOL)
@@ -263,7 +263,7 @@ class GrafRenderer(object):
         self._FILE.write(str(self._indent) + "<" + self._g.ANNOTATION 
                         + " " 
                         + self._xml.attribute("label", label) + " " 
-                        + self._xml.attribute("ref", a.element._id))
+                        + self._xml.attribute("ref", a.element.id))
         aspace = a.aspace
         if aspace is not None:
             self._FILE.write(" " + 
@@ -363,7 +363,7 @@ class GrafRenderer(object):
 
         """
 
-        header = g.get_header()
+        header = g.header
         self._FILE.write(str(self._indent) + "<" + self._g.HEADER 
                         + ">" + self._g.EOL)
         self._indent.more()
@@ -378,7 +378,7 @@ class GrafRenderer(object):
 
         """
 
-        roots = header.get_roots()
+        roots = header.roots
         if len(roots) > 0:
             self._FILE.write(str(self._indent) + "<" + self._g.ROOTS + ">" 
                                      + self._g.EOL)
@@ -392,7 +392,7 @@ class GrafRenderer(object):
             self._FILE.write(str(self._indent) + "</" + self._g.ROOTS 
                             + ">" + self._g.EOL)
 
-        dependsOn = header.get_depends_on()
+        dependsOn = header.depends_on
         if len(dependsOn) > 0:
             self._FILE.write(str(self._indent) + "<" 
                             + self._g.DEPENDENCIES + ">" + self._g.EOL)
@@ -403,7 +403,8 @@ class GrafRenderer(object):
             self._FILE.write(str(self._indent) + "</" 
                             + self._g.DEPENDENCIES + ">" + self._g.EOL)
 
-        annotationSets = header.get_annotation_sets()
+        annotationSets = header.annotation_spaces
+        #TODO: make all these about spaces
         if len(annotationSets) > 0:
             self._FILE.write(str(self._indent) + "<" 
                     + self._g.ANNOTATION_SETS + ">" + self._g.EOL)
@@ -446,8 +447,8 @@ class GrafRenderer(object):
 
     def count_tag_usage(self, g):
         annotations = {}
-        for node in g.nodes():
-            for a in node._annotations:
+        for node in g.nodes:
+            for a in node.annotations:
                 counter = annotations.get(a.label)
                 if counter is None:
                     counter = Counter()
@@ -480,24 +481,21 @@ class GrafRenderer(object):
         self.write_header(g)
 
         # Add any features of the graph
-        fs = g.get_features()
+        fs = g.features
         if fs is not None:
             self.render_fs(fs)
 
         # Render the regions
-        list = g.get_regions()
-        list.sort()
-        for region in list:
+        for region in sorted(g.regions):
             self.render_region(region)
 
         # Render the nodes
-        nodes = g.nodes()
-        nodes = sorted(nodes, cmp = Node.compare_to)
+        nodes = sorted(g.nodes)
         for node in nodes:
             self.render_node(node)
 
         # Render the edges
-        for edge in g.edges():
+        for edge in g.edges:
             self.render_edge(edge)
 
         self._FILE.write( "</graph>" + self._g.EOL)
@@ -689,7 +687,7 @@ class GraphParser(ContentHandler):
         for edge in self._edges:
             from_node = self._node_map.get(edge._from)
             to_node = self._node_map.get(edge._to)
-            self._graph.add_edge(Edge(edge._id, from_node, to_node))
+            self._graph.add_edge(Edge(edge.id, from_node, to_node))
     
         # Add annotations to any edges
         for s, a in self._edge_annotations:
@@ -703,7 +701,7 @@ class GraphParser(ContentHandler):
         for n, s in self._relations:
             link = Link()
             for target in s.split():
-                region = self._graph.get_region_from_id(target)
+                region = self._graph.regions[target]
                 if region is not None:
                     link.add_target(region)
             n.add_link(link)
@@ -727,7 +725,7 @@ class GraphParser(ContentHandler):
         self._current_node = Node(id)
 
         if isRoot is not None and "true" is isRoot:
-            self._current_node._annotationRoot = True
+            self._current_node.is_root = True
 
         self._node_map[id] = self._current_node
 
@@ -748,7 +746,7 @@ class GraphParser(ContentHandler):
 
         name = attrs.getValue(self._g.NAME)
         type = attrs.getValue(self._g.TYPE)
-        sets = self._graph.get_annotation_sets()
+        sets = self._graph.annotation_spaces
         for set in sets:
             if set._name == name:
                 if set._type != type:
@@ -767,7 +765,7 @@ class GraphParser(ContentHandler):
         """
 
         as_id = attrs.getValue(self._g.AS_ID)
-        sets = self._graph.get_annotation_sets()
+        sets = self._graph.annotation_spaces
         for set in sets:
             if set._as_id == as_id:
                 if set._type != type:
@@ -919,8 +917,7 @@ class GraphParser(ContentHandler):
         if type is None:
             raise SAXException("No type specified for as element.")
         else:
-            self._current_annotation_set = self._graph.get_annotation_set(
-                                                                    type)
+            self._current_annotation_set = self._graph.annotation_spaces[type]
 
     def as_end(self):
         """ Used to parse end /as> elements in the XML representation.
@@ -983,12 +980,12 @@ class GraphParser(ContentHandler):
 
         for node in dependency.nodes():
             self._graph.add_node(node)
-            self._node_map[node._id] = node
+            self._node_map[node.id] = node
 
         for edge in dependency.edges():
-            id = edge._id
-            from_id = edge.getFrom()._id
-            to_id = edge.getTo()._id
+            id = edge.id
+            from_id = edge.from_node.id
+            to_id = edge.to_node.id
             e = self._graph.add_edgeToFromID(id, from_id, to_id)
             for a in edge.annotations():
                 e.add_annotation(Annotation.from_annotation(a))

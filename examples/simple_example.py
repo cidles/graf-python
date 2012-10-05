@@ -19,9 +19,9 @@ node_three = Node('node_three')
 graph = Graph()
 
 #Adding the nodes
-graph.add_node(node_one)
-graph.add_node(node_two)
-graph.add_node(node_three)
+graph.nodes.add(node_one)
+graph.nodes.add(node_two)
+graph.nodes.add(node_three)
 
 # Create the edge
 edge = Edge(node_one, node_three)
@@ -45,7 +45,7 @@ annotation.features['another_feature'] = 'value_another'
 annotation.features['feature3'] = 'value_3'
 
 # Adding the annotations to the node
-node_one.add_annotation(annotation)
+node_one.annotations.add(annotation)
 
 # Rendering the Graph
 graf_render = GrafRenderer(sys.stdout)

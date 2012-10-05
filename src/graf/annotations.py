@@ -50,27 +50,15 @@ class Annotation(object):
     #TODO: perhaps delegate __*item__, etc. methods to features
 
 
-class AnnotationSpace(object):
+class AnnotationList(object):
     """
-    A collection of Annotations.  Each AnnotationSpace has a name (C{Str})
-    and a type (C{URI}) and a set of annotations.
-
+    A collection of Annotations which marks a field on the annotation object indicating its possession.
     """
+    __slots__ = ('_elements', '_set_owner')
 
-    __slots__ = ('name', 'type', '_elements')
-
-    def __init__(self, name, type):
-        """Constructor for C{AnnotationSet}
-
-        :param name: C{str}
-        :param type: C{str}
-        :param annotations: C{str} of C{Annotation}
-
-        """
-
-        self.name = name
-        self.type = type
+    def __init__(self, owned_by, owner_field):
         self._elements = []
+        self._set_owner = lambda ann: setattr(ann, owner_field, owned_by)
 
     def __len__(self):
         return len(self._elements)
@@ -78,20 +66,15 @@ class AnnotationSpace(object):
     def __iter__(self):
         return iter(self._elements)
 
-    def __copy__(self):
-        res = AnnotationSpace(self.name, self.type)
-        res.annotations = self.annotations[:]
-        return res
-
     def __repr__(self):
-        return "AnnotationSet(%r, %r)" % (self.name, self.type)
+        return repr(self._elements)
 
     def add(self, ann):
         """Adds a C{Annotation} to this C{AnnotationSpace}.
         :param a: Annotation
         """
         self._elements.append(ann)
-        ann.aspace = self
+        self._set_owner(ann)
 
     def create(self, label):
         """Creates a new annotation with specified label, adds it
@@ -105,28 +88,68 @@ class AnnotationSpace(object):
         self.add(ann)
         return ann
 
-    def select(self, label, fs=None):
+    def select(self, label=None, fs=None, aspace=None):
         """Generates C{Annotation} objects having the given label and features subsumed by the given C{FeatureStructure}.
 
         :param label: str
         :param fs: FeatureStructure
+        :param aspace: an AnnotationSpace name
         :return: Annotation
         """
-        if fs is None:
-            subsumes = lambda ann: True
-        else:
-            subsumes = lambda ann: fs.subsumes(ann.features)
-        return (ann for ann in self._elements if ann.label == label and subsumes(ann))
+        filters = self._build_filters(label, fs, aspace)
+        return (ann for ann in self._elements if all(fn(ann) for fn in filters))
 
-    def select_not(self, label, fs=None):
+    def select_not(self, label=None, fs=None, aspace=None):
         """
         Generates those annotations that would not be returned by select() with the same arguments.
         """
-        if fs is None:
-            subsumes = lambda ann: True
-        else:
-            subsumes = lambda ann: fs.subsumes(ann.features)
-        return (ann for ann in self._elements if ann.label != label or not subsumes(ann))
+        filters = self._build_filters(label, fs, aspace)
+        return (ann for ann in self._elements if not all(fn(ann) for fn in filters))
+
+    @staticmethod
+    def _build_filters(label=None, fs=None, aspace=None):
+        res = []
+        if aspace is not None:
+            res.append(lambda ann: ann.aspace is not None and ann.aspace.name == aspace)
+        if label is not None:
+            res.append(lambda ann: ann.label == label)
+        if fs is not None:
+            res.append(lambda ann: fs.subsumes(ann.features))
+        return res
+
+    def get_first(self, label=None, fs=None, aspace=None):
+        try:
+            return self.select(label, fs, aspace).next()
+        except StopIteration:
+            raise ValueError('No annotations match those criteria')
+
+
+class AnnotationSpace(AnnotationList):
+    """
+    A collection of Annotations.  Each AnnotationSpace has a name (C{Str})
+    and a type (C{URI}) and a set of annotations.
+
+    """
+
+    __slots__ = ('name', 'type')
+
+    def __init__(self, name, type):
+        """Constructor for C{AnnotationSet}
+
+        :param name: C{str}
+        :param type: C{str}
+        """
+        super(AnnotationSpace, self).__init__(self, 'aspace')
+        self.name = name
+        self.type = type
+
+    def __copy__(self):
+        res = AnnotationSpace(self.name, self.type)
+        res.annotations = self.annotations[:]
+        return res
+
+    def __repr__(self):
+        return "AnnotationSet(%r, %r)" % (self.name, self.type)
 
     def remove(self, ann):
         """Remove the given C{Annotation} object.

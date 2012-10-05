@@ -17,294 +17,145 @@ allow for quick traversals, and a hash map so nodes/edges can be found
 quickly based on their ID
 """
 
-from annotations import FeatureStructure, AnnotationSpace, Annotation
+from annotations import FeatureStructure, AnnotationList, AnnotationSpace
+
+class IdDict(dict):
+    __slots__ = ()
+
+    def add(self, obj):
+        self[obj.id] = obj
+
+    if hasattr(dict, 'itervalues'):
+        __iter__ = dict.itervalues
+    else:
+        __iter__ = dict.values
+
+
+class GraphEdges(IdDict):
+    __slots__ = ()
+
+    def add(self, obj):
+        IdDict.add(self, obj)
+        obj.from_node.out_edges.add(obj)
+        obj.to_node.in_edges.add(obj)
+
+
+class GraphNodes(IdDict):
+    __slots__ = ()
+
+    def add(self, obj):
+        """Adds the given node or creates one with the given id"""
+        if isinstance(obj, basestring):
+            obj = Node(obj)
+        IdDict.add(self, obj)
+
 
 class Graph(object):
     """
     Class of Graph.
-
     """
 
     def __init__(self):
-        """Constructor for Graph.
-
         """
-
-        self._edgeCount = 0
-        self._features = FeatureStructure()
-        self._nodeSet = {}
-        self._edgeSet = {}
-        self._regions = {}
-        self._annotationSets = {}
-        self._annotationSpaces = {} # Added AL
-        self._content = None
-        self._header = StandoffHeader()
-        self._userObject = None
-
-    def add_annotation_set(self, set):
-        """Add given C{AnnotationSet} to this C{Graph}.
-
-        :param set: C{AnnotationSet}
-
+        Constructor for Graph.
         """
+        self.features = FeatureStructure()
+        self.nodes = GraphNodes()
+        self._top_edge_id = 0
+        self.edges = GraphEdges()
+        self.regions = IdDict()
+        self.annotation_spaces = {}
+        self.content = None
+        self.header = StandoffHeader()
 
-        self._annotationSets[set._name] = set
-        self._header.add_annotation_set_create(set._name, set._type)
-
-    def add_as_create(self, name, type):
-        """Create C{AnnotationSet} from given name, value and
-        add it to this C{Graph}.
-
-        :param name: C{str}
-        :param type: C{str}
-
-        """
-
-        aSet = AnnotationSet(name, type)
-        self.add_annotation_set(aSet)
-        return aSet
-
-    # Added AL
-    def add_annotation_space(self, set):
+    def add_annotation_space(self, aspace):
         """Add given C{AnnotationSpace} to this C{Graph}.
 
-        :param set: C{AnnotationSpace}
-
+        :param aspace: C{AnnotationSpace}
         """
+        self.annotation_spaces[aspace.name] = aspace
+        self.header.add_annotation_space(aspace)
 
-        self._annotationSpaces[set._as_id] = set
-        self._header.add_annotation_space_create(set._as_id)
-
-    # Added AL
-    def add_aspace_create(self, as_id):
+    def create_annotation_space(self, name, type):
         """Create C{AnnotationSpace} from given name, value and
         add it to this C{Graph}.
 
         :param name: C{str}
         :param type: C{str}
-
         """
+        # Is this method necessary?
+        aspace = AnnotationSpace(name, type)
+        self.add_annotation_space(aspace)
+        return aspace
 
-        aSet = AnnotationSpace(as_id)
-        self.add_annotation_space(aSet)
-        return aSet
-
-    def add_edge(self, edge):
-        """Add C{Edge} to this C{Graph}.
-
-        :param edge: C{Edge}
-
-        """
-
-        self._edgeSet[edge._id] = edge
-        self.update_node(edge)
-
-    def add_edge_create(self, id, fromNode = None , toNode = None):
-        """Create C{Edge} from id, fromNode, toNode and add it to
+    def create_edge(self, from_node=None, to_node=None, id=None):
+        """Create C{Edge} from id, from_node, to_node and add it to
         this C{Graph}.
 
         :param id: C{str}
-        :param fromNode: C{Node}
-        :param toNode: C{Node}
+        :param from_node: C{Node}
+        :param to_node: C{Node}
 
         """
+        if not hasattr(from_node, 'id'):
+            from_node = self.nodes[from_node]
+        if from_node.id not in self.nodes:
+            self.nodes.add(from_node)
 
-        if self._nodeSet.get(fromNode.getID()) is None:
-            self._nodeSet[fromNode.getID()] = fromNode
-        if self._nodeSet.get(toNode.getID()) is None:
-            self._nodeSet[toNode.getID()] = toNode
-        self._edgeCount += 1
-        newEdge = Edge(id, fromNode, toNode)
-        self._edgeSet[newEdge.getID()] = newEdge
-        self.update_node(newEdge)
-        return newEdge
-        
-    def add_edge_from_to(self, fromNode, toNode):
-        """Create C{Edge} from fromNode, toNode and add it to
-        this C{Graph} id is created.
+        if not hasattr(to_node, 'id'):
+            to_node = self.nodes[to_node]
+        if to_node.id not in self.nodes:
+            self.nodes.add(to_node)
 
-        :param fromNode: C{Node}
-        :param toNode: C{Node}
+        if id is None:
+            while id is None or id in self.edges:
+                id = 'e%d' % self._top_edge_id
+                self._top_edge_id += 1
+        res = Edge(id, from_node, to_node)
+        self.edges.add(res)
+        return res
 
+    def find_edge(self, from_node, to_node):
+        """Search for C{Edge} with its from_node, to_node, either nodes or ids.
+
+        :param from_node: C{Node} or C{str}
+        :param to_node: C{Node} or C{str}
+        :return: C{Edge} or None
         """
+        # resolve ids to nodes if necessary
+        from_node = self.nodes.get(from_node, from_node)
+        to_node = self.nodes.get(to_node, to_node)
 
-        return self.add_edge_create("e" + str(self._edgeCount),
-                                fromNode, toNode)
-
-    def add_edgeToFromID(self, id, fromID, toID):
-        """Create C{Edge} from id, fromID, toID and add it to
-        this C{Graph}.
-
-        :param id: C{str}
-        :param fromID: C{str}
-        :param toID: C{str}
-
-        """
-
-        fromNode = self._nodeSet.get(fromID)
-        toNode = self._nodeSet.get(toID)
-        if fromNode is None or toNode is None:
-            return None
-        return self.add_edge(id, fromNode, toNode)
-
-    def add_feature(self, name, value):
-        self._features.add(name, value)
-
-    def add_node(self, node):
-        """Add C{Node} to this C{Graph}.
-
-        :param node: C{Node} or C{str}
-
-        """
-
-        if isinstance(node, str):
-            newNode = self._nodeSet.get(node)
-            if newNode is None:
-                newNode = Node(node)
-                self._nodeSet[node] = newNode
-            return newNode
+        if len(from_node.out_edges) < len(to_node.in_edges):
+            for edge in from_node.out_edges:
+                if edge.to_node == to_node:
+                    return edge
         else:
-            self._nodeSet[node._id] = node
-
-    def add_region(self, region):
-        self._regions[region._id] = region
-
-    def annotation_sets(self):
-        return self._annotationSets.itervalues()
-
-    # Added AL
-    def annotation_spaces(self):
-        return self._annotationSpaces.itervalues()
-
-    def edges(self):
-        return self._edgeSet.values()
-
-    def find_edge_from_id(self, id):
-        return self._edgeSet.get(id)
-
-    def find_edge(self, fromNode, toNode):
-        """Search for C{Edge} with its fromNode, toNode, either nodes or ids.
-
-        :param fromNode: C{Node} or C{str}
-        :param toNode: C{Node} or C{str}
-        :return: C{Edge}
-
-        """
-
-        if (isinstance(fromNode, str) and
-                    isinstance(toNode, str)):
-            f = self._nodeSet.get(fromNode)
-            t = self._nodeSet.get(toNode)
-            if f is None or t is None:
-                return None
-            return findEdge(f, t)
-        else:
-            for e in self.edges():
-                if (e.getFrom().getID() == fromNode.getID() and 
-                    e.getTo().getID() == toNode.getID()):
-                    return e
-            return None
-
-    def find_node(self, id):
-        return self._nodeSet.get(id)
-
-    def get_annotation_set(self, name):
-        return self._annotationSets.get(name)
-
-    def get_annotation_sets(self):
-        return self._annotationSets.values()
-
-    # Added AL
-    def get_annotation_space(self, as_id):
-        return self._annotationSpaces.get(as_id)
-
-    # Added AL
-    def get_annotation_spaces(self):
-        return self._annotationSpaces.values()
-
-    def get_content(self):
-        return self._content
-
-    def get_edge_set_size(self):
-        return len(self._edgeSet)
-
-    def get_feature(self, name):
-        return self._features.get(name)
-
-    def get_features(self):
-        return self._features
-
-    def get_header(self):
-        return self._header
-
-    def get_node_set_size(self):
-        return len(self._nodeSet)
+            for edge in to_node.in_edges:
+                if edge.from_node == from_node:
+                    return edge
+        return None
 
     def get_region(self, start, end):
-        for region in self.regions():
-            if (start.compare_to(region.get_start()) == 0 and
-                end.compare_to(region.get_end()) == 0):
+        for region in self.regions:
+            if start == region.start and end == region.end:
                 return region
         return None
 
-    def get_region_from_id(self, id):
-        return self._regions.get(id)
-
-    def get_regions(self):
-        return self._regions.values()
-
-    def get_root(self):
-        h = self.get_header()
-        roots = h.get_roots()
-        if len(roots) == 0:
+    @property
+    def root(self):
+        try:
+            return self.iter_roots.next()
+        except StopIteration:
             return None
-        id = roots[0]
-        return self._nodeSet.get(id)        
 
-    def get_roots(self):
-        roots = []
-        h = self.get_header()
-        for id in h.get_roots():
-            roots.append(self._nodeSet.get(id))
-        return roots
-
-    def get_user_object(self):
-        return self._userObject
-
-    def insert_edge(self, e):
-        self._edgeSet[e.getID()] = e
-
-    def nodes(self):
-        return self._nodeSet.values()
-
-    def regions(self):
-        return self._regions.values()
-
-    def remove_region(self, region):
-        if isinstance(region, str):
-            return self._regions.pop(region, None)
-        else: 
-            return self._regions.pop(region.getID(), None)
-
-    def roots(self):
-        return self.get_roots()
-
-    def set_content(self, content):
-        self._content = content
-
-    def set_header(self, header):
-        self._header = header
+    def iter_roots(self):
+        return (self.nodes[id] for id in self.header.roots)
 
     def set_root(self, node):
-        self._header.clear_roots()
-        self._header.add_root(node._id)
+        self.header.clear_roots()
+        self.header.roots.append(node.id)
 
-    def set_user_object(self, object):
-        self._userObject = object
-
-    def update_node(self, edge):
-        edge._fromNode.add_out_edge(edge)
-        edge._toNode.add_in_edge(edge)
 
 class GraphElement(object):
     """
@@ -322,126 +173,70 @@ class GraphElement(object):
         :param id: C{str}
 
         """
-
-        self._id = id
-        self._userObject = None
-        self._visited = False
-        self._annotations = []
-
-    def from_node(node):
-        """Constructs a new C{GraphElement} from an existing node.
-
-        :param node: C{Node}
-
-        """
-
-        newGE = GraphElement(node.getID())
-        for a in node.annotations():
-            newGE.add_annotation(a)
-        newGE.set_user_object(node.get_user_object)
-        return newGE
-
-    def from_edge(edge):
-        """Constructs a new C{GraphElement} from an existing edge.
-
-        :param edge: C{Edge}
-
-        """
-
-        newGE = GraphElement(edge.getID())
-        for a in edge.annotations():
-            newGE.addAnnotations(a)
-        newGE.set_user_object(edge.get_user_object())
-        return newGE
+        self.id = id
+        self.visited = False
+        self.annotations = AnnotationList(self, 'element')
 
     def __repr__(self):
-        return "GraphElement id = " + self._id
+        return "GraphElement id = " + self.id
 
-    def add_annotation(self, a):
-        self._annotations.append(a)
-        a.element = self
-
-    def add_annotation_create(self, label):
-        """Creates an adds an annotation to this C{GraphElement}.
-
-        :param label: C{str}
-
-        """
-
-        a = Annotation(label)
-        self.add_annotation(a)
-        return a
-
-    def annotated(self):
-        return not len(self._annotations) == 0
+    @property
+    def is_annotated(self):
+        return bool(self.annotations)
 
     def clear(self):
-        self._visited = False
+        self.visited = False
 
-    def equals(self, o):
+    def __eq__(self, other):
         """Comparison of two graph elements by ID.
 
         :param o: C{GraphElement}
-
         """
 
-        if not isinstance(o, GraphElement) or o == None:
+        if other is None:
             return False
-        else:
-            return self._id == o.getID()
-
-    def get_annotation(self, label = ""):
-        if label == "":
-            if len(self._annotations) == 0:
-                return None
-            else:
-                return self._annotations[0]
-        else:
-            for a in self._annotations:
-                if label == a.getLabel():
-                    return a
-            return None
-
-    def get_annotation_from_set(self, setName, label):#
-        result = self.get_annotation(label)
-        if result is None:
-            return None
-        aSet = result.get_annotation_set()
-        if aSet is None:
-            return None
-        if not setName == aSet.getName():
-            return None
-        return result
-
-    def get_feature(self, ann, name):
-        a = self.get_annotation(ann)
-        if a is None:
-            return None
-        return a.get_feature(name)
-
-    def get_feature_from_set(self, set, ann, name):#
-        a = self.get_annotation_from_set(set, ann)
-        if a is not None:
-            return a.get_feature(name)
-        return None
-
-    def get_user_object(self): #
-        return self._userObject
-
-    def set_id(self, id): #
-        self._id = id
-
-    def set_user_object(self, object): #
-        self._userObject = object
-
-    def set_visited(self, visited): #
-        self._visited = visited
+        return type(self) is type(other) and self.id is other.id
 
     def visit(self):
-        self._visited = True
+        self.visited = True
 
-    def visited(self):
-        return self._visited            
+
+class EdgeList(object):
+    """An append-only structure with O(1) lookup by id or order-index"""
+
+    __slots__ = ('_by_ind', '_by_id')
+
+    def __init__(self):
+        self._by_ind = []
+        self._by_id = {}
+
+    def add(self, edge):
+        self._by_id[edge.id] = edge
+        self._by_ind.append(edge)
+
+    def __iter__(self):
+        return iter(self._by_ind)
+
+    def __len__(self):
+        return len(self._by_ind)
+
+    def __getitem__(self, sl):
+        """
+        Returns the edge corresponding to the specified slice/index or raises an IndexError.
+        If the given value is not a slice or int, returns the edge with the given id, or raises a KeyError
+        """
+        # should ID lookup have preference??
+        if isinstance(sl, (int, slice)):
+            return self._by_ind[sl]
+        return self._by_id[sl]
+
+    def __contains__(self, edge):
+        if hasattr(edge, 'id'):
+            edge = edge.id
+        return edge in self._by_id
+
+    def ids(self):
+        return self._by_id.keys()
 
 
 class Node(GraphElement):
@@ -455,93 +250,69 @@ class Node(GraphElement):
 
     """
 
-    def __init__(self, id = ""):
+    def __init__(self, id=""):
         GraphElement.__init__(self, id)
-        self._inEdgeList = []
-        self._outEdgeList = []
-        self._inEdges = {}
-        self._outEdges = {}
-        self._links = []
-        self._annotationRoot = False
-
-    def from_node(node):
-        newNode = Node(node._id)
-        newNode._annotationRoot = node._annotationRoot
-        return newNode
+        self.in_edges = EdgeList()
+        self.out_edges = EdgeList()
+        self.links = []
+        self.is_root = False
 
     def __repr__(self):
-        return "NodeID = " + self._id
+        return "NodeID = " + self.id
 
-    def add_in_edge(self, e):
-        self._inEdges[e._id] = e
-        self._inEdgeList.append(e)
+    def __cmp__(self, other):
+        return cmp(self.id, other.id)
+
+    # Relationship to media
 
     def add_link(self, link):
         self._links.append(link)
-        for region in link._regions:
+        self._add_regions(link)
+
+    def _add_regions(self, regions):
+        for region in regions:
             region.add_node(self)
 
-    def add_out_edge(self, e):
-        self._outEdges[e._id] = e    
-        self._outEdgeList.append(e)
-    
     def add_region(self, region):
-        link = None
-        if len(self._links) > 0:
-            link = self._links[len(self._links)-1]
+        """Adds the given region to the first link for this node"""
+        if self.links:
+            self.links[0].append(region)
+            self._add_regions((region,))
         else:
-            link = Link()
-            self._links.append(link)
-        link.add_target(region)
-        region.add_node(self)
+            self.add_link(Link((region,)))
+
+    # Relationship within graph
+
+    def iter_parents(self):
+        for edge in self.in_edges:
+            res = edge.getFrom()
+            if res is not None:
+                yield res
+
+    @property
+    def parent(self):
+        try:
+            return self.iter_parents().next()
+        except StopIteration:
+            raise AttributeError('%r has no parents' % self)
+
+    def iter_children(self):
+        for edge in self.out_edges:
+            res = edge.getTo()
+            if res is not None:
+                yield res
         
     def clear(self):
-        self._visited = False
-        for e in self._outEdges.values():
-            toNode = e.getTo()
-            if toNode is not None and toNode.visited():
-                toNode.clear()
+        """Clears this node's visisted status and those of all visited descendents"""
+        self.visited = False
 
-    def compare_to(self, node):
-        if self._id > node._id:
-            return 1
-        elif self._id < node._id:
-            return -1
-        else:
-            return 0
+        for child in self.iter_children():
+            if child.visited:
+                child.clear()
 
+    @property
     def degree(self):
-        return len(self._inEdgeList) + len(self._outEdgeList)
-
-    def get_in_edge(self, index):
-        if isinstance(index, basestring):
-            return self._inEdges.get(index)
-        else:
-            if len(self._inEdgeList) <= index:
-                return None
-            else:
-                return self._inEdgeList[index]
-
-    def get_out_edge(self, index):
-        if isinstance(index, basestring):
-            return self._outEdges.get(index)
-        else:
-            if len(self._outEdgeList) <= index:
-                return None
-            else:
-                return self._outEdgeList[index]
-
-    def get_parent(self):
-        if len(self._inEdgeList) == 0:
-            return None
-        else:
-            return self._inEdgeList[0].getFrom()
-
-    def in_degree(self):
-        return len(self._inEdgeList)
-
-    def out_degree(self):
-        return len(self._outEdgeList)
+        return len(self.in_edges) + len(self.out_edges)
 
 
 class Edge(GraphElement):
@@ -552,113 +323,51 @@ class Edge(GraphElement):
     - Edges may also contain one or more C{Annotation} objects.
 
     """
-
-    def __init__(self, id, fromNode = None, toNode = None):
+    def __init__(self, id, from_node=None, to_node=None):
         """C{Edge} Constructor.
 
         :param id: C{str}
-        :param fromNode: C{Node}
-        :param toNode: C{Node}
+        :param from_node: C{Node}
+        :param to_node: C{Node}
 
         """
-
         GraphElement.__init__(self, id)
-        self._fromNode = fromNode
-        self._toNode = toNode
-
-    def from_edge(e):
-        """C{Edge} Constructor from an existing C{Edge}.
-
-        :param e: C{Edge}
-
-        """
-
-        return Edge(e._id, e._fromNode, e._toNode)
+        self.from_node = from_node
+        self.to_node = to_node
 
     def __repr__(self):
-        return "Edge id = " + self._id
+        return "Edge id = " + self.id
 
 
-class Link(object):
-    def __init__(self):
-        self._regions = []
-
-    def __repr__(self):
-        return str(self._regions)
-
-    def add_target(self, region):
-        self._regions.append(region)
+class Link(list):
+    """
+    Link objects are used to associate nodes in the graph with the
+    regions of the graph they annotate. Links are almost like edges except a
+    link is a relation between a node and a region rather than a relation
+    between two nodes. A node make be linked to more than one region.
+    """
+    # Inherits all functionality from builtin list
+    __slots__ = ()
+    def __init__(self, vals=()):
+        super(Link, self).__init__(vals)
 
 
 class StandoffHeader(object):
     def __init__(self):
-        self._annotationSets = {}
-        self._annotationSpaces = {}
-        self._dependsOn = []
-        self._roots = []
+        self.annotation_spaces = {}
+        self.depends_on = []
+        self.roots = []
 
     def __repr__(self):
         return "StandoffHeader"
 
-    def add_annotation_set(self, aSet):
-        self._annotationSets[aSet.getName()] = aSet
-
-    def add_annotation_set_create(self, name, type):
-        aSet = AnnotationSet(name, type)
-        self._annotationSets[name] = aSet
-        return aSet
-
-    # Added AL
-    def add_annotation_space(self, aSet):
-        self._annotationSpaces[aSet.getName()] = aSet
-
-    # Added AL
-    def add_annotation_space_create(self, as_id):
-        aSet = AnnotationSpace(as_id)
-        self._annotationSpaces[as_id] = aSet
-        return aSet
+    def add_annotation_space(self, aspace):
+        self.annotation_spaces[aspace.name] = aspace
 
     def add_dependency(self, type, location):
-        self._dependsOn.append(type)
-
-    def add_root(self, id):
-        self._roots.append(id)
+        self.depends_on.append(type)
 
     def clear_roots(self):
-        del self._roots[:]
-
-    def copy(self, header):
-        self._dependsOn = list(header.get_depends_on())
-        self._roots = list(header.get_roots())
-        del self._annotationSets[:]
-        for aSet in header.get_annotation_sets():
-            copy = AnnotationSet.from_as(aSet)
-            self._annotationSets[copy.getName()] = copy
-
-    def get_annotation_set(self, name):
-        return self._annotationSets.get(name)
-
-    def get_annotation_sets(self):
-        return list(self._annotationSets.values())
-
-    # Added AL
-    def get_annotation_space(self, as_id):
-        return self._annotationSpaces.get(as_id)
-
-    # Added AL
-    def get_annotation_spaces(self):
-        return list(self._annotationSpaces.values())
-
-    def get_depends_on(self):
-        return self._dependsOn
-
-    def get_roots(self):
-        return self._roots
-
-    def remove_root(self, id):
-        self._roots.remove(id)
-
-    def set_depends_on(self, dependsOn):
-        self._dependsOn = dependsOn
+        del self.roots[:]
 
 
