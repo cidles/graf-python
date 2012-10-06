@@ -270,7 +270,7 @@ class GrafRenderer(object):
         annotations = self.count_tag_usage(g)
 
         with self._tag(self._g.TAGSDECL):
-            for k, v in annotations.iteritems():
+            for k, v in annotations.items():
                 self._tag(self._g.TAGUSAGE, {self._g.GI: str(k), self._g.OCCURS: str(v)}).write()
 
     def render(self, g):
