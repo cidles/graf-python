@@ -142,8 +142,12 @@ class GrafRenderer(object):
         """
 
         out = out if hasattr(out, 'write') else open(out, "w")
-        # TODO: use a generator with indents and self-closing tags
-        self._gen = XMLGenerator(out, 'utf-8')
+        # TODO: use a generator with indents
+        try:
+            # For Python >= 3.2
+            self._gen = XMLGenerator(out, 'utf-8', short_empty_elements=True)
+        except TypeError:
+            self._gen = XMLGenerator(out, 'utf-8')
         self._g = Constants
 
     def _tag(self, tag, attribs=None):
