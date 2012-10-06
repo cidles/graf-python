@@ -11,6 +11,7 @@
 import os
 from xml.sax import make_parser, SAXException
 from xml.sax.handler import ContentHandler
+from xml.sax.saxutils import XMLGenerator
 
 from graphs import Graph, Edge, Link, Node
 from annotations import Annotation, FeatureStructure
@@ -58,6 +59,7 @@ class Constants(object):
     ANCHOR_TYPE = "anchorType"
     ANNOTATION_SETS = "annotationSets"
     ANNOTATION_SET = "annotationSet"
+    ANNOTATION_SPACES = "annotationSpaces"
     ANNOTATION_SPACE = "annotationSpace"
     NAME = "name"
     VALUE = "value"
@@ -84,34 +86,215 @@ class Constants(object):
     DEFAULT = "default"
 
 
-class XML(object):
+class TagWriter(object):
+    """Allows a tag to be written using `with` syntax for nesting and `write()` when none is required"""
+    __slots__ = ('handler', 'name', 'attribs', 'written')
 
-    def __init__(self):
-        pass
-    
-    def encode(self, s):
-        result = s.replace("&", "&amp;")
-        result = result.replace("<", "$lt;")
-        result = result.replace(">", "&gt;")
-        result = result.replace("\"", "&quot;")
-        return result
+    def __init__(self, handler, ns, tag, attribs):
+        self.written = False
+        self.handler = handler
+        self.name = (ns, tag)
+        self.attribs = self._clean_attribs(attribs, ns)
 
-    def attribute(self, name, value):
-        return name + "=\"" + self.encode(value) + "\""
+    @staticmethod
+    def _clean_attribs(attribs, ns):
+        if not attribs:
+            return {}
+        res = {}
+        for k, v in attribs.items():
+            if v is None:
+                continue
+            if isinstance(k, basestring):
+                k = (ns, k)
+            res[k] = v
+        return res
+
+    def __del__(self):
+        if not self.written:
+            import sys
+            print >> sys.stderr, ('Warning: tag not written: %s' % (self.name,))
+
+    def __enter__(self):
+        self.handler.startElementNS(self.name, None, self.attribs)
+
+    def __exit__(self, *args):
+        self.written = True
+        self.handler.endElementNS(self.name, None)
+
+    def write(self, cdata=None):
+        with self:
+            if cdata is not None:
+                self.handler.characters(cdata)
+                 
+
+class GrafRenderer(object):
+    """
+    Renders a GrAF XML representation that can be read back by an instance
+    of L{GraphParser}.
+
+    Version: 1.0.
+
+    """
+
+    def __init__(self, out, constants=Constants):
+        """Create an instance of a GrafRenderer.
+
+        """
+
+        out = out if hasattr(out, 'write') else open(out, "w")
+        # TODO: use a generator with indents and self-closing tags
+        self._gen = XMLGenerator(out, 'utf-8')
+        self._g = Constants
+
+    def _tag(self, tag, attribs=None):
+        return TagWriter(self._gen, self._g.NAMESPACE, tag, attribs)
+
+    def render_node(self, n):
+        """
+        Used to render the node elements of the Graph.
+        """
+        tag = self._tag(self._g.NODE, {
+            self._g.ID: n.id,
+            self._g.ROOT: 'true' if n.is_root else None,
+        })
+        with tag:
+            for link in n.links:
+                self.render_link(link)
+
+        for a in n.annotations:
+            self.render_ann(a)
+
+    def render_link(self, link):
+        """
+        Used to render the link elements of the Graph.
+        """
+        self._tag(self._g.LINK, {'targets': ' '.join(str(region.id) for region in link)})
+
+    def render_region(self, region):
+        """
+        Used to render the region elements of the Graph.
+        """
+        self._tag(self._g.REGION, {
+            self._g.ID: region.id,
+            self._g.ANCHORS: ' '.join(str(a) for a in region.anchors)
+        }).write()
+
+    def render_edge(self, e):
+        """
+        Used to render the edge elements of the Graph.
+        """
+        with self._tag(self._g.EDGE, {self._g.FROM: e.from_node.id, self._g.TO: e.to_node.id}):
+            for a in e.annotations:
+                self.render_ann(a)
+
+    def render_as(self, aSet):
+        """
+        Used to render the annotation set elements of the Graph.
+        """
+        with self._tag(self._g.ASET, {self._g.NAME: aSet.name}):
+            for a in aSet:
+                self.render_ann(a)
+
+    def render_ann(self, a):
+        """
+        Used to render the annotation elements of the Graph.
+        """
+        tag = self._tag(self._g.ANNOTATION, {
+            'label': a.label, 'ref': a.element.id,
+            self._g.ASET: None if a.aspace is None else a.aspace.name
+        })
+        with tag:
+            self.render_fs(a.features)
+
+    def render_fs(self, fs):
+        """
+        Used to render the feature structure elements of the Graph.
+        """
+        if not fs:
+            return
+        with self._tag(self._g.FS, {self._g.TYPE: fs.type}):
+            for name, value in fs.items():
+                self.render_feature(name, value)
+
+    def render_feature(self, name, value):
+        """
+        Used to render the features elements of the Graph.
+        """
+        if hasattr(value, 'items'):
+            with self._tag(self._g.FEATURE, {self._g.NAME: name}):
+                self.render_fs(value)
+        else:
+            self._tag(self._g.FEATURE, {self._g.NAME: name, self._g.VALUE: value}).write()
+
+    def write_header(self, g):
+        """
+        Writes the header tag at the beginning of the XML file.
+        """
+        header = g.header
+        with self._tag(self._g.HEADER):
+            self.render_tag_usage(g)
+            self.write_header_elements(header)
+
+    def write_header_elements(self, header):
+        """
+        Helper method for write_header.
+        """
+        roots = header.roots
+        if roots:
+            with self._tag(self._g.ROOTS):
+                for root in roots:
+                    self._tag(self._g.ROOT).write()
+
+        depends_on = header.depends_on
+        if depends_on:
+            with self._tag(self._g.ROOTS):
+                for dependency in depends_on:
+                    self._tag(self._g.DEPENDSON, {self._g.TYPE: dependency}).write()
+
+        aspaces = header.annotation_spaces
+        if aspaces:
+            with self._tag(self._g.ANNOTATION_SPACES):
+                for aspace in aspaces:
+                    self._tag(self._g.ANNOTATION_SPACE, {self._g.NAME: aspace.name, self._g.TYPE: aspace.type}).write()
 
 
-class IndentManager(object):
-    def __init__(self):
-        self._indent = "    "
+    def count_tag_usage(self, g):
+        annotations = {}
+        for node in g.nodes:
+            for a in node.annotations:
+                count = annotations.setdefault(a.label, 0)
+                annotations[a.label] = count + 1
+        return annotations
 
-    def __repr__(self):
-        return self._indent
+    def render_tag_usage(self, g):
+        annotations = self.count_tag_usage(g)
 
-    def more(self):
-        self._indent += "    "
+        with self._tag(self._g.TAGSDECL):
+            for k, v in annotations.iteritems():
+                self._tag(self._g.TAGUSAGE, {self._g.GI: str(k), self._g.OCCURS: str(v)}).write()
 
-    def less(self):
-        self._indent = self._indent[0:-4]
+    def render(self, g):
+        self._gen.startDocument()
+        self._gen.startPrefixMapping(None, self._g.NAMESPACE)
+        with self._tag(self._g.GRAPH):
+            self.write_header(g)
+
+            # Add any features of the graph
+            if g.features is not None:
+                self.render_fs(g.features)
+
+            # Render the regions
+            for region in sorted(g.regions):
+                self.render_region(region)
+
+            # Render the nodes
+            nodes = sorted(g.nodes)
+            for node in nodes:
+                self.render_node(node)
+
+            # Render the edges
+            for edge in g.edges:
+                self.render_edge(edge)
 
 
 class DocumentHeader(object):
@@ -142,374 +325,6 @@ class DocumentHeader(object):
         if self._basename != None:
             return self._basename + '-' + type + ".xml"
         return None
-
-                 
-class GrafRenderer(object):
-    """
-    Renders a GrAF XML representation that can be read back by an instance
-    of L{GraphParser}.
-
-    Version: 1.0.
-
-    """
-
-    def __init__(self, out, constants=Constants):
-        """Create an instance of a GrafRenderer.
-
-        """
-
-        self._xml = XML()
-        self._indent = IndentManager()
-        self._FILE = out if hasattr(out, 'write') else open(out, "w")
-        self._g = Constants
-        self._VERSION = self._g.VERSION
-        self._UTF8 = "UTF-8"
-        self._UTF16 = "UTF-16"
-        self._encoding = self._UTF8
-
-    def render_node(self, n):
-        """Used to render the node elements of the Graph.
-
-        """
-
-        self._FILE.write(str(self._indent) + "<" + self._g.NODE + " ")
-        self._FILE.write(self._g.ID + "=\"" + n.id + "\"")
-        if n.is_root:
-            self._FILE.write(" " + self._g.ROOT + "=\"true\"")
-        if n.links:
-            self._FILE.write( ">" + self._g.EOL)
-            self._indent.more()
-            for link in n.links:
-                self.render_link(link)
-            self._indent.less()
-            self._FILE.write(str(self._indent) + 
-                        "</" + self._g.NODE + ">" + self._g.EOL)
-        else:
-            self._FILE.write( "/>" + self._g.EOL)
-
-        for a in n.annotations:
-            self.render_ann(a)
-
-    def render_link(self, link):
-        """Used to render the link elements of the Graph.
-
-        """
-
-        targets = ""
-        if len(link._regions) == 0:
-            return
-        for region in link:
-            targets = targets + " " + region._id
-        targets = targets[1:]
-        self._FILE.write(str(self._indent) + "<" + self._g.LINK + " " 
-                + self._xml.attribute("targets", targets) + "/>" + 
-                self._g.EOL)
-
-    def render_region(self, region):
-        """Used to render the region elements of the Graph.
-
-        """
-
-        self._FILE.write(str(self._indent) + "<" + self._g.REGION + " " 
-                + self._g.ID + "=\"" + region._id + "\" " 
-                + self._g.ANCHORS + "=\"" + self.get_anchors(region)
-                + "\"/>" + self._g.EOL)
-
-    def render_edge(self, e):
-        """Used to render the edge elements of the Graph.
-
-        """
-
-        self._FILE.write(str(self._indent) + "<" + self._g.EDGE + " " 
-                + self._g.ID 
-                + "=\"" + e.id + "\" " + self._g.FROM + "=\"" 
-                + e.from_node.id + "\" " + self._g.TO + "=\"" 
-                + e.to_node.id + "\"")
-
-        if e.annotated():
-            self._FILE.write(">" + self._g.EOL)
-            self._indent.more()
-            for a in e.annotations():
-                self.render_ann(a)
-            self._indent.less()
-            self._FILE.write(str(self._indent) + "</" + self._g.EDGE + ">" 
-                                     + self._g.EOL)
-        else:
-            self._FILE.write("/>" + self._g.EOL)
-
-    def render_as(self, aSet):
-        """Used to render the annotation set elements of the Graph.
-
-        """
-
-        atts = ""
-        self.add_attribute(atts, self._g.NAME, aSet.name)
-
-        self.FILE.write(str(self._indent) + "<" + self._g.ASET 
-                        + atts + ">" + self._g.EOL)
-        self._indent.more()
-        for a in aSet:
-            self.render_ann(a)
-        self._indent.less()
-        self.FILE.write(str(self._indent) + "</" + self._g.ASET 
-                        + ">" + self._g.EOL)
-
-    def render_ann(self, a):
-        """Used to render the annotation elements of the Graph.
-
-        """
-
-        label = self._xml.encode(a.label)
-        self._FILE.write(str(self._indent) + "<" + self._g.ANNOTATION 
-                        + " " 
-                        + self._xml.attribute("label", label) + " " 
-                        + self._xml.attribute("ref", a.element.id))
-        aspace = a.aspace
-        if aspace is not None:
-            self._FILE.write(" " + 
-                    self._xml.attribute(self._g.ASET, aspace.name))
-        
-        fs = a.features
-        if fs:
-            self._FILE.write( ">" + self._g.EOL)
-            self._indent.more()
-            self.render_fs(fs)
-            self._indent.less()
-            self._FILE.write(str(self._indent) + "</" 
-                            + self._g.ANNOTATION + ">" + self._g.EOL)
-        else:
-            self._FILE.write("/>" + self._g.EOL)
-
-    def render_fs(self, fs):
-        """Used to render the feature structure elements of the Graph.
-
-        """
-
-        if not fs:
-            return
-        type = fs.type
-        self._FILE.write(str(self._indent) + "<" + self._g.FS)
-        if type is not None:
-            self._FILE.write(" " + self._g.TYPE + "=\"" + type + "\">")
-        self._FILE.write( ">" + self._g.EOL)
-        self._indent.more()
-        for name, value in fs.items():
-            self.render_feature(name, value)
-        self._indent.less()
-
-        self._FILE.write(str(self._indent) + "</" + self._g.FS + ">" 
-                            + self._g.EOL)
-
-
-    def render_feature(self, name, value):
-        """Used to render the features elements of the Graph.
-
-        """
-
-        if hasattr(value, 'items'):
-            self._FILE.write(str(self._indent) + "<" + self._g.FEATURE 
-                            + " " 
-                            + self._g.NAME + "=\"" + name + "\">" 
-                            + self._g.EOL)
-            self._indent.more()
-            self.render_fs(value)
-            self._indent.less()
-            self._FILE.write(str(self._indent) + "</" + self._g.FEATURE 
-                            + ">" + self._g.EOL)
-        else:
-            self._FILE.write(str(self._indent) + "<" + self._g.FEATURE 
-                    + " " 
-                    + self._g.NAME + "=\"" + name + "\" " 
-                    + self._g.VALUE + "=\"" + self._xml.encode(value) 
-                    + "\"/>" + self._g.EOL)
-
-    def get_anchors(self, region):
-        """Gathers the anchors from a region in the Graph,
-        creates a string listing all of them, separated by spaces.
-
-        """
-
-        buffer = ""
-        for a in region.get_anchors():
-            buffer = buffer + " " + a.toString()
-        return buffer[1:]
-
-    def write_open_graph_element(self):
-        """Writes the header of the XML file.
-
-        """
-
-        self._FILE.write("<?xml version=\"1.0\" encoding=\"" 
-                        + self._encoding + "\"?>" + self._g.EOL)
-        self._FILE.write(
-            "<" + self._g.GRAPH + " xmlns=\"" + self._g.NAMESPACE + "\"")
-        self._FILE.write( ">" + self._g.EOL)
-
-    def add_attribute(self, b, type, value):
-        """Adds an attribute to an XML element.
-
-        """
-
-        if value is None:
-            return
-        b.append(" ")
-        b.append(type)
-        b.append("=\"")
-        b.append(value)
-        b.append("\"")
-
-    def write_header(self, g):
-        """Writes the header tag at the beginning of the XML file.
-
-        """
-
-        header = g.header
-        self._FILE.write(str(self._indent) + "<" + self._g.HEADER 
-                        + ">" + self._g.EOL)
-        self._indent.more()
-        self.render_tag_usage(g)
-        self.write_xml(header)
-        self._indent.less()
-        self._FILE.write(str(self._indent) + "</" + self._g.HEADER 
-                        + ">" + self._g.EOL)
-
-    def write_xml(self, header):
-        """Helper method for write_header.
-
-        """
-
-        roots = header.roots
-        if len(roots) > 0:
-            self._FILE.write(str(self._indent) + "<" + self._g.ROOTS + ">" 
-                                     + self._g.EOL)
-            self._indent.more()
-            for root in roots:
-                self._FILE.write(str(self._indent) + "<" + self._g.ROOT 
-                                + ">")
-                self._FILE.write(root)
-                self._FILE.write( "</" + self._g.ROOT + ">" + self._g.EOL)
-            self._indent.less()
-            self._FILE.write(str(self._indent) + "</" + self._g.ROOTS 
-                            + ">" + self._g.EOL)
-
-        dependsOn = header.depends_on
-        if len(dependsOn) > 0:
-            self._FILE.write(str(self._indent) + "<" 
-                            + self._g.DEPENDENCIES + ">" + self._g.EOL)
-            self._indent.more()
-            self.elements(self._FILE, self._indent, self._g.DEPENDSON, 
-                            dependsOn)
-            self._indent.less()
-            self._FILE.write(str(self._indent) + "</" 
-                            + self._g.DEPENDENCIES + ">" + self._g.EOL)
-
-        annotationSets = header.annotation_spaces
-        #TODO: make all these about spaces
-        if len(annotationSets) > 0:
-            self._FILE.write(str(self._indent) + "<" 
-                    + self._g.ANNOTATION_SETS + ">" + self._g.EOL)
-            self._indent.more()
-            for aSet in annotationSets:
-                self._FILE.write(str(self._indent) + "<" 
-                                + self._g.ANNOTATION_SET + " ")
-                self._FILE.write(self._xml.attribute(self._g.NAME, 
-                                aSet._name))
-                self._FILE.write(" ")
-                print(aSet._name)
-                print(str(aSet._type))
-                self._FILE.write(self._xml.attribute(self._g.TYPE, 
-                                     str(aSet._type)))
-                self._FILE.write( "/>" + self._g.EOL)
-            self._indent.less()
-            self._FILE.write(str(self._indent) + "</" 
-                    + self._g.ANNOTATION_SETS + ">" + self._g.EOL)
-
-
-    def elements(self, file, indent, name, uris):
-        """Creates XML tags for elements in uris.
-
-        """
-
-        if uris is None:
-            return
-        for uri in uris:
-            self.element(file, indent, name, uri)
-
-    def element(self, file, indent, name, loc):
-        """Helper method for elements(), creates an XML tag for an element.
-
-        """
-
-        if loc is None:
-            return
-        file.write(str(indent) + "<" + name + " " + self._g.TYPE + "=\"" 
-                    + loc + "\"/>" + self._g.EOL)
-
-    def count_tag_usage(self, g):
-        annotations = {}
-        for node in g.nodes:
-            for a in node.annotations:
-                counter = annotations.get(a.label)
-                if counter is None:
-                    counter = Counter()
-                    annotations[a.label] = counter
-                counter.increment()
-        return annotations
-
-    def render_tag_usage(self, g):
-        annotations = self.count_tag_usage(g)
-
-        self._FILE.write(str(self._indent) + "<" + self._g.TAGSDECL + ">" 
-                        + self._g.EOL)
-        self._indent.more()
-        for k, v in annotations.iteritems():
-            self._FILE.write(str(self._indent) + "<" 
-                            + self._g.TAGUSAGE + " " 
-                            + self._g.GI + "=\"" + str(k) + "\" " 
-                            + self._g.OCCURS + "=\"" + str(v) + "\"/>" 
-                            + self._g.EOL)
-        self._indent.less()
-        self._FILE.write(str(self._indent) + "</" + self._g.TAGSDECL 
-                        + ">" + self._g.EOL)
-
-    def close(self):
-        self._FILE.close()
-
-    def render(self, g):
-        self.write_open_graph_element()
-
-        self.write_header(g)
-
-        # Add any features of the graph
-        fs = g.features
-        if fs is not None:
-            self.render_fs(fs)
-
-        # Render the regions
-        for region in sorted(g.regions):
-            self.render_region(region)
-
-        # Render the nodes
-        nodes = sorted(g.nodes)
-        for node in nodes:
-            self.render_node(node)
-
-        # Render the edges
-        for edge in g.edges:
-            self.render_edge(edge)
-
-        self._FILE.write( "</graph>" + self._g.EOL)
-
-
-class Counter(object):
-    def __init__(self):
-        self._count = 0
-
-    def __repr__(self):
-        return str(self._count)
-
-    def increment(self):
-        self._count += 1
 
 
 class GraphParser(ContentHandler):
