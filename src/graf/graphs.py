@@ -202,7 +202,7 @@ class GraphElement(object):
 
         if other is None:
             return False
-        return type(self) is type(other) and self.id is other.id
+        return type(self) is type(other) and self.id == other.id
 
     def visit(self):
         self.visited = True

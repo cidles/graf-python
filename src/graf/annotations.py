@@ -319,7 +319,7 @@ class FeatureStructure(object):
         Equivalence is equivalent types (????)
         """
         try:
-            return self.type is other.type
+            return self.type == other.type
         except AttributeError:
             return False
 
@@ -332,7 +332,7 @@ class FeatureStructure(object):
             if isinstance(val, FeatureStructure) and isinstance(oval, FeatureStructure):
                 if not val.subsumes(oval):
                     return False
-            elif val is not oval: # assume val is FS or string
+            elif val != oval:
                 return False
         return True
 
