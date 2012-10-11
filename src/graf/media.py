@@ -11,7 +11,7 @@
 
 # Note: Python Anchor objects:
 # * are immutable
-# * provide __cmp__, __add__ and __sub__
+# * provide __lt__, __eq__, __add__ and __sub__
 # * may be initialised given a string representation
 
 CharAnchor = int
@@ -49,13 +49,15 @@ class Region(object):
         for i in range(len(self.anchors)):
             self.anchors[i] -= offset
 
-    def __cmp__(self, other):
-        return (len(self.anchors) - len(other.anchors)) or cmp(self.anchors, other.anchors)
+    def __lt__(self, other):
+        if len(self.anchors) == len(other.anchors):
+            return self.anchors < other.anchors
+        return len(self.anchors) < len(other.anchors) # TODO: work out correct behaviour
 
     def __eq__(self, other):
         if not isinstance(other, Region) or other is None:
             return False
-        return not cmp(self, other)
+        return self.anchors == other.anchors
 
     def _get_end(self):
         return self.anchors[-1]

@@ -267,8 +267,8 @@ class Node(GraphElement):
     def __repr__(self):
         return "NodeID = " + self.id
 
-    def __cmp__(self, other):
-        return cmp(self.id, other.id)
+    def __lt__(self, other):
+        return self.id < other.id
 
     # Relationship to media
 
