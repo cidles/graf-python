@@ -1,0 +1,276 @@
+<?xml version="1.0" ?>
+<graph xmlns="http://www.xces.org/ns/GrAF/1.0/">
+  <graphHeader>
+    <labelsDecl/>
+    <dependencies>
+      <dependsOn f.id="word"/>
+    </dependencies>
+    <annotationSpaces>
+      <annotationSpace as.id="graid1"/>
+    </annotationSpaces>
+  </graphHeader>
+  <node xml:id="graid1-n1">
+    <link targets="word-r1"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n1" xml:id="graid1-1">
+    <fs>
+      <f name="graid1">comp</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n2">
+    <link targets="word-r2"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n2" xml:id="graid1-2">
+    <fs>
+      <f name="graid1">deti</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n3">
+    <link targets="word-r3"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n3" xml:id="graid1-3">
+    <fs>
+      <f name="graid1">np.h:s=cop:predp</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n4">
+    <link targets="word-r4"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n4" xml:id="graid1-4">
+    <fs>
+      <f name="graid1">det</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n5">
+    <link targets="word-r5"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n5" xml:id="graid1-5">
+    <fs>
+      <f name="graid1">np.h:a</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n6">
+    <link targets="word-r6"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n6" xml:id="graid1-6">
+    <fs>
+      <f name="graid1">prep</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n7">
+    <link targets="word-r7"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n7" xml:id="graid1-7">
+    <fs>
+      <f name="graid1">refl:poss</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n8">
+    <link targets="word-r8"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n8" xml:id="graid1-8">
+    <fs>
+      <f name="graid1">np:poss</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n9">
+    <link targets="word-r9"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n9" xml:id="graid1-9">
+    <fs>
+      <f name="graid1">np:l</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n10">
+    <link targets="word-r10"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n10" xml:id="graid1-10">
+    <fs>
+      <f name="graid1">deti</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n11">
+    <link targets="word-r11"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n11" xml:id="graid1-11">
+    <fs>
+      <f name="graid1">np:p</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n12">
+    <link targets="word-r12"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n12" xml:id="graid1-12">
+    <fs>
+      <f name="graid1">other</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n13">
+    <link targets="word-r13"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n13" xml:id="graid1-13">
+    <fs>
+      <f name="graid1">possv:predp</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n14">
+    <link targets="word-r14"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n14" xml:id="graid1-14">
+    <fs>
+      <f name="graid1">comp</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n15">
+    <link targets="word-r15"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n15" xml:id="graid1-15">
+    <fs>
+      <f name="graid1">other</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n16">
+    <link targets="word-r16"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n16" xml:id="graid1-16">
+    <fs>
+      <f name="graid1">other</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n17">
+    <link targets="word-r17"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n17" xml:id="graid1-17">
+    <fs>
+      <f name="graid1">np:poss</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n18">
+    <link targets="word-r18"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n18" xml:id="graid1-18">
+    <fs>
+      <f name="graid1">np:s=cop:predp-p</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n19">
+    <link targets="word-r19"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n19" xml:id="graid1-19">
+    <fs>
+      <f name="graid1">prep</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n20">
+    <link targets="word-r20"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n20" xml:id="graid1-20">
+    <fs>
+      <f name="graid1">det</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n21">
+    <link targets="word-r21"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n21" xml:id="graid1-21">
+    <fs>
+      <f name="graid1">other=cop:predp-p</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n22">
+    <link targets="word-r22"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n22" xml:id="graid1-22">
+    <fs>
+      <f name="graid1">other:s</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n23">
+    <link targets="word-r23"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n23" xml:id="graid1-23">
+    <fs>
+      <f name="graid1">other</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n24">
+    <link targets="word-r24"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n24" xml:id="graid1-24">
+    <fs>
+      <f name="graid1">np:p=deti</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n25">
+    <link targets="word-r25"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n25" xml:id="graid1-25">
+    <fs>
+      <f name="graid1">possv:predp</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n26">
+    <link targets="word-r26"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n26" xml:id="graid1-26">
+    <fs>
+      <f name="graid1">pro:p</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n27">
+    <link targets="word-r27"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n27" xml:id="graid1-27">
+    <fs>
+      <f name="graid1">other</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n28">
+    <link targets="word-r28"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n28" xml:id="graid1-28">
+    <fs>
+      <f name="graid1">np:other</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n29">
+    <link targets="word-r29"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n29" xml:id="graid1-29">
+    <fs>
+      <f name="graid1">v:predp</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n30">
+    <link targets="word-r30"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n30" xml:id="graid1-30">
+    <fs>
+      <f name="graid1">np.h:s</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n31">
+    <link targets="word-r31"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n31" xml:id="graid1-31">
+    <fs>
+      <f name="graid1">other</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n32">
+    <link targets="word-r32"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n32" xml:id="graid1-32">
+    <fs>
+      <f name="graid1">other</f>
+    </fs>
+  </a>
+  <node xml:id="graid1-n33">
+    <link targets="word-r33"/>
+  </node>
+  <a as="graid1" label="graid1" ref="graid1-n33" xml:id="graid1-33">
+    <fs>
+      <f name="graid1">cop:predp</f>
+    </fs>
+  </a>
+</graph>
