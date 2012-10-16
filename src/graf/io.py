@@ -12,9 +12,8 @@ import os
 from xml.sax import make_parser, SAXException
 from xml.sax.handler import ContentHandler
 from xml.sax.saxutils import XMLGenerator
-from xml.dom import minidom
 
-from graphs import Graph, Edge, Link, Node
+from graphs import Graph, Link
 from annotations import Annotation, FeatureStructure
 from media import CharAnchor, Region
 
