@@ -12,6 +12,7 @@ import os
 from xml.sax import make_parser, SAXException
 from xml.sax.handler import ContentHandler
 from xml.sax.saxutils import XMLGenerator
+from xml.dom import minidom
 
 from graphs import Graph, Edge, Link, Node
 from annotations import Annotation, FeatureStructure
@@ -172,7 +173,7 @@ class GrafRenderer(object):
         """
         Used to render the link elements of the Graph.
         """
-        self._tag(self._g.LINK, {'targets': ' '.join(str(region.id) for region in link)})
+        self._tag(self._g.LINK, {'targets': ' '.join(str(region.id) for region in link)}).write()
 
     def render_region(self, region):
         """
@@ -237,9 +238,9 @@ class GrafRenderer(object):
         header = g.header
         with self._tag(self._g.HEADER):
             self.render_tag_usage(g)
-            self.write_header_elements(header)
+            self.write_header_elements(graph, header)
 
-    def write_header_elements(self, header):
+    def write_header_elements(self, graph, header):
         """
         Helper method for write_header.
         """
@@ -255,7 +256,7 @@ class GrafRenderer(object):
                 for dependency in depends_on:
                     self._tag(self._g.DEPENDSON, {self._g.TYPE: dependency}).write()
 
-        aspaces = header.annotation_spaces
+        aspaces = graph.annotation_spaces
         if aspaces:
             with self._tag(self._g.ANNOTATION_SPACES):
                 for aspace in aspaces:
@@ -331,437 +332,115 @@ class DocumentHeader(object):
         return None
 
 
-class GraphParser(ContentHandler):
-    """
-    Used to parse the GrAF XML representation and construct the instance 
-    of C{Graph} objects.
+class SAXHandler(ContentHandler):
+    ERR_MODE_RAISE = 'error'
+    ERR_MODE_IGNORE = 'ignore'
 
-    version: 1.0.
+    def __init__(self, handler_map, error_mode=ERR_MODE_RAISE):
+        self._tag_stack = []
+        self._start_handlers = {}
+        self._end_handlers = {}
+        self._char_handlers = {}
+        for tag, fns in handler_map.items():
+            if fns is None:
+                fns = (None, None, None)
+            elif callable(fns):
+                fns = (fns, None, None)
+            elif len(fns) == 2:
+                fns = (fns[0], fns[1], None)
+            fns = [self._ignore if fn is None else fn for fn in fns]
+            start, end, char = fns
 
-    """
+            self._start_handlers[tag] = start
+            self._end_handlers[tag] = end
+            self._char_handlers[tag] = char
 
-    def __init__(self, constants=Constants, anchor_cls=CharAnchor):
-        """Create a new C{GraphParser} instance.
+        self._error_mode = error_mode
 
-        """
-
-        self._anchor_cls = anchor_cls
-        self._parser = make_parser()
-        self._parser.setContentHandler(self)
-        self._g = Constants
-        self._annotation_set_map = {}
-        self._annotation_space_map = {} # Added AL
-        self._buffer = ""
-        self._current_annotation = None
-        self._current_annotation_set = None
-        self._current_fs = None
-        self._current_node = None
-        self._edge_annotations = [] # pairs?
-        self._edges = []
-        self._fs_stack = []
-        self._f_stack = []
-        self._graph = None
-        self._header = None
-        self._node_map = {}
-        self._parent_dir = None ###
-        self._parsed = [] 
-        self._relations = []
-        self._root_id = ""
-        self._root_element = 0
-
-
-    def parse(self, file, parsed = None):
-        """Parses the XML file at the given path.
-
-        :return: a Graph representing the annotated text in GrAF format
-        :rtype: Graph
-
-        """
-
-        if parsed is None:
-            parsed = []
-        #print "parsing " + file
-        delete_header = False
-        if self._header is None:
-            self._header = DocumentHeader(os.path.abspath(file))
-            delete_header = True
-
-        self._parsed = parsed
-        FILE = open(file, 'r')
-        self._parser.parse(FILE)
-        result = self._graph
-
-        self._graph = None
-
-        if delete_header:
-            self._header = None
-
-        FILE.close()
-        return result
+    @staticmethod
+    def _ignore(*args, **kwargs):
+        pass
 
     def startElement(self, name, attrs):
-        """Processes the opening xml tags, according to their type.
-        It's a method from ContentHandler class.
+        try:
+            fn = self._start_handlers[name]
+        except KeyError:
+            if self._error_mode == self.ERR_MODE_IGNORE:
+                fn = self._ignore
+            else:
+                raise SAXException('No start handler for tag {0!r}'.format(name))  # FIXME: better exception
+        self._tag_stack.append(name)
+        fn(attrs)
 
-        """
-        if name == self._g.GRAPH:
-            self.graph_start(attrs)
-        elif name == self._g.NODE:
-            self.node_start(attrs)
-        elif name == self._g.EDGE:
-            self.edge_start(attrs)
-        elif name == self._g.ANNOTATION:
-            self.ann_start(attrs)
-        elif name == self._g.ASET:
-            self.as_start(attrs)
-        elif name == self._g.REGION:
-            self.region_start(attrs)
-        elif name == self._g.LINK:
-            self.link_start(attrs)
-        elif name == self._g.DEPENDS_ON:
-            self.depends_on_start(attrs)
-        elif name == self._g.ANNOTATION_SET:
-            self.annotation_set_start(attrs)
-        elif name == self._g.ANNOTATION_SPACE:
-            self.annotation_space_start(attrs)
-        elif name == self._g.ROOT:
-            self.root_start(attrs)
-
-        elif name == self._g.FS:
-            self.fs_start(attrs)
-        elif name == self._g.FEATURE:
-            self.feature_start(attrs)
-        else:
-            pass
+    def endElement(self, name):
+        try:
+            fn = self._end_handlers[name]
+        except KeyError:
+            if self._error_mode == self.ERR_MODE_IGNORE:
+                fn = self._ignore
+            else:
+                raise SAXException('No end handler for tag {0!r}'.format(name))  # FIXME: better exception
+        fn()
+        assert self._tag_stack.pop() == name
 
     def characters(self, ch):
-        """Processes any characters within the xml file.
-        It's a method from ContentHandler class.
-
-        """
-
-        # Check for root node
-        if self._root_element == 1:
-            self._buffer += ch
-    
-    def endElement(self, name):
-        """ Processes the end xml tags, according to their type.
-        It's a method from ContentHandler class.
-
-        """
-
-        if name == self._g.GRAPH:
-            self.graph_end()
-        elif name == self._g.NODE:
-            self.node_end()
-        elif name == self._g.ANNOTATION:
-            self.ann_end()
-        elif name == self._g.ASET:
-            self.as_end()
-        elif name == self._g.EDGE:
-            pass
-        elif name == self._g.FS:
-            self.fs_end()
-        elif name == self._g.FEATURE:
-            self.feature_end()
-        elif name == self._g.ROOT:
-            self.root_end()
-
-    def graph_start(self, attrs):
-        """Executes when the parser encounters the begin graph tag
-        Initializes the data structures used to construct the graph.
-        The element attributes are added to the new graph as features.
-
-        """
-
-        del self._edges[:]
-        del self._fs_stack[:]
-        self._node_map.clear()
-        self._current_node = None
-        self._root_id = None
-        del self._relations[:]
-        self._graph = Graph()
-        n = attrs.getLength() - 1
-        # Remove it when tested
-        # This is never used with any of the MASC Versions
-        # name = attrs.getQName(i)
-        # Gives error to each version
-        #for i in range(0, n):
-        #    attrs.getQName(i)
-        #    name = attrs.getQName(i)
-        #    value = attrs.getValue(i)
-        #    if self._g.ROOT == name:
-        #        self._root_id = value
-        #    elif self._g.VERSION != name:
-        #        self._graph.add_feature(name, value)
-
-    def graph_end(self):
-        """Executes when the parser encounters the end graph tag.
-        Sets the root node and adds all the edges to the graph.
-        Neither of these tasks can be safely performed until all nodes
-        have been added.
-
-        """
-
-        # Create and add the edges
-        for edge in self._edges:
-            from_node = self._node_map.get(edge._from)
-            to_node = self._node_map.get(edge._to)
-            self._graph.add_edge(Edge(edge.id, from_node, to_node))
-    
-        # Add annotations to any edges
-        for s, a in self._edge_annotations:
-            e = self._graph.find_edge(s)
-            if e is None:
-                raise SAXException("Could not find graph element with ID " 
-                                + s)
-            e.add_annotation(a)
-
-        # Link nodes to regions
-        for n, s in self._relations:
-            link = Link()
-            for target in s.split():
-                region = self._graph.regions[target]
-                if region is not None:
-                    link.add_target(region)
-            n.add_link(link)
-
-        if self._root_id is not None:
-            root = self._graph.find_node(self._root_id)
-            if root is None:
-                raise SAXException("Root node with ID " + self._root_id 
-                        + " was not found in the graph.")
-            self._graph.set_root(root)
-
-
-    def node_start(self, attrs):
-        """ Used to parse the node start tag.
-        Creates a new self._current_node, of type Node.
-
-        """
-
-        id = attrs.getValue(self._g.ID)
-        isRoot = attrs.get(self._g.ROOT) ##?
-        self._current_node = Node(id)
-
-        if isRoot is not None and "true" is isRoot:
-            self._current_node.is_root = True
-
-        self._node_map[id] = self._current_node
-
-    def node_end(self):
-        """ Adds the current_node to the graph being constructed and
-        sets self._current_node to None.
-
-        """
-
-        self._graph.add_node(self._current_node)
-        self._current_node = None
-
-    def annotation_set_start(self, attrs):
-        """ Used to parse <annotationSet .../> elements in the XML
-        representation.
-
-        """
-
-        name = attrs.getValue(self._g.NAME)
-        type = attrs.getValue(self._g.TYPE)
-        sets = self._graph.annotation_spaces
-        for set in sets:
-            if set._name == name:
-                if set._type != type:
-                    raise SAXException("Annotation set type mismatch for " 
-                            				+ name)
-                self._annotation_set_map[name] = set
-                return
-        a_set = self._graph.add_as_create(name, type)
-        self._annotation_set_map[name] = a_set
-
-    # Added AL
-    def annotation_space_start(self, attrs):
-        """ Used to parse <annotationSpace .../> elements in the XML
-        representation.
-
-        """
-
-        as_id = attrs.getValue(self._g.AS_ID)
-        sets = self._graph.annotation_spaces
-        for set in sets:
-            if set._as_id == as_id:
-                if set._type != type:
-                    raise SAXException("Annotation set type mismatch for "
-                    + as_id)
-                self._annotation_space_map[as_id] = set
-                return
-        a_set = self._graph.add_aspace_create(as_id)
-        self._annotation_space_map[as_id] = a_set
-
-    def ann_start(self, attrs):
-        label = attrs.getValue(self._g.LABEL)
-        self._current_annotation = Annotation(label)
-
-        if label is None:
-            SAXException("Required attribute " + self._g.LABEL + 
-                    " missing on annotation")
-
-        node_id = attrs.getValue(self._g.REF)
-        if node_id is None:
-            raise SAXException("Annotation is not associate with a node")
-        set_name = attrs.get(self._g.ASET)
-        if set_name is not None:
-            a_set = self._annotation_set_map.get(set_name)
-            if a_set is None:
-                a_set = self._annotation_space_map.get(set_name)
-            elif a_set is None:
-                raise SAXException("Unknown annotation set name "
-                + set_name)
-            self._current_annotation._set = a_set
-            a_set.add_annotation(self._current_annotation)
-
-        if self._current_annotation_set is not None:
-            self._current_annotation_set.add_annotation(
-                                                self._current_annotation)
-            self._current_annotation.setAnnotationSet(
-                                                self.current_annotation_set)
-
-        node = self._node_map.get(node_id)
-        if node is None:
-            # Assume it belongs to an edge
-            self._edge_annotations.append((node_id, 
-                                    self._current_annotation))
-        else:
-            node.add_annotation(self._current_annotation)
-
-    def ann_end(self):
-        if len(self._fs_stack) != 0:
-            fs = self._fs_stack.pop()
-            self._current_annotation.features= fs
-        self._current_annotation = None
-
-    def edge_start(self, attrs):
-        """Used to parse edge elements in the XML representation.
-        Edge information is stored and the edges are added after
-        all nodes/spans have been parsed.
-
-        """
-
-        from_id = attrs.getValue(self._g.FROM)
-        to_id = attrs.getValue(self._g.TO)
-        id = attrs.getValue(self._g.ID)
-        self._edges.append(EdgeInfo(id, from_id, to_id))
-
-    def region_start(self, attrs):
-        """Used to pare the region elements in the XML representation.
-        A tolkenizer is used to separate the anchors listed in the XML tag,
-        and a new Anchor instance is created for each one.
-        A Region instance is then created with the id from the
-        XML tag and added to the graph.
-
-        """
-
-        id = attrs.getValue(self._g.ID)
-        att = attrs.getValue(self._g.ANCHORS)
-        tokenizer = att.split()
-        if len(tokenizer) < 2:
-            raise SAXException("Invalid number of anchors for the regions")
-        anchors = []
-        for t in tokenizer:
-            anchor = None
-            try:
-                anchor = self._anchor_cls(t)
-            except:
-                raise SAXException("Unable to create an anchor for " + t)
-
-            anchors.append(anchor)
-
+        name = self._tag_stack[-1]
         try:
-            region = Region(id, anchors)
-            self._graph.add_region(region)
-        except:
-            raise SAXException("Could not add the region to the graph")
-
-    def fs_start(self, attrs):
-        """ Used to parse <fs> elements in the XML representation.
-
-        """
-
-        type = attrs.get(self._g.TYPE)
-        fs = FeatureStructure(type)
-        self._fs_stack.append(fs)
-
-    def fs_end(self):
-        """Used to parse </fs> elements in the XML representation.
-        """
-        # FIXME: is this logic correct?
-        if self._f_stack:
-            fs = self._fs_stack.pop()
-            if self._f_stack:
-                name, value = self._f_stack.pop()
-                self._f_stack.append((name, fs))
-
-
-    def feature_start(self, attrs):
-        """ Used to parse start features elements in the XML representation.
-
-        """
-
-        name = attrs.getValue(self._g.NAME)
-
-        # In the new MASC version the values aren't attributes
-        # any more. So with this way the value is granted
-        try:
-            value = attrs.getValue(self._g.VALUE)
+            fn = self._char_handlers[name]
         except KeyError:
-            value = attrs.getValueByQName(self._g.NAME)
+            if self._error_mode == self.ERR_MODE_IGNORE:
+                fn = self._ignore
+            else:
+                raise SAXException('No characters handler for tag {0!r}'.format(name))  # FIXME: better exception
+        fn(ch)
 
-        self._f_stack.append((name, value))
 
-    def feature_end(self):
-        """Used to parse end features elements in the XML representation.
+class GraphHandler(SAXHandler):
+    def __init__(self, parser, graph, parse_dependency, parse_anchor=CharAnchor, constants=Constants):
+        SAXHandler.__init__(self, {
+            constants.GRAPH: (None, self.graph_end),
+            # Header
+            constants.DEPENDENCIES: None,
+            constants.DEPENDS_ON: self.dependency_handle,
+            constants.ANNOTATION_SPACES: None,
+            constants.ANNOTATION_SPACE: self.aspace_handle,
+            constants.ANNOTATION_SETS: None,
+            constants.ANNOTATION_SET: self.aspace_handle,
+            constants.ROOTS: None,
+            constants.ROOT: (None, None, self.root_chars),
+            constants.HEADER: None,
+            constants.TAGSDECL: None,
+            constants.TAGUSAGE: None,
+            # Media
+            constants.REGION: self.region_handle,
+            # Graph
+            constants.NODE: (self.node_start, self.node_end),
+            constants.LINK: self.link_handle,
+            constants.EDGE: self.edge_handle,
+            # Annotations
+            constants.ANNOTATION: (self.annot_start, self.annot_end),
+            constants.ASET: (self.aspace_enter, self.aspace_exit),
+            constants.FS: (self.fs_start, self.fs_end),
+            constants.FEATURE: (self.feature_start, self.feature_end),
+        })
 
-        """
+        self._parser = parser
+        self.graph = graph
+        self._g = constants
+        self._parse_dependency = parse_dependency
+        self._parse_anchor = parse_anchor
 
-        key, value = self._f_stack.pop()
-        try:
-            fs = self._fs_stack[-1]
-        except IndexError:
-            raise SAXException("Unable to attach feature %r to a feature structure" % key)
-        fs[key] = value
-    
-    def as_start(self, attrs):
-        """ Used to parse start <as/ ...> elements in the XML representation.
+        self._cur_node = None
+        self._delayed_links = []
 
-        """
+        self._cur_annot = None
+        self._fs_stack = []
+        self._feat_name_stack = []
+        self._aspace_stack = []
 
-        type = attrs.getValue(self._g.TYPE)
-        if type is None:
-            raise SAXException("No type specified for as element.")
-        else:
-            self._current_annotation_set = self._graph.annotation_spaces[type]
+    # === Header ===
 
-    def as_end(self):
-        """ Used to parse end /as> elements in the XML representation.
-
-        """
-
-        self._current_annotation_set = None
-
-    def link_start(self, attrs):
-        """Used to parse link elements in the XML representation.
-
-        """
-
-        links = attrs.getValue(self._g.TARGETS)
-        self._relations.append((self._current_node, links))
-
-    def depends_on_start(self, attrs):
-        """Used to parse dependsOn elements in the XML representation.
-        Finds other XML annotation files on which depend the current
-        XML file. Parses the dependency files and adds the resulting graph
-        to the current graph.
-
-        """
-
+    def dependency_handle(self, attribs):
         # In MASC version 1 in the graph header on
         # <dependencies>
         #   <dependsOn type="seg"/>
@@ -771,79 +450,167 @@ class GraphParser(ContentHandler):
         # <dependsOn f.id="seg"/>
 
         try:
-            type = attrs.getValue(self._g.TYPE)
-        except Exception as inst:
-            try:
-                type = attrs.getValue(self._g.TYPE_F_ID)
-            except Exception as inst:
-                print(inst)
+            type = attribs[self._g.TYPE_F_ID]
+        except KeyError:
+            type = attribs[self._g.TYPE]
 
-        if type is None:
-            raise SAXException("No annotation type defined")
+        self._parse_dependency(type, self.graph)
 
-        if type in self._parsed:
-            return
+    def aspace_handle(self, attribs):
+        try:
+            name = attribs[self._g.AS_ID]
+        except KeyError:
+            name = attribs[self._g.NAME]
+        type_ = attribs[self._g.TYPE]
 
-        self._parsed.append(type)
+        if name in self.graph.annotation_spaces:
+            if type_ != self.graph.annotation_spaces[name].type:
+                raise SAXException('Type mismatch for annotation space {0!r}'.format(name))
+        else:
+            self.graph.annotation_spaces.create(name, type_)
+
+    def root_chars(self, node_id):
+        node = self.graph.nodes.get_or_create(node_id)
+        self.graph.root = node
+
+    # === Media ===
+
+    def region_handle(self, attribs):
+        anchors = attribs[self._g.ANCHORS]
+        region = Region(attribs[self._g.ID], *[self._parse_anchor(anchor) for anchor in anchors.split()])
+        self.graph.regions.add(region)
+
+    # === Graph ===
+
+    def node_start(self, attribs):
+        assert self._cur_node is None
+        self._cur_node = self.graph.nodes.get_or_create(attribs[self._g.ID])
+        self._cur_node.is_root = attribs.get(self._g.ROOT, False) == "true"
+
+    def node_end(self):
+        self._cur_node = None
+
+    def link_handle(self, attribs):
+        self._delayed_links.append((self._cur_node, attribs[self._g.TARGETS]))
+
+    def edge_handle(self, attribs):
+        self.graph.create_edge(attribs[self._g.FROM], attribs[self._g.TO], attribs[self._g.ID])
+
+    def graph_end(self):
+        # Create links waiting for regions
+        for node, targets in self._delayed_links:
+            node.add_link(Link(self.graph.regions[target] for target in targets.split()))
+
+    # === Annotations ===
+
+    def annot_start(self, attribs):
+        assert self._cur_annot is None
+        aspace = attribs.get(self._g.ASET, None)
+        if aspace is None:
+            aspace = self._aspace_stack[-1]
+        else:
+            aspace = self.graph.annotation_spaces[aspace]
+
+        self._cur_annot = Annotation(attribs[self._g.LABEL])
+        element = self.graph.get_element(attribs[self._g.REF])
+        element.annotations.add(self._cur_annot)
+        aspace.add(self._cur_annot)
+
+    def annot_end(self):
+        self._cur_annot = None
+
+    def fs_start(self, attribs):
+        type_ = attribs.get(self._g.TYPE, None)
+        if self._fs_stack:
+            fs = FeatureStructure(type_)
+            self._fs_stack[-1][self._feat_name_stack[-1]] = fs
+            self._fs_stack.append(fs)
+        else:
+            self._cur_annot.features.type = type_
+            self._fs_stack.append(self._cur_annot.features)
+
+    def fs_end(self):
+        self._fs_stack.pop()
+
+    def feature_start(self, attribs):
+        value = attribs.get(self._g.VALUE)
+        name = attribs.get(self._g.NAME)
+        # In the new MASC version the values aren't attributes
+        # any more. So with this way the value is granted
+        # ??FIXME?????????????????????????????????????????????
+        # if value is None:
+        #     value = attrs.getValueByQName(self._g.NAME)
+
+        self._feat_name_stack.append(name)
+        self._fs_stack[-1][name] = value
+
+    def feature_end(self):
+        self._feat_name_stack.pop()
+
+    def aspace_enter(self, attribs):
+        self._aspace_stack.append(self.graph.annotation_spaces[attribs[self._g.NAME]])
+
+    def aspace_exit(self):
+        self._aspace_stack.pop()
 
 
-        path = self._header.get_location(type)
-        if path is None:
-            raise SAXException("Unable to get path for dependency of type"
-                                 + " " + type)
-
-        parser = GraphParser()
-        dependency = parser.parse(path, self._parsed)
-
-        for a_set in dependency.annotation_sets():
-            self._graph.add_annotation_set(a_set)
-
-        for node in dependency.nodes():
-            self._graph.add_node(node)
-            self._node_map[node.id] = node
-
-        for edge in dependency.edges():
-            id = edge.id
-            from_id = edge.from_node.id
-            to_id = edge.to_node.id
-            e = self._graph.add_edgeToFromID(id, from_id, to_id)
-            for a in edge.annotations():
-                e.add_annotation(Annotation.from_annotation(a))
-
-        for region in dependency.regions():
-            self._graph.add_region(region)
+def ignore_dependency(name):
+    pass
 
 
-    def root_start(self, attrs):
-        """Used to parse start root elements in the XML representation.
-        The root characters are processed by the characters() method and
-        stored in self._buffer.
-
-        self._root_element is a flag indicating the presence of a root.
-
-        """
-
-        self._buffer = ""
-        self._root_element = 1
-
-    def root_end(self):
-        """Used to parse end root elements in the XML representation.
-
-        """
-
-        self._root_id = self._buffer
-        self._buffer = ""
-        self._root_element = 0
-
-
-class EdgeInfo(object):
+class GraphParser(object):
     """
-    Used to store information about edges when parsing the GrAF XML
-    representation.
+    Used to parse the GrAF XML representation and construct the instance 
+    of C{Graph} objects.
+
+    version: 1.0.
 
     """
 
-    def __init__(self, id = "", fromID = "", toID = ""):
-        self._id = id
-        self._from = fromID
-        self._to = toID
+    def __init__(self, get_dependency=None, parse_anchor=CharAnchor, constants=Constants):
+        self._g = constants
+        self._get_dep = get_dependency
+        self._parse_anchor = parse_anchor
+
+    def parse(self, stream, graph=None):
+        """Parses the XML file at the given path.
+
+        :return: a Graph representing the annotated text in GrAF format
+        :rtype: Graph
+        """
+        def do_parse(stream, graph):
+            parser = make_parser()
+            handler = GraphHandler(parser, graph, parse_dependency, parse_anchor=self._parse_anchor, constants=self._g)
+            parser.setContentHandler(handler)
+            parser.parse(stream)
+
+        def parse_dependency(name, graph):
+            if name in parsed_deps:
+                return
+            parsed_deps.add(name)
+            do_parse(get_dependency(name), graph)
+
+        if not hasattr(stream, 'read'):
+            stream = open(stream)
+
+        parsed_deps = set()
+
+        if self._get_dep:
+            get_dependency = self._get_dep
+        else:
+            # Default get_dependency is relative to path
+            header = DocumentHeader(os.path.abspath(stream.name))
+            def get_dependency(name):
+                return open(header.get_location(name))
+
+        if graph is None:
+            graph = Graph()
+        do_parse(stream, graph)
+        return graph
+
+
+if __name__ == '__main__':
+    # Round-trip
+    import sys
+    graph = GraphParser().parse(sys.argv[1])
+    GrafRenderer(sys.stdout).render(graph)

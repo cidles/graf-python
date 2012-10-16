@@ -54,6 +54,13 @@ class GraphNodes(IdDict):
         if isinstance(obj, basestring):
             obj = Node(obj)
         IdDict.add(self, obj)
+        return obj
+
+    def get_or_create(self, id):
+        if id in self:
+            return self[id]
+        else:
+            return self.add(id)
 
 
 class GraphASpaces(IdDict):
@@ -139,6 +146,11 @@ class Graph(object):
                 if edge.from_node == from_node:
                     return edge
         return None
+
+    def get_element(self, id):
+        if id in self.nodes:
+            return self.nodes[id]
+        return self.edges[id]
 
     def get_region(self, *anchors):
         for region in self.regions:
@@ -262,7 +274,6 @@ class Node(GraphElement):
         self.in_edges = EdgeList()
         self.out_edges = EdgeList()
         self.links = []
-        self.is_root = False
 
     def __repr__(self):
         return "NodeID = " + self.id
@@ -273,7 +284,7 @@ class Node(GraphElement):
     # Relationship to media
 
     def add_link(self, link):
-        self._links.append(link)
+        self.links.append(link)
         self._add_regions(link)
 
     def _add_regions(self, regions):
