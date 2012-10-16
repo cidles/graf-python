@@ -121,6 +121,7 @@ class PyGraph:
         newEdge = PyEdge(id, fromNode, toNode)
         self._edgeSet[newEdge.getID()] = newEdge
         self.update_node(newEdge)
+
         return newEdge
         
     def add_edge_from_to(self, fromNode, toNode):

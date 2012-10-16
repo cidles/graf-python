@@ -61,6 +61,10 @@ class PyGraphElement:
         return newGE
 
     def __repr__(self):
+
+        for annotation in self._annotations:
+            print(annotation)
+
         return "PyGraphElement id = " + self._id
 
     def add_annotation(self, a):

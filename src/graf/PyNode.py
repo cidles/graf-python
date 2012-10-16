@@ -38,6 +38,22 @@ class PyNode(PyGraphElement):
         return newNode
 
     def __repr__(self):
+
+        #for inEdge in self._inEdgeList:
+        #    print(inEdge)
+
+        #for outEdge in self._inEdgeList:
+        #    print(outEdge)
+
+        #for inEdge in self._inEdges:
+        #    print(inEdge)
+
+        #for outEdge in self._outEdges:
+        #    print(outEdge)
+
+        #for link in self._links:
+        #    print(link)
+
         return "NodeID = " + self._id
 
     def add_in_edge(self, e):
@@ -48,6 +64,9 @@ class PyNode(PyGraphElement):
         self._links.append(link)
         for region in link._regions:
             region.add_node(self)
+            # Print the region with anchors and nodes
+            # Example
+            print(region)
 
     def add_out_edge(self, e):
         self._outEdges[e._id] = e    
