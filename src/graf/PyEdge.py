@@ -43,6 +43,7 @@ class PyEdge(PyGraphElement):
         return PyEdge(e._id, e._fromNode, e._toNode)
 
     def __repr__(self):
+	# Added
         #return "Edge id = " + self._id
         return "Edge id = " + self._id + " From: " \
                + self._fromNode + " To: " + self._toNode

@@ -38,7 +38,7 @@ class PyNode(PyGraphElement):
         return newNode
 
     def __repr__(self):
-
+	# Added
         #for inEdge in self._inEdgeList:
         #    print(inEdge)
 
@@ -64,6 +64,7 @@ class PyNode(PyGraphElement):
         self._links.append(link)
         for region in link._regions:
             region.add_node(self)
+	    # Added
             # Print the region with anchors and nodes
             # Example
             print(region)
