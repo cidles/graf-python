@@ -2,10 +2,8 @@
 `PyRegion.py`
 =============
    
-.. automodule:: PyRegion
+.. automodule:: graf.PyRegion
    :members:
-   :private-members:
-   :special-members:
 
 Indices and tables
 ==================

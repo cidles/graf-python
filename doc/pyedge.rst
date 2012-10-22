@@ -2,10 +2,8 @@
 `PyEdge.py`
 ===========
    
-.. automodule:: PyEdge
+.. automodule:: graf.PyEdge
    :members:
-   :private-members:
-   :special-members:
 
 Indices and tables
 ==================
