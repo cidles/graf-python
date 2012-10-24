@@ -131,20 +131,19 @@ class AnnotationSpace(AnnotationList):
 
     """
 
-    __slots__ = ('name', 'type')
+    __slots__ = ('as_id')
 
-    def __init__(self, name, type):
+    def __init__(self, as_id):
         """Constructor for C{AnnotationSet}
 
         :param name: C{str}
         :param type: C{str}
         """
         super(AnnotationSpace, self).__init__(self, 'aspace')
-        self.name = name
-        self.type = type
+        self.as_id = as_id
 
     def __copy__(self):
-        res = AnnotationSpace(self.name, self.type)
+        res = AnnotationSpace(self.as_id)
         res.annotations = self.annotations[:]
         return res
 
@@ -181,13 +180,13 @@ class FeatureStructure(object):
 
     __slots__ = ('type', '_elements')
 
-    def __init__(self, type=None, items=None):
+    def __init__(self, type_var=None, items=None):
         """Constructor for C{FeatureStructure}.
 
         :param type: C{str}
 
         """
-        self.type = type
+        self.type = type_var
         self._elements = {}
         if items:
             self.update(items)

@@ -66,15 +66,15 @@ class GraphNodes(IdDict):
 class GraphASpaces(IdDict):
     __slots__ = ('_add_hook',)
     def __init__(self, add_hook):
-        IdDict.__init__(self, field='name')
+        IdDict.__init__(self, field='as_id')
         self._add_hook = add_hook
 
     def add(self, obj):
         IdDict.add(self, obj)
         self._add_hook(obj)
 
-    def create(self, name, type):
-        res = AnnotationSpace(name, type)
+    def create(self, as_id):
+        res = AnnotationSpace(as_id)
         self.add(res)
         return res
 
@@ -380,7 +380,7 @@ class StandoffHeader(object):
         return "StandoffHeader"
 
     def add_annotation_space(self, aspace):
-        self.annotation_spaces[aspace.name] = aspace
+        self.annotation_spaces[aspace.as_id] = aspace
 
     def add_dependency(self, type, location):
         self.depends_on.append(type)

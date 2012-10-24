@@ -40,7 +40,7 @@ class Constants(object):
     FEATURE = "f"
     REGION = "region"
     LINK = "link"
-    HEADER = "header"
+    HEADER = "graphHeader"
     DEPENDENCIES = "dependencies"
     PRIMARY_DATA = "primaryData"
     BASE_SEGMENTATION = "baseSegmentation"
@@ -49,8 +49,8 @@ class Constants(object):
     REFERENCED_BY = "referencedBy"
     EXTERNAL_DOCS = "externalDocumentation"
     ANNOTATION_DESC = "annotationDescription"
-    TAGSDECL = "tagsDecl"
-    TAGUSAGE = "tagUsage"
+    TAGSDECL = "labelsDecl"
+    TAGUSAGE = "labelUsage"
     ROOTS = "roots"
     ROOT = "root"
     MEDIA = "media"
@@ -456,17 +456,10 @@ class GraphHandler(SAXHandler):
         self._parse_dependency(type, self.graph)
 
     def aspace_handle(self, attribs):
-        try:
-            name = attribs[self._g.AS_ID]
-        except KeyError:
-            name = attribs[self._g.NAME]
-        type_ = attribs[self._g.TYPE]
+        as_id = attribs[self._g.AS_ID]
 
-        if name in self.graph.annotation_spaces:
-            if type_ != self.graph.annotation_spaces[name].type:
-                raise SAXException('Type mismatch for annotation space {0!r}'.format(name))
-        else:
-            self.graph.annotation_spaces.create(name, type_)
+        if as_id not in self.graph.annotation_spaces:
+            self.graph.annotation_spaces.create(as_id)
 
     def root_chars(self, node_id):
         node = self.graph.nodes.get_or_create(node_id)
