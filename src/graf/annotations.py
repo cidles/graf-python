@@ -148,7 +148,7 @@ class AnnotationSpace(AnnotationList):
         return res
 
     def __repr__(self):
-        return "AnnotationSet(%r, %r)" % (self.name, self.type)
+        return "AnnotationSet(%r)" % (self.as_id)
 
     def remove(self, ann):
         """Remove the given C{Annotation} object.

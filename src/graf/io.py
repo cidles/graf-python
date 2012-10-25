@@ -420,7 +420,7 @@ class GraphHandler(SAXHandler):
             constants.ANNOTATION: (self.annot_start, self.annot_end),
             constants.ASET: (self.aspace_enter, self.aspace_exit),
             constants.FS: (self.fs_start, self.fs_end),
-            constants.FEATURE: (self.feature_start, self.feature_end),
+            constants.FEATURE: (self.feature_start, self.feature_end, self.feature_chars),
         })
 
         self._parser = parser
@@ -525,8 +525,13 @@ class GraphHandler(SAXHandler):
         self._fs_stack.pop()
 
     def feature_start(self, attribs):
-        value = attribs.get(self._g.VALUE)
         name = attribs.get(self._g.NAME)
+
+        try:
+            value = attribs.get(self._g.VALUE)
+        except KeyError:
+            value = ""
+
         # In the new MASC version the values aren't attributes
         # any more. So with this way the value is granted
         # ??FIXME?????????????????????????????????????????????
@@ -538,6 +543,10 @@ class GraphHandler(SAXHandler):
 
     def feature_end(self):
         self._feat_name_stack.pop()
+
+    def feature_chars(self, value):
+        name = self._feat_name_stack[-1]
+        self._fs_stack[-1][name] = value
 
     def aspace_enter(self, attribs):
         self._aspace_stack.append(self.graph.annotation_spaces[attribs[self._g.NAME]])
