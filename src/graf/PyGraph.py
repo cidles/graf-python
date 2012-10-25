@@ -45,10 +45,6 @@ class PyGraph:
         self._header = PyStandoffHeader()
         self._userObject = None
 
-    def __rep__(self):
-	# Added
-	print('test')
-
     def add_annotation_set(self, set):
         """Add given C{PyAnnotationSet} to this C{PyGraph}.
 
