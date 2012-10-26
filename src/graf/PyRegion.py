@@ -41,6 +41,15 @@ class PyRegion:
         return PyRegion(id, [start, end])
 
     def __repr__(self):
+	# Added
+        # Print the nodes of each Region
+        for node in self._nodes:
+            print(node)
+
+        # Print the anchors of each Region
+        for anchor in self._anchors:
+            print(anchor)
+
         return "RegionID = " + self._id
     
     def add(self, offset):

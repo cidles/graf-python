@@ -61,6 +61,10 @@ class PyGraphElement:
         return newGE
 
     def __repr__(self):
+	# Added
+        for annotation in self._annotations:
+            print(annotation)
+
         return "PyGraphElement id = " + self._id
 
     def add_annotation(self, a):
@@ -108,7 +112,7 @@ class PyGraphElement:
                     return a
             return None
 
-    def get_annotation_from_set(self, setName, label):#
+    def get_annotation_from_set(self, setName, label):
         result = self.get_annotation(label)
         if result is None:
             return None
@@ -125,22 +129,22 @@ class PyGraphElement:
             return None
         return a.get_feature(name)
 
-    def get_feature_from_set(self, set, ann, name):#
+    def get_feature_from_set(self, set, ann, name):
         a = self.get_annotation_from_set(set, ann)
         if a is not None:
             return a.get_feature(name)
         return None
 
-    def get_user_object(self): #
+    def get_user_object(self):
         return self._userObject
 
-    def set_id(self, id): #
+    def set_id(self, id):
         self._id = id
 
-    def set_user_object(self, object): #
+    def set_user_object(self, object):
         self._userObject = object
 
-    def set_visited(self, visited): #
+    def set_visited(self, visited):
         self._visited = visited
 
     def visit(self):
