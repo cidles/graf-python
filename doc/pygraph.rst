@@ -2,10 +2,8 @@
 `PyGraph.py`
 ============
    
-.. automodule:: PyGraph
+.. automodule:: graf.PyGraph
    :members:
-   :private-members:
-   :special-members:
 
 Indices and tables
 ==================

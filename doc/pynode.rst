@@ -2,10 +2,8 @@
 `PyNode.py`
 ===========
    
-.. automodule:: PyNode
+.. automodule:: graf.PyNode
    :members:
-   :private-members:
-   :special-members:
 
 Indices and tables
 ==================

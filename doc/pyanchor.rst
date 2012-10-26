@@ -2,10 +2,8 @@
 `PyAnchor.py`
 =============
    
-.. automodule:: PyAnchor
+.. automodule:: graf.PyAnchor
    :members:
-   :private-members:
-   :special-members:
 
 Indices and tables
 ==================

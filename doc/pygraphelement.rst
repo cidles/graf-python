@@ -2,10 +2,8 @@
 `PyGraphElement.py`
 ===================
    
-.. automodule:: PyGraphElement
+.. automodule:: graf.PyGraphElement
    :members:
-   :private-members:
-   :special-members:
 
 Indices and tables
 ==================

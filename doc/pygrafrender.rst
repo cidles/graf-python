@@ -2,10 +2,8 @@
 `PyGrafRenderer.py`
 ===================
    
-.. automodule:: PyGrafRenderer
+.. automodule:: graf.PyGrafRenderer
    :members:
-   :private-members:
-   :special-members:
 
 Indices and tables
 ==================

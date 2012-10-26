@@ -2,10 +2,8 @@
 `PyFeature.py`
 ==============
    
-.. automodule:: PyFeature
+.. automodule:: graf.PyFeature
    :members:
-   :private-members:
-   :special-members:
 
 Indices and tables
 ==================

@@ -1,9 +1,9 @@
 *******************
-Graf-Python Modules
+graf-python Modules
 *******************
    
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    pyanchor
    pyannotation

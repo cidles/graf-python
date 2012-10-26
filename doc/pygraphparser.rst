@@ -2,10 +2,8 @@
 `PyGraphParser.py`
 ==================
    
-.. automodule:: PyGraphParser
+.. automodule:: graf.PyGraphParser
    :members:
-   :private-members:
-   :special-members:
 
 Indices and tables
 ==================

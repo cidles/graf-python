@@ -2,10 +2,8 @@
 `PyAnnotationSpace.py`
 ======================
    
-.. automodule:: PyAnnotationSpace
+.. automodule:: graf.PyAnnotationSpace
    :members:
-   :private-members:
-   :special-members:
 
 Indices and tables
 ==================

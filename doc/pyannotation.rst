@@ -2,10 +2,8 @@
 `PyAnnotation.py`
 =================
    
-.. automodule:: PyAnnotation
+.. automodule:: graf.PyAnnotation
    :members:
-   :private-members:
-   :special-members:
 
 Indices and tables
 ==================
