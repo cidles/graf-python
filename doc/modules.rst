@@ -5,18 +5,12 @@ graf-python Modules
 .. toctree::
    :maxdepth: 1
 
-   pyanchor
-   pyannotation
-   pyannotationspace
-   pyedge
-   pyfeature
-   pyfeaturestructure
-   pygrafrender
-   pygraph
-   pygraphelement
-   pygraphparser
-   pynode
-   pyregion
+   annotations
+   api
+   inout
+   graphs
+   media
+   util
 
 Indices and tables
 ==================
