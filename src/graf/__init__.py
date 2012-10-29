@@ -10,36 +10,30 @@
 #
 
 """
-The PyGrAF API is used by the ISO GrAF corpus reader (masc.py)
+The GrAF API is used by the ISO GrAF corpus reader (masc.py)
 to parse the MASC Corpus.  Each text file in the corpus is accompanied
 by a series of xml files that store annotation information for that
 text file.  So, to parse the annotations we must first construct the
 GrAF representation of the file, and then retrieve the annotations.
 """
 
-from graf.api import *
-from graf.util import *
-
-from graf.PyGraphParser import *
+from media import Region
+from annotations import Annotation, AnnotationSpace, FeatureStructure
+from graphs import Edge, Graph, Node, Link, StandoffHeader
+from io import GraphParser, GrafRenderer
+from util import *
 
 
 __all__ = [
-    'GRAF',
-    'PyAnchor', 
-    'PyAnnotation',
-    'PyAnnotationObj',
-    'PyAnnotationSet',
-    'PyAnnotationSpace',
-    'PyDocumentHeader',
-    'PyEdge',
-    'PyFeature',
-    'PyFeatureStructure',
-    'PyGrafRenderer',
-    'PyGraph'
-    'PyGraphParser',
-    'PyIndentManager',
-    'PyLink',
-    'PyNode',
-    'PyRegion',
-    'PyStandoffHeader',
-    'PyXML',]
+    'Annotation',
+    'AnnotationSpace',
+    'Edge',
+    'FeatureStructure',
+    'GrafRenderer',
+    'Graph'
+    'GraphParser',
+    'Link',
+    'Node',
+    'Region',
+    'StandoffHeader',
+]
