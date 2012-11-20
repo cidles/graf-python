@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<documentHeader date.created="2012-11-19" docID="POIO-747597" version="1.0.0" xmlns="http://www.xces.org/ns/GrAF/1.0/" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <fileDesc>
+    <fileName>balochi</fileName>
+    <extent count="0" unit="words"/>
+    <sourceDesc>
+      <author age="" sex="">CIDLeS</author>
+      <source type="Contributor">Cont</source>
+      <publisher>self</publisher>
+      <pubDate iso8601="2012-11-19"/>
+      <idno type="ISBN">9164784</idno>
+    </sourceDesc>
+  </fileDesc>
+  <profileDesc>
+    <textClass catRef="PT">
+      <subject>Revitatilization</subject>
+    </textClass>
+  </profileDesc>
+  <dataDesc>
+    <primaryData f.id="text" loc="balochi.txt"/>
+    <annotations>
+      <annotation f.id="utterance" loc="balochi-utterance.xml"/>
+      <annotation f.id="clause_unit" loc="balochi-clause_unit.xml"/>
+      <annotation f.id="word" loc="balochi-word.xml"/>
+      <annotation f.id="wfw" loc="balochi-wfw.xml"/>
+      <annotation f.id="graid1" loc="balochi-graid1.xml"/>
+      <annotation f.id="graid2" loc="balochi-graid2.xml"/>
+      <annotation f.id="translation" loc="balochi-translation.xml"/>
+      <annotation f.id="comment" loc="balochi-comment.xml"/>
+    </annotations>
+  </dataDesc>
+</documentHeader>

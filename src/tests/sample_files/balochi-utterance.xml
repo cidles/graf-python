@@ -1,0 +1,450 @@
+<?xml version="1.0" ?>
+<graph xmlns="http://www.xces.org/ns/GrAF/1.0/">
+  <graphHeader>
+    <labelsDecl/>
+  </graphHeader>
+  <region anchors="0 7" xml:id="utterance-r0"/>
+  <node xml:id="utterance-n0">
+    <link targets="utterance-r0"/>
+  </node>
+  <region anchors="7 28" xml:id="utterance-r1"/>
+  <node xml:id="utterance-n1">
+    <link targets="utterance-r1"/>
+  </node>
+  <region anchors="28 91" xml:id="utterance-r2"/>
+  <node xml:id="utterance-n2">
+    <link targets="utterance-r2"/>
+  </node>
+  <region anchors="91 129" xml:id="utterance-r3"/>
+  <node xml:id="utterance-n3">
+    <link targets="utterance-r3"/>
+  </node>
+  <region anchors="129 151" xml:id="utterance-r4"/>
+  <node xml:id="utterance-n4">
+    <link targets="utterance-r4"/>
+  </node>
+  <region anchors="151 175" xml:id="utterance-r5"/>
+  <node xml:id="utterance-n5">
+    <link targets="utterance-r5"/>
+  </node>
+  <region anchors="175 199" xml:id="utterance-r6"/>
+  <node xml:id="utterance-n6">
+    <link targets="utterance-r6"/>
+  </node>
+  <region anchors="199 222" xml:id="utterance-r7"/>
+  <node xml:id="utterance-n7">
+    <link targets="utterance-r7"/>
+  </node>
+  <region anchors="222 236" xml:id="utterance-r8"/>
+  <node xml:id="utterance-n8">
+    <link targets="utterance-r8"/>
+  </node>
+  <region anchors="236 262" xml:id="utterance-r9"/>
+  <node xml:id="utterance-n9">
+    <link targets="utterance-r9"/>
+  </node>
+  <region anchors="262 282" xml:id="utterance-r10"/>
+  <node xml:id="utterance-n10">
+    <link targets="utterance-r10"/>
+  </node>
+  <region anchors="282 305" xml:id="utterance-r11"/>
+  <node xml:id="utterance-n11">
+    <link targets="utterance-r11"/>
+  </node>
+  <region anchors="305 317" xml:id="utterance-r12"/>
+  <node xml:id="utterance-n12">
+    <link targets="utterance-r12"/>
+  </node>
+  <region anchors="317 323" xml:id="utterance-r13"/>
+  <node xml:id="utterance-n13">
+    <link targets="utterance-r13"/>
+  </node>
+  <region anchors="323 327" xml:id="utterance-r14"/>
+  <node xml:id="utterance-n14">
+    <link targets="utterance-r14"/>
+  </node>
+  <region anchors="327 349" xml:id="utterance-r15"/>
+  <node xml:id="utterance-n15">
+    <link targets="utterance-r15"/>
+  </node>
+  <region anchors="349 351" xml:id="utterance-r16"/>
+  <node xml:id="utterance-n16">
+    <link targets="utterance-r16"/>
+  </node>
+  <region anchors="351 376" xml:id="utterance-r17"/>
+  <node xml:id="utterance-n17">
+    <link targets="utterance-r17"/>
+  </node>
+  <region anchors="376 388" xml:id="utterance-r18"/>
+  <node xml:id="utterance-n18">
+    <link targets="utterance-r18"/>
+  </node>
+  <region anchors="388 423" xml:id="utterance-r19"/>
+  <node xml:id="utterance-n19">
+    <link targets="utterance-r19"/>
+  </node>
+  <region anchors="423 439" xml:id="utterance-r20"/>
+  <node xml:id="utterance-n20">
+    <link targets="utterance-r20"/>
+  </node>
+  <region anchors="439 451" xml:id="utterance-r21"/>
+  <node xml:id="utterance-n21">
+    <link targets="utterance-r21"/>
+  </node>
+  <region anchors="451 467" xml:id="utterance-r22"/>
+  <node xml:id="utterance-n22">
+    <link targets="utterance-r22"/>
+  </node>
+  <region anchors="467 479" xml:id="utterance-r23"/>
+  <node xml:id="utterance-n23">
+    <link targets="utterance-r23"/>
+  </node>
+  <region anchors="479 485" xml:id="utterance-r24"/>
+  <node xml:id="utterance-n24">
+    <link targets="utterance-r24"/>
+  </node>
+  <region anchors="485 494" xml:id="utterance-r25"/>
+  <node xml:id="utterance-n25">
+    <link targets="utterance-r25"/>
+  </node>
+  <region anchors="494 513" xml:id="utterance-r26"/>
+  <node xml:id="utterance-n26">
+    <link targets="utterance-r26"/>
+  </node>
+  <region anchors="513 544" xml:id="utterance-r27"/>
+  <node xml:id="utterance-n27">
+    <link targets="utterance-r27"/>
+  </node>
+  <region anchors="544 546" xml:id="utterance-r28"/>
+  <node xml:id="utterance-n28">
+    <link targets="utterance-r28"/>
+  </node>
+  <region anchors="546 555" xml:id="utterance-r29"/>
+  <node xml:id="utterance-n29">
+    <link targets="utterance-r29"/>
+  </node>
+  <region anchors="555 588" xml:id="utterance-r30"/>
+  <node xml:id="utterance-n30">
+    <link targets="utterance-r30"/>
+  </node>
+  <region anchors="588 608" xml:id="utterance-r31"/>
+  <node xml:id="utterance-n31">
+    <link targets="utterance-r31"/>
+  </node>
+  <region anchors="608 618" xml:id="utterance-r32"/>
+  <node xml:id="utterance-n32">
+    <link targets="utterance-r32"/>
+  </node>
+  <region anchors="618 654" xml:id="utterance-r33"/>
+  <node xml:id="utterance-n33">
+    <link targets="utterance-r33"/>
+  </node>
+  <region anchors="654 669" xml:id="utterance-r34"/>
+  <node xml:id="utterance-n34">
+    <link targets="utterance-r34"/>
+  </node>
+  <region anchors="669 679" xml:id="utterance-r35"/>
+  <node xml:id="utterance-n35">
+    <link targets="utterance-r35"/>
+  </node>
+  <region anchors="679 713" xml:id="utterance-r36"/>
+  <node xml:id="utterance-n36">
+    <link targets="utterance-r36"/>
+  </node>
+  <region anchors="713 761" xml:id="utterance-r37"/>
+  <node xml:id="utterance-n37">
+    <link targets="utterance-r37"/>
+  </node>
+  <region anchors="761 786" xml:id="utterance-r38"/>
+  <node xml:id="utterance-n38">
+    <link targets="utterance-r38"/>
+  </node>
+  <region anchors="786 827" xml:id="utterance-r39"/>
+  <node xml:id="utterance-n39">
+    <link targets="utterance-r39"/>
+  </node>
+  <region anchors="827 841" xml:id="utterance-r40"/>
+  <node xml:id="utterance-n40">
+    <link targets="utterance-r40"/>
+  </node>
+  <region anchors="841 850" xml:id="utterance-r41"/>
+  <node xml:id="utterance-n41">
+    <link targets="utterance-r41"/>
+  </node>
+  <region anchors="850 869" xml:id="utterance-r42"/>
+  <node xml:id="utterance-n42">
+    <link targets="utterance-r42"/>
+  </node>
+  <region anchors="869 881" xml:id="utterance-r43"/>
+  <node xml:id="utterance-n43">
+    <link targets="utterance-r43"/>
+  </node>
+  <region anchors="881 916" xml:id="utterance-r44"/>
+  <node xml:id="utterance-n44">
+    <link targets="utterance-r44"/>
+  </node>
+  <region anchors="916 925" xml:id="utterance-r45"/>
+  <node xml:id="utterance-n45">
+    <link targets="utterance-r45"/>
+  </node>
+  <region anchors="925 933" xml:id="utterance-r46"/>
+  <node xml:id="utterance-n46">
+    <link targets="utterance-r46"/>
+  </node>
+  <region anchors="933 960" xml:id="utterance-r47"/>
+  <node xml:id="utterance-n47">
+    <link targets="utterance-r47"/>
+  </node>
+  <region anchors="960 996" xml:id="utterance-r48"/>
+  <node xml:id="utterance-n48">
+    <link targets="utterance-r48"/>
+  </node>
+  <region anchors="996 1018" xml:id="utterance-r49"/>
+  <node xml:id="utterance-n49">
+    <link targets="utterance-r49"/>
+  </node>
+  <region anchors="1018 1041" xml:id="utterance-r50"/>
+  <node xml:id="utterance-n50">
+    <link targets="utterance-r50"/>
+  </node>
+  <region anchors="1041 1046" xml:id="utterance-r51"/>
+  <node xml:id="utterance-n51">
+    <link targets="utterance-r51"/>
+  </node>
+  <region anchors="1046 1070" xml:id="utterance-r52"/>
+  <node xml:id="utterance-n52">
+    <link targets="utterance-r52"/>
+  </node>
+  <region anchors="1070 1134" xml:id="utterance-r53"/>
+  <node xml:id="utterance-n53">
+    <link targets="utterance-r53"/>
+  </node>
+  <region anchors="1134 1139" xml:id="utterance-r54"/>
+  <node xml:id="utterance-n54">
+    <link targets="utterance-r54"/>
+  </node>
+  <region anchors="1139 1147" xml:id="utterance-r55"/>
+  <node xml:id="utterance-n55">
+    <link targets="utterance-r55"/>
+  </node>
+  <region anchors="1147 1162" xml:id="utterance-r56"/>
+  <node xml:id="utterance-n56">
+    <link targets="utterance-r56"/>
+  </node>
+  <region anchors="1162 1168" xml:id="utterance-r57"/>
+  <node xml:id="utterance-n57">
+    <link targets="utterance-r57"/>
+  </node>
+  <region anchors="1168 1211" xml:id="utterance-r58"/>
+  <node xml:id="utterance-n58">
+    <link targets="utterance-r58"/>
+  </node>
+  <region anchors="1211 1215" xml:id="utterance-r59"/>
+  <node xml:id="utterance-n59">
+    <link targets="utterance-r59"/>
+  </node>
+  <region anchors="1215 1233" xml:id="utterance-r60"/>
+  <node xml:id="utterance-n60">
+    <link targets="utterance-r60"/>
+  </node>
+  <region anchors="1233 1259" xml:id="utterance-r61"/>
+  <node xml:id="utterance-n61">
+    <link targets="utterance-r61"/>
+  </node>
+  <region anchors="1259 1292" xml:id="utterance-r62"/>
+  <node xml:id="utterance-n62">
+    <link targets="utterance-r62"/>
+  </node>
+  <region anchors="1292 1318" xml:id="utterance-r63"/>
+  <node xml:id="utterance-n63">
+    <link targets="utterance-r63"/>
+  </node>
+  <region anchors="1318 1324" xml:id="utterance-r64"/>
+  <node xml:id="utterance-n64">
+    <link targets="utterance-r64"/>
+  </node>
+  <region anchors="1324 1343" xml:id="utterance-r65"/>
+  <node xml:id="utterance-n65">
+    <link targets="utterance-r65"/>
+  </node>
+  <region anchors="1343 1366" xml:id="utterance-r66"/>
+  <node xml:id="utterance-n66">
+    <link targets="utterance-r66"/>
+  </node>
+  <region anchors="1366 1384" xml:id="utterance-r67"/>
+  <node xml:id="utterance-n67">
+    <link targets="utterance-r67"/>
+  </node>
+  <region anchors="1384 1392" xml:id="utterance-r68"/>
+  <node xml:id="utterance-n68">
+    <link targets="utterance-r68"/>
+  </node>
+  <region anchors="1392 1418" xml:id="utterance-r69"/>
+  <node xml:id="utterance-n69">
+    <link targets="utterance-r69"/>
+  </node>
+  <region anchors="1418 1494" xml:id="utterance-r70"/>
+  <node xml:id="utterance-n70">
+    <link targets="utterance-r70"/>
+  </node>
+  <region anchors="1494 1512" xml:id="utterance-r71"/>
+  <node xml:id="utterance-n71">
+    <link targets="utterance-r71"/>
+  </node>
+  <region anchors="1512 1530" xml:id="utterance-r72"/>
+  <node xml:id="utterance-n72">
+    <link targets="utterance-r72"/>
+  </node>
+  <region anchors="1530 1568" xml:id="utterance-r73"/>
+  <node xml:id="utterance-n73">
+    <link targets="utterance-r73"/>
+  </node>
+  <region anchors="1568 1600" xml:id="utterance-r74"/>
+  <node xml:id="utterance-n74">
+    <link targets="utterance-r74"/>
+  </node>
+  <region anchors="1600 1614" xml:id="utterance-r75"/>
+  <node xml:id="utterance-n75">
+    <link targets="utterance-r75"/>
+  </node>
+  <region anchors="1614 1636" xml:id="utterance-r76"/>
+  <node xml:id="utterance-n76">
+    <link targets="utterance-r76"/>
+  </node>
+  <region anchors="1636 1643" xml:id="utterance-r77"/>
+  <node xml:id="utterance-n77">
+    <link targets="utterance-r77"/>
+  </node>
+  <region anchors="1643 1672" xml:id="utterance-r78"/>
+  <node xml:id="utterance-n78">
+    <link targets="utterance-r78"/>
+  </node>
+  <region anchors="1672 1701" xml:id="utterance-r79"/>
+  <node xml:id="utterance-n79">
+    <link targets="utterance-r79"/>
+  </node>
+  <region anchors="1701 1730" xml:id="utterance-r80"/>
+  <node xml:id="utterance-n80">
+    <link targets="utterance-r80"/>
+  </node>
+  <region anchors="1730 1743" xml:id="utterance-r81"/>
+  <node xml:id="utterance-n81">
+    <link targets="utterance-r81"/>
+  </node>
+  <region anchors="1743 1773" xml:id="utterance-r82"/>
+  <node xml:id="utterance-n82">
+    <link targets="utterance-r82"/>
+  </node>
+  <region anchors="1773 1791" xml:id="utterance-r83"/>
+  <node xml:id="utterance-n83">
+    <link targets="utterance-r83"/>
+  </node>
+  <region anchors="1791 1806" xml:id="utterance-r84"/>
+  <node xml:id="utterance-n84">
+    <link targets="utterance-r84"/>
+  </node>
+  <region anchors="1806 1859" xml:id="utterance-r85"/>
+  <node xml:id="utterance-n85">
+    <link targets="utterance-r85"/>
+  </node>
+  <region anchors="1859 1862" xml:id="utterance-r86"/>
+  <node xml:id="utterance-n86">
+    <link targets="utterance-r86"/>
+  </node>
+  <region anchors="1862 1880" xml:id="utterance-r87"/>
+  <node xml:id="utterance-n87">
+    <link targets="utterance-r87"/>
+  </node>
+  <region anchors="1880 1905" xml:id="utterance-r88"/>
+  <node xml:id="utterance-n88">
+    <link targets="utterance-r88"/>
+  </node>
+  <region anchors="1905 1920" xml:id="utterance-r89"/>
+  <node xml:id="utterance-n89">
+    <link targets="utterance-r89"/>
+  </node>
+  <region anchors="1920 1941" xml:id="utterance-r90"/>
+  <node xml:id="utterance-n90">
+    <link targets="utterance-r90"/>
+  </node>
+  <region anchors="1941 1962" xml:id="utterance-r91"/>
+  <node xml:id="utterance-n91">
+    <link targets="utterance-r91"/>
+  </node>
+  <region anchors="1962 1968" xml:id="utterance-r92"/>
+  <node xml:id="utterance-n92">
+    <link targets="utterance-r92"/>
+  </node>
+  <region anchors="1968 1996" xml:id="utterance-r93"/>
+  <node xml:id="utterance-n93">
+    <link targets="utterance-r93"/>
+  </node>
+  <region anchors="1996 2002" xml:id="utterance-r94"/>
+  <node xml:id="utterance-n94">
+    <link targets="utterance-r94"/>
+  </node>
+  <region anchors="2002 2024" xml:id="utterance-r95"/>
+  <node xml:id="utterance-n95">
+    <link targets="utterance-r95"/>
+  </node>
+  <region anchors="2024 2038" xml:id="utterance-r96"/>
+  <node xml:id="utterance-n96">
+    <link targets="utterance-r96"/>
+  </node>
+  <region anchors="2038 2058" xml:id="utterance-r97"/>
+  <node xml:id="utterance-n97">
+    <link targets="utterance-r97"/>
+  </node>
+  <region anchors="2058 2073" xml:id="utterance-r98"/>
+  <node xml:id="utterance-n98">
+    <link targets="utterance-r98"/>
+  </node>
+  <region anchors="2073 2081" xml:id="utterance-r99"/>
+  <node xml:id="utterance-n99">
+    <link targets="utterance-r99"/>
+  </node>
+  <region anchors="2081 2101" xml:id="utterance-r100"/>
+  <node xml:id="utterance-n100">
+    <link targets="utterance-r100"/>
+  </node>
+  <region anchors="2101 2119" xml:id="utterance-r101"/>
+  <node xml:id="utterance-n101">
+    <link targets="utterance-r101"/>
+  </node>
+  <region anchors="2119 2129" xml:id="utterance-r102"/>
+  <node xml:id="utterance-n102">
+    <link targets="utterance-r102"/>
+  </node>
+  <region anchors="2129 2162" xml:id="utterance-r103"/>
+  <node xml:id="utterance-n103">
+    <link targets="utterance-r103"/>
+  </node>
+  <region anchors="2162 2172" xml:id="utterance-r104"/>
+  <node xml:id="utterance-n104">
+    <link targets="utterance-r104"/>
+  </node>
+  <region anchors="2172 2183" xml:id="utterance-r105"/>
+  <node xml:id="utterance-n105">
+    <link targets="utterance-r105"/>
+  </node>
+  <region anchors="2183 2195" xml:id="utterance-r106"/>
+  <node xml:id="utterance-n106">
+    <link targets="utterance-r106"/>
+  </node>
+  <region anchors="2195 2228" xml:id="utterance-r107"/>
+  <node xml:id="utterance-n107">
+    <link targets="utterance-r107"/>
+  </node>
+  <region anchors="2228 2264" xml:id="utterance-r108"/>
+  <node xml:id="utterance-n108">
+    <link targets="utterance-r108"/>
+  </node>
+  <region anchors="2264 2290" xml:id="utterance-r109"/>
+  <node xml:id="utterance-n109">
+    <link targets="utterance-r109"/>
+  </node>
+  <region anchors="2290 2309" xml:id="utterance-r110"/>
+  <node xml:id="utterance-n110">
+    <link targets="utterance-r110"/>
+  </node>
+</graph>

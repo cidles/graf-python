@@ -1,0 +1,577 @@
+<?xml version="1.0" ?>
+<graph xmlns="http://www.xces.org/ns/GrAF/1.0/">
+  <graphHeader>
+    <labelsDecl/>
+    <dependencies>
+      <dependsOn f.id="clause_unit"/>
+    </dependencies>
+    <annotationSpaces>
+      <annotationSpace as.id="graid2"/>
+    </annotationSpaces>
+  </graphHeader>
+  <a as="graid2" label="graid2" ref="clause_unit-n0" xml:id="graid2-a0">
+    <fs>
+      <f name="graid2">nc</f>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n1" xml:id="graid2-a1">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n0" xml:id="graid2-a2">
+    <fs>
+      <f name="graid2">nc</f>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n1" xml:id="graid2-a3">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n2" xml:id="graid2-a4">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n3" xml:id="graid2-a5">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n4" xml:id="graid2-a6">
+    <fs>
+      <f name="graid2">0:s</f>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n5" xml:id="graid2-a7">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n6" xml:id="graid2-a8">
+    <fs>
+      <f name="graid2">0.h:a</f>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n7" xml:id="graid2-a9">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n8" xml:id="graid2-a10">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n9" xml:id="graid2-a11">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n10" xml:id="graid2-a12">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n11" xml:id="graid2-a13">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n12" xml:id="graid2-a14">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n13" xml:id="graid2-a15">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n14" xml:id="graid2-a16">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n15" xml:id="graid2-a17">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n16" xml:id="graid2-a18">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n17" xml:id="graid2-a19">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n18" xml:id="graid2-a20">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n19" xml:id="graid2-a21">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n20" xml:id="graid2-a22">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n21" xml:id="graid2-a23">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n22" xml:id="graid2-a24">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n23" xml:id="graid2-a25">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n24" xml:id="graid2-a26">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n25" xml:id="graid2-a27">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n26" xml:id="graid2-a28">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n27" xml:id="graid2-a29">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n28" xml:id="graid2-a30">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n29" xml:id="graid2-a31">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n30" xml:id="graid2-a32">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n31" xml:id="graid2-a33">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n32" xml:id="graid2-a34">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n33" xml:id="graid2-a35">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n34" xml:id="graid2-a36">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n35" xml:id="graid2-a37">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n36" xml:id="graid2-a38">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n37" xml:id="graid2-a39">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n38" xml:id="graid2-a40">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n39" xml:id="graid2-a41">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n40" xml:id="graid2-a42">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n41" xml:id="graid2-a43">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n42" xml:id="graid2-a44">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n43" xml:id="graid2-a45">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n44" xml:id="graid2-a46">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n45" xml:id="graid2-a47">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n46" xml:id="graid2-a48">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n47" xml:id="graid2-a49">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n48" xml:id="graid2-a50">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n49" xml:id="graid2-a51">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n50" xml:id="graid2-a52">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n51" xml:id="graid2-a53">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n52" xml:id="graid2-a54">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n53" xml:id="graid2-a55">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n54" xml:id="graid2-a56">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n55" xml:id="graid2-a57">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n56" xml:id="graid2-a58">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n57" xml:id="graid2-a59">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n58" xml:id="graid2-a60">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n59" xml:id="graid2-a61">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n60" xml:id="graid2-a62">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n61" xml:id="graid2-a63">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n62" xml:id="graid2-a64">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n63" xml:id="graid2-a65">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n64" xml:id="graid2-a66">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n65" xml:id="graid2-a67">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n66" xml:id="graid2-a68">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n67" xml:id="graid2-a69">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n68" xml:id="graid2-a70">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n69" xml:id="graid2-a71">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n70" xml:id="graid2-a72">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n71" xml:id="graid2-a73">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n72" xml:id="graid2-a74">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n73" xml:id="graid2-a75">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n74" xml:id="graid2-a76">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n75" xml:id="graid2-a77">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n76" xml:id="graid2-a78">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n77" xml:id="graid2-a79">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n78" xml:id="graid2-a80">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n79" xml:id="graid2-a81">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n80" xml:id="graid2-a82">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n81" xml:id="graid2-a83">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n82" xml:id="graid2-a84">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n83" xml:id="graid2-a85">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n84" xml:id="graid2-a86">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n85" xml:id="graid2-a87">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n86" xml:id="graid2-a88">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n87" xml:id="graid2-a89">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n88" xml:id="graid2-a90">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n89" xml:id="graid2-a91">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n90" xml:id="graid2-a92">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n91" xml:id="graid2-a93">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n92" xml:id="graid2-a94">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n93" xml:id="graid2-a95">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n94" xml:id="graid2-a96">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n95" xml:id="graid2-a97">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n96" xml:id="graid2-a98">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n97" xml:id="graid2-a99">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n98" xml:id="graid2-a100">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n99" xml:id="graid2-a101">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n100" xml:id="graid2-a102">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n101" xml:id="graid2-a103">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n102" xml:id="graid2-a104">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n103" xml:id="graid2-a105">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n104" xml:id="graid2-a106">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n105" xml:id="graid2-a107">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n106" xml:id="graid2-a108">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n107" xml:id="graid2-a109">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n108" xml:id="graid2-a110">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n109" xml:id="graid2-a111">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+  <a as="graid2" label="graid2" ref="clause_unit-n110" xml:id="graid2-a112">
+    <fs>
+      <f name="graid2"/>
+    </fs>
+  </a>
+</graph>

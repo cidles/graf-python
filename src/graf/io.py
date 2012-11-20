@@ -12,6 +12,7 @@ import os
 from xml.sax import make_parser, SAXException
 from xml.sax.handler import ContentHandler
 from xml.sax.saxutils import XMLGenerator
+from xml.dom import minidom
 
 from graphs import Graph, Link
 from annotations import Annotation, FeatureStructure
@@ -596,17 +597,35 @@ class GraphParser(object):
 
         parsed_deps = set()
 
-        if self._get_dep:
-            get_dependency = self._get_dep
-        else:
-            # Default get_dependency is relative to path
-            header = DocumentHeader(os.path.abspath(stream.name))
-            def get_dependency(name):
-                return open(header.get_location(name))
+        # Read header file
+        doc_header = minidom.parse(stream)
 
-        if graph is None:
-            graph = Graph()
-        do_parse(stream, graph)
+
+        la = os.path.dirname(stream.name)
+
+        annotatios_files = doc_header.getElementsByTagName('annotation')
+
+        # Get the files to look for
+        for annotation in annotatios_files:
+            loc = annotation.getAttribute('loc') # File name
+            fid = annotation.getAttribute('f.id') # File id
+
+            if self._get_dep:
+                get_dependency = self._get_dep
+            else:
+                # Default get_dependency is relative to path
+                #header = DocumentHeader(os.path.abspath(stream.name))
+                header = DocumentHeader(os.path.abspath(la+'/'+loc))
+                def get_dependency(name):
+                    #return open(header.get_location(name))
+                    return open(la+'/'+loc)
+
+            if graph is None:
+                graph = Graph()
+
+            print(la)
+            do_parse(la+'/'+loc, graph)
+
         return graph
 
 
