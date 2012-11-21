@@ -14,9 +14,9 @@ from xml.sax.handler import ContentHandler
 from xml.sax.saxutils import XMLGenerator
 from xml.dom import minidom
 
-from graphs import Graph, Link
-from annotations import Annotation, FeatureStructure
-from media import CharAnchor, Region
+from graf.graphs import Graph, Link
+from graf.annotations import Annotation, FeatureStructure
+from graf.media import CharAnchor, Region
 
 class Constants(object):
     """
@@ -105,7 +105,7 @@ class TagWriter(object):
         for k, v in attribs.items():
             if v is None:
                 continue
-            if isinstance(k, basestring):
+            if isinstance(k, str):
                 k = (ns, k)
             res[k] = v
         return res
@@ -599,7 +599,6 @@ class GraphParser(object):
 
         # Read header file
         doc_header = minidom.parse(stream)
-
 
         la = os.path.dirname(stream.name)
 

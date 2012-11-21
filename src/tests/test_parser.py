@@ -13,11 +13,9 @@ This test serves to ensure the viability of the
 methods of the class PyGraphParser in PyGraphParser.py.
 """
 import codecs
+import os
 
 from graf import GraphParser
-
-import xml
-import os
 
 class TestGraphParser:
     """
@@ -42,20 +40,8 @@ class TestGraphParser:
 
         # Change directory
         # Opening the expected file result
-        file = os.path.dirname(__file__) + '/sample_files/' +\
-               'balochi-graid1.xml'
-
-        file_stream = codecs.open(file, "r", "utf-8")
-
-        g = self.gparser.parse(file_stream)
-
-        #        for node in g.nodes:
-        #            print(node)
-
-        expected_result = 624
-
-
-        assert(len(g.nodes) == expected_result)
+        #file = os.path.dirname(__file__) + '/sample_files/' +\
+        #       'balochi-graid1.xml'
 
         file = os.path.dirname(__file__) + '/sample_files/' +\
                       'balochi-header.hdr'
@@ -64,11 +50,7 @@ class TestGraphParser:
 
         g = self.gparser.parse(file_stream)
 
-#        for node in g.nodes:
-#            print(node)
-
         expected_result = 624
-
 
         assert(len(g.nodes) == expected_result)
 

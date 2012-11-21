@@ -162,5 +162,3 @@ class TestGraph(unittest.TestCase):
         self.assertListEqual(list(n2.iter_parents()), [n1])
         self.assertListEqual(list(n3.iter_parents()), [n1])
         self.assertListEqual(list(n4.iter_parents()), [n3])
-
-

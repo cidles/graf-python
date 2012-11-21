@@ -17,7 +17,7 @@ graphs are typically relatively small (sentences say) and then combined into
 larger graphs as needed.
 """
 
-from annotations import FeatureStructure, AnnotationList, AnnotationSpace
+from graf.annotations import FeatureStructure, AnnotationList, AnnotationSpace
 
 class IdDict(dict):
     __slots__ = ('_id_field',)
@@ -51,7 +51,7 @@ class GraphNodes(IdDict):
 
     def add(self, obj):
         """Adds the given node or creates one with the given id"""
-        if isinstance(obj, basestring):
+        if isinstance(obj, str):
             obj = Node(obj)
         IdDict.add(self, obj)
         return obj
