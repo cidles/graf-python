@@ -8,6 +8,7 @@
 # URL: <http://www.nltk.org/>
 # For license information, see LICENSE.TXT
 #
+
 import os
 from xml.sax import make_parser, SAXException
 from xml.sax.handler import ContentHandler
