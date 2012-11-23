@@ -9,7 +9,9 @@
 # For license information, see LICENSE.TXT
 #
 
+import sys
 import os
+
 from xml.sax import make_parser, SAXException
 from xml.sax.handler import ContentHandler
 from xml.sax.saxutils import XMLGenerator
@@ -18,6 +20,12 @@ from xml.dom import minidom
 from graf.graphs import Graph, Link
 from graf.annotations import Annotation, FeatureStructure
 from graf.media import CharAnchor, Region
+
+# Set the type of string
+if sys.version_info[:2] >= (3, 0):
+    string_type = str
+else:
+    string_type = basestring
 
 class Constants(object):
     """
@@ -106,7 +114,7 @@ class TagWriter(object):
         for k, v in attribs.items():
             if v is None:
                 continue
-            if isinstance(k, str):
+            if isinstance(k, string_type):
                 k = (ns, k)
             res[k] = v
         return res
@@ -598,33 +606,44 @@ class GraphParser(object):
 
         parsed_deps = set()
 
-        # Read header file
-        doc_header = minidom.parse(stream)
+        extension = os.path.splitext(stream.name)[1][1:]
 
-        la = os.path.dirname(stream.name)
+        if extension == 'hdr':
+            # Read header file
+            doc_header = minidom.parse(stream)
 
-        annotatios_files = doc_header.getElementsByTagName('annotation')
+            dirname = os.path.dirname(stream.name)
 
-        # Get the files to look for
-        for annotation in annotatios_files:
-            loc = annotation.getAttribute('loc') # File name
-            fid = annotation.getAttribute('f.id') # File id
+            annotatios_files = doc_header.getElementsByTagName('annotation')
 
+            # Get the files to look for
+            for annotation in annotatios_files:
+                loc = annotation.getAttribute('loc') # File name
+
+                if self._get_dep:
+                    get_dependency = self._get_dep
+                else:
+                    header = DocumentHeader(os.path.abspath(dirname+'/'+loc))
+
+                    def get_dependency(name):
+                        return open(dirname+'/'+loc)
+
+                if graph is None:
+                    graph = Graph()
+
+                do_parse(dirname+'/'+loc, graph)
+        else:
             if self._get_dep:
                 get_dependency = self._get_dep
             else:
                 # Default get_dependency is relative to path
-                #header = DocumentHeader(os.path.abspath(stream.name))
-                header = DocumentHeader(os.path.abspath(la+'/'+loc))
+                header = DocumentHeader(os.path.abspath(stream.name))
                 def get_dependency(name):
-                    #return open(header.get_location(name))
-                    return open(la+'/'+loc)
+                    return open(header.get_location(name))
 
             if graph is None:
                 graph = Graph()
-
-            print(la)
-            do_parse(la+'/'+loc, graph)
+            do_parse(stream, graph)
 
         return graph
 

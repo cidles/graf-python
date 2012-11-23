@@ -12,6 +12,8 @@ PyGraphParser in module PyGraphParser.
 This test serves to ensure the viability of the
 methods of the class PyGraphParser in PyGraphParser.py.
 """
+
+import sys
 import codecs
 import os
 
@@ -40,11 +42,9 @@ class TestGraphParser:
 
         # Change directory
         # Opening the expected file result
-        #file = os.path.dirname(__file__) + '/sample_files/' +\
-        #       'balochi-graid1.xml'
 
-        file = os.path.dirname(__file__) + '/sample_files/' +\
-                      'balochi-header.hdr'
+        #file = os.path.dirname(__file__) + '/sample_files/balochi-graid1.xml'
+        file = os.path.dirname(__file__) + '/sample_files/balochi-header.hdr'
 
         file_stream = codecs.open(file, "r", "utf-8")
 
