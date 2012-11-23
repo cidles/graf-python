@@ -2,7 +2,7 @@
 `annotations.py`
 ================
    
-.. automodule:: graf.annotations
+.. automodule:: annotations
    :members:
 
 Indices and tables

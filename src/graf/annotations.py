@@ -26,8 +26,6 @@ class Annotation(object):
 
         :param label: C{str}
         :param features: C{list} of C{Feature} objects
-        :param set: this C{Annotation}'s C{AnnotationSet}
-        :param element: a C{GraphElement} object
 
         """
 
@@ -134,7 +132,7 @@ class AnnotationSpace(AnnotationList):
     __slots__ = ('as_id')
 
     def __init__(self, as_id):
-        """Constructor for C{AnnotationSet}
+        """Constructor for C{AnnotationSpace}
 
         :param name: C{str}
         :param type: C{str}
@@ -148,7 +146,7 @@ class AnnotationSpace(AnnotationList):
         return res
 
     def __repr__(self):
-        return "AnnotationSet(%r)" % (self.as_id)
+        return "AnnotationSpace(%r)" % (self.as_id)
 
     def remove(self, ann):
         """Remove the given C{Annotation} object.
@@ -352,4 +350,3 @@ class FeatureStructure(object):
             elif val != oval:
                 raise ValueError('Name %r exists but value %r != %r in unification' % (name, val, oval))
         return res
-

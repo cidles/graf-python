@@ -38,8 +38,6 @@ class IdDict(dict):
 
     if hasattr(dict, 'itervalues'):
         __iter__ = dict.itervalues
-    else:
-        __iter__ = dict.values
 
     def __contains__(self, obj):
         return dict.__contains__(self, getattr(obj, self._id_field, obj))
@@ -168,7 +166,10 @@ class Graph(object):
 
     def _get_root(self):
         try:
-            return self.iter_roots().next()
+            if sys.version_info[:2] >= (3, 0):
+                return self.iter_roots()
+            else:
+                return self.iter_roots().next()
         except StopIteration:
             return None
     def _set_root(self, node):
@@ -318,7 +319,10 @@ class Node(GraphElement):
     @property
     def parent(self):
         try:
-            return self.iter_parents().next()
+            if sys.version_info[:2] >= (3, 0):
+                return self.iter_parents()
+            else:
+                return self.iter_parents().next()
         except StopIteration:
             raise AttributeError('%r has no parents' % self)
 
@@ -395,5 +399,3 @@ class StandoffHeader(object):
 
     def clear_roots(self):
         del self.roots[:]
-
-

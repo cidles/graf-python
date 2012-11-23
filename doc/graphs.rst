@@ -2,7 +2,7 @@
 `graphs.py`
 ===========
    
-.. automodule:: graf.graphs
+.. automodule:: graphs
    :members:
 
 Indices and tables

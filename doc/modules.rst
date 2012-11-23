@@ -7,7 +7,7 @@ graf-python Modules
 
    annotations
    api
-   inout
+   io
    graphs
    media
    util

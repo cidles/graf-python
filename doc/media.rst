@@ -2,7 +2,7 @@
 `media.py`
 ==========
    
-.. automodule:: graf.media
+.. automodule:: media
    :members:
 
 Indices and tables

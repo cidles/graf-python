@@ -2,7 +2,7 @@
 `util.py`
 =========
    
-.. automodule:: graf.util
+.. automodule:: util
    :members:
 
 Indices and tables

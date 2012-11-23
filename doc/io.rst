@@ -2,7 +2,7 @@
 `io.py`
 =======
    
-.. automodule:: graf.io
+.. automodule:: io
    :members:
 
 Indices and tables

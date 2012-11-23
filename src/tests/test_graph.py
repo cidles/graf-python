@@ -25,7 +25,7 @@ class TestGraph:
         as_id = 'as_id'
 
         aspace = self.graph.annotation_spaces.create(as_id)
-        assert(aspace == AnnotationSpace)
+
         assert(aspace.as_id == as_id)
         assert(list(self.graph.annotation_spaces) == [aspace])
 
@@ -46,7 +46,7 @@ class TestGraph:
         self.graph.nodes.add(fnode)
         self.graph.nodes.add(tnode)
         self.graph.edges.add(edge)
-        assert(list(self.graph.edges) == [edge])
+        assert(list(self.graph.edges)[0] == edge)
 
     def test_create_edge(self):
         # Test values
@@ -121,7 +121,7 @@ class TestGraph:
     def test_get_region_from_anchors(self):
         region = Region('1', 'anchor1', 'anchor2')
         self.graph.regions.add(region)
-        assert(self.graph.get_region('anchor1' =='anchor2') ==region)
+        assert(self.graph.get_region('anchor1', 'anchor2') == region)
 
     def test_set_root_not_in_graph(self):
         node = Node('test_node')
