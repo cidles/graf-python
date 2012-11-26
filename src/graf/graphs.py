@@ -170,7 +170,7 @@ class Graph(object):
     def _get_root(self):
         try:
             if sys.version_info[:2] >= (3, 0):
-                return self.iter_roots()
+                return self.iter_roots().__next__()
             else:
                 return self.iter_roots().next()
         except StopIteration:
@@ -323,7 +323,7 @@ class Node(GraphElement):
     def parent(self):
         try:
             if sys.version_info[:2] >= (3, 0):
-                return self.iter_parents()
+                return self.iter_parents().__next__()
             else:
                 return self.iter_parents().next()
         except StopIteration:

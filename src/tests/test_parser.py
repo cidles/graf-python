@@ -43,10 +43,10 @@ class TestGraphParser:
         # Change directory
         # Opening the expected file result
 
-        #file = os.path.dirname(__file__) + '/sample_files/balochi-graid1.xml'
-        file = os.path.dirname(__file__) + '/sample_files/balochi-header.hdr'
+        file = os.path.dirname(__file__) + '/sample_files/balochi-graid1.xml'
+        #file = os.path.dirname(__file__) + '/sample_files/balochi-header.hdr'
 
-        file_stream = codecs.open(file, "r", "utf-8")
+        file_stream = codecs.open(file, 'r', 'utf-8')
 
         g = self.gparser.parse(file_stream)
 

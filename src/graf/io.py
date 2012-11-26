@@ -13,6 +13,9 @@ import codecs
 import sys
 import os
 
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 from xml.sax import make_parser, SAXException
 from xml.sax.handler import ContentHandler
 from xml.sax.saxutils import XMLGenerator
@@ -451,14 +454,6 @@ class GraphHandler(SAXHandler):
     # === Header ===
 
     def dependency_handle(self, attribs):
-        # In MASC version 1 in the graph header on
-        # <dependencies>
-        #   <dependsOn type="seg"/>
-        # </dependencies>
-        # Now in MASC version 3 the depencies here
-        # changed to
-        # <dependsOn f.id="seg"/>
-
         try:
             type = attribs[self._g.TYPE_F_ID]
         except KeyError:
@@ -543,12 +538,6 @@ class GraphHandler(SAXHandler):
         except KeyError:
             value = ""
 
-        # In the new MASC version the values aren't attributes
-        # any more. So with this way the value is granted
-        # ??FIXME?????????????????????????????????????????????
-        # if value is None:
-        #     value = attrs.getValueByQName(self._g.NAME)
-
         self._feat_name_stack.append(name)
         self._fs_stack[-1][name] = value
 
@@ -591,7 +580,6 @@ class GraphParser(object):
         :rtype: Graph
         """
         def do_parse(stream, graph):
-            #print(stream)
             parser = make_parser()
             handler = GraphHandler(parser, graph, parse_dependency, parse_anchor=self._parse_anchor, constants=self._g)
             parser.setContentHandler(handler)
@@ -604,7 +592,7 @@ class GraphParser(object):
             do_parse(get_dependency(name), graph)
 
         if not hasattr(stream, 'read'):
-            stream = codecs.open(stream, "r", "utf-8")
+            stream = codecs.open(stream, 'r', 'utf-8')
 
         parsed_deps = set()
 
@@ -633,7 +621,8 @@ class GraphParser(object):
                 if graph is None:
                     graph = Graph()
 
-                do_parse(dirname+'/'+loc, graph)
+                stream = codecs.open(dirname+'/'+loc, 'r', 'utf-8')
+                do_parse(stream, graph)
         else:
             if self._get_dep:
                 get_dependency = self._get_dep
@@ -645,6 +634,7 @@ class GraphParser(object):
 
             if graph is None:
                 graph = Graph()
+
             do_parse(stream, graph)
 
         return graph
