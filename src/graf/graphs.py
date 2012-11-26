@@ -36,8 +36,11 @@ class IdDict(dict):
     def add(self, obj):
         self[getattr(obj, self._id_field)] = obj
 
-    if hasattr(dict, 'itervalues'):
-        __iter__ = dict.itervalues
+    def __iter__(self):
+        if hasattr(self, 'itervalues'):
+            return self.itervalues()
+        elif hasattr(self, 'values'):
+            return iter(self.values())
 
     def __contains__(self, obj):
         return dict.__contains__(self, getattr(obj, self._id_field, obj))

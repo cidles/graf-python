@@ -8,6 +8,7 @@
 # URL: <http://www.nltk.org/>
 # For license information, see LICENSE.TXT
 #
+import codecs
 
 import sys
 import os
@@ -590,6 +591,7 @@ class GraphParser(object):
         :rtype: Graph
         """
         def do_parse(stream, graph):
+            #print(stream)
             parser = make_parser()
             handler = GraphHandler(parser, graph, parse_dependency, parse_anchor=self._parse_anchor, constants=self._g)
             parser.setContentHandler(handler)
@@ -602,7 +604,7 @@ class GraphParser(object):
             do_parse(get_dependency(name), graph)
 
         if not hasattr(stream, 'read'):
-            stream = open(stream)
+            stream = codecs.open(stream, "r", "utf-8")
 
         parsed_deps = set()
 
@@ -626,7 +628,7 @@ class GraphParser(object):
                     header = DocumentHeader(os.path.abspath(dirname+'/'+loc))
 
                     def get_dependency(name):
-                        return open(dirname+'/'+loc)
+                        return codecs.open(dirname+'/'+loc, "r", "utf-8")
 
                 if graph is None:
                     graph = Graph()
@@ -639,7 +641,7 @@ class GraphParser(object):
                 # Default get_dependency is relative to path
                 header = DocumentHeader(os.path.abspath(stream.name))
                 def get_dependency(name):
-                    return open(header.get_location(name))
+                    return codecs.open(header.get_location(name), "r", "utf-8")
 
             if graph is None:
                 graph = Graph()
