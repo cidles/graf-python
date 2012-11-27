@@ -123,10 +123,6 @@ class TestGraph:
         self.graph.regions.add(region)
         assert(self.graph.get_region('anchor1', 'anchor2') == region)
 
-    def test_set_root_not_in_graph(self):
-        node = Node('test_node')
-        assert(ValueError, lambda: setattr(self.graph, 'root', node))
-
     def test_get_root(self):
         node = Node('test_node')
         self.graph.nodes.add(node)

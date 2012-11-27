@@ -8,13 +8,10 @@
 # URL: <http://www.nltk.org/>
 # For license information, see LICENSE.TXT
 #
-import codecs
 
 import sys
 import os
-
-reload(sys)
-sys.setdefaultencoding('utf-8')
+import codecs
 
 from xml.sax import make_parser, SAXException
 from xml.sax.handler import ContentHandler
@@ -30,6 +27,8 @@ if sys.version_info[:2] >= (3, 0):
     string_type = str
 else:
     string_type = basestring
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
 
 class Constants(object):
     """
