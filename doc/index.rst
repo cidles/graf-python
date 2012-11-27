@@ -14,6 +14,7 @@ This document has the purpose present the documentation modules and tests that t
    :maxdepth: 2
 
    modules
+   howto
 
 
 Indices and tables
