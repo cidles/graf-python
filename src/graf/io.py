@@ -618,15 +618,15 @@ class GraphParser(object):
                 if self._get_dep:
                     get_dependency = self._get_dep
                 else:
-                    header = DocumentHeader(os.path.abspath(dirname+'/'+loc))
+                    header = DocumentHeader(os.path.abspath(os.path.join(dirname, loc)))
 
                     def get_dependency(name):
-                        return open_file_for_parse(dirname+'/'+loc)
+                        return open_file_for_parse(os.path.join(dirname, loc))
 
                 if graph is None:
                     graph = Graph()
 
-                stream = open_file_for_parse(dirname+'/'+loc)
+                stream = open_file_for_parse(os.path.join(dirname, loc))
                 do_parse(stream, graph)
         else:
             if self._get_dep:
