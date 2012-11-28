@@ -570,12 +570,20 @@ class GraphParser(object):
         self._get_dep = get_dependency
         self._parse_anchor = parse_anchor
 
+
     def parse(self, stream, graph=None):
         """Parses the XML file at the given path.
 
         :return: a Graph representing the annotated text in GrAF format
         :rtype: Graph
         """
+
+        def open_file_for_parse(filename):
+            if sys.version_info[:2] >= (3, 0):
+                return codecs.open(filename, "r", "utf-8")
+            else:
+                return open(filename, "r")
+
         def do_parse(stream, graph):
             parser = make_parser()
             handler = GraphHandler(parser, graph, parse_dependency, parse_anchor=self._parse_anchor, constants=self._g)
@@ -589,7 +597,7 @@ class GraphParser(object):
             do_parse(get_dependency(name), graph)
 
         if not hasattr(stream, 'read'):
-            stream = codecs.open(stream, 'r', 'utf-8')
+            stream = open_file_for_parse(stream)
 
         parsed_deps = set()
 
@@ -613,12 +621,12 @@ class GraphParser(object):
                     header = DocumentHeader(os.path.abspath(dirname+'/'+loc))
 
                     def get_dependency(name):
-                        return codecs.open(dirname+'/'+loc, "r", "utf-8")
+                        return open_file_for_parse(dirname+'/'+loc)
 
                 if graph is None:
                     graph = Graph()
 
-                stream = codecs.open(dirname+'/'+loc, 'r', 'utf-8')
+                stream = open_file_for_parse(dirname+'/'+loc)
                 do_parse(stream, graph)
         else:
             if self._get_dep:
@@ -627,7 +635,7 @@ class GraphParser(object):
                 # Default get_dependency is relative to path
                 header = DocumentHeader(os.path.abspath(stream.name))
                 def get_dependency(name):
-                    return codecs.open(header.get_location(name), "r", "utf-8")
+                    return open_file_for_parse(header.get_location(name))
 
             if graph is None:
                 graph = Graph()
