@@ -27,8 +27,6 @@ if sys.version_info[:2] >= (3, 0):
     string_type = str
 else:
     string_type = basestring
-    reload(sys)
-    sys.setdefaultencoding('utf-8')
 
 class Constants(object):
     """
