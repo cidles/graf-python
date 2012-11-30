@@ -6,4 +6,4 @@ http://www.americannationalcorpus.org/graf-wiki
 API documentation
 =================
 
-http://cidles.github.com/graf-python/
+http://graf-python.readthedocs.org
