@@ -44,7 +44,6 @@ class TestGraphParser:
         # Opening the expected file result
 
         filename = os.path.dirname(__file__) + '/sample_files/balochi-graid1.xml'
-        #file = os.path.dirname(__file__) + '/sample_files/balochi-header.hdr'
 
         g = self.gparser.parse(filename)
 
