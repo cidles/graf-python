@@ -105,3 +105,7 @@ This will write heads and translations to the file, separated by a tab. Don't fo
 .. code-block:: python
 
     f.close()
+
+The complete script is available in the Github repository of graf-python:
+
+https://github.com/cidles/graf-python/blob/master/examples/query_quanthistling_graf.py
