@@ -275,8 +275,8 @@ class Node(GraphElement):
     Class for nodes within a C{Graph} instance.
     Each node keeps a list of in-edges and out-edges.
     Each collection is backed by two data structures:
-        1. A list (for traversals)
-        2. A hash map
+    1. A list (for traversals)
+    2. A hash map
     Nodes may also contain one or more C{Annotation} objects.
 
     """
@@ -352,7 +352,7 @@ class Edge(GraphElement):
     """
     Class of edges in Graph:
     - Each edge maintains the source (from) C{Node} and the destination.
-      (to) C{Node}.
+    (to) C{Node}.
     - Edges may also contain one or more C{Annotation} objects.
 
     """

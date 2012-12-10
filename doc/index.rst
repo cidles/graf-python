@@ -13,7 +13,7 @@ This document has the purpose present the documentation modules and tests that t
 .. toctree::
    :maxdepth: 2
 
-   modules
+   classes
    howto
 
 

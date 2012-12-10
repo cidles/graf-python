@@ -4,7 +4,7 @@
 #
 # Copyright (C) 2009-2012 Poio Project
 # Author: António Lopes <alopes@cidles.eu>
-# URL: <http://www.cidles.eu/ltll/poio>
+# URL: <http://media.cidles.eu/poio/>
 # For license information, see LICENSE.TXT
 
 import sys
