@@ -170,7 +170,7 @@ class GrafRenderer(object):
         """
         tag = self._tag(self._g.NODE, {
             self._g.ID: n.id,
-            self._g.ROOT: 'true' if n.is_root else None,
+            #self._g.ROOT: 'true' if n.is_root else None,
         })
         with tag:
             for link in n.links:
@@ -248,7 +248,7 @@ class GrafRenderer(object):
         header = g.header
         with self._tag(self._g.HEADER):
             self.render_tag_usage(g)
-            self.write_header_elements(graph, header)
+            self.write_header_elements(g, header)
 
     def write_header_elements(self, graph, header):
         """
@@ -270,7 +270,8 @@ class GrafRenderer(object):
         if aspaces:
             with self._tag(self._g.ANNOTATION_SPACES):
                 for aspace in aspaces:
-                    self._tag(self._g.ANNOTATION_SPACE, {self._g.NAME: aspace.name, self._g.TYPE: aspace.type}).write()
+                    #self._tag(self._g.ANNOTATION_SPACE, {self._g.NAME: aspace.name, self._g.TYPE: aspace.type}).write()
+                    self._tag(self._g.ANNOTATION_SPACE, {self._g.TYPE_F_ID: aspace.as_id}).write()
 
 
     def count_tag_usage(self, g):
