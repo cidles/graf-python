@@ -66,7 +66,7 @@ First, create a parser object and parse the file "dict-thiesen1998-25-339-dictin
 
 This will parse the file and all its dependencies into a GrAF object that we can query now. In this case the only dependency is the file "dict-thiesen1998-25-339-entries.xml" that contains regions of dictionary entries that link to the basic data file, and annotations for each of those dictionary entries. We will use the entry nodes to find each "head" and "translation" annotation that are linked to the entry nodes via edges in the graph.
 
- Next, open the output file:
+Next, open the output file:
 
 .. code-block:: python
 
