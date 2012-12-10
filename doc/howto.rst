@@ -1,5 +1,5 @@
 **********************
-How To Use GrAF-Python
+How To Use graf-python
 **********************
 
 Introduction
@@ -17,7 +17,7 @@ To know more about GrAF and GrAF ISO standards you can consult:
 Parsing GrAF
 ============
 
-The first step is to initialize the variable:
+The first step is to initialize the parser:
 
 .. code-block:: python
 
@@ -45,3 +45,63 @@ Alternativily the parser also accepts and open file stream. Now we have a GrAF o
     # Checking the edges
     for edge in graph.edges():
         print(edge)
+
+Querying GrAF graphs
+====================
+
+For a real word example how to use the GrAF API in Python we will use data from the project "`Quantitative Historical Linguistics <http://www.quanthistling.info/>`_". The project publishes data as GrAF/XML files that are ready to use with the parser. Here we will use the XML files of the source "`Thiesen, Wesley & Thiesen, Eva. 1998. Diccionario Bora—Castellano Castellano—Bora <http://www.quanthistling.info/data/source/thiesen1998/dictionary-25-339.html>`_", which are available here as a ZIP file:
+
+http://www.quanthistling.info/data/downloads/xml/thiesen1998.zip
+
+Download and exract the files to a local folder. The following example code will extract all head and translation annotation from the XML files and write them into a separate text file.
+
+First, create a parser object and parse the file "dict-thiesen1998-25-339-dictinterpretation.xml" that you extracted from the ZIP file:
+
+.. code-block:: python
+
+    import graf
+
+    gparser = graf.GraphParser()
+    g = parser.parse("dict-thiesen1998-25-339-dictinterpretation.xml")
+
+Next, open the output file:
+
+.. code-block:: python
+
+    f = codecs.open("heads_with_translations_thiesen1998.txt", "w", "utf-8")
+
+Then you may loop through all the nodes in the graph. From each node that has a label ending in "entry" we will get the edges. The edges that have label "head" or "translation" link to the nodes we want to extract:
+
+.. code-block:: python
+
+    # loop through all nodes in the graph
+    for (node_id, node) in g.nodes.items():
+        heads = []
+        translations = []
+
+        # if the node is a dictionary entry...
+        if node_id.endswith("entry"):
+
+            # loop thropugh all edges that are connected
+            # to the entry
+            for e in node.out_edges:
+                # if the edge has a label "head"...
+                if e.annotations.get_first().label == "head":
+                    # get the "head" annotation string
+                    heads.append(e.to_node.annotations.get_first().features.get_value("substring"))
+
+                # if the edge has a label "translation"...
+                elif e.annotations.get_first().label == "translation":
+                    # get the "translation" annotation string
+                    translations.append(e.to_node.annotations.get_first().features.get_value("substring"))
+            # write all combinations of heads and translations
+            # to the output file
+            for h in heads:
+                for t in translations:
+                    f.write(u"{0}\t{1}\n".format(h, t))
+
+This will write heads and translations to the file, separated by a tab. Don't forget to close the file in the end:
+
+.. code-block:: python
+
+    f.close()
