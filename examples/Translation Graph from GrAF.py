@@ -9,7 +9,11 @@
 # 
 # You can download this tutorial as IPython notebook here:
 # 
+# https://github.com/cidles/graf-python/blob/master/examples/Translation%20Graph%20from%20GrAF.ipynb
+# 
 # Or as a Python script here:
+# 
+# https://github.com/cidles/graf-python/blob/master/examples/Translation%20Graph%20from%20GrAF.py
 
 # <markdowncell>
 
@@ -331,17 +335,4 @@ json.dump(comer_json, codecs.open("swadesh_data.json", "w", "utf-8"))
 # An example HTML file to visualize with D3 is here:
 # 
 # http://bl.ocks.org/4250342
-
-# <markdowncell>
-
-# ## Download this notebook
-# 
-# You can downoad this notebook from Github:
-# 
-# 
-# To run directly in Python you can also download this notebook as a Python script:
-# 
-
-# <codecell>
-
 
