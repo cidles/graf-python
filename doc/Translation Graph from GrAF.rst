@@ -45,7 +45,7 @@ included in the download package.
 
 For a simple example how to parse on of the source please see here:
 
-http://graf-python.readthedocs.org/en/latest/howto.html#querying-graf-graphs
+http://graf-python.readthedocs.org/en/latest/Querying%20GrAF%20graphs.html
 
 What are translation graphs?
 ----------------------------
@@ -106,7 +106,7 @@ following modules:
 
 In[22]:
 
-.. code:: python
+.. code-block:: python
 
     import os
     import csv
@@ -126,7 +126,7 @@ downloaded from the QuantHistLing website:
 
 In[2]:
 
-.. code:: python
+.. code-block:: python
 
     os.chdir("h:/Corpora/qlc/graf")
 
@@ -136,7 +136,7 @@ store a list of those source in ``witotoan_sources``:
 
 In[3]:
 
-.. code:: python
+.. code-block:: python
 
     sources = csv.reader(open("sources.csv", "rU"), delimiter="\t")
     witotoan_sources = list()
@@ -158,7 +158,7 @@ nodes for each entry:
 
 In[51]:
 
-.. code:: python
+.. code-block:: python
 
     def graf_to_networkx(graf, source = None):
         g = networkx.Graph()
@@ -199,7 +199,7 @@ networkx graphs:
 
 In[52]:
 
-.. code:: python
+.. code-block:: python
 
     parser = graf.GraphParser()
     graphs = []
@@ -211,7 +211,7 @@ parsing and transformation might take some time:
 
 In[53]:
 
-.. code:: python
+.. code-block:: python
 
     for d in witotoan_sources:
         for f in glob.glob(os.path.join(d, "dict-*-dictinterpretation.xml")):
@@ -244,7 +244,7 @@ that have a common Spanish translation:
 
 In[54]:
 
-.. code:: python
+.. code-block:: python
 
     import copy
     combined_graph = copy.deepcopy(graphs[0])
@@ -264,7 +264,7 @@ node:
 
 In[55]:
 
-.. code:: python
+.. code-block:: python
 
     len(combined_graph.nodes())
 
@@ -276,7 +276,7 @@ Out[55]:
 
 In[56]:
 
-.. code:: python
+.. code-block:: python
 
     networkx.algorithms.components.number_connected_components(combined_graph)
 
@@ -321,7 +321,7 @@ First we create a stemmer object from the SpanishStemmer in NLTK:
 
 In[57]:
 
-.. code:: python
+.. code-block:: python
 
     from nltk.stem.snowball import SpanishStemmer
     stemmer = SpanishStemmer(True)
@@ -330,7 +330,7 @@ We create the list of stopwords and encode them as unicode strings:
 
 In[58]:
 
-.. code:: python
+.. code-block:: python
 
     combined_graph_stemmed = copy.deepcopy(combined_graph)
     stopwords = nltk.corpus.stopwords.words("spanish")
@@ -343,7 +343,7 @@ the phrase as it is:
 
 In[59]:
 
-.. code:: python
+.. code-block:: python
 
     combined_graph_stemmed = copy.deepcopy(combined_graph)
     for node in combined_graph.nodes():
@@ -367,7 +367,7 @@ connected into groups now:
 
 In[60]:
 
-.. code:: python
+.. code-block:: python
 
     networkx.algorithms.components.number_connected_components(combined_graph_stemmed)
 
@@ -379,7 +379,7 @@ Out[60]:
 
 In[61]:
 
-.. code:: python
+.. code-block:: python
 
     len(combined_graph_stemmed.nodes())
 
@@ -398,7 +398,7 @@ function from the `qlc library <https://github.com/pbouda/qlc>`_:
 
 In[15]:
 
-.. code:: python
+.. code-block:: python
 
     from qlc.translationgraph import read, write
     OUT = codecs.open("translation_graph_stemmed.dot", "w", "utf-8")
@@ -416,7 +416,7 @@ strings to make the final visualization more readable:
 
 In[66]:
 
-.. code:: python
+.. code-block:: python
 
     comer_graph = networkx.Graph()
     for node in combined_graph_stemmed:
@@ -448,13 +448,13 @@ The subgraph that was extracted can now be plotted with matplotlib:
 
 In[67]:
 
-.. code:: python
+.. code-block:: python
 
     import matplotlib.pyplot as plt
     fig = plt.figure(figsize(22,17))
     networkx.draw_networkx(comer_graph, font_family="Arial", font_size=10, node_size=3000, node_shape="H")
 
-.. image:: _static\Translation_Graph_from_GrAF_files\Translation_Graph_from_GrAF_fig_00.png
+.. image:: _static/Translation_Graph_from_GrAF_files/Translation_Graph_from_GrAF_fig_00.png
 
 Export the subgraph as JSON data
 --------------------------------
@@ -467,7 +467,7 @@ transform the graph into a JSON document:
 
 In[68]:
 
-.. code:: python
+.. code-block:: python
 
     from networkx.readwrite import json_graph
     comer_json = json_graph.node_link_data(comer_graph)
@@ -477,7 +477,7 @@ Python ``json`` module:
 
 In[69]:
 
-.. code:: python
+.. code-block:: python
 
     import json
     json.dump(comer_json, codecs.open("swadesh_data.json", "w", "utf-8"))

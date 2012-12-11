@@ -27,7 +27,7 @@
 # 
 # For a simple example how to parse on of the source please see here:
 # 
-# http://graf-python.readthedocs.org/en/latest/howto.html#querying-graf-graphs
+# http://graf-python.readthedocs.org/en/latest/Querying%20GrAF%20graphs.html
 
 # <markdowncell>
 
