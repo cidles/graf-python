@@ -23,1118 +23,1098 @@
     <link targets="clause_unit-r1"/>
   </node>
   <edge from="utterance-n1" to="clause_unit-n1" xml:id="clause_unit-e1"/>
-  <region anchors="7 28" xml:id="clause_unit-r1"/>
+  <region anchors="8 29" xml:id="clause_unit-r1"/>
   <a as="clause_unit" label="clause_unit" ref="clause_unit-n1" xml:id="clause_unit-a1">
     <fs>
       <f name="string">ki	yag	bādišā=(y)ē=at</f>
     </fs>
   </a>
   <node xml:id="clause_unit-n2">
-    <link targets="clause_unit-r0"/>
-  </node>
-  <edge from="utterance-n0" to="clause_unit-n2" xml:id="clause_unit-e2"/>
-  <region anchors="28 35" xml:id="clause_unit-r2"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n2" xml:id="clause_unit-a2">
-    <fs>
-      <f name="string">guš-īt:</f>
-    </fs>
-  </a>
-  <node xml:id="clause_unit-n3">
-    <link targets="clause_unit-r1"/>
-  </node>
-  <edge from="utterance-n1" to="clause_unit-n3" xml:id="clause_unit-e3"/>
-  <region anchors="35 56" xml:id="clause_unit-r3"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n3" xml:id="clause_unit-a3">
-    <fs>
-      <f name="string">ki	yag	bādišā=(y)ē=at</f>
-    </fs>
-  </a>
-  <node xml:id="clause_unit-n4">
     <link targets="clause_unit-r2"/>
   </node>
-  <edge from="utterance-n2" to="clause_unit-n4" xml:id="clause_unit-e4"/>
-  <region anchors="56 119" xml:id="clause_unit-r4"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n4" xml:id="clause_unit-a4">
+  <edge from="utterance-n2" to="clause_unit-n2" xml:id="clause_unit-e2"/>
+  <region anchors="30 93" xml:id="clause_unit-r2"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n2" xml:id="clause_unit-a2">
     <fs>
       <f name="string">ē	bādišā	bi=m-ē	wat-ī	šār-ay	wasat-(t)ā	yakk	tīr=i	barγ-ē		dāšt</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n5">
+  <node xml:id="clause_unit-n3">
     <link targets="clause_unit-r3"/>
   </node>
-  <edge from="utterance-n3" to="clause_unit-n5" xml:id="clause_unit-e5"/>
-  <region anchors="119 157" xml:id="clause_unit-r5"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n5" xml:id="clause_unit-a5">
+  <edge from="utterance-n3" to="clause_unit-n3" xml:id="clause_unit-e3"/>
+  <region anchors="94 132" xml:id="clause_unit-r3"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n3" xml:id="clause_unit-a3">
     <fs>
       <f name="string">ki	harčī	am-ē	tilīpun-ān-ī 	sīm=at-ant</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n6">
+  <node xml:id="clause_unit-n4">
     <link targets="clause_unit-r4"/>
   </node>
-  <edge from="utterance-n4" to="clause_unit-n6" xml:id="clause_unit-e6"/>
-  <region anchors="157 179" xml:id="clause_unit-r6"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n6" xml:id="clause_unit-a6">
+  <edge from="utterance-n4" to="clause_unit-n4" xml:id="clause_unit-e4"/>
+  <region anchors="133 155" xml:id="clause_unit-r4"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n4" xml:id="clause_unit-a4">
     <fs>
       <f name="string">bi	am-ēš-ī	wasl=at-ant</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n7">
+  <node xml:id="clause_unit-n5">
     <link targets="clause_unit-r5"/>
   </node>
-  <edge from="utterance-n5" to="clause_unit-n7" xml:id="clause_unit-e7"/>
-  <region anchors="179 203" xml:id="clause_unit-r7"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n7" xml:id="clause_unit-a7">
+  <edge from="utterance-n5" to="clause_unit-n5" xml:id="clause_unit-e5"/>
+  <region anchors="156 180" xml:id="clause_unit-r5"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n5" xml:id="clause_unit-a5">
     <fs>
       <f name="string">harka	ki	arz-ē	b-dāšt-ēn</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n8">
+  <node xml:id="clause_unit-n6">
     <link targets="clause_unit-r6"/>
   </node>
-  <edge from="utterance-n6" to="clause_unit-n8" xml:id="clause_unit-e8"/>
-  <region anchors="203 227" xml:id="clause_unit-r8"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n8" xml:id="clause_unit-a8">
+  <edge from="utterance-n6" to="clause_unit-n6" xml:id="clause_unit-e6"/>
+  <region anchors="181 205" xml:id="clause_unit-r6"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n6" xml:id="clause_unit-a6">
     <fs>
       <f name="string">am-ēširā	ki	takān	dāt-ēn</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n9">
+  <node xml:id="clause_unit-n7">
     <link targets="clause_unit-r7"/>
   </node>
-  <edge from="utterance-n7" to="clause_unit-n9" xml:id="clause_unit-e9"/>
-  <region anchors="227 250" xml:id="clause_unit-r9"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n9" xml:id="clause_unit-a9">
+  <edge from="utterance-n7" to="clause_unit-n7" xml:id="clause_unit-e7"/>
+  <region anchors="206 229" xml:id="clause_unit-r7"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n7" xml:id="clause_unit-a7">
     <fs>
       <f name="string">bādišā	ōdā	sī=(y)a		būt</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n10">
+  <node xml:id="clause_unit-n8">
     <link targets="clause_unit-r8"/>
   </node>
-  <edge from="utterance-n8" to="clause_unit-n10" xml:id="clause_unit-e10"/>
-  <region anchors="250 264" xml:id="clause_unit-r10"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n10" xml:id="clause_unit-a10">
+  <edge from="utterance-n8" to="clause_unit-n8" xml:id="clause_unit-e8"/>
+  <region anchors="230 244" xml:id="clause_unit-r8"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n8" xml:id="clause_unit-a8">
     <fs>
       <f name="string">yag	rōč-ē	dīst</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n11">
+  <node xml:id="clause_unit-n9">
     <link targets="clause_unit-r9"/>
   </node>
-  <edge from="utterance-n9" to="clause_unit-n11" xml:id="clause_unit-e11"/>
-  <region anchors="264 290" xml:id="clause_unit-r11"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n11" xml:id="clause_unit-a11">
+  <edge from="utterance-n9" to="clause_unit-n9" xml:id="clause_unit-e9"/>
+  <region anchors="245 271" xml:id="clause_unit-r9"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n9" xml:id="clause_unit-a9">
     <fs>
       <f name="string">ta	am-ē	aždiyā-(y)ē	āt-a=u</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n12">
+  <node xml:id="clause_unit-n10">
     <link targets="clause_unit-r10"/>
   </node>
-  <edge from="utterance-n10" to="clause_unit-n12" xml:id="clause_unit-e12"/>
-  <region anchors="290 310" xml:id="clause_unit-r12"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n12" xml:id="clause_unit-a12">
+  <edge from="utterance-n10" to="clause_unit-n10" xml:id="clause_unit-e10"/>
+  <region anchors="272 292" xml:id="clause_unit-r10"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n10" xml:id="clause_unit-a10">
     <fs>
       <f name="string">am-ēš-ā	takān=a	dant</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n13">
+  <node xml:id="clause_unit-n11">
     <link targets="clause_unit-r11"/>
   </node>
-  <edge from="utterance-n11" to="clause_unit-n13" xml:id="clause_unit-e13"/>
-  <region anchors="310 333" xml:id="clause_unit-r13"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n13" xml:id="clause_unit-a13">
+  <edge from="utterance-n11" to="clause_unit-n11" xml:id="clause_unit-e11"/>
+  <region anchors="293 316" xml:id="clause_unit-r11"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n11" xml:id="clause_unit-a11">
     <fs>
       <f name="string">bādšā	dēm	dāt	yakk-ē-rā</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n14">
+  <node xml:id="clause_unit-n12">
     <link targets="clause_unit-r12"/>
   </node>
-  <edge from="utterance-n12" to="clause_unit-n14" xml:id="clause_unit-e14"/>
-  <region anchors="333 345" xml:id="clause_unit-r14"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n14" xml:id="clause_unit-a14">
+  <edge from="utterance-n12" to="clause_unit-n12" xml:id="clause_unit-e12"/>
+  <region anchors="317 329" xml:id="clause_unit-r12"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n12" xml:id="clause_unit-a12">
     <fs>
       <f name="string">ki	ē	čī-(y)ē</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n15">
+  <node xml:id="clause_unit-n13">
     <link targets="clause_unit-r13"/>
   </node>
-  <edge from="utterance-n13" to="clause_unit-n15" xml:id="clause_unit-e15"/>
-  <region anchors="345 351" xml:id="clause_unit-r15"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n15" xml:id="clause_unit-a15">
+  <edge from="utterance-n13" to="clause_unit-n13" xml:id="clause_unit-e13"/>
+  <region anchors="330 336" xml:id="clause_unit-r13"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n13" xml:id="clause_unit-a13">
     <fs>
       <f name="string">āt-ant</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n16">
+  <node xml:id="clause_unit-n14">
     <link targets="clause_unit-r14"/>
   </node>
-  <edge from="utterance-n14" to="clause_unit-n16" xml:id="clause_unit-e16"/>
-  <region anchors="351 355" xml:id="clause_unit-r16"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n16" xml:id="clause_unit-a16">
+  <edge from="utterance-n14" to="clause_unit-n14" xml:id="clause_unit-e14"/>
+  <region anchors="337 341" xml:id="clause_unit-r14"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n14" xml:id="clause_unit-a14">
     <fs>
       <f name="string">gušt</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n17">
+  <node xml:id="clause_unit-n15">
     <link targets="clause_unit-r15"/>
   </node>
-  <edge from="utterance-n15" to="clause_unit-n17" xml:id="clause_unit-e17"/>
-  <region anchors="355 377" xml:id="clause_unit-r17"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n17" xml:id="clause_unit-a17">
+  <edge from="utterance-n15" to="clause_unit-n15" xml:id="clause_unit-e15"/>
+  <region anchors="342 364" xml:id="clause_unit-r15"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n15" xml:id="clause_unit-a15">
     <fs>
       <f name="string">bādšā	sāib	aždiyā-(y)ē</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n18">
+  <node xml:id="clause_unit-n16">
     <link targets="clause_unit-r16"/>
   </node>
-  <edge from="utterance-n16" to="clause_unit-n18" xml:id="clause_unit-e18"/>
-  <region anchors="377 379" xml:id="clause_unit-r18"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n18" xml:id="clause_unit-a18">
+  <edge from="utterance-n16" to="clause_unit-n16" xml:id="clause_unit-e16"/>
+  <region anchors="365 367" xml:id="clause_unit-r16"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n16" xml:id="clause_unit-a16">
     <fs>
       <f name="string">gu</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n19">
+  <node xml:id="clause_unit-n17">
     <link targets="clause_unit-r17"/>
   </node>
-  <edge from="utterance-n17" to="clause_unit-n19" xml:id="clause_unit-e19"/>
-  <region anchors="379 404" xml:id="clause_unit-r19"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n19" xml:id="clause_unit-a19">
+  <edge from="utterance-n17" to="clause_unit-n17" xml:id="clause_unit-e17"/>
+  <region anchors="368 393" xml:id="clause_unit-r17"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n17" xml:id="clause_unit-a17">
     <fs>
       <f name="string">hā…	ē	aždiyā	amr-ē	dār-īt</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n20">
+  <node xml:id="clause_unit-n18">
     <link targets="clause_unit-r18"/>
   </node>
-  <edge from="utterance-n18" to="clause_unit-n20" xml:id="clause_unit-e20"/>
-  <region anchors="404 416" xml:id="clause_unit-r20"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n20" xml:id="clause_unit-a20">
+  <edge from="utterance-n18" to="clause_unit-n18" xml:id="clause_unit-e18"/>
+  <region anchors="394 406" xml:id="clause_unit-r18"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n18" xml:id="clause_unit-a18">
     <fs>
       <f name="string">arz-ē	dār-īt</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n21">
+  <node xml:id="clause_unit-n19">
     <link targets="clause_unit-r19"/>
   </node>
-  <edge from="utterance-n19" to="clause_unit-n21" xml:id="clause_unit-e21"/>
-  <region anchors="416 451" xml:id="clause_unit-r21"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n21" xml:id="clause_unit-a21">
+  <edge from="utterance-n19" to="clause_unit-n19" xml:id="clause_unit-e19"/>
+  <region anchors="407 442" xml:id="clause_unit-r19"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n19" xml:id="clause_unit-a19">
     <fs>
       <f name="string">ēš-ī	arz-ā	kay	pa=(m)man	b-(y)ār-īt</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n22">
+  <node xml:id="clause_unit-n20">
     <link targets="clause_unit-r20"/>
   </node>
-  <edge from="utterance-n20" to="clause_unit-n22" xml:id="clause_unit-e22"/>
-  <region anchors="451 467" xml:id="clause_unit-r22"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n22" xml:id="clause_unit-a22">
+  <edge from="utterance-n20" to="clause_unit-n20" xml:id="clause_unit-e20"/>
+  <region anchors="443 459" xml:id="clause_unit-r20"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n20" xml:id="clause_unit-a20">
     <fs>
       <f name="string">man	ki	na-zān-īn</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n23">
+  <node xml:id="clause_unit-n21">
     <link targets="clause_unit-r21"/>
   </node>
-  <edge from="utterance-n21" to="clause_unit-n23" xml:id="clause_unit-e23"/>
-  <region anchors="467 479" xml:id="clause_unit-r23"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n23" xml:id="clause_unit-a23">
+  <edge from="utterance-n21" to="clause_unit-n21" xml:id="clause_unit-e21"/>
+  <region anchors="460 472" xml:id="clause_unit-r21"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n21" xml:id="clause_unit-a21">
     <fs>
       <f name="string">ē	bē-zuwān-ē</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n24">
+  <node xml:id="clause_unit-n22">
     <link targets="clause_unit-r22"/>
   </node>
-  <edge from="utterance-n22" to="clause_unit-n24" xml:id="clause_unit-e24"/>
-  <region anchors="479 495" xml:id="clause_unit-r24"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n24" xml:id="clause_unit-a24">
+  <edge from="utterance-n22" to="clause_unit-n22" xml:id="clause_unit-e22"/>
+  <region anchors="473 489" xml:id="clause_unit-r22"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n22" xml:id="clause_unit-a22">
     <fs>
       <f name="string">yakk	naǰǰār-ē	gu</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n25">
+  <node xml:id="clause_unit-n23">
     <link targets="clause_unit-r23"/>
   </node>
-  <edge from="utterance-n23" to="clause_unit-n25" xml:id="clause_unit-e25"/>
-  <region anchors="495 507" xml:id="clause_unit-r25"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n25" xml:id="clause_unit-a25">
+  <edge from="utterance-n23" to="clause_unit-n23" xml:id="clause_unit-e23"/>
+  <region anchors="490 502" xml:id="clause_unit-r23"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n23" xml:id="clause_unit-a23">
     <fs>
       <f name="string">man=a	zān-īn</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n26">
+  <node xml:id="clause_unit-n24">
     <link targets="clause_unit-r24"/>
   </node>
-  <edge from="utterance-n24" to="clause_unit-n26" xml:id="clause_unit-e26"/>
-  <region anchors="507 513" xml:id="clause_unit-r26"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n26" xml:id="clause_unit-a26">
+  <edge from="utterance-n24" to="clause_unit-n24" xml:id="clause_unit-e24"/>
+  <region anchors="503 509" xml:id="clause_unit-r24"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n24" xml:id="clause_unit-a24">
     <fs>
       <f name="string">gušt=ī</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n27">
+  <node xml:id="clause_unit-n25">
     <link targets="clause_unit-r25"/>
   </node>
-  <edge from="utterance-n25" to="clause_unit-n27" xml:id="clause_unit-e27"/>
-  <region anchors="513 522" xml:id="clause_unit-r27"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n27" xml:id="clause_unit-a27">
+  <edge from="utterance-n25" to="clause_unit-n25" xml:id="clause_unit-e25"/>
+  <region anchors="510 519" xml:id="clause_unit-r25"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n25" xml:id="clause_unit-a25">
     <fs>
       <f name="string">ki	zān-ay</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n28">
+  <node xml:id="clause_unit-n26">
     <link targets="clause_unit-r26"/>
   </node>
-  <edge from="utterance-n26" to="clause_unit-n28" xml:id="clause_unit-e28"/>
-  <region anchors="522 541" xml:id="clause_unit-r28"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n28" xml:id="clause_unit-a28">
+  <edge from="utterance-n26" to="clause_unit-n26" xml:id="clause_unit-e26"/>
+  <region anchors="520 539" xml:id="clause_unit-r26"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n26" xml:id="clause_unit-a26">
     <fs>
       <f name="string">ēš-ī	arz-ā	āwurt-ay</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n29">
+  <node xml:id="clause_unit-n27">
     <link targets="clause_unit-r27"/>
   </node>
-  <edge from="utterance-n27" to="clause_unit-n29" xml:id="clause_unit-e29"/>
-  <region anchors="541 572" xml:id="clause_unit-r29"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n29" xml:id="clause_unit-a29">
+  <edge from="utterance-n27" to="clause_unit-n27" xml:id="clause_unit-e27"/>
+  <region anchors="540 571" xml:id="clause_unit-r27"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n27" xml:id="clause_unit-a27">
     <fs>
       <f name="string">man	trā	inka	xalāit=(t)a	day-īn</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n30">
+  <node xml:id="clause_unit-n28">
     <link targets="clause_unit-r28"/>
   </node>
-  <edge from="utterance-n28" to="clause_unit-n30" xml:id="clause_unit-e30"/>
-  <region anchors="572 574" xml:id="clause_unit-r30"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n30" xml:id="clause_unit-a30">
+  <edge from="utterance-n28" to="clause_unit-n28" xml:id="clause_unit-e28"/>
+  <region anchors="572 574" xml:id="clause_unit-r28"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n28" xml:id="clause_unit-a28">
     <fs>
       <f name="string">gu</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n31">
+  <node xml:id="clause_unit-n29">
     <link targets="clause_unit-r29"/>
   </node>
-  <edge from="utterance-n29" to="clause_unit-n31" xml:id="clause_unit-e31"/>
-  <region anchors="574 583" xml:id="clause_unit-r31"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n31" xml:id="clause_unit-a31">
+  <edge from="utterance-n29" to="clause_unit-n29" xml:id="clause_unit-e29"/>
+  <region anchors="575 584" xml:id="clause_unit-r29"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n29" xml:id="clause_unit-a29">
     <fs>
       <f name="string">xayli	xub</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n32">
+  <node xml:id="clause_unit-n30">
     <link targets="clause_unit-r30"/>
   </node>
-  <edge from="utterance-n30" to="clause_unit-n32" xml:id="clause_unit-e32"/>
-  <region anchors="583 616" xml:id="clause_unit-r32"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n32" xml:id="clause_unit-a32">
+  <edge from="utterance-n30" to="clause_unit-n30" xml:id="clause_unit-e30"/>
+  <region anchors="585 618" xml:id="clause_unit-r30"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n30" xml:id="clause_unit-a30">
     <fs>
       <f name="string">ē	naǰǰār	ki	āt	gō	tēγ=u		arrag-ān</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n33">
+  <node xml:id="clause_unit-n31">
     <link targets="clause_unit-r31"/>
   </node>
-  <edge from="utterance-n31" to="clause_unit-n33" xml:id="clause_unit-e33"/>
-  <region anchors="616 636" xml:id="clause_unit-r33"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n33" xml:id="clause_unit-a33">
+  <edge from="utterance-n31" to="clause_unit-n31" xml:id="clause_unit-e31"/>
+  <region anchors="619 639" xml:id="clause_unit-r31"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n31" xml:id="clause_unit-a31">
     <fs>
       <f name="string">ē	aždiyā	wayl	kurt=u</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n34">
+  <node xml:id="clause_unit-n32">
     <link targets="clause_unit-r32"/>
   </node>
-  <edge from="utterance-n32" to="clause_unit-n34" xml:id="clause_unit-e34"/>
-  <region anchors="636 646" xml:id="clause_unit-r34"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n34" xml:id="clause_unit-a34">
+  <edge from="utterance-n32" to="clause_unit-n32" xml:id="clause_unit-e32"/>
+  <region anchors="640 650" xml:id="clause_unit-r32"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n32" xml:id="clause_unit-a32">
     <fs>
       <f name="string">rāda	būt=u</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n35">
+  <node xml:id="clause_unit-n33">
     <link targets="clause_unit-r33"/>
   </node>
-  <edge from="utterance-n33" to="clause_unit-n35" xml:id="clause_unit-e35"/>
-  <region anchors="646 682" xml:id="clause_unit-r35"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n35" xml:id="clause_unit-a35">
+  <edge from="utterance-n33" to="clause_unit-n33" xml:id="clause_unit-e33"/>
+  <region anchors="651 687" xml:id="clause_unit-r33"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n33" xml:id="clause_unit-a33">
     <fs>
       <f name="string">aždīyā	naǰǰār-ā	išāra	dāt=u		išāra=u</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n36">
+  <node xml:id="clause_unit-n34">
     <link targets="clause_unit-r34"/>
   </node>
-  <edge from="utterance-n34" to="clause_unit-n36" xml:id="clause_unit-e36"/>
-  <region anchors="682 697" xml:id="clause_unit-r36"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n36" xml:id="clause_unit-a36">
+  <edge from="utterance-n34" to="clause_unit-n34" xml:id="clause_unit-e34"/>
+  <region anchors="688 703" xml:id="clause_unit-r34"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n34" xml:id="clause_unit-a34">
     <fs>
       <f name="string">bi	kō-ay	tā	šut</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n37">
+  <node xml:id="clause_unit-n35">
     <link targets="clause_unit-r35"/>
   </node>
-  <edge from="utterance-n35" to="clause_unit-n37" xml:id="clause_unit-e37"/>
-  <region anchors="697 707" xml:id="clause_unit-r37"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n37" xml:id="clause_unit-a37">
+  <edge from="utterance-n35" to="clause_unit-n35" xml:id="clause_unit-e35"/>
+  <region anchors="704 714" xml:id="clause_unit-r35"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n35" xml:id="clause_unit-a35">
     <fs>
       <f name="string">ōdā	ki	šut</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n38">
+  <node xml:id="clause_unit-n36">
     <link targets="clause_unit-r36"/>
   </node>
-  <edge from="utterance-n36" to="clause_unit-n38" xml:id="clause_unit-e38"/>
-  <region anchors="707 741" xml:id="clause_unit-r38"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n38" xml:id="clause_unit-a38">
+  <edge from="utterance-n36" to="clause_unit-n36" xml:id="clause_unit-e36"/>
+  <region anchors="715 749" xml:id="clause_unit-r36"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n36" xml:id="clause_unit-a36">
     <fs>
       <f name="string">ta	uhō…	ē	aždiyā	diga	mās-ē	dār-īt</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n39">
+  <node xml:id="clause_unit-n37">
     <link targets="clause_unit-r37"/>
   </node>
-  <edge from="utterance-n37" to="clause_unit-n39" xml:id="clause_unit-e39"/>
-  <region anchors="741 789" xml:id="clause_unit-r39"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n39" xml:id="clause_unit-a39">
+  <edge from="utterance-n37" to="clause_unit-n37" xml:id="clause_unit-e37"/>
+  <region anchors="750 798" xml:id="clause_unit-r37"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n37" xml:id="clause_unit-a37">
     <fs>
       <f name="string">ē	mās=ay	ša=m-ē	kōh-ay	pāčin	na-(w)ant	mazan	šāx</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n40">
+  <node xml:id="clause_unit-n38">
     <link targets="clause_unit-r38"/>
   </node>
-  <edge from="utterance-n38" to="clause_unit-n40" xml:id="clause_unit-e40"/>
-  <region anchors="789 814" xml:id="clause_unit-r40"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n40" xml:id="clause_unit-a40">
+  <edge from="utterance-n38" to="clause_unit-n38" xml:id="clause_unit-e38"/>
+  <region anchors="799 824" xml:id="clause_unit-r38"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n38" xml:id="clause_unit-a38">
     <fs>
       <f name="string">ša=m-ēš-ān	šikār	kurt-a=u</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n41">
+  <node xml:id="clause_unit-n39">
     <link targets="clause_unit-r39"/>
   </node>
-  <edge from="utterance-n39" to="clause_unit-n41" xml:id="clause_unit-e41"/>
-  <region anchors="814 855" xml:id="clause_unit-r41"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n41" xml:id="clause_unit-a41">
+  <edge from="utterance-n39" to="clause_unit-n39" xml:id="clause_unit-e39"/>
+  <region anchors="825 866" xml:id="clause_unit-r39"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n39" xml:id="clause_unit-a39">
     <fs>
       <f name="string">am-ē	šāx=ay	ēš-ī	guṭṭ-ā	gīr	kurt-ag=ant=u</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n42">
+  <node xml:id="clause_unit-n40">
     <link targets="clause_unit-r40"/>
   </node>
-  <edge from="utterance-n40" to="clause_unit-n42" xml:id="clause_unit-e42"/>
-  <region anchors="855 869" xml:id="clause_unit-r42"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n42" xml:id="clause_unit-a42">
+  <edge from="utterance-n40" to="clause_unit-n40" xml:id="clause_unit-e40"/>
+  <region anchors="867 881" xml:id="clause_unit-r40"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n40" xml:id="clause_unit-a40">
     <fs>
       <f name="string">napas	tank=int</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n43">
+  <node xml:id="clause_unit-n41">
     <link targets="clause_unit-r41"/>
   </node>
-  <edge from="utterance-n41" to="clause_unit-n43" xml:id="clause_unit-e43"/>
-  <region anchors="869 878" xml:id="clause_unit-r43"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n43" xml:id="clause_unit-a43">
+  <edge from="utterance-n41" to="clause_unit-n41" xml:id="clause_unit-e41"/>
+  <region anchors="882 891" xml:id="clause_unit-r41"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n41" xml:id="clause_unit-a41">
     <fs>
       <f name="string">āt-a		idā</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n44">
+  <node xml:id="clause_unit-n42">
     <link targets="clause_unit-r42"/>
   </node>
-  <edge from="utterance-n42" to="clause_unit-n44" xml:id="clause_unit-e44"/>
-  <region anchors="878 897" xml:id="clause_unit-r44"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n44" xml:id="clause_unit-a44">
+  <edge from="utterance-n42" to="clause_unit-n42" xml:id="clause_unit-e42"/>
+  <region anchors="892 911" xml:id="clause_unit-r42"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n42" xml:id="clause_unit-a42">
     <fs>
       <f name="string">bi	bādšā	arz	kurt-a</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n45">
+  <node xml:id="clause_unit-n43">
     <link targets="clause_unit-r43"/>
   </node>
-  <edge from="utterance-n43" to="clause_unit-n45" xml:id="clause_unit-e45"/>
-  <region anchors="897 909" xml:id="clause_unit-r45"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n45" xml:id="clause_unit-a45">
+  <edge from="utterance-n43" to="clause_unit-n43" xml:id="clause_unit-e43"/>
+  <region anchors="912 924" xml:id="clause_unit-r43"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n43" xml:id="clause_unit-a43">
     <fs>
       <f name="string">išāra	kurt=u</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n46">
+  <node xml:id="clause_unit-n44">
     <link targets="clause_unit-r44"/>
   </node>
-  <edge from="utterance-n44" to="clause_unit-n46" xml:id="clause_unit-e46"/>
-  <region anchors="909 944" xml:id="clause_unit-r46"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n46" xml:id="clause_unit-a46">
+  <edge from="utterance-n44" to="clause_unit-n44" xml:id="clause_unit-e44"/>
+  <region anchors="925 960" xml:id="clause_unit-r44"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n44" xml:id="clause_unit-a44">
     <fs>
       <f name="string">ē	šāx-ān-ā	pāčin-ē-ān-ā	arra	kurt=u</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n47">
+  <node xml:id="clause_unit-n45">
     <link targets="clause_unit-r45"/>
   </node>
-  <edge from="utterance-n45" to="clause_unit-n47" xml:id="clause_unit-e47"/>
-  <region anchors="944 953" xml:id="clause_unit-r47"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n47" xml:id="clause_unit-a47">
+  <edge from="utterance-n45" to="clause_unit-n45" xml:id="clause_unit-e45"/>
+  <region anchors="961 970" xml:id="clause_unit-r45"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n45" xml:id="clause_unit-a45">
     <fs>
       <f name="string">ā	alās	ūt</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n48">
+  <node xml:id="clause_unit-n46">
     <link targets="clause_unit-r46"/>
   </node>
-  <edge from="utterance-n46" to="clause_unit-n48" xml:id="clause_unit-e48"/>
-  <region anchors="953 961" xml:id="clause_unit-r48"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n48" xml:id="clause_unit-a48">
+  <edge from="utterance-n46" to="clause_unit-n46" xml:id="clause_unit-e46"/>
+  <region anchors="971 979" xml:id="clause_unit-r46"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n46" xml:id="clause_unit-a46">
     <fs>
       <f name="string">āzāt	būt</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n49">
+  <node xml:id="clause_unit-n47">
     <link targets="clause_unit-r47"/>
   </node>
-  <edge from="utterance-n47" to="clause_unit-n49" xml:id="clause_unit-e49"/>
-  <region anchors="961 988" xml:id="clause_unit-r49"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n49" xml:id="clause_unit-a49">
+  <edge from="utterance-n47" to="clause_unit-n47" xml:id="clause_unit-e47"/>
+  <region anchors="980 1007" xml:id="clause_unit-r47"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n47" xml:id="clause_unit-a47">
     <fs>
       <f name="string">ē	aždiyā	diga	ǰā-(y)ē	šut=u</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n50">
+  <node xml:id="clause_unit-n48">
     <link targets="clause_unit-r48"/>
   </node>
-  <edge from="utterance-n48" to="clause_unit-n50" xml:id="clause_unit-e50"/>
-  <region anchors="988 1024" xml:id="clause_unit-r50"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n50" xml:id="clause_unit-a50">
+  <edge from="utterance-n48" to="clause_unit-n48" xml:id="clause_unit-e48"/>
+  <region anchors="1008 1044" xml:id="clause_unit-r48"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n48" xml:id="clause_unit-a48">
     <fs>
       <f name="string">ēš-ā	mazan-ēn	xalāit-(t)ē	dāt	ǰawāir</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n51">
+  <node xml:id="clause_unit-n49">
     <link targets="clause_unit-r49"/>
   </node>
-  <edge from="utterance-n49" to="clause_unit-n51" xml:id="clause_unit-e51"/>
-  <region anchors="1024 1046" xml:id="clause_unit-r51"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n51" xml:id="clause_unit-a51">
+  <edge from="utterance-n49" to="clause_unit-n49" xml:id="clause_unit-e49"/>
+  <region anchors="1045 1067" xml:id="clause_unit-r49"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n49" xml:id="clause_unit-a49">
     <fs>
       <f name="string">guṛā	ē	ṭukkur-ē	ki	šut</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n52">
+  <node xml:id="clause_unit-n50">
     <link targets="clause_unit-r50"/>
   </node>
-  <edge from="utterance-n50" to="clause_unit-n52" xml:id="clause_unit-e52"/>
-  <region anchors="1046 1069" xml:id="clause_unit-r52"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n52" xml:id="clause_unit-a52">
+  <edge from="utterance-n50" to="clause_unit-n50" xml:id="clause_unit-e50"/>
+  <region anchors="1068 1091" xml:id="clause_unit-r50"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n50" xml:id="clause_unit-a50">
     <fs>
       <f name="string">padā	ēš-ā	išāra-(y)ē	ku</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n53">
+  <node xml:id="clause_unit-n51">
     <link targets="clause_unit-r51"/>
   </node>
-  <edge from="utterance-n51" to="clause_unit-n53" xml:id="clause_unit-e53"/>
-  <region anchors="1069 1074" xml:id="clause_unit-r53"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n53" xml:id="clause_unit-a53">
+  <edge from="utterance-n51" to="clause_unit-n51" xml:id="clause_unit-e51"/>
+  <region anchors="1092 1097" xml:id="clause_unit-r51"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n51" xml:id="clause_unit-a51">
     <fs>
       <f name="string">ōštāt</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n54">
+  <node xml:id="clause_unit-n52">
     <link targets="clause_unit-r52"/>
   </node>
-  <edge from="utterance-n52" to="clause_unit-n54" xml:id="clause_unit-e54"/>
-  <region anchors="1074 1098" xml:id="clause_unit-r54"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n54" xml:id="clause_unit-a54">
+  <edge from="utterance-n52" to="clause_unit-n52" xml:id="clause_unit-e52"/>
+  <region anchors="1098 1122" xml:id="clause_unit-r52"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n52" xml:id="clause_unit-a52">
     <fs>
       <f name="string">am-inkas-ēn	tōm-ē	zurt=u</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n55">
+  <node xml:id="clause_unit-n53">
     <link targets="clause_unit-r53"/>
   </node>
-  <edge from="utterance-n53" to="clause_unit-n55" xml:id="clause_unit-e55"/>
-  <region anchors="1098 1162" xml:id="clause_unit-r55"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n55" xml:id="clause_unit-a55">
+  <edge from="utterance-n53" to="clause_unit-n53" xml:id="clause_unit-e53"/>
+  <region anchors="1123 1187" xml:id="clause_unit-r53"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n53" xml:id="clause_unit-a53">
     <fs>
       <f name="string">ša	wat-ī	dap-ay	tā	prēnt	bi	am-ē	ǰawāir-ān-ī	tā	ēš-ī	tūrag-ay	tā</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n56">
+  <node xml:id="clause_unit-n54">
     <link targets="clause_unit-r54"/>
   </node>
-  <edge from="utterance-n54" to="clause_unit-n56" xml:id="clause_unit-e56"/>
-  <region anchors="1162 1167" xml:id="clause_unit-r56"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n56" xml:id="clause_unit-a56">
+  <edge from="utterance-n54" to="clause_unit-n54" xml:id="clause_unit-e54"/>
+  <region anchors="1188 1193" xml:id="clause_unit-r54"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n54" xml:id="clause_unit-a54">
     <fs>
       <f name="string">ki	āt</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n57">
+  <node xml:id="clause_unit-n55">
     <link targets="clause_unit-r55"/>
   </node>
-  <edge from="utterance-n55" to="clause_unit-n57" xml:id="clause_unit-e57"/>
-  <region anchors="1167 1175" xml:id="clause_unit-r57"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n57" xml:id="clause_unit-a57">
+  <edge from="utterance-n55" to="clause_unit-n55" xml:id="clause_unit-e55"/>
+  <region anchors="1194 1202" xml:id="clause_unit-r55"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n55" xml:id="clause_unit-a55">
     <fs>
       <f name="string">bādšā	gu</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n58">
+  <node xml:id="clause_unit-n56">
     <link targets="clause_unit-r56"/>
   </node>
-  <edge from="utterance-n56" to="clause_unit-n58" xml:id="clause_unit-e58"/>
-  <region anchors="1175 1190" xml:id="clause_unit-r58"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n58" xml:id="clause_unit-a58">
+  <edge from="utterance-n56" to="clause_unit-n56" xml:id="clause_unit-e56"/>
+  <region anchors="1203 1218" xml:id="clause_unit-r56"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n56" xml:id="clause_unit-a56">
     <fs>
       <f name="string">ē	čē	arz-ē	dāšt</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n59">
+  <node xml:id="clause_unit-n57">
     <link targets="clause_unit-r57"/>
   </node>
-  <edge from="utterance-n57" to="clause_unit-n59" xml:id="clause_unit-e59"/>
-  <region anchors="1190 1196" xml:id="clause_unit-r59"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n59" xml:id="clause_unit-a59">
+  <edge from="utterance-n57" to="clause_unit-n57" xml:id="clause_unit-e57"/>
+  <region anchors="1219 1225" xml:id="clause_unit-r57"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n57" xml:id="clause_unit-a57">
     <fs>
       <f name="string">gušt=ī</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n60">
+  <node xml:id="clause_unit-n58">
     <link targets="clause_unit-r58"/>
   </node>
-  <edge from="utterance-n58" to="clause_unit-n60" xml:id="clause_unit-e60"/>
-  <region anchors="1196 1239" xml:id="clause_unit-r60"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n60" xml:id="clause_unit-a60">
+  <edge from="utterance-n58" to="clause_unit-n58" xml:id="clause_unit-e58"/>
+  <region anchors="1226 1269" xml:id="clause_unit-r58"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n58" xml:id="clause_unit-a58">
     <fs>
       <f name="string">b-(y)ā	ki	ē	rang	ēš-ī	mās	ē	rang	guṭṭō=at=ō</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n61">
+  <node xml:id="clause_unit-n59">
     <link targets="clause_unit-r59"/>
   </node>
-  <edge from="utterance-n59" to="clause_unit-n61" xml:id="clause_unit-e61"/>
-  <region anchors="1239 1243" xml:id="clause_unit-r61"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n61" xml:id="clause_unit-a61">
+  <edge from="utterance-n59" to="clause_unit-n59" xml:id="clause_unit-e59"/>
+  <region anchors="1270 1274" xml:id="clause_unit-r59"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n59" xml:id="clause_unit-a59">
     <fs>
       <f name="string">āt=u</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n62">
+  <node xml:id="clause_unit-n60">
     <link targets="clause_unit-r60"/>
   </node>
-  <edge from="utterance-n60" to="clause_unit-n62" xml:id="clause_unit-e62"/>
-  <region anchors="1243 1261" xml:id="clause_unit-r62"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n62" xml:id="clause_unit-a62">
+  <edge from="utterance-n60" to="clause_unit-n60" xml:id="clause_unit-e60"/>
+  <region anchors="1275 1293" xml:id="clause_unit-r60"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n60" xml:id="clause_unit-a60">
     <fs>
       <f name="string">man	āzāt	kurt-un=u</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n63">
+  <node xml:id="clause_unit-n61">
     <link targets="clause_unit-r61"/>
   </node>
-  <edge from="utterance-n61" to="clause_unit-n63" xml:id="clause_unit-e63"/>
-  <region anchors="1261 1287" xml:id="clause_unit-r63"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n63" xml:id="clause_unit-a63">
+  <edge from="utterance-n61" to="clause_unit-n61" xml:id="clause_unit-e61"/>
+  <region anchors="1294 1320" xml:id="clause_unit-r61"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n61" xml:id="clause_unit-a61">
     <fs>
       <f name="string">guṛā	mnā	inka	ǰawāir	dāt=u</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n64">
+  <node xml:id="clause_unit-n62">
     <link targets="clause_unit-r62"/>
   </node>
-  <edge from="utterance-n62" to="clause_unit-n64" xml:id="clause_unit-e64"/>
-  <region anchors="1287 1320" xml:id="clause_unit-r64"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n64" xml:id="clause_unit-a64">
+  <edge from="utterance-n62" to="clause_unit-n62" xml:id="clause_unit-e62"/>
+  <region anchors="1321 1354" xml:id="clause_unit-r62"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n62" xml:id="clause_unit-a62">
     <fs>
       <f name="string">am-ē	tōm-ā=um	am-ēš-ā=um	mnā	ē	dā</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n65">
+  <node xml:id="clause_unit-n63">
     <link targets="clause_unit-r63"/>
   </node>
-  <edge from="utterance-n63" to="clause_unit-n65" xml:id="clause_unit-e65"/>
-  <region anchors="1320 1346" xml:id="clause_unit-r65"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n65" xml:id="clause_unit-a65">
+  <edge from="utterance-n63" to="clause_unit-n63" xml:id="clause_unit-e63"/>
+  <region anchors="1355 1381" xml:id="clause_unit-r63"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n63" xml:id="clause_unit-a63">
     <fs>
       <f name="string">ša	wat-ī	dap-ay	tā=ē	prēnt</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n66">
+  <node xml:id="clause_unit-n64">
     <link targets="clause_unit-r64"/>
   </node>
-  <edge from="utterance-n64" to="clause_unit-n66" xml:id="clause_unit-e66"/>
-  <region anchors="1346 1352" xml:id="clause_unit-r66"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n66" xml:id="clause_unit-a66">
+  <edge from="utterance-n64" to="clause_unit-n64" xml:id="clause_unit-e64"/>
+  <region anchors="1382 1388" xml:id="clause_unit-r64"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n64" xml:id="clause_unit-a64">
     <fs>
       <f name="string">gušt=ī</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n67">
+  <node xml:id="clause_unit-n65">
     <link targets="clause_unit-r65"/>
   </node>
-  <edge from="utterance-n65" to="clause_unit-n67" xml:id="clause_unit-e67"/>
-  <region anchors="1352 1371" xml:id="clause_unit-r67"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n67" xml:id="clause_unit-a67">
+  <edge from="utterance-n65" to="clause_unit-n65" xml:id="clause_unit-e65"/>
+  <region anchors="1389 1408" xml:id="clause_unit-r65"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n65" xml:id="clause_unit-a65">
     <fs>
       <f name="string">ī	dgar=u	ǰawāir=ant</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n68">
+  <node xml:id="clause_unit-n66">
     <link targets="clause_unit-r66"/>
   </node>
-  <edge from="utterance-n66" to="clause_unit-n68" xml:id="clause_unit-e68"/>
-  <region anchors="1371 1394" xml:id="clause_unit-r68"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n68" xml:id="clause_unit-a68">
+  <edge from="utterance-n66" to="clause_unit-n66" xml:id="clause_unit-e66"/>
+  <region anchors="1409 1432" xml:id="clause_unit-r66"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n66" xml:id="clause_unit-a66">
     <fs>
       <f name="string">am-ēš-ā	mašmā	na-zān-an</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n69">
+  <node xml:id="clause_unit-n67">
     <link targets="clause_unit-r67"/>
   </node>
-  <edge from="utterance-n67" to="clause_unit-n69" xml:id="clause_unit-e69"/>
-  <region anchors="1394 1412" xml:id="clause_unit-r69"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n69" xml:id="clause_unit-a69">
+  <edge from="utterance-n67" to="clause_unit-n67" xml:id="clause_unit-e67"/>
+  <region anchors="1433 1451" xml:id="clause_unit-r67"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n67" xml:id="clause_unit-a67">
     <fs>
       <f name="string">ē	maššōra	kurt-ant</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n70">
+  <node xml:id="clause_unit-n68">
     <link targets="clause_unit-r68"/>
   </node>
-  <edge from="utterance-n68" to="clause_unit-n70" xml:id="clause_unit-e70"/>
-  <region anchors="1412 1420" xml:id="clause_unit-r70"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n70" xml:id="clause_unit-a70">
+  <edge from="utterance-n68" to="clause_unit-n68" xml:id="clause_unit-e68"/>
+  <region anchors="1452 1460" xml:id="clause_unit-r68"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n68" xml:id="clause_unit-a68">
     <fs>
       <f name="string">gušt-ant</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n71">
+  <node xml:id="clause_unit-n69">
     <link targets="clause_unit-r69"/>
   </node>
-  <edge from="utterance-n69" to="clause_unit-n71" xml:id="clause_unit-e71"/>
-  <region anchors="1420 1446" xml:id="clause_unit-r71"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n71" xml:id="clause_unit-a71">
+  <edge from="utterance-n69" to="clause_unit-n69" xml:id="clause_unit-e69"/>
+  <region anchors="1461 1487" xml:id="clause_unit-r69"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n69" xml:id="clause_unit-a69">
     <fs>
       <f name="string">b-(y)ā	ēš-ā	p-kiš-an	mašmā</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n72">
+  <node xml:id="clause_unit-n70">
     <link targets="clause_unit-r70"/>
   </node>
-  <edge from="utterance-n70" to="clause_unit-n72" xml:id="clause_unit-e72"/>
-  <region anchors="1446 1522" xml:id="clause_unit-r72"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n72" xml:id="clause_unit-a72">
+  <edge from="utterance-n70" to="clause_unit-n70" xml:id="clause_unit-e70"/>
+  <region anchors="1488 1564" xml:id="clause_unit-r70"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n70" xml:id="clause_unit-a70">
     <fs>
       <f name="string">ēš-ā	ǰwān-ēn	ǰā-(y)ē	bāg-ē	ḍigār-ay	tā	kišt-ant=u		ǰwān-ēn	narm-ēn	ḍigār-ē=u</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n73">
+  <node xml:id="clause_unit-n71">
     <link targets="clause_unit-r71"/>
   </node>
-  <edge from="utterance-n71" to="clause_unit-n73" xml:id="clause_unit-e73"/>
-  <region anchors="1522 1540" xml:id="clause_unit-r73"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n73" xml:id="clause_unit-a73">
+  <edge from="utterance-n71" to="clause_unit-n71" xml:id="clause_unit-e71"/>
+  <region anchors="1565 1583" xml:id="clause_unit-r71"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n71" xml:id="clause_unit-a71">
     <fs>
       <f name="string">wall-ē	sabz	kurt=u</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n74">
+  <node xml:id="clause_unit-n72">
     <link targets="clause_unit-r72"/>
   </node>
-  <edge from="utterance-n72" to="clause_unit-n74" xml:id="clause_unit-e74"/>
-  <region anchors="1540 1558" xml:id="clause_unit-r74"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n74" xml:id="clause_unit-a74">
+  <edge from="utterance-n72" to="clause_unit-n72" xml:id="clause_unit-e72"/>
+  <region anchors="1584 1602" xml:id="clause_unit-r72"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n72" xml:id="clause_unit-a72">
     <fs>
       <f name="string">ēš	činkas	galaw	ku</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n75">
+  <node xml:id="clause_unit-n73">
     <link targets="clause_unit-r73"/>
   </node>
-  <edge from="utterance-n73" to="clause_unit-n75" xml:id="clause_unit-e75"/>
-  <region anchors="1558 1596" xml:id="clause_unit-r75"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n75" xml:id="clause_unit-a75">
+  <edge from="utterance-n73" to="clause_unit-n73" xml:id="clause_unit-e73"/>
+  <region anchors="1603 1641" xml:id="clause_unit-r73"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n73" xml:id="clause_unit-a73">
     <fs>
       <f name="string">ša	truss-ā	kass-ē	ē	galaw-ān-ā	na-wārt</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n76">
+  <node xml:id="clause_unit-n74">
     <link targets="clause_unit-r74"/>
   </node>
-  <edge from="utterance-n74" to="clause_unit-n76" xml:id="clause_unit-e76"/>
-  <region anchors="1596 1628" xml:id="clause_unit-r76"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n76" xml:id="clause_unit-a76">
+  <edge from="utterance-n74" to="clause_unit-n74" xml:id="clause_unit-e74"/>
+  <region anchors="1642 1674" xml:id="clause_unit-r74"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n74" xml:id="clause_unit-a74">
     <fs>
       <f name="string">ki	ša	aždiyā-(y)ay	dap-ay	tā=ant</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n77">
+  <node xml:id="clause_unit-n75">
     <link targets="clause_unit-r75"/>
   </node>
-  <edge from="utterance-n75" to="clause_unit-n77" xml:id="clause_unit-e77"/>
-  <region anchors="1628 1642" xml:id="clause_unit-r77"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n77" xml:id="clause_unit-a77">
+  <edge from="utterance-n75" to="clause_unit-n75" xml:id="clause_unit-e75"/>
+  <region anchors="1675 1689" xml:id="clause_unit-r75"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n75" xml:id="clause_unit-a75">
     <fs>
       <f name="string">mār-ay	zār=ant</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n78">
+  <node xml:id="clause_unit-n76">
     <link targets="clause_unit-r76"/>
   </node>
-  <edge from="utterance-n76" to="clause_unit-n78" xml:id="clause_unit-e78"/>
-  <region anchors="1642 1664" xml:id="clause_unit-r78"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n78" xml:id="clause_unit-a78">
+  <edge from="utterance-n76" to="clause_unit-n76" xml:id="clause_unit-e76"/>
+  <region anchors="1690 1712" xml:id="clause_unit-r76"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n76" xml:id="clause_unit-a76">
     <fs>
       <f name="string">ē	činka	tōm	kurt-ant=u</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n79">
+  <node xml:id="clause_unit-n77">
     <link targets="clause_unit-r77"/>
   </node>
-  <edge from="utterance-n77" to="clause_unit-n79" xml:id="clause_unit-e79"/>
-  <region anchors="1664 1671" xml:id="clause_unit-r79"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n79" xml:id="clause_unit-a79">
+  <edge from="utterance-n77" to="clause_unit-n77" xml:id="clause_unit-e77"/>
+  <region anchors="1713 1720" xml:id="clause_unit-r77"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n77" xml:id="clause_unit-a77">
     <fs>
       <f name="string">šut-ant</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n80">
+  <node xml:id="clause_unit-n78">
     <link targets="clause_unit-r78"/>
   </node>
-  <edge from="utterance-n78" to="clause_unit-n80" xml:id="clause_unit-e80"/>
-  <region anchors="1671 1700" xml:id="clause_unit-r80"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n80" xml:id="clause_unit-a80">
+  <edge from="utterance-n78" to="clause_unit-n78" xml:id="clause_unit-e78"/>
+  <region anchors="1721 1750" xml:id="clause_unit-r78"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n78" xml:id="clause_unit-a78">
     <fs>
       <f name="string">ṭū-(y)ēn	pālēz-ē	bādšā	kišt=u</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n81">
+  <node xml:id="clause_unit-n79">
     <link targets="clause_unit-r79"/>
   </node>
-  <edge from="utterance-n79" to="clause_unit-n81" xml:id="clause_unit-e81"/>
-  <region anchors="1700 1729" xml:id="clause_unit-r81"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n81" xml:id="clause_unit-a81">
+  <edge from="utterance-n79" to="clause_unit-n79" xml:id="clause_unit-e79"/>
+  <region anchors="1751 1780" xml:id="clause_unit-r79"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n79" xml:id="clause_unit-a79">
     <fs>
       <f name="string">yakk	pīramard-ē-rā	sawzwān	ku</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n82">
+  <node xml:id="clause_unit-n80">
     <link targets="clause_unit-r80"/>
   </node>
-  <edge from="utterance-n80" to="clause_unit-n82" xml:id="clause_unit-e82"/>
-  <region anchors="1729 1758" xml:id="clause_unit-r82"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n82" xml:id="clause_unit-a82">
+  <edge from="utterance-n80" to="clause_unit-n80" xml:id="clause_unit-e80"/>
+  <region anchors="1781 1810" xml:id="clause_unit-r80"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n80" xml:id="clause_unit-a80">
     <fs>
       <f name="string">ē	laggit	ē	pālēz	bi	galaw-ā=ō</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n83">
+  <node xml:id="clause_unit-n81">
     <link targets="clause_unit-r81"/>
   </node>
-  <edge from="utterance-n81" to="clause_unit-n83" xml:id="clause_unit-e83"/>
-  <region anchors="1758 1771" xml:id="clause_unit-r83"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n83" xml:id="clause_unit-a83">
+  <edge from="utterance-n81" to="clause_unit-n81" xml:id="clause_unit-e81"/>
+  <region anchors="1811 1824" xml:id="clause_unit-r81"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n81" xml:id="clause_unit-a81">
     <fs>
       <f name="string">bēxī	galaw	ku</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n84">
+  <node xml:id="clause_unit-n82">
     <link targets="clause_unit-r82"/>
   </node>
-  <edge from="utterance-n82" to="clause_unit-n84" xml:id="clause_unit-e84"/>
-  <region anchors="1771 1801" xml:id="clause_unit-r84"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n84" xml:id="clause_unit-a84">
+  <edge from="utterance-n82" to="clause_unit-n82" xml:id="clause_unit-e82"/>
+  <region anchors="1825 1855" xml:id="clause_unit-r82"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n82" xml:id="clause_unit-a82">
     <fs>
       <f name="string">pīramard=am	awal	čē=(w)a	na-ku</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n85">
+  <node xml:id="clause_unit-n83">
     <link targets="clause_unit-r83"/>
   </node>
-  <edge from="utterance-n83" to="clause_unit-n85" xml:id="clause_unit-e85"/>
-  <region anchors="1801 1819" xml:id="clause_unit-r85"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n85" xml:id="clause_unit-a85">
+  <edge from="utterance-n83" to="clause_unit-n83" xml:id="clause_unit-e83"/>
+  <region anchors="1856 1874" xml:id="clause_unit-r83"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n83" xml:id="clause_unit-a83">
     <fs>
       <f name="string">tawkal=a	na-kurt=u</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n86">
+  <node xml:id="clause_unit-n84">
     <link targets="clause_unit-r84"/>
   </node>
-  <edge from="utterance-n84" to="clause_unit-n86" xml:id="clause_unit-e86"/>
-  <region anchors="1819 1834" xml:id="clause_unit-r86"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n86" xml:id="clause_unit-a86">
+  <edge from="utterance-n84" to="clause_unit-n84" xml:id="clause_unit-e84"/>
+  <region anchors="1875 1890" xml:id="clause_unit-r84"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n84" xml:id="clause_unit-a84">
     <fs>
       <f name="string">ar-uk-(k)ē	dāšt</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n87">
+  <node xml:id="clause_unit-n85">
     <link targets="clause_unit-r85"/>
   </node>
-  <edge from="utterance-n85" to="clause_unit-n87" xml:id="clause_unit-e87"/>
-  <region anchors="1834 1887" xml:id="clause_unit-r87"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n87" xml:id="clause_unit-a87">
+  <edge from="utterance-n85" to="clause_unit-n85" xml:id="clause_unit-e85"/>
+  <region anchors="1891 1944" xml:id="clause_unit-r85"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n85" xml:id="clause_unit-a85">
     <fs>
       <f name="string">am-ē	galaw-ān-ā	dēmā 	bi=m-ē	ar-uk-(k)ay	dēmā	kōṭit=u</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n88">
+  <node xml:id="clause_unit-n86">
     <link targets="clause_unit-r86"/>
   </node>
-  <edge from="utterance-n86" to="clause_unit-n88" xml:id="clause_unit-e88"/>
-  <region anchors="1887 1890" xml:id="clause_unit-r88"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n88" xml:id="clause_unit-a88">
+  <edge from="utterance-n86" to="clause_unit-n86" xml:id="clause_unit-e86"/>
+  <region anchors="1945 1948" xml:id="clause_unit-r86"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n86" xml:id="clause_unit-a86">
     <fs>
       <f name="string">dāt</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n89">
+  <node xml:id="clause_unit-n87">
     <link targets="clause_unit-r87"/>
   </node>
-  <edge from="utterance-n87" to="clause_unit-n89" xml:id="clause_unit-e89"/>
-  <region anchors="1890 1908" xml:id="clause_unit-r89"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n89" xml:id="clause_unit-a89">
+  <edge from="utterance-n87" to="clause_unit-n87" xml:id="clause_unit-e87"/>
+  <region anchors="1949 1967" xml:id="clause_unit-r87"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n87" xml:id="clause_unit-a87">
     <fs>
       <f name="string">ē	ar=am	pazzōr 	ūt</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n90">
+  <node xml:id="clause_unit-n88">
     <link targets="clause_unit-r88"/>
   </node>
-  <edge from="utterance-n88" to="clause_unit-n90" xml:id="clause_unit-e90"/>
-  <region anchors="1908 1933" xml:id="clause_unit-r90"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n90" xml:id="clause_unit-a90">
+  <edge from="utterance-n88" to="clause_unit-n88" xml:id="clause_unit-e88"/>
+  <region anchors="1968 1993" xml:id="clause_unit-r88"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n88" xml:id="clause_unit-a88">
     <fs>
       <f name="string">pīramard	šurū	ku	wārtin-ā</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n91">
+  <node xml:id="clause_unit-n89">
     <link targets="clause_unit-r89"/>
   </node>
-  <edge from="utterance-n89" to="clause_unit-n91" xml:id="clause_unit-e91"/>
-  <region anchors="1933 1948" xml:id="clause_unit-r91"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n91" xml:id="clause_unit-a91">
+  <edge from="utterance-n89" to="clause_unit-n89" xml:id="clause_unit-e89"/>
+  <region anchors="1994 2009" xml:id="clause_unit-r89"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n89" xml:id="clause_unit-a89">
     <fs>
       <f name="string">ta	ē	či	čīz=ant</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n92">
+  <node xml:id="clause_unit-n90">
     <link targets="clause_unit-r90"/>
   </node>
-  <edge from="utterance-n90" to="clause_unit-n92" xml:id="clause_unit-e92"/>
-  <region anchors="1948 1969" xml:id="clause_unit-r92"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n92" xml:id="clause_unit-a92">
+  <edge from="utterance-n90" to="clause_unit-n90" xml:id="clause_unit-e90"/>
+  <region anchors="2010 2031" xml:id="clause_unit-r90"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n90" xml:id="clause_unit-a90">
     <fs>
       <f name="string">pīramard=am	pazzōr	ūt</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n93">
+  <node xml:id="clause_unit-n91">
     <link targets="clause_unit-r91"/>
   </node>
-  <edge from="utterance-n91" to="clause_unit-n93" xml:id="clause_unit-e93"/>
-  <region anchors="1969 1990" xml:id="clause_unit-r93"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n93" xml:id="clause_unit-a93">
+  <edge from="utterance-n91" to="clause_unit-n91" xml:id="clause_unit-e91"/>
+  <region anchors="2032 2053" xml:id="clause_unit-r91"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n91" xml:id="clause_unit-a91">
     <fs>
       <f name="string">bādšā	yag	rōč-ē	ki	āt</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n94">
+  <node xml:id="clause_unit-n92">
     <link targets="clause_unit-r92"/>
   </node>
-  <edge from="utterance-n92" to="clause_unit-n94" xml:id="clause_unit-e94"/>
-  <region anchors="1990 1996" xml:id="clause_unit-r94"/>
+  <edge from="utterance-n92" to="clause_unit-n92" xml:id="clause_unit-e92"/>
+  <region anchors="2054 2060" xml:id="clause_unit-r92"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n92" xml:id="clause_unit-a92">
+    <fs>
+      <f name="string">gušt=ī</f>
+    </fs>
+  </a>
+  <node xml:id="clause_unit-n93">
+    <link targets="clause_unit-r93"/>
+  </node>
+  <edge from="utterance-n93" to="clause_unit-n93" xml:id="clause_unit-e93"/>
+  <region anchors="2061 2089" xml:id="clause_unit-r93"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n93" xml:id="clause_unit-a93">
+    <fs>
+      <f name="string">ki	pīramard	bābā	ē	čē=(w)ant</f>
+    </fs>
+  </a>
+  <node xml:id="clause_unit-n94">
+    <link targets="clause_unit-r94"/>
+  </node>
+  <edge from="utterance-n94" to="clause_unit-n94" xml:id="clause_unit-e94"/>
+  <region anchors="2090 2096" xml:id="clause_unit-r94"/>
   <a as="clause_unit" label="clause_unit" ref="clause_unit-n94" xml:id="clause_unit-a94">
     <fs>
       <f name="string">gušt=ī</f>
     </fs>
   </a>
   <node xml:id="clause_unit-n95">
-    <link targets="clause_unit-r93"/>
-  </node>
-  <edge from="utterance-n93" to="clause_unit-n95" xml:id="clause_unit-e95"/>
-  <region anchors="1996 2024" xml:id="clause_unit-r95"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n95" xml:id="clause_unit-a95">
-    <fs>
-      <f name="string">ki	pīramard	bābā	ē	čē=(w)ant</f>
-    </fs>
-  </a>
-  <node xml:id="clause_unit-n96">
-    <link targets="clause_unit-r94"/>
-  </node>
-  <edge from="utterance-n94" to="clause_unit-n96" xml:id="clause_unit-e96"/>
-  <region anchors="2024 2030" xml:id="clause_unit-r96"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n96" xml:id="clause_unit-a96">
-    <fs>
-      <f name="string">gušt=ī</f>
-    </fs>
-  </a>
-  <node xml:id="clause_unit-n97">
     <link targets="clause_unit-r95"/>
   </node>
-  <edge from="utterance-n95" to="clause_unit-n97" xml:id="clause_unit-e97"/>
-  <region anchors="2030 2052" xml:id="clause_unit-r97"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n97" xml:id="clause_unit-a97">
+  <edge from="utterance-n95" to="clause_unit-n95" xml:id="clause_unit-e95"/>
+  <region anchors="2097 2119" xml:id="clause_unit-r95"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n95" xml:id="clause_unit-a95">
     <fs>
       <f name="string">ē	bēxī	ǰwān-ēn	čīz=ant</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n98">
+  <node xml:id="clause_unit-n96">
     <link targets="clause_unit-r96"/>
   </node>
-  <edge from="utterance-n96" to="clause_unit-n98" xml:id="clause_unit-e98"/>
-  <region anchors="2052 2066" xml:id="clause_unit-r98"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n98" xml:id="clause_unit-a98">
+  <edge from="utterance-n96" to="clause_unit-n96" xml:id="clause_unit-e96"/>
+  <region anchors="2120 2134" xml:id="clause_unit-r96"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n96" xml:id="clause_unit-a96">
     <fs>
       <f name="string">man=um	wārt-a,</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n99">
+  <node xml:id="clause_unit-n97">
     <link targets="clause_unit-r97"/>
   </node>
-  <edge from="utterance-n97" to="clause_unit-n99" xml:id="clause_unit-e99"/>
-  <region anchors="2066 2086" xml:id="clause_unit-r99"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n99" xml:id="clause_unit-a99">
+  <edge from="utterance-n97" to="clause_unit-n97" xml:id="clause_unit-e97"/>
+  <region anchors="2135 2155" xml:id="clause_unit-r97"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n97" xml:id="clause_unit-a97">
     <fs>
       <f name="string">ē	ar-ā=um	dāt-a=un=ō</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n100">
+  <node xml:id="clause_unit-n98">
     <link targets="clause_unit-r98"/>
   </node>
-  <edge from="utterance-n98" to="clause_unit-n100" xml:id="clause_unit-e100"/>
-  <region anchors="2086 2101" xml:id="clause_unit-r100"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n100" xml:id="clause_unit-a100">
+  <edge from="utterance-n98" to="clause_unit-n98" xml:id="clause_unit-e98"/>
+  <region anchors="2156 2171" xml:id="clause_unit-r98"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n98" xml:id="clause_unit-a98">
     <fs>
       <f name="string">šumā=um	bōr-it.</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n101">
+  <node xml:id="clause_unit-n99">
     <link targets="clause_unit-r99"/>
   </node>
-  <edge from="utterance-n99" to="clause_unit-n101" xml:id="clause_unit-e101"/>
-  <region anchors="2101 2109" xml:id="clause_unit-r101"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n101" xml:id="clause_unit-a101">
+  <edge from="utterance-n99" to="clause_unit-n99" xml:id="clause_unit-e99"/>
+  <region anchors="2172 2180" xml:id="clause_unit-r99"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n99" xml:id="clause_unit-a99">
     <fs>
       <f name="string">wazīr	gu</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n102">
+  <node xml:id="clause_unit-n100">
     <link targets="clause_unit-r100"/>
   </node>
-  <edge from="utterance-n100" to="clause_unit-n102" xml:id="clause_unit-e102"/>
-  <region anchors="2109 2129" xml:id="clause_unit-r102"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n102" xml:id="clause_unit-a102">
+  <edge from="utterance-n100" to="clause_unit-n100" xml:id="clause_unit-e100"/>
+  <region anchors="2181 2201" xml:id="clause_unit-r100"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n100" xml:id="clause_unit-a100">
     <fs>
       <f name="string">na	dēmā	man=a	war-īn</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n103">
+  <node xml:id="clause_unit-n101">
     <link targets="clause_unit-r101"/>
   </node>
-  <edge from="utterance-n101" to="clause_unit-n103" xml:id="clause_unit-e103"/>
-  <region anchors="2129 2147" xml:id="clause_unit-r103"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n103" xml:id="clause_unit-a103">
+  <edge from="utterance-n101" to="clause_unit-n101" xml:id="clause_unit-e101"/>
+  <region anchors="2202 2220" xml:id="clause_unit-r101"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n101" xml:id="clause_unit-a101">
     <fs>
       <f name="string">ta	ay	bādšā	ma-war</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n104">
+  <node xml:id="clause_unit-n102">
     <link targets="clause_unit-r102"/>
   </node>
-  <edge from="utterance-n102" to="clause_unit-n104" xml:id="clause_unit-e104"/>
-  <region anchors="2147 2157" xml:id="clause_unit-r104"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n104" xml:id="clause_unit-a104">
+  <edge from="utterance-n102" to="clause_unit-n102" xml:id="clause_unit-e102"/>
+  <region anchors="2221 2231" xml:id="clause_unit-r102"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n102" xml:id="clause_unit-a102">
     <fs>
       <f name="string">wazīr	wārt</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n105">
+  <node xml:id="clause_unit-n103">
     <link targets="clause_unit-r103"/>
   </node>
-  <edge from="utterance-n103" to="clause_unit-n105" xml:id="clause_unit-e105"/>
-  <region anchors="2157 2190" xml:id="clause_unit-r105"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n105" xml:id="clause_unit-a105">
+  <edge from="utterance-n103" to="clause_unit-n103" xml:id="clause_unit-e103"/>
+  <region anchors="2232 2265" xml:id="clause_unit-r103"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n103" xml:id="clause_unit-a103">
     <fs>
       <f name="string">ta	ē	aǰab-ēn	xušmizzag-ēn	čīz=ant</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n106">
+  <node xml:id="clause_unit-n104">
     <link targets="clause_unit-r104"/>
   </node>
-  <edge from="utterance-n104" to="clause_unit-n106" xml:id="clause_unit-e106"/>
-  <region anchors="2190 2200" xml:id="clause_unit-r106"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n106" xml:id="clause_unit-a106">
+  <edge from="utterance-n104" to="clause_unit-n104" xml:id="clause_unit-e104"/>
+  <region anchors="2266 2276" xml:id="clause_unit-r104"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n104" xml:id="clause_unit-a104">
     <fs>
       <f name="string">wārt-ant=ō</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n107">
+  <node xml:id="clause_unit-n105">
     <link targets="clause_unit-r105"/>
   </node>
-  <edge from="utterance-n105" to="clause_unit-n107" xml:id="clause_unit-e107"/>
-  <region anchors="2200 2211" xml:id="clause_unit-r107"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n107" xml:id="clause_unit-a107">
+  <edge from="utterance-n105" to="clause_unit-n105" xml:id="clause_unit-e105"/>
+  <region anchors="2277 2288" xml:id="clause_unit-r105"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n105" xml:id="clause_unit-a105">
     <fs>
       <f name="string">ki	wārt-ant</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n108">
+  <node xml:id="clause_unit-n106">
     <link targets="clause_unit-r106"/>
   </node>
-  <edge from="utterance-n106" to="clause_unit-n108" xml:id="clause_unit-e108"/>
-  <region anchors="2211 2223" xml:id="clause_unit-r108"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n108" xml:id="clause_unit-a108">
+  <edge from="utterance-n106" to="clause_unit-n106" xml:id="clause_unit-e106"/>
+  <region anchors="2289 2301" xml:id="clause_unit-r106"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n106" xml:id="clause_unit-a106">
     <fs>
       <f name="string">nūn	gušt-ant</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n109">
+  <node xml:id="clause_unit-n107">
     <link targets="clause_unit-r107"/>
   </node>
-  <edge from="utterance-n107" to="clause_unit-n109" xml:id="clause_unit-e109"/>
-  <region anchors="2223 2256" xml:id="clause_unit-r109"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n109" xml:id="clause_unit-a109">
+  <edge from="utterance-n107" to="clause_unit-n107" xml:id="clause_unit-e107"/>
+  <region anchors="2302 2335" xml:id="clause_unit-r107"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n107" xml:id="clause_unit-a107">
     <fs>
       <f name="string">b-(y)ā	mašmā	p=ēšī	nām=ē	b-ill-an</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n110">
+  <node xml:id="clause_unit-n108">
     <link targets="clause_unit-r108"/>
   </node>
-  <edge from="utterance-n108" to="clause_unit-n110" xml:id="clause_unit-e110"/>
-  <region anchors="2256 2292" xml:id="clause_unit-r110"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n110" xml:id="clause_unit-a110">
+  <edge from="utterance-n108" to="clause_unit-n108" xml:id="clause_unit-e108"/>
+  <region anchors="2336 2372" xml:id="clause_unit-r108"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n108" xml:id="clause_unit-a108">
     <fs>
       <f name="string">nām=ay	guṛā	galaw-ā	išt-ant	xarmizza</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n111">
+  <node xml:id="clause_unit-n109">
     <link targets="clause_unit-r109"/>
   </node>
-  <edge from="utterance-n109" to="clause_unit-n111" xml:id="clause_unit-e111"/>
-  <region anchors="2292 2318" xml:id="clause_unit-r111"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n111" xml:id="clause_unit-a111">
+  <edge from="utterance-n109" to="clause_unit-n109" xml:id="clause_unit-e109"/>
+  <region anchors="2373 2399" xml:id="clause_unit-r109"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n109" xml:id="clause_unit-a109">
     <fs>
       <f name="string">ki	mizzag-ay	awal	xar	burt</f>
     </fs>
   </a>
-  <node xml:id="clause_unit-n112">
+  <node xml:id="clause_unit-n110">
     <link targets="clause_unit-r110"/>
   </node>
-  <edge from="utterance-n110" to="clause_unit-n112" xml:id="clause_unit-e112"/>
-  <region anchors="2318 2337" xml:id="clause_unit-r112"/>
-  <a as="clause_unit" label="clause_unit" ref="clause_unit-n112" xml:id="clause_unit-a112">
+  <edge from="utterance-n110" to="clause_unit-n110" xml:id="clause_unit-e110"/>
+  <region anchors="2400 2419" xml:id="clause_unit-r110"/>
+  <a as="clause_unit" label="clause_unit" ref="clause_unit-n110" xml:id="clause_unit-a110">
     <fs>
       <f name="string">xarmizza	š=ōdā	mant</f>
     </fs>

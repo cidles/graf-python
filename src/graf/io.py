@@ -151,13 +151,13 @@ class GrafRenderer(object):
 
         """
 
-        self.out = out if hasattr(out, 'write') else open(out, "w")
+        out = out if hasattr(out, 'write') else open(out, "w")
         # TODO: use a generator with indents
         try:
             # For Python >= 3.2
-            self._gen = XMLGenerator(self.out, 'utf-8', short_empty_elements=True)
+            self._gen = XMLGenerator(out, 'utf-8', short_empty_elements=True)
         except TypeError:
-            self._gen = XMLGenerator(self.out, 'utf-8')
+            self._gen = XMLGenerator(out, 'utf-8')
         self._g = Constants
 
     def _tag(self, tag, attribs=None):
@@ -169,7 +169,6 @@ class GrafRenderer(object):
         """
         tag = self._tag(self._g.NODE, {
             self._g.ID: n.id,
-            #self._g.ROOT: 'true' if n.is_root else None,
         })
         with tag:
             for link in n.links:
@@ -215,7 +214,6 @@ class GrafRenderer(object):
         """
         tag = self._tag(self._g.ANNOTATION, {
             'label': a.label, 'ref': a.element.id,
-            #self._g.ASET: None if a.aspace is None else a.aspace.name
             self._g.ASET: a.label, self._g.ID: a.id
         })
         with tag:
@@ -248,7 +246,7 @@ class GrafRenderer(object):
         header = g.header
         with self._tag(self._g.HEADER):
             self.render_tag_usage(g)
-            self.write_header_elements(g, header)
+            self.write_header_elements(graph, header)
 
     def write_header_elements(self, graph, header):
         """
@@ -262,16 +260,14 @@ class GrafRenderer(object):
 
         depends_on = header.depends_on
         if depends_on:
-            #with self._tag(self._g.ROOTS):
             with self._tag(self._g.DEPENDENCIES):
                 for dependency in depends_on:
-                    self._tag(self._g.DEPENDS_ON, {self._g.TYPE: dependency}).write()
+                    self._tag(self._g.DEPENDSON, {self._g.TYPE: dependency}).write()
 
         aspaces = graph.annotation_spaces
         if aspaces:
             with self._tag(self._g.ANNOTATION_SPACES):
                 for aspace in aspaces:
-                    #self._tag(self._g.ANNOTATION_SPACE, {self._g.NAME: aspace.name, self._g.TYPE: aspace.type}).write()
                     self._tag(self._g.ANNOTATION_SPACE, {self._g.TYPE_F_ID: aspace.as_id}).write()
 
 
@@ -315,7 +311,6 @@ class GrafRenderer(object):
 
         self._gen.endDocument()
         self.out.close()
-
 
 class DocumentHeader(object):
 
