@@ -29,1982 +29,1962 @@
       <f name="wfw">king=IND=COP.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n0" xml:id="wfw-a4">
-    <fs>
-      <f name="wfw">say.PRS-3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n1" xml:id="wfw-a5">
-    <fs>
-      <f name="wfw">SUB</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n2" xml:id="wfw-a6">
-    <fs>
-      <f name="wfw">one</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n3" xml:id="wfw-a7">
-    <fs>
-      <f name="wfw">king=IND=COP.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n4" xml:id="wfw-a8">
+  <a as="wfw" label="wfw" ref="word-n4" xml:id="wfw-a4">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n5" xml:id="wfw-a9">
+  <a as="wfw" label="wfw" ref="word-n5" xml:id="wfw-a5">
     <fs>
       <f name="wfw">king</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n6" xml:id="wfw-a10">
+  <a as="wfw" label="wfw" ref="word-n6" xml:id="wfw-a6">
     <fs>
       <f name="wfw">in=EMPH-DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n7" xml:id="wfw-a11">
+  <a as="wfw" label="wfw" ref="word-n7" xml:id="wfw-a7">
     <fs>
       <f name="wfw">RFL-GEN</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n8" xml:id="wfw-a12">
+  <a as="wfw" label="wfw" ref="word-n8" xml:id="wfw-a8">
     <fs>
       <f name="wfw">town-GEN</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n9" xml:id="wfw-a13">
+  <a as="wfw" label="wfw" ref="word-n9" xml:id="wfw-a9">
     <fs>
       <f name="wfw">middle-OBL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n10" xml:id="wfw-a14">
+  <a as="wfw" label="wfw" ref="word-n10" xml:id="wfw-a10">
     <fs>
       <f name="wfw">one</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n11" xml:id="wfw-a15">
+  <a as="wfw" label="wfw" ref="word-n11" xml:id="wfw-a11">
     <fs>
       <f name="wfw">pole=IZ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n12" xml:id="wfw-a16">
+  <a as="wfw" label="wfw" ref="word-n12" xml:id="wfw-a12">
     <fs>
       <f name="wfw">electricity-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n13" xml:id="wfw-a17">
+  <a as="wfw" label="wfw" ref="word-n13" xml:id="wfw-a13">
     <fs>
       <f name="wfw">have.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n14" xml:id="wfw-a18">
+  <a as="wfw" label="wfw" ref="word-n14" xml:id="wfw-a14">
     <fs>
       <f name="wfw">SUB</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n15" xml:id="wfw-a19">
+  <a as="wfw" label="wfw" ref="word-n15" xml:id="wfw-a15">
     <fs>
       <f name="wfw">whatever</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n16" xml:id="wfw-a20">
+  <a as="wfw" label="wfw" ref="word-n16" xml:id="wfw-a16">
     <fs>
       <f name="wfw">EMPH-DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n17" xml:id="wfw-a21">
+  <a as="wfw" label="wfw" ref="word-n17" xml:id="wfw-a17">
     <fs>
       <f name="wfw">telephone-PL-GEN</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n18" xml:id="wfw-a22">
+  <a as="wfw" label="wfw" ref="word-n18" xml:id="wfw-a18">
     <fs>
       <f name="wfw">wire=COP.PST-3PL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n19" xml:id="wfw-a23">
+  <a as="wfw" label="wfw" ref="word-n19" xml:id="wfw-a19">
     <fs>
       <f name="wfw">to</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n20" xml:id="wfw-a24">
+  <a as="wfw" label="wfw" ref="word-n20" xml:id="wfw-a20">
     <fs>
       <f name="wfw">EMPH-DEM-OBL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n21" xml:id="wfw-a25">
+  <a as="wfw" label="wfw" ref="word-n21" xml:id="wfw-a21">
     <fs>
       <f name="wfw">connected=COP.PST-3PL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n22" xml:id="wfw-a26">
+  <a as="wfw" label="wfw" ref="word-n22" xml:id="wfw-a22">
     <fs>
       <f name="wfw">whoever</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n23" xml:id="wfw-a27">
+  <a as="wfw" label="wfw" ref="word-n23" xml:id="wfw-a23">
     <fs>
       <f name="wfw">SUB</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n24" xml:id="wfw-a28">
+  <a as="wfw" label="wfw" ref="word-n24" xml:id="wfw-a24">
     <fs>
       <f name="wfw">petition-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n25" xml:id="wfw-a29">
+  <a as="wfw" label="wfw" ref="word-n25" xml:id="wfw-a25">
     <fs>
       <f name="wfw">SUBJ-have.PST-PSUBJ.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n26" xml:id="wfw-a30">
+  <a as="wfw" label="wfw" ref="word-n26" xml:id="wfw-a26">
     <fs>
       <f name="wfw">EMPH-DEM.OBJ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n27" xml:id="wfw-a31">
+  <a as="wfw" label="wfw" ref="word-n27" xml:id="wfw-a27">
     <fs>
       <f name="wfw">SUB</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n28" xml:id="wfw-a32">
+  <a as="wfw" label="wfw" ref="word-n28" xml:id="wfw-a28">
     <fs>
       <f name="wfw">shake</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n29" xml:id="wfw-a33">
+  <a as="wfw" label="wfw" ref="word-n29" xml:id="wfw-a29">
     <fs>
       <f name="wfw">SUBJ.give.PST-PSUBJ.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n30" xml:id="wfw-a34">
+  <a as="wfw" label="wfw" ref="word-n30" xml:id="wfw-a30">
     <fs>
       <f name="wfw">king</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n31" xml:id="wfw-a35">
+  <a as="wfw" label="wfw" ref="word-n31" xml:id="wfw-a31">
     <fs>
       <f name="wfw">there</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n32" xml:id="wfw-a36">
+  <a as="wfw" label="wfw" ref="word-n32" xml:id="wfw-a32">
     <fs>
       <f name="wfw">informed=IMF</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n33" xml:id="wfw-a37">
+  <a as="wfw" label="wfw" ref="word-n33" xml:id="wfw-a33">
     <fs>
       <f name="wfw">become.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n34" xml:id="wfw-a38">
+  <a as="wfw" label="wfw" ref="word-n34" xml:id="wfw-a34">
     <fs>
       <f name="wfw">one</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n35" xml:id="wfw-a39">
+  <a as="wfw" label="wfw" ref="word-n35" xml:id="wfw-a35">
     <fs>
       <f name="wfw">day-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n36" xml:id="wfw-a40">
+  <a as="wfw" label="wfw" ref="word-n36" xml:id="wfw-a36">
     <fs>
       <f name="wfw">see.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n37" xml:id="wfw-a41">
+  <a as="wfw" label="wfw" ref="word-n37" xml:id="wfw-a37">
     <fs>
       <f name="wfw">FOC</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n38" xml:id="wfw-a42">
+  <a as="wfw" label="wfw" ref="word-n38" xml:id="wfw-a38">
     <fs>
       <f name="wfw">EMPH.DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n39" xml:id="wfw-a43">
+  <a as="wfw" label="wfw" ref="word-n39" xml:id="wfw-a39">
     <fs>
       <f name="wfw">dragon-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n40" xml:id="wfw-a44">
+  <a as="wfw" label="wfw" ref="word-n40" xml:id="wfw-a40">
     <fs>
       <f name="wfw">come.PST-PP(=COP.PRS.3SG)=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n41" xml:id="wfw-a45">
+  <a as="wfw" label="wfw" ref="word-n41" xml:id="wfw-a41">
     <fs>
       <f name="wfw">EMPH-DEM-OBJ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n42" xml:id="wfw-a46">
+  <a as="wfw" label="wfw" ref="word-n42" xml:id="wfw-a42">
     <fs>
       <f name="wfw">shake=IMF</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n43" xml:id="wfw-a47">
+  <a as="wfw" label="wfw" ref="word-n43" xml:id="wfw-a43">
     <fs>
       <f name="wfw">give.PRS.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n44" xml:id="wfw-a48">
+  <a as="wfw" label="wfw" ref="word-n44" xml:id="wfw-a44">
     <fs>
       <f name="wfw">king</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n45" xml:id="wfw-a49">
+  <a as="wfw" label="wfw" ref="word-n45" xml:id="wfw-a45">
     <fs>
       <f name="wfw">face</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n46" xml:id="wfw-a50">
+  <a as="wfw" label="wfw" ref="word-n46" xml:id="wfw-a46">
     <fs>
       <f name="wfw">give.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n47" xml:id="wfw-a51">
+  <a as="wfw" label="wfw" ref="word-n47" xml:id="wfw-a47">
     <fs>
       <f name="wfw">one-IND-OBJ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n48" xml:id="wfw-a52">
+  <a as="wfw" label="wfw" ref="word-n48" xml:id="wfw-a48">
     <fs>
       <f name="wfw">SUB</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n49" xml:id="wfw-a53">
+  <a as="wfw" label="wfw" ref="word-n49" xml:id="wfw-a49">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n50" xml:id="wfw-a54">
+  <a as="wfw" label="wfw" ref="word-n50" xml:id="wfw-a50">
     <fs>
       <f name="wfw">what-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n51" xml:id="wfw-a55">
+  <a as="wfw" label="wfw" ref="word-n51" xml:id="wfw-a51">
     <fs>
       <f name="wfw">come.PST-3PL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n52" xml:id="wfw-a56">
+  <a as="wfw" label="wfw" ref="word-n52" xml:id="wfw-a52">
     <fs>
       <f name="wfw">say.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n53" xml:id="wfw-a57">
+  <a as="wfw" label="wfw" ref="word-n53" xml:id="wfw-a53">
     <fs>
       <f name="wfw">king</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n54" xml:id="wfw-a58">
+  <a as="wfw" label="wfw" ref="word-n54" xml:id="wfw-a54">
     <fs>
       <f name="wfw">master</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n55" xml:id="wfw-a59">
+  <a as="wfw" label="wfw" ref="word-n55" xml:id="wfw-a55">
     <fs>
       <f name="wfw">dragon-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n56" xml:id="wfw-a60">
+  <a as="wfw" label="wfw" ref="word-n56" xml:id="wfw-a56">
     <fs>
       <f name="wfw">say.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n57" xml:id="wfw-a61">
+  <a as="wfw" label="wfw" ref="word-n57" xml:id="wfw-a57">
     <fs>
       <f name="wfw">oh…</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n58" xml:id="wfw-a62">
+  <a as="wfw" label="wfw" ref="word-n58" xml:id="wfw-a58">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n59" xml:id="wfw-a63">
+  <a as="wfw" label="wfw" ref="word-n59" xml:id="wfw-a59">
     <fs>
       <f name="wfw">dragon</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n60" xml:id="wfw-a64">
+  <a as="wfw" label="wfw" ref="word-n60" xml:id="wfw-a60">
     <fs>
       <f name="wfw">order-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n61" xml:id="wfw-a65">
+  <a as="wfw" label="wfw" ref="word-n61" xml:id="wfw-a61">
     <fs>
       <f name="wfw">have.PRS-3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n62" xml:id="wfw-a66">
+  <a as="wfw" label="wfw" ref="word-n62" xml:id="wfw-a62">
     <fs>
       <f name="wfw">petition-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n63" xml:id="wfw-a67">
+  <a as="wfw" label="wfw" ref="word-n63" xml:id="wfw-a63">
     <fs>
       <f name="wfw">have.PRS-3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n64" xml:id="wfw-a68">
+  <a as="wfw" label="wfw" ref="word-n64" xml:id="wfw-a64">
     <fs>
       <f name="wfw">DEM-GEN</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n65" xml:id="wfw-a69">
+  <a as="wfw" label="wfw" ref="word-n65" xml:id="wfw-a65">
     <fs>
       <f name="wfw">petition-OBJ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n66" xml:id="wfw-a70">
+  <a as="wfw" label="wfw" ref="word-n66" xml:id="wfw-a66">
     <fs>
       <f name="wfw">who</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n67" xml:id="wfw-a71">
+  <a as="wfw" label="wfw" ref="word-n67" xml:id="wfw-a67">
     <fs>
       <f name="wfw">for=I</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n68" xml:id="wfw-a72">
+  <a as="wfw" label="wfw" ref="word-n68" xml:id="wfw-a68">
     <fs>
       <f name="wfw">SUBJ-bring.PRS-3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n69" xml:id="wfw-a73">
+  <a as="wfw" label="wfw" ref="word-n69" xml:id="wfw-a69">
     <fs>
       <f name="wfw">I</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n70" xml:id="wfw-a74">
+  <a as="wfw" label="wfw" ref="word-n70" xml:id="wfw-a70">
     <fs>
       <f name="wfw">SUB</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n71" xml:id="wfw-a75">
+  <a as="wfw" label="wfw" ref="word-n71" xml:id="wfw-a71">
     <fs>
       <f name="wfw">NEG-know.PRS-1SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n72" xml:id="wfw-a76">
+  <a as="wfw" label="wfw" ref="word-n72" xml:id="wfw-a72">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n73" xml:id="wfw-a77">
+  <a as="wfw" label="wfw" ref="word-n73" xml:id="wfw-a73">
     <fs>
       <f name="wfw">without-tongue-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n74" xml:id="wfw-a78">
+  <a as="wfw" label="wfw" ref="word-n74" xml:id="wfw-a74">
     <fs>
       <f name="wfw">one</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n75" xml:id="wfw-a79">
+  <a as="wfw" label="wfw" ref="word-n75" xml:id="wfw-a75">
     <fs>
       <f name="wfw">carpenter-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n76" xml:id="wfw-a80">
+  <a as="wfw" label="wfw" ref="word-n76" xml:id="wfw-a76">
     <fs>
       <f name="wfw">say.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n77" xml:id="wfw-a81">
+  <a as="wfw" label="wfw" ref="word-n77" xml:id="wfw-a77">
     <fs>
       <f name="wfw">I=IMF</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n78" xml:id="wfw-a82">
+  <a as="wfw" label="wfw" ref="word-n78" xml:id="wfw-a78">
     <fs>
       <f name="wfw">know.PRS-1SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n79" xml:id="wfw-a83">
+  <a as="wfw" label="wfw" ref="word-n79" xml:id="wfw-a79">
     <fs>
       <f name="wfw">say.PST.3SG=ENC.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n80" xml:id="wfw-a84">
+  <a as="wfw" label="wfw" ref="word-n80" xml:id="wfw-a80">
     <fs>
       <f name="wfw">SUB</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n81" xml:id="wfw-a85">
+  <a as="wfw" label="wfw" ref="word-n81" xml:id="wfw-a81">
     <fs>
       <f name="wfw">know.PRS-2SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n82" xml:id="wfw-a86">
+  <a as="wfw" label="wfw" ref="word-n82" xml:id="wfw-a82">
     <fs>
       <f name="wfw">DEM-GEN</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n83" xml:id="wfw-a87">
+  <a as="wfw" label="wfw" ref="word-n83" xml:id="wfw-a83">
     <fs>
       <f name="wfw">petition-OBJ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n84" xml:id="wfw-a88">
+  <a as="wfw" label="wfw" ref="word-n84" xml:id="wfw-a84">
     <fs>
       <f name="wfw">bring.PST.SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n85" xml:id="wfw-a89">
+  <a as="wfw" label="wfw" ref="word-n85" xml:id="wfw-a85">
     <fs>
       <f name="wfw">I</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n86" xml:id="wfw-a90">
+  <a as="wfw" label="wfw" ref="word-n86" xml:id="wfw-a86">
     <fs>
       <f name="wfw">you.SG.OBJ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n87" xml:id="wfw-a91">
+  <a as="wfw" label="wfw" ref="word-n87" xml:id="wfw-a87">
     <fs>
       <f name="wfw">this.much</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n88" xml:id="wfw-a92">
+  <a as="wfw" label="wfw" ref="word-n88" xml:id="wfw-a88">
     <fs>
       <f name="wfw">reward=IMF</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n89" xml:id="wfw-a93">
+  <a as="wfw" label="wfw" ref="word-n89" xml:id="wfw-a89">
     <fs>
       <f name="wfw">give.PRS-1SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n90" xml:id="wfw-a94">
+  <a as="wfw" label="wfw" ref="word-n90" xml:id="wfw-a90">
     <fs>
       <f name="wfw">say.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n91" xml:id="wfw-a95">
+  <a as="wfw" label="wfw" ref="word-n91" xml:id="wfw-a91">
     <fs>
       <f name="wfw">very</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n92" xml:id="wfw-a96">
+  <a as="wfw" label="wfw" ref="word-n92" xml:id="wfw-a92">
     <fs>
       <f name="wfw">well</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n93" xml:id="wfw-a97">
+  <a as="wfw" label="wfw" ref="word-n93" xml:id="wfw-a93">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n94" xml:id="wfw-a98">
+  <a as="wfw" label="wfw" ref="word-n94" xml:id="wfw-a94">
     <fs>
       <f name="wfw">carpenter</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n95" xml:id="wfw-a99">
+  <a as="wfw" label="wfw" ref="word-n95" xml:id="wfw-a95">
     <fs>
       <f name="wfw">SUB</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n96" xml:id="wfw-a100">
+  <a as="wfw" label="wfw" ref="word-n96" xml:id="wfw-a96">
     <fs>
       <f name="wfw">come.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n97" xml:id="wfw-a101">
+  <a as="wfw" label="wfw" ref="word-n97" xml:id="wfw-a97">
     <fs>
       <f name="wfw">with</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n98" xml:id="wfw-a102">
+  <a as="wfw" label="wfw" ref="word-n98" xml:id="wfw-a98">
     <fs>
       <f name="wfw">blade=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n99" xml:id="wfw-a103">
+  <a as="wfw" label="wfw" ref="word-n99" xml:id="wfw-a99">
     <fs>
       <f name="wfw">saw-PL.OBL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n100" xml:id="wfw-a104">
+  <a as="wfw" label="wfw" ref="word-n100" xml:id="wfw-a100">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n101" xml:id="wfw-a105">
+  <a as="wfw" label="wfw" ref="word-n101" xml:id="wfw-a101">
     <fs>
       <f name="wfw">dragon</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n102" xml:id="wfw-a106">
+  <a as="wfw" label="wfw" ref="word-n102" xml:id="wfw-a102">
     <fs>
       <f name="wfw">released</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n103" xml:id="wfw-a107">
+  <a as="wfw" label="wfw" ref="word-n103" xml:id="wfw-a103">
     <fs>
       <f name="wfw">do.PST.3SG=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n104" xml:id="wfw-a108">
+  <a as="wfw" label="wfw" ref="word-n104" xml:id="wfw-a104">
     <fs>
       <f name="wfw">en.route</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n105" xml:id="wfw-a109">
+  <a as="wfw" label="wfw" ref="word-n105" xml:id="wfw-a105">
     <fs>
       <f name="wfw">become.PST.3SG=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n106" xml:id="wfw-a110">
+  <a as="wfw" label="wfw" ref="word-n106" xml:id="wfw-a106">
     <fs>
       <f name="wfw">dragon</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n107" xml:id="wfw-a111">
+  <a as="wfw" label="wfw" ref="word-n107" xml:id="wfw-a107">
     <fs>
       <f name="wfw">carpenter-OBJ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n108" xml:id="wfw-a112">
+  <a as="wfw" label="wfw" ref="word-n108" xml:id="wfw-a108">
     <fs>
       <f name="wfw">hint</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n109" xml:id="wfw-a113">
+  <a as="wfw" label="wfw" ref="word-n109" xml:id="wfw-a109">
     <fs>
       <f name="wfw">give.PST.3SG=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n110" xml:id="wfw-a114">
+  <a as="wfw" label="wfw" ref="word-n110" xml:id="wfw-a110">
     <fs>
       <f name="wfw">hint=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n111" xml:id="wfw-a115">
+  <a as="wfw" label="wfw" ref="word-n111" xml:id="wfw-a111">
     <fs>
       <f name="wfw">to</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n112" xml:id="wfw-a116">
+  <a as="wfw" label="wfw" ref="word-n112" xml:id="wfw-a112">
     <fs>
       <f name="wfw">mountain-GEN</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n113" xml:id="wfw-a117">
+  <a as="wfw" label="wfw" ref="word-n113" xml:id="wfw-a113">
     <fs>
       <f name="wfw">in</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n114" xml:id="wfw-a118">
+  <a as="wfw" label="wfw" ref="word-n114" xml:id="wfw-a114">
     <fs>
       <f name="wfw">go.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n115" xml:id="wfw-a119">
+  <a as="wfw" label="wfw" ref="word-n115" xml:id="wfw-a115">
     <fs>
       <f name="wfw">there</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n116" xml:id="wfw-a120">
+  <a as="wfw" label="wfw" ref="word-n116" xml:id="wfw-a116">
     <fs>
       <f name="wfw">SUB</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n117" xml:id="wfw-a121">
+  <a as="wfw" label="wfw" ref="word-n117" xml:id="wfw-a117">
     <fs>
       <f name="wfw">go.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n118" xml:id="wfw-a122">
+  <a as="wfw" label="wfw" ref="word-n118" xml:id="wfw-a118">
     <fs>
       <f name="wfw">FOC</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n119" xml:id="wfw-a123">
+  <a as="wfw" label="wfw" ref="word-n119" xml:id="wfw-a119">
     <fs>
       <f name="wfw">ohhhh...</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n120" xml:id="wfw-a124">
+  <a as="wfw" label="wfw" ref="word-n120" xml:id="wfw-a120">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n121" xml:id="wfw-a125">
+  <a as="wfw" label="wfw" ref="word-n121" xml:id="wfw-a121">
     <fs>
       <f name="wfw">dragon</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n122" xml:id="wfw-a126">
+  <a as="wfw" label="wfw" ref="word-n122" xml:id="wfw-a122">
     <fs>
       <f name="wfw">other</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n123" xml:id="wfw-a127">
+  <a as="wfw" label="wfw" ref="word-n123" xml:id="wfw-a123">
     <fs>
       <f name="wfw">mother-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n124" xml:id="wfw-a128">
+  <a as="wfw" label="wfw" ref="word-n124" xml:id="wfw-a124">
     <fs>
       <f name="wfw">have.PRS-3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n125" xml:id="wfw-a129">
+  <a as="wfw" label="wfw" ref="word-n125" xml:id="wfw-a125">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n126" xml:id="wfw-a130">
+  <a as="wfw" label="wfw" ref="word-n126" xml:id="wfw-a126">
     <fs>
       <f name="wfw">mother=ENC.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n127" xml:id="wfw-a131">
+  <a as="wfw" label="wfw" ref="word-n127" xml:id="wfw-a127">
     <fs>
       <f name="wfw">from=EMPH-DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n128" xml:id="wfw-a132">
+  <a as="wfw" label="wfw" ref="word-n128" xml:id="wfw-a128">
     <fs>
       <f name="wfw">mountain-GEN</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n129" xml:id="wfw-a133">
+  <a as="wfw" label="wfw" ref="word-n129" xml:id="wfw-a129">
     <fs>
       <f name="wfw">wild.goat</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n130" xml:id="wfw-a134">
+  <a as="wfw" label="wfw" ref="word-n130" xml:id="wfw-a130">
     <fs>
       <f name="wfw">NEG-COP.PRS.3PL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n131" xml:id="wfw-a135">
+  <a as="wfw" label="wfw" ref="word-n131" xml:id="wfw-a131">
     <fs>
       <f name="wfw">big</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n132" xml:id="wfw-a136">
+  <a as="wfw" label="wfw" ref="word-n132" xml:id="wfw-a132">
     <fs>
       <f name="wfw">horn</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n133" xml:id="wfw-a137">
+  <a as="wfw" label="wfw" ref="word-n133" xml:id="wfw-a133">
     <fs>
       <f name="wfw">from=EMPH-DEM-PL.OBL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n134" xml:id="wfw-a138">
+  <a as="wfw" label="wfw" ref="word-n134" xml:id="wfw-a134">
     <fs>
       <f name="wfw">hunting</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n135" xml:id="wfw-a139">
+  <a as="wfw" label="wfw" ref="word-n135" xml:id="wfw-a135">
     <fs>
       <f name="wfw">do.PST-PP(=COP.PRS.3SG)=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n136" xml:id="wfw-a140">
+  <a as="wfw" label="wfw" ref="word-n136" xml:id="wfw-a136">
     <fs>
       <f name="wfw">EMPH.DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n137" xml:id="wfw-a141">
+  <a as="wfw" label="wfw" ref="word-n137" xml:id="wfw-a137">
     <fs>
       <f name="wfw">horn=ENC.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n138" xml:id="wfw-a142">
+  <a as="wfw" label="wfw" ref="word-n138" xml:id="wfw-a138">
     <fs>
       <f name="wfw">DEM-GEN</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n139" xml:id="wfw-a143">
+  <a as="wfw" label="wfw" ref="word-n139" xml:id="wfw-a139">
     <fs>
       <f name="wfw">throat-OBL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n140" xml:id="wfw-a144">
+  <a as="wfw" label="wfw" ref="word-n140" xml:id="wfw-a140">
     <fs>
       <f name="wfw">captive</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n141" xml:id="wfw-a145">
+  <a as="wfw" label="wfw" ref="word-n141" xml:id="wfw-a141">
     <fs>
       <f name="wfw">do.PST-PP=COP.PRS.3PL=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n142" xml:id="wfw-a146">
+  <a as="wfw" label="wfw" ref="word-n142" xml:id="wfw-a142">
     <fs>
       <f name="wfw">breath</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n143" xml:id="wfw-a147">
+  <a as="wfw" label="wfw" ref="word-n143" xml:id="wfw-a143">
     <fs>
       <f name="wfw">narrow=COP.PRS.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n144" xml:id="wfw-a148">
+  <a as="wfw" label="wfw" ref="word-n144" xml:id="wfw-a144">
     <fs>
       <f name="wfw">come.PST-PP(=COP.PRS.3SG)</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n145" xml:id="wfw-a149">
+  <a as="wfw" label="wfw" ref="word-n145" xml:id="wfw-a145">
     <fs>
       <f name="wfw">here</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n146" xml:id="wfw-a150">
+  <a as="wfw" label="wfw" ref="word-n146" xml:id="wfw-a146">
     <fs>
       <f name="wfw">to</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n147" xml:id="wfw-a151">
+  <a as="wfw" label="wfw" ref="word-n147" xml:id="wfw-a147">
     <fs>
       <f name="wfw">king</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n148" xml:id="wfw-a152">
+  <a as="wfw" label="wfw" ref="word-n148" xml:id="wfw-a148">
     <fs>
       <f name="wfw">petition</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n149" xml:id="wfw-a153">
+  <a as="wfw" label="wfw" ref="word-n149" xml:id="wfw-a149">
     <fs>
       <f name="wfw">do.PST-PP(=COP.PRS.3SG)</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n150" xml:id="wfw-a154">
+  <a as="wfw" label="wfw" ref="word-n150" xml:id="wfw-a150">
     <fs>
       <f name="wfw">hint</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n151" xml:id="wfw-a155">
+  <a as="wfw" label="wfw" ref="word-n151" xml:id="wfw-a151">
     <fs>
       <f name="wfw">do.PST.3SG=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n152" xml:id="wfw-a156">
+  <a as="wfw" label="wfw" ref="word-n152" xml:id="wfw-a152">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n153" xml:id="wfw-a157">
+  <a as="wfw" label="wfw" ref="word-n153" xml:id="wfw-a153">
     <fs>
       <f name="wfw">horn-PL-OBJ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n154" xml:id="wfw-a158">
+  <a as="wfw" label="wfw" ref="word-n154" xml:id="wfw-a154">
     <fs>
       <f name="wfw">wild.goat-GEN-PL=OBJ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n155" xml:id="wfw-a159">
+  <a as="wfw" label="wfw" ref="word-n155" xml:id="wfw-a155">
     <fs>
       <f name="wfw">saw</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n156" xml:id="wfw-a160">
+  <a as="wfw" label="wfw" ref="word-n156" xml:id="wfw-a156">
     <fs>
       <f name="wfw">do.PST.3SG=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n157" xml:id="wfw-a161">
+  <a as="wfw" label="wfw" ref="word-n157" xml:id="wfw-a157">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n158" xml:id="wfw-a162">
+  <a as="wfw" label="wfw" ref="word-n158" xml:id="wfw-a158">
     <fs>
       <f name="wfw">finished</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n159" xml:id="wfw-a163">
+  <a as="wfw" label="wfw" ref="word-n159" xml:id="wfw-a159">
     <fs>
       <f name="wfw">become.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n160" xml:id="wfw-a164">
+  <a as="wfw" label="wfw" ref="word-n160" xml:id="wfw-a160">
     <fs>
       <f name="wfw">free</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n161" xml:id="wfw-a165">
+  <a as="wfw" label="wfw" ref="word-n161" xml:id="wfw-a161">
     <fs>
       <f name="wfw">become.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n162" xml:id="wfw-a166">
+  <a as="wfw" label="wfw" ref="word-n162" xml:id="wfw-a162">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n163" xml:id="wfw-a167">
+  <a as="wfw" label="wfw" ref="word-n163" xml:id="wfw-a163">
     <fs>
       <f name="wfw">dragon</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n164" xml:id="wfw-a168">
+  <a as="wfw" label="wfw" ref="word-n164" xml:id="wfw-a164">
     <fs>
       <f name="wfw">other</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n165" xml:id="wfw-a169">
+  <a as="wfw" label="wfw" ref="word-n165" xml:id="wfw-a165">
     <fs>
       <f name="wfw">place-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n166" xml:id="wfw-a170">
+  <a as="wfw" label="wfw" ref="word-n166" xml:id="wfw-a166">
     <fs>
       <f name="wfw">go.PST.3SG=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n167" xml:id="wfw-a171">
+  <a as="wfw" label="wfw" ref="word-n167" xml:id="wfw-a167">
     <fs>
       <f name="wfw">DEM-OBJ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n168" xml:id="wfw-a172">
+  <a as="wfw" label="wfw" ref="word-n168" xml:id="wfw-a168">
     <fs>
       <f name="wfw">big-ATTR</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n169" xml:id="wfw-a173">
+  <a as="wfw" label="wfw" ref="word-n169" xml:id="wfw-a169">
     <fs>
       <f name="wfw">reward-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n170" xml:id="wfw-a174">
+  <a as="wfw" label="wfw" ref="word-n170" xml:id="wfw-a170">
     <fs>
       <f name="wfw">give.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n171" xml:id="wfw-a175">
+  <a as="wfw" label="wfw" ref="word-n171" xml:id="wfw-a171">
     <fs>
       <f name="wfw">jewelry</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n172" xml:id="wfw-a176">
+  <a as="wfw" label="wfw" ref="word-n172" xml:id="wfw-a172">
     <fs>
       <f name="wfw">then</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n173" xml:id="wfw-a177">
+  <a as="wfw" label="wfw" ref="word-n173" xml:id="wfw-a173">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n174" xml:id="wfw-a178">
+  <a as="wfw" label="wfw" ref="word-n174" xml:id="wfw-a174">
     <fs>
       <f name="wfw">bit-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n175" xml:id="wfw-a179">
+  <a as="wfw" label="wfw" ref="word-n175" xml:id="wfw-a175">
     <fs>
       <f name="wfw">SUB</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n176" xml:id="wfw-a180">
+  <a as="wfw" label="wfw" ref="word-n176" xml:id="wfw-a176">
     <fs>
       <f name="wfw">go.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n177" xml:id="wfw-a181">
+  <a as="wfw" label="wfw" ref="word-n177" xml:id="wfw-a177">
     <fs>
       <f name="wfw">back</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n178" xml:id="wfw-a182">
+  <a as="wfw" label="wfw" ref="word-n178" xml:id="wfw-a178">
     <fs>
       <f name="wfw">DEM-OBJ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n179" xml:id="wfw-a183">
+  <a as="wfw" label="wfw" ref="word-n179" xml:id="wfw-a179">
     <fs>
       <f name="wfw">hint-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n180" xml:id="wfw-a184">
+  <a as="wfw" label="wfw" ref="word-n180" xml:id="wfw-a180">
     <fs>
       <f name="wfw">do.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n181" xml:id="wfw-a185">
+  <a as="wfw" label="wfw" ref="word-n181" xml:id="wfw-a181">
     <fs>
       <f name="wfw">stand.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n182" xml:id="wfw-a186">
+  <a as="wfw" label="wfw" ref="word-n182" xml:id="wfw-a182">
     <fs>
       <f name="wfw">EMPH-such-ATTR</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n183" xml:id="wfw-a187">
+  <a as="wfw" label="wfw" ref="word-n183" xml:id="wfw-a183">
     <fs>
       <f name="wfw">seed-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n184" xml:id="wfw-a188">
+  <a as="wfw" label="wfw" ref="word-n184" xml:id="wfw-a184">
     <fs>
       <f name="wfw">seize.PST.3SG=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n185" xml:id="wfw-a189">
+  <a as="wfw" label="wfw" ref="word-n185" xml:id="wfw-a185">
     <fs>
       <f name="wfw">from</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n186" xml:id="wfw-a190">
+  <a as="wfw" label="wfw" ref="word-n186" xml:id="wfw-a186">
     <fs>
       <f name="wfw">RFL-GEN</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n187" xml:id="wfw-a191">
+  <a as="wfw" label="wfw" ref="word-n187" xml:id="wfw-a187">
     <fs>
       <f name="wfw">mouth-GEN</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n188" xml:id="wfw-a192">
+  <a as="wfw" label="wfw" ref="word-n188" xml:id="wfw-a188">
     <fs>
       <f name="wfw">inside</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n189" xml:id="wfw-a193">
+  <a as="wfw" label="wfw" ref="word-n189" xml:id="wfw-a189">
     <fs>
       <f name="wfw">throw.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n190" xml:id="wfw-a194">
+  <a as="wfw" label="wfw" ref="word-n190" xml:id="wfw-a190">
     <fs>
       <f name="wfw">in</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n191" xml:id="wfw-a195">
+  <a as="wfw" label="wfw" ref="word-n191" xml:id="wfw-a191">
     <fs>
       <f name="wfw">EMPH.DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n192" xml:id="wfw-a196">
+  <a as="wfw" label="wfw" ref="word-n192" xml:id="wfw-a192">
     <fs>
       <f name="wfw">jewel-PL.OBL-GEN</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n193" xml:id="wfw-a197">
+  <a as="wfw" label="wfw" ref="word-n193" xml:id="wfw-a193">
     <fs>
       <f name="wfw">inside</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n194" xml:id="wfw-a198">
+  <a as="wfw" label="wfw" ref="word-n194" xml:id="wfw-a194">
     <fs>
       <f name="wfw">DEM-GEN</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n195" xml:id="wfw-a199">
+  <a as="wfw" label="wfw" ref="word-n195" xml:id="wfw-a195">
     <fs>
       <f name="wfw">woolen.shoulder.bag-GEN</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n196" xml:id="wfw-a200">
+  <a as="wfw" label="wfw" ref="word-n196" xml:id="wfw-a196">
     <fs>
       <f name="wfw">in</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n197" xml:id="wfw-a201">
+  <a as="wfw" label="wfw" ref="word-n197" xml:id="wfw-a197">
     <fs>
       <f name="wfw">SUB</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n198" xml:id="wfw-a202">
+  <a as="wfw" label="wfw" ref="word-n198" xml:id="wfw-a198">
     <fs>
       <f name="wfw">come.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n199" xml:id="wfw-a203">
+  <a as="wfw" label="wfw" ref="word-n199" xml:id="wfw-a199">
     <fs>
       <f name="wfw">king</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n200" xml:id="wfw-a204">
+  <a as="wfw" label="wfw" ref="word-n200" xml:id="wfw-a200">
     <fs>
       <f name="wfw">say.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n201" xml:id="wfw-a205">
+  <a as="wfw" label="wfw" ref="word-n201" xml:id="wfw-a201">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n202" xml:id="wfw-a206">
+  <a as="wfw" label="wfw" ref="word-n202" xml:id="wfw-a202">
     <fs>
       <f name="wfw">what</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n203" xml:id="wfw-a207">
+  <a as="wfw" label="wfw" ref="word-n203" xml:id="wfw-a203">
     <fs>
       <f name="wfw">petition-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n204" xml:id="wfw-a208">
+  <a as="wfw" label="wfw" ref="word-n204" xml:id="wfw-a204">
     <fs>
       <f name="wfw">have.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n205" xml:id="wfw-a209">
+  <a as="wfw" label="wfw" ref="word-n205" xml:id="wfw-a205">
     <fs>
       <f name="wfw">say.PST.3SG=ENC.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n206" xml:id="wfw-a210">
+  <a as="wfw" label="wfw" ref="word-n206" xml:id="wfw-a206">
     <fs>
       <f name="wfw">SUBJ-come.PRS</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n207" xml:id="wfw-a211">
+  <a as="wfw" label="wfw" ref="word-n207" xml:id="wfw-a207">
     <fs>
       <f name="wfw">SUB</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n208" xml:id="wfw-a212">
+  <a as="wfw" label="wfw" ref="word-n208" xml:id="wfw-a208">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n209" xml:id="wfw-a213">
+  <a as="wfw" label="wfw" ref="word-n209" xml:id="wfw-a209">
     <fs>
       <f name="wfw">manner</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n210" xml:id="wfw-a214">
+  <a as="wfw" label="wfw" ref="word-n210" xml:id="wfw-a210">
     <fs>
       <f name="wfw">DEM-GEN</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n211" xml:id="wfw-a215">
+  <a as="wfw" label="wfw" ref="word-n211" xml:id="wfw-a211">
     <fs>
       <f name="wfw">mother</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n212" xml:id="wfw-a216">
+  <a as="wfw" label="wfw" ref="word-n212" xml:id="wfw-a212">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n213" xml:id="wfw-a217">
+  <a as="wfw" label="wfw" ref="word-n213" xml:id="wfw-a213">
     <fs>
       <f name="wfw">manner</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n214" xml:id="wfw-a218">
+  <a as="wfw" label="wfw" ref="word-n214" xml:id="wfw-a214">
     <fs>
       <f name="wfw">strangled=COP.PST.3SG=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n215" xml:id="wfw-a219">
+  <a as="wfw" label="wfw" ref="word-n215" xml:id="wfw-a215">
     <fs>
       <f name="wfw">come.PST.3SG=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n216" xml:id="wfw-a220">
+  <a as="wfw" label="wfw" ref="word-n216" xml:id="wfw-a216">
     <fs>
       <f name="wfw">I</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n217" xml:id="wfw-a221">
+  <a as="wfw" label="wfw" ref="word-n217" xml:id="wfw-a217">
     <fs>
       <f name="wfw">free</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n218" xml:id="wfw-a222">
+  <a as="wfw" label="wfw" ref="word-n218" xml:id="wfw-a218">
     <fs>
       <f name="wfw">do.PST-1SG=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n219" xml:id="wfw-a223">
+  <a as="wfw" label="wfw" ref="word-n219" xml:id="wfw-a219">
     <fs>
       <f name="wfw">then</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n220" xml:id="wfw-a224">
+  <a as="wfw" label="wfw" ref="word-n220" xml:id="wfw-a220">
     <fs>
       <f name="wfw">I.OBJ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n221" xml:id="wfw-a225">
+  <a as="wfw" label="wfw" ref="word-n221" xml:id="wfw-a221">
     <fs>
       <f name="wfw">this.much</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n222" xml:id="wfw-a226">
+  <a as="wfw" label="wfw" ref="word-n222" xml:id="wfw-a222">
     <fs>
       <f name="wfw">jewelry</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n223" xml:id="wfw-a227">
+  <a as="wfw" label="wfw" ref="word-n223" xml:id="wfw-a223">
     <fs>
       <f name="wfw">give.PST.3SG=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n224" xml:id="wfw-a228">
+  <a as="wfw" label="wfw" ref="word-n224" xml:id="wfw-a224">
     <fs>
       <f name="wfw">EMPH.DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n225" xml:id="wfw-a229">
+  <a as="wfw" label="wfw" ref="word-n225" xml:id="wfw-a225">
     <fs>
       <f name="wfw">seed-OBJ=also</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n226" xml:id="wfw-a230">
+  <a as="wfw" label="wfw" ref="word-n226" xml:id="wfw-a226">
     <fs>
       <f name="wfw">EMPH-DEM-OBJ=also</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n227" xml:id="wfw-a231">
+  <a as="wfw" label="wfw" ref="word-n227" xml:id="wfw-a227">
     <fs>
       <f name="wfw">I.OBJ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n228" xml:id="wfw-a232">
+  <a as="wfw" label="wfw" ref="word-n228" xml:id="wfw-a228">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n229" xml:id="wfw-a233">
+  <a as="wfw" label="wfw" ref="word-n229" xml:id="wfw-a229">
     <fs>
       <f name="wfw">give.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n230" xml:id="wfw-a234">
+  <a as="wfw" label="wfw" ref="word-n230" xml:id="wfw-a230">
     <fs>
       <f name="wfw">from</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n231" xml:id="wfw-a235">
+  <a as="wfw" label="wfw" ref="word-n231" xml:id="wfw-a231">
     <fs>
       <f name="wfw">RFL-GEN</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n232" xml:id="wfw-a236">
+  <a as="wfw" label="wfw" ref="word-n232" xml:id="wfw-a232">
     <fs>
       <f name="wfw">mouth-GEN</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n233" xml:id="wfw-a237">
+  <a as="wfw" label="wfw" ref="word-n233" xml:id="wfw-a233">
     <fs>
       <f name="wfw">inside=ENC.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n234" xml:id="wfw-a238">
+  <a as="wfw" label="wfw" ref="word-n234" xml:id="wfw-a234">
     <fs>
       <f name="wfw">throw.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n235" xml:id="wfw-a239">
+  <a as="wfw" label="wfw" ref="word-n235" xml:id="wfw-a235">
     <fs>
       <f name="wfw">say.PST.3SG=ENC.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n236" xml:id="wfw-a240">
+  <a as="wfw" label="wfw" ref="word-n236" xml:id="wfw-a236">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n237" xml:id="wfw-a241">
+  <a as="wfw" label="wfw" ref="word-n237" xml:id="wfw-a237">
     <fs>
       <f name="wfw">other=TOP</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n238" xml:id="wfw-a242">
+  <a as="wfw" label="wfw" ref="word-n238" xml:id="wfw-a238">
     <fs>
       <f name="wfw">jwelery=COP.PRS.3PL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n239" xml:id="wfw-a243">
+  <a as="wfw" label="wfw" ref="word-n239" xml:id="wfw-a239">
     <fs>
       <f name="wfw">EMPH-DEM-OBJ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n240" xml:id="wfw-a244">
+  <a as="wfw" label="wfw" ref="word-n240" xml:id="wfw-a240">
     <fs>
       <f name="wfw">we.INCL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n241" xml:id="wfw-a245">
+  <a as="wfw" label="wfw" ref="word-n241" xml:id="wfw-a241">
     <fs>
       <f name="wfw">NEG-know.PRS-1PL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n242" xml:id="wfw-a246">
+  <a as="wfw" label="wfw" ref="word-n242" xml:id="wfw-a242">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n243" xml:id="wfw-a247">
+  <a as="wfw" label="wfw" ref="word-n243" xml:id="wfw-a243">
     <fs>
       <f name="wfw">consultation</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n244" xml:id="wfw-a248">
+  <a as="wfw" label="wfw" ref="word-n244" xml:id="wfw-a244">
     <fs>
       <f name="wfw">do.PST-3PL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n245" xml:id="wfw-a249">
+  <a as="wfw" label="wfw" ref="word-n245" xml:id="wfw-a245">
     <fs>
       <f name="wfw">say.PST-3PL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n246" xml:id="wfw-a250">
+  <a as="wfw" label="wfw" ref="word-n246" xml:id="wfw-a246">
     <fs>
       <f name="wfw">SUBJ-come.PRS</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n247" xml:id="wfw-a251">
+  <a as="wfw" label="wfw" ref="word-n247" xml:id="wfw-a247">
     <fs>
       <f name="wfw">DEM-OBJ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n248" xml:id="wfw-a252">
+  <a as="wfw" label="wfw" ref="word-n248" xml:id="wfw-a248">
     <fs>
       <f name="wfw">SUBJ-sow.PRS-1PL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n249" xml:id="wfw-a253">
+  <a as="wfw" label="wfw" ref="word-n249" xml:id="wfw-a249">
     <fs>
       <f name="wfw">we.INCL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n250" xml:id="wfw-a254">
+  <a as="wfw" label="wfw" ref="word-n250" xml:id="wfw-a250">
     <fs>
       <f name="wfw">DEM-OBJ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n251" xml:id="wfw-a255">
+  <a as="wfw" label="wfw" ref="word-n251" xml:id="wfw-a251">
     <fs>
       <f name="wfw">good-ATTR</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n252" xml:id="wfw-a256">
+  <a as="wfw" label="wfw" ref="word-n252" xml:id="wfw-a252">
     <fs>
       <f name="wfw">place-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n253" xml:id="wfw-a257">
+  <a as="wfw" label="wfw" ref="word-n253" xml:id="wfw-a253">
     <fs>
       <f name="wfw">garden-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n254" xml:id="wfw-a258">
+  <a as="wfw" label="wfw" ref="word-n254" xml:id="wfw-a254">
     <fs>
       <f name="wfw">plot-GEN</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n255" xml:id="wfw-a259">
+  <a as="wfw" label="wfw" ref="word-n255" xml:id="wfw-a255">
     <fs>
       <f name="wfw">inside</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n256" xml:id="wfw-a260">
+  <a as="wfw" label="wfw" ref="word-n256" xml:id="wfw-a256">
     <fs>
       <f name="wfw">sow.PST-3PL=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n257" xml:id="wfw-a261">
+  <a as="wfw" label="wfw" ref="word-n257" xml:id="wfw-a257">
     <fs>
       <f name="wfw">good-ATTR</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n258" xml:id="wfw-a262">
+  <a as="wfw" label="wfw" ref="word-n258" xml:id="wfw-a258">
     <fs>
       <f name="wfw">soft-ATTR</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n259" xml:id="wfw-a263">
+  <a as="wfw" label="wfw" ref="word-n259" xml:id="wfw-a259">
     <fs>
       <f name="wfw">plot-IND=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n260" xml:id="wfw-a264">
+  <a as="wfw" label="wfw" ref="word-n260" xml:id="wfw-a260">
     <fs>
       <f name="wfw">melon.bush-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n261" xml:id="wfw-a265">
+  <a as="wfw" label="wfw" ref="word-n261" xml:id="wfw-a261">
     <fs>
       <f name="wfw">green</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n262" xml:id="wfw-a266">
+  <a as="wfw" label="wfw" ref="word-n262" xml:id="wfw-a262">
     <fs>
       <f name="wfw">do.PST.3SG=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n263" xml:id="wfw-a267">
+  <a as="wfw" label="wfw" ref="word-n263" xml:id="wfw-a263">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n264" xml:id="wfw-a268">
+  <a as="wfw" label="wfw" ref="word-n264" xml:id="wfw-a264">
     <fs>
       <f name="wfw">so.many</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n265" xml:id="wfw-a269">
+  <a as="wfw" label="wfw" ref="word-n265" xml:id="wfw-a265">
     <fs>
       <f name="wfw">melon</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n266" xml:id="wfw-a270">
+  <a as="wfw" label="wfw" ref="word-n266" xml:id="wfw-a266">
     <fs>
       <f name="wfw">do.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n267" xml:id="wfw-a271">
+  <a as="wfw" label="wfw" ref="word-n267" xml:id="wfw-a267">
     <fs>
       <f name="wfw">from</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n268" xml:id="wfw-a272">
+  <a as="wfw" label="wfw" ref="word-n268" xml:id="wfw-a268">
     <fs>
       <f name="wfw">fear-OBL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n269" xml:id="wfw-a273">
+  <a as="wfw" label="wfw" ref="word-n269" xml:id="wfw-a269">
     <fs>
       <f name="wfw">person-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n270" xml:id="wfw-a274">
+  <a as="wfw" label="wfw" ref="word-n270" xml:id="wfw-a270">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n271" xml:id="wfw-a275">
+  <a as="wfw" label="wfw" ref="word-n271" xml:id="wfw-a271">
     <fs>
       <f name="wfw">melon-PL-OBJ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n272" xml:id="wfw-a276">
+  <a as="wfw" label="wfw" ref="word-n272" xml:id="wfw-a272">
     <fs>
       <f name="wfw">NEG-eat.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n273" xml:id="wfw-a277">
+  <a as="wfw" label="wfw" ref="word-n273" xml:id="wfw-a273">
     <fs>
       <f name="wfw">SUB</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n274" xml:id="wfw-a278">
+  <a as="wfw" label="wfw" ref="word-n274" xml:id="wfw-a274">
     <fs>
       <f name="wfw">from</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n275" xml:id="wfw-a279">
+  <a as="wfw" label="wfw" ref="word-n275" xml:id="wfw-a275">
     <fs>
       <f name="wfw">dragon-GEN</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n276" xml:id="wfw-a280">
+  <a as="wfw" label="wfw" ref="word-n276" xml:id="wfw-a276">
     <fs>
       <f name="wfw">mouth-GEN</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n277" xml:id="wfw-a281">
+  <a as="wfw" label="wfw" ref="word-n277" xml:id="wfw-a277">
     <fs>
       <f name="wfw">in=COP.PRS.3PL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n278" xml:id="wfw-a282">
+  <a as="wfw" label="wfw" ref="word-n278" xml:id="wfw-a278">
     <fs>
       <f name="wfw">snake-GEN</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n279" xml:id="wfw-a283">
+  <a as="wfw" label="wfw" ref="word-n279" xml:id="wfw-a279">
     <fs>
       <f name="wfw">poison=COP.PRS.3PL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n280" xml:id="wfw-a284">
+  <a as="wfw" label="wfw" ref="word-n280" xml:id="wfw-a280">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n281" xml:id="wfw-a285">
+  <a as="wfw" label="wfw" ref="word-n281" xml:id="wfw-a281">
     <fs>
       <f name="wfw">so.many</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n282" xml:id="wfw-a286">
+  <a as="wfw" label="wfw" ref="word-n282" xml:id="wfw-a282">
     <fs>
       <f name="wfw">seed</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n283" xml:id="wfw-a287">
+  <a as="wfw" label="wfw" ref="word-n283" xml:id="wfw-a283">
     <fs>
       <f name="wfw">do.PST-3PL=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n284" xml:id="wfw-a288">
+  <a as="wfw" label="wfw" ref="word-n284" xml:id="wfw-a284">
     <fs>
       <f name="wfw">go.PST-3PL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n285" xml:id="wfw-a289">
+  <a as="wfw" label="wfw" ref="word-n285" xml:id="wfw-a285">
     <fs>
       <f name="wfw">huge-ATTR</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n286" xml:id="wfw-a290">
+  <a as="wfw" label="wfw" ref="word-n286" xml:id="wfw-a286">
     <fs>
       <f name="wfw">melon.bed-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n287" xml:id="wfw-a291">
+  <a as="wfw" label="wfw" ref="word-n287" xml:id="wfw-a287">
     <fs>
       <f name="wfw">king</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n288" xml:id="wfw-a292">
+  <a as="wfw" label="wfw" ref="word-n288" xml:id="wfw-a288">
     <fs>
       <f name="wfw">sow.PST.3SG=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n289" xml:id="wfw-a293">
+  <a as="wfw" label="wfw" ref="word-n289" xml:id="wfw-a289">
     <fs>
       <f name="wfw">one</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n290" xml:id="wfw-a294">
+  <a as="wfw" label="wfw" ref="word-n290" xml:id="wfw-a290">
     <fs>
       <f name="wfw">old.man-IND-OBJ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n291" xml:id="wfw-a295">
+  <a as="wfw" label="wfw" ref="word-n291" xml:id="wfw-a291">
     <fs>
       <f name="wfw">gardener</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n292" xml:id="wfw-a296">
+  <a as="wfw" label="wfw" ref="word-n292" xml:id="wfw-a292">
     <fs>
       <f name="wfw">do.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n293" xml:id="wfw-a297">
+  <a as="wfw" label="wfw" ref="word-n293" xml:id="wfw-a293">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n294" xml:id="wfw-a298">
+  <a as="wfw" label="wfw" ref="word-n294" xml:id="wfw-a294">
     <fs>
       <f name="wfw">hit.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n295" xml:id="wfw-a299">
+  <a as="wfw" label="wfw" ref="word-n295" xml:id="wfw-a295">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n296" xml:id="wfw-a300">
+  <a as="wfw" label="wfw" ref="word-n296" xml:id="wfw-a296">
     <fs>
       <f name="wfw">melon.bed</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n297" xml:id="wfw-a301">
+  <a as="wfw" label="wfw" ref="word-n297" xml:id="wfw-a297">
     <fs>
       <f name="wfw">to</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n298" xml:id="wfw-a302">
+  <a as="wfw" label="wfw" ref="word-n298" xml:id="wfw-a298">
     <fs>
       <f name="wfw">melon-OBL=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n299" xml:id="wfw-a303">
+  <a as="wfw" label="wfw" ref="word-n299" xml:id="wfw-a299">
     <fs>
       <f name="wfw">entirely</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n300" xml:id="wfw-a304">
+  <a as="wfw" label="wfw" ref="word-n300" xml:id="wfw-a300">
     <fs>
       <f name="wfw">melon</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n301" xml:id="wfw-a305">
+  <a as="wfw" label="wfw" ref="word-n301" xml:id="wfw-a301">
     <fs>
       <f name="wfw">do.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n302" xml:id="wfw-a306">
+  <a as="wfw" label="wfw" ref="word-n302" xml:id="wfw-a302">
     <fs>
       <f name="wfw">old.man=also</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n303" xml:id="wfw-a307">
+  <a as="wfw" label="wfw" ref="word-n303" xml:id="wfw-a303">
     <fs>
       <f name="wfw">first</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n304" xml:id="wfw-a308">
+  <a as="wfw" label="wfw" ref="word-n304" xml:id="wfw-a304">
     <fs>
       <f name="wfw">what=IMF</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n305" xml:id="wfw-a309">
+  <a as="wfw" label="wfw" ref="word-n305" xml:id="wfw-a305">
     <fs>
       <f name="wfw">NEG-do.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n306" xml:id="wfw-a310">
+  <a as="wfw" label="wfw" ref="word-n306" xml:id="wfw-a306">
     <fs>
       <f name="wfw">trust=IMF</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n307" xml:id="wfw-a311">
+  <a as="wfw" label="wfw" ref="word-n307" xml:id="wfw-a307">
     <fs>
       <f name="wfw">NEG-do.PST.3SG=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n308" xml:id="wfw-a312">
+  <a as="wfw" label="wfw" ref="word-n308" xml:id="wfw-a308">
     <fs>
       <f name="wfw">donkey-DIM-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n309" xml:id="wfw-a313">
+  <a as="wfw" label="wfw" ref="word-n309" xml:id="wfw-a309">
     <fs>
       <f name="wfw">have.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n310" xml:id="wfw-a314">
+  <a as="wfw" label="wfw" ref="word-n310" xml:id="wfw-a310">
     <fs>
       <f name="wfw">EMPH-DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n311" xml:id="wfw-a315">
+  <a as="wfw" label="wfw" ref="word-n311" xml:id="wfw-a311">
     <fs>
       <f name="wfw">melon-PL-OBJ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n312" xml:id="wfw-a316">
+  <a as="wfw" label="wfw" ref="word-n312" xml:id="wfw-a312">
     <fs>
       <f name="wfw">before</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n313" xml:id="wfw-a317">
+  <a as="wfw" label="wfw" ref="word-n313" xml:id="wfw-a313">
     <fs>
       <f name="wfw">to=EMPH-DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n314" xml:id="wfw-a318">
+  <a as="wfw" label="wfw" ref="word-n314" xml:id="wfw-a314">
     <fs>
       <f name="wfw">donkey-DIM-GEN</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n315" xml:id="wfw-a319">
+  <a as="wfw" label="wfw" ref="word-n315" xml:id="wfw-a315">
     <fs>
       <f name="wfw">in.front.of</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n316" xml:id="wfw-a320">
+  <a as="wfw" label="wfw" ref="word-n316" xml:id="wfw-a316">
     <fs>
       <f name="wfw">cut.to.pieces.PST.3SG=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n317" xml:id="wfw-a321">
+  <a as="wfw" label="wfw" ref="word-n317" xml:id="wfw-a317">
     <fs>
       <f name="wfw">give.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n318" xml:id="wfw-a322">
+  <a as="wfw" label="wfw" ref="word-n318" xml:id="wfw-a318">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n319" xml:id="wfw-a323">
+  <a as="wfw" label="wfw" ref="word-n319" xml:id="wfw-a319">
     <fs>
       <f name="wfw">donkey=also</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n320" xml:id="wfw-a324">
+  <a as="wfw" label="wfw" ref="word-n320" xml:id="wfw-a320">
     <fs>
       <f name="wfw">strong</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n321" xml:id="wfw-a325">
+  <a as="wfw" label="wfw" ref="word-n321" xml:id="wfw-a321">
     <fs>
       <f name="wfw">become.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n322" xml:id="wfw-a326">
+  <a as="wfw" label="wfw" ref="word-n322" xml:id="wfw-a322">
     <fs>
       <f name="wfw">old.man</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n323" xml:id="wfw-a327">
+  <a as="wfw" label="wfw" ref="word-n323" xml:id="wfw-a323">
     <fs>
       <f name="wfw">start</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n324" xml:id="wfw-a328">
+  <a as="wfw" label="wfw" ref="word-n324" xml:id="wfw-a324">
     <fs>
       <f name="wfw">do.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n325" xml:id="wfw-a329">
+  <a as="wfw" label="wfw" ref="word-n325" xml:id="wfw-a325">
     <fs>
       <f name="wfw">eat.INF-OBJ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n326" xml:id="wfw-a330">
+  <a as="wfw" label="wfw" ref="word-n326" xml:id="wfw-a326">
     <fs>
       <f name="wfw">FOC</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n327" xml:id="wfw-a331">
+  <a as="wfw" label="wfw" ref="word-n327" xml:id="wfw-a327">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n328" xml:id="wfw-a332">
+  <a as="wfw" label="wfw" ref="word-n328" xml:id="wfw-a328">
     <fs>
       <f name="wfw">what</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n329" xml:id="wfw-a333">
+  <a as="wfw" label="wfw" ref="word-n329" xml:id="wfw-a329">
     <fs>
       <f name="wfw">thing=COP.PRS.3PL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n330" xml:id="wfw-a334">
+  <a as="wfw" label="wfw" ref="word-n330" xml:id="wfw-a330">
     <fs>
       <f name="wfw">old.man=also</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n331" xml:id="wfw-a335">
+  <a as="wfw" label="wfw" ref="word-n331" xml:id="wfw-a331">
     <fs>
       <f name="wfw">strong</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n332" xml:id="wfw-a336">
+  <a as="wfw" label="wfw" ref="word-n332" xml:id="wfw-a332">
     <fs>
       <f name="wfw">become.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n333" xml:id="wfw-a337">
+  <a as="wfw" label="wfw" ref="word-n333" xml:id="wfw-a333">
     <fs>
       <f name="wfw">king</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n334" xml:id="wfw-a338">
+  <a as="wfw" label="wfw" ref="word-n334" xml:id="wfw-a334">
     <fs>
       <f name="wfw">one</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n335" xml:id="wfw-a339">
+  <a as="wfw" label="wfw" ref="word-n335" xml:id="wfw-a335">
     <fs>
       <f name="wfw">day-IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n336" xml:id="wfw-a340">
+  <a as="wfw" label="wfw" ref="word-n336" xml:id="wfw-a336">
     <fs>
       <f name="wfw">SUB</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n337" xml:id="wfw-a341">
+  <a as="wfw" label="wfw" ref="word-n337" xml:id="wfw-a337">
     <fs>
       <f name="wfw">come.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n338" xml:id="wfw-a342">
+  <a as="wfw" label="wfw" ref="word-n338" xml:id="wfw-a338">
     <fs>
       <f name="wfw">say.PST.3SG=ENC.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n339" xml:id="wfw-a343">
+  <a as="wfw" label="wfw" ref="word-n339" xml:id="wfw-a339">
     <fs>
       <f name="wfw">SUB</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n340" xml:id="wfw-a344">
+  <a as="wfw" label="wfw" ref="word-n340" xml:id="wfw-a340">
     <fs>
       <f name="wfw">old.man</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n341" xml:id="wfw-a345">
+  <a as="wfw" label="wfw" ref="word-n341" xml:id="wfw-a341">
     <fs>
       <f name="wfw">father</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n342" xml:id="wfw-a346">
+  <a as="wfw" label="wfw" ref="word-n342" xml:id="wfw-a342">
     <fs>
       <f name="wfw">D</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n343" xml:id="wfw-a347">
+  <a as="wfw" label="wfw" ref="word-n343" xml:id="wfw-a343">
     <fs>
       <f name="wfw">what=COP.PRS.3PL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n344" xml:id="wfw-a348">
+  <a as="wfw" label="wfw" ref="word-n344" xml:id="wfw-a344">
     <fs>
       <f name="wfw">say.PST.3SG=ENC.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n345" xml:id="wfw-a349">
+  <a as="wfw" label="wfw" ref="word-n345" xml:id="wfw-a345">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n346" xml:id="wfw-a350">
+  <a as="wfw" label="wfw" ref="word-n346" xml:id="wfw-a346">
     <fs>
       <f name="wfw">entirely</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n347" xml:id="wfw-a351">
+  <a as="wfw" label="wfw" ref="word-n347" xml:id="wfw-a347">
     <fs>
       <f name="wfw">good-ATTR</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n348" xml:id="wfw-a352">
+  <a as="wfw" label="wfw" ref="word-n348" xml:id="wfw-a348">
     <fs>
       <f name="wfw">thing=COP.PRS.3PL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n349" xml:id="wfw-a353">
+  <a as="wfw" label="wfw" ref="word-n349" xml:id="wfw-a349">
     <fs>
       <f name="wfw">I=also</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n350" xml:id="wfw-a354">
+  <a as="wfw" label="wfw" ref="word-n350" xml:id="wfw-a350">
     <fs>
       <f name="wfw">eat.PST-PP(=COP.PRS.1SG)</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n351" xml:id="wfw-a355">
+  <a as="wfw" label="wfw" ref="word-n351" xml:id="wfw-a351">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n352" xml:id="wfw-a356">
+  <a as="wfw" label="wfw" ref="word-n352" xml:id="wfw-a352">
     <fs>
       <f name="wfw">donkey-OBJ=also</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n353" xml:id="wfw-a357">
+  <a as="wfw" label="wfw" ref="word-n353" xml:id="wfw-a353">
     <fs>
       <f name="wfw">give.PST-PP=COP.PRS.1SG=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n354" xml:id="wfw-a358">
+  <a as="wfw" label="wfw" ref="word-n354" xml:id="wfw-a354">
     <fs>
       <f name="wfw">you.PL=also</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n355" xml:id="wfw-a359">
+  <a as="wfw" label="wfw" ref="word-n355" xml:id="wfw-a355">
     <fs>
       <f name="wfw">SUBJ.eat.PRS-2PL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n356" xml:id="wfw-a360">
+  <a as="wfw" label="wfw" ref="word-n356" xml:id="wfw-a356">
     <fs>
       <f name="wfw">vizier</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n357" xml:id="wfw-a361">
+  <a as="wfw" label="wfw" ref="word-n357" xml:id="wfw-a357">
     <fs>
       <f name="wfw">say.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n358" xml:id="wfw-a362">
+  <a as="wfw" label="wfw" ref="word-n358" xml:id="wfw-a358">
     <fs>
       <f name="wfw">no</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n359" xml:id="wfw-a363">
+  <a as="wfw" label="wfw" ref="word-n359" xml:id="wfw-a359">
     <fs>
       <f name="wfw">before</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n360" xml:id="wfw-a364">
+  <a as="wfw" label="wfw" ref="word-n360" xml:id="wfw-a360">
     <fs>
       <f name="wfw">I=IMF</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n361" xml:id="wfw-a365">
+  <a as="wfw" label="wfw" ref="word-n361" xml:id="wfw-a361">
     <fs>
       <f name="wfw">eat.PRS-1SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n362" xml:id="wfw-a366">
+  <a as="wfw" label="wfw" ref="word-n362" xml:id="wfw-a362">
     <fs>
       <f name="wfw">you.SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n363" xml:id="wfw-a367">
+  <a as="wfw" label="wfw" ref="word-n363" xml:id="wfw-a363">
     <fs>
       <f name="wfw">VOC</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n364" xml:id="wfw-a368">
+  <a as="wfw" label="wfw" ref="word-n364" xml:id="wfw-a364">
     <fs>
       <f name="wfw">king</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n365" xml:id="wfw-a369">
+  <a as="wfw" label="wfw" ref="word-n365" xml:id="wfw-a365">
     <fs>
       <f name="wfw">PROH-eat.PRS</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n366" xml:id="wfw-a370">
+  <a as="wfw" label="wfw" ref="word-n366" xml:id="wfw-a366">
     <fs>
       <f name="wfw">vizier</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n367" xml:id="wfw-a371">
+  <a as="wfw" label="wfw" ref="word-n367" xml:id="wfw-a367">
     <fs>
       <f name="wfw">eat.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n368" xml:id="wfw-a372">
+  <a as="wfw" label="wfw" ref="word-n368" xml:id="wfw-a368">
     <fs>
       <f name="wfw">FOC</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n369" xml:id="wfw-a373">
+  <a as="wfw" label="wfw" ref="word-n369" xml:id="wfw-a369">
     <fs>
       <f name="wfw">DEM</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n370" xml:id="wfw-a374">
+  <a as="wfw" label="wfw" ref="word-n370" xml:id="wfw-a370">
     <fs>
       <f name="wfw">strange-ATTR</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n371" xml:id="wfw-a375">
+  <a as="wfw" label="wfw" ref="word-n371" xml:id="wfw-a371">
     <fs>
       <f name="wfw">tasty-ATTR</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n372" xml:id="wfw-a376">
+  <a as="wfw" label="wfw" ref="word-n372" xml:id="wfw-a372">
     <fs>
       <f name="wfw">thing=COP.PRS.3PL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n373" xml:id="wfw-a377">
+  <a as="wfw" label="wfw" ref="word-n373" xml:id="wfw-a373">
     <fs>
       <f name="wfw">eat.PST-3PL=and</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n374" xml:id="wfw-a378">
+  <a as="wfw" label="wfw" ref="word-n374" xml:id="wfw-a374">
     <fs>
       <f name="wfw">SUB</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n375" xml:id="wfw-a379">
+  <a as="wfw" label="wfw" ref="word-n375" xml:id="wfw-a375">
     <fs>
       <f name="wfw">eat.PST-3PL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n376" xml:id="wfw-a380">
+  <a as="wfw" label="wfw" ref="word-n376" xml:id="wfw-a376">
     <fs>
       <f name="wfw">now</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n377" xml:id="wfw-a381">
+  <a as="wfw" label="wfw" ref="word-n377" xml:id="wfw-a377">
     <fs>
       <f name="wfw">say.PST-3PL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n378" xml:id="wfw-a382">
+  <a as="wfw" label="wfw" ref="word-n378" xml:id="wfw-a378">
     <fs>
       <f name="wfw">SUBJ-come.PRS</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n379" xml:id="wfw-a383">
+  <a as="wfw" label="wfw" ref="word-n379" xml:id="wfw-a379">
     <fs>
       <f name="wfw">we.INCL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n380" xml:id="wfw-a384">
+  <a as="wfw" label="wfw" ref="word-n380" xml:id="wfw-a380">
     <fs>
       <f name="wfw">for=DEM-OBL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n381" xml:id="wfw-a385">
+  <a as="wfw" label="wfw" ref="word-n381" xml:id="wfw-a381">
     <fs>
       <f name="wfw">name=IND</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n382" xml:id="wfw-a386">
+  <a as="wfw" label="wfw" ref="word-n382" xml:id="wfw-a382">
     <fs>
       <f name="wfw">SUBJ-leave.PRS-1PL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n383" xml:id="wfw-a387">
+  <a as="wfw" label="wfw" ref="word-n383" xml:id="wfw-a383">
     <fs>
       <f name="wfw">name=ENC.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n384" xml:id="wfw-a388">
+  <a as="wfw" label="wfw" ref="word-n384" xml:id="wfw-a384">
     <fs>
       <f name="wfw">then</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n385" xml:id="wfw-a389">
+  <a as="wfw" label="wfw" ref="word-n385" xml:id="wfw-a385">
     <fs>
       <f name="wfw">melon-OBJ</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n386" xml:id="wfw-a390">
+  <a as="wfw" label="wfw" ref="word-n386" xml:id="wfw-a386">
     <fs>
       <f name="wfw">leave.PST-3PL</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n387" xml:id="wfw-a391">
+  <a as="wfw" label="wfw" ref="word-n387" xml:id="wfw-a387">
     <fs>
       <f name="wfw">xarmizza</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n388" xml:id="wfw-a392">
+  <a as="wfw" label="wfw" ref="word-n388" xml:id="wfw-a388">
     <fs>
       <f name="wfw">SUB</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n389" xml:id="wfw-a393">
+  <a as="wfw" label="wfw" ref="word-n389" xml:id="wfw-a389">
     <fs>
       <f name="wfw">taste-ENC.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n390" xml:id="wfw-a394">
+  <a as="wfw" label="wfw" ref="word-n390" xml:id="wfw-a390">
     <fs>
       <f name="wfw">first</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n391" xml:id="wfw-a395">
+  <a as="wfw" label="wfw" ref="word-n391" xml:id="wfw-a391">
     <fs>
       <f name="wfw">donkey</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n392" xml:id="wfw-a396">
+  <a as="wfw" label="wfw" ref="word-n392" xml:id="wfw-a392">
     <fs>
       <f name="wfw">take.PST.3SG</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n393" xml:id="wfw-a397">
+  <a as="wfw" label="wfw" ref="word-n393" xml:id="wfw-a393">
     <fs>
       <f name="wfw">xarmizza</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n394" xml:id="wfw-a398">
+  <a as="wfw" label="wfw" ref="word-n394" xml:id="wfw-a394">
     <fs>
       <f name="wfw">from=there</f>
     </fs>
   </a>
-  <a as="wfw" label="wfw" ref="word-n395" xml:id="wfw-a399">
+  <a as="wfw" label="wfw" ref="word-n395" xml:id="wfw-a395">
     <fs>
       <f name="wfw">remain.PST.3SG</f>
     </fs>
