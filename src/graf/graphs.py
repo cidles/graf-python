@@ -130,7 +130,10 @@ class Graph(object):
                 id = 'e%d' % self._top_edge_id
                 self._top_edge_id += 1
         res = Edge(id, from_node, to_node)
-        self.edges.add(res)
+
+	if not res in self.edges.values():
+            self.edges.add(res)
+
         return res
 
     def find_edge(self, from_node, to_node):
@@ -397,7 +400,7 @@ class StandoffHeader(object):
     def add_annotation_space(self, aspace):
         self.annotation_spaces[aspace.as_id] = aspace
 
-    def add_dependency(self, type, location):
+    def add_dependency(self, type):
         self.depends_on.append(type)
 
     def clear_roots(self):
