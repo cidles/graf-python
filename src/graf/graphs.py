@@ -397,7 +397,7 @@ class StandoffHeader(object):
     def add_annotation_space(self, aspace):
         self.annotation_spaces[aspace.as_id] = aspace
 
-    def add_dependency(self, type, location):
+    def add_dependency(self, type):
         self.depends_on.append(type)
 
     def clear_roots(self):

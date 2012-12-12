@@ -45,7 +45,6 @@ class Constants(object):
     EDGESET = "edgeSet"
     NODE = "node"
     EDGE = "edge"
-    ASET = "as"
     ANNOTATION = "a"
     FS = "fs"
     FEATURE = "f"
@@ -152,13 +151,13 @@ class GrafRenderer(object):
 
         """
 
-        out = out if hasattr(out, 'write') else open(out, "w")
+        self.out = out if hasattr(out, 'write') else open(out, "w")
         # TODO: use a generator with indents
         try:
             # For Python >= 3.2
-            self._gen = XMLGenerator(out, 'utf-8', short_empty_elements=True)
+            self._gen = XMLGenerator(self.out, 'utf-8', short_empty_elements=True)
         except TypeError:
-            self._gen = XMLGenerator(out, 'utf-8')
+            self._gen = XMLGenerator(self.out, 'utf-8')
         self._g = Constants
 
     def _tag(self, tag, attribs=None):
@@ -216,7 +215,8 @@ class GrafRenderer(object):
         """
         tag = self._tag(self._g.ANNOTATION, {
             'label': a.label, 'ref': a.element.id,
-            self._g.ASET: None if a.aspace is None else a.aspace.name
+            #self._g.ASET: None if a.aspace is None else a.aspace.name
+            self._g.ASET: a.label, self._g.ID: a.id
         })
         with tag:
             self.render_fs(a.features)
@@ -262,9 +262,10 @@ class GrafRenderer(object):
 
         depends_on = header.depends_on
         if depends_on:
-            with self._tag(self._g.ROOTS):
+            #with self._tag(self._g.ROOTS):
+            with self._tag(self._g.DEPENDENCIES):
                 for dependency in depends_on:
-                    self._tag(self._g.DEPENDSON, {self._g.TYPE: dependency}).write()
+                    self._tag(self._g.DEPENDS_ON, {self._g.TYPE: dependency}).write()
 
         aspaces = graph.annotation_spaces
         if aspaces:
@@ -311,6 +312,9 @@ class GrafRenderer(object):
             # Render the edges
             for edge in g.edges:
                 self.render_edge(edge)
+
+        self._gen.endDocument()
+        self.out.close()
 
 
 class DocumentHeader(object):
