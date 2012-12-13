@@ -151,13 +151,13 @@ class GrafRenderer(object):
 
         """
 
-        out = out if hasattr(out, 'write') else open(out, "w")
+        self.out = out if hasattr(out, 'write') else open(out, "w")
         # TODO: use a generator with indents
         try:
             # For Python >= 3.2
-            self._gen = XMLGenerator(out, 'utf-8', short_empty_elements=True)
+            self._gen = XMLGenerator(self.out, 'utf-8', short_empty_elements=True)
         except TypeError:
-            self._gen = XMLGenerator(out, 'utf-8')
+            self._gen = XMLGenerator(self.out, 'utf-8')
         self._g = Constants
 
     def _tag(self, tag, attribs=None):
@@ -246,7 +246,7 @@ class GrafRenderer(object):
         header = g.header
         with self._tag(self._g.HEADER):
             self.render_tag_usage(g)
-            self.write_header_elements(graph, header)
+            self.write_header_elements(g, header)
 
     def write_header_elements(self, graph, header):
         """
@@ -262,7 +262,7 @@ class GrafRenderer(object):
         if depends_on:
             with self._tag(self._g.DEPENDENCIES):
                 for dependency in depends_on:
-                    self._tag(self._g.DEPENDSON, {self._g.TYPE: dependency}).write()
+                    self._tag(self._g.DEPENDS_ON, {self._g.TYPE: dependency}).write()
 
         aspaces = graph.annotation_spaces
         if aspaces:
