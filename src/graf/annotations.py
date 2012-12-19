@@ -87,12 +87,18 @@ class AnnotationList(object):
         return ann
 
     def select(self, label=None, fs=None, aspace=None):
-        """Generates C{Annotation} objects having the given label and features subsumed by the given C{FeatureStructure}.
+        """Generates Annotation objects having the given label and features
+        subsumed by the given FeatureStructure.
 
-        :param label: str
-        :param fs: FeatureStructure
-        :param aspace: an AnnotationSpace name
-        :return: Annotation
+        Parameters
+        ----------
+        label : str
+        fs : FeatureStructure
+        aspace : an AnnotationSpace name
+
+        Returns
+        -------
+        gen : generator of Annotation
         """
         filters = self._build_filters(label, fs, aspace)
         return (ann for ann in self._elements if all(fn(ann) for fn in filters))
@@ -117,7 +123,7 @@ class AnnotationList(object):
 
     def get_first(self, label=None, fs=None, aspace=None):
         try:
-            return self.select(label, fs, aspace).next()
+            return next(self.select(label, fs, aspace))
         except StopIteration:
             raise ValueError('No annotations match those criteria')
 
