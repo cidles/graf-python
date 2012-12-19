@@ -506,7 +506,8 @@ class GraphHandler(SAXHandler):
         else:
             aspace = self.graph.annotation_spaces[aspace]
 
-        self._cur_annot = Annotation(attribs[self._g.LABEL])
+        id_ = attribs.get(self._g.ID, None)
+        self._cur_annot = Annotation(attribs[self._g.LABEL], id = id_)
         element = self.graph.get_element(attribs[self._g.REF])
         element.annotations.add(self._cur_annot)
         aspace.add(self._cur_annot)
