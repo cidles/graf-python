@@ -6,17 +6,22 @@
 # Author: António Lopes <alopes@cidles.eu>
 # URL: <http://www.cidles.eu/ltll/poio>
 # For license information, see LICENSE.TXT
-"""
-This module contains tests for graf.graphs
+"""This module contains the tests to the class
+AnnotationSpace, Edge, Graph, Node and Region.
+
+This test serves to ensure the viability of the
+methods of the classes.
 """
 
-from graf import Graph, AnnotationSpace, Node, Edge, Region
+from graf import Graph, AnnotationSpace, Annotation, Node, Edge, Region
 
 class TestGraph:
     """
-    This class contain the test methods if the class Graph.
+    This class contains the test methods that influence
+    the creation of the members in a GrAF.
 
     """
+
     def setUp(self):
         self.graph = Graph()
 
@@ -157,3 +162,52 @@ class TestGraph:
         assert(list(n2.iter_parents()) == [n1])
         assert(list(n3.iter_parents()) == [n1])
         assert(list(n4.iter_parents()) == [n3])
+
+    def test_verify_annotation_existence(self):
+        """ Verification if the same annotation is parsed
+        more then one time. The same annotation can only
+        exist and allowed to be added one time.
+
+        """
+
+        node = Node('test_node')
+        annotation_1 = Annotation('annotation_value', None, 'id-1')
+        # Same id
+        annotation_2 = Annotation('annotation_value', None, 'id-1')
+
+        # Add the first node
+        node.annotations.add(annotation_1)
+
+        # Try to add again the same annotation
+        node.annotations.add(annotation_2)
+
+        self.graph.nodes.add(node)
+
+        expected_result = 1
+        element = self.graph.get_element('test_node')
+
+        assert(len(element.annotations) == expected_result)
+
+    def test_verify_edge_existence(self):
+        """ Verification if the same edge is parsed
+        more then one time. The same edge can only
+        exist and allowed to be added one time.
+
+        """
+
+        # Test values
+        fnode = Node('node_1') # From Node
+        tnode = Node('node_2') # To Node
+
+        edge_1 = Edge('id_test', fnode, tnode)
+        # Same id
+        edge_2 = Edge('id_test', fnode, tnode)
+
+        self.graph.nodes.add(fnode)
+        self.graph.nodes.add(tnode)
+        self.graph.edges.add(edge_1)
+
+        # Try to add again the edge annotation
+        self.graph.edges.add(edge_2)
+
+        assert(len(self.graph.edges) == 1)

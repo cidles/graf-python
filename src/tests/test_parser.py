@@ -7,14 +7,12 @@
 # URL: <http://www.cidles.eu/ltll/poio>
 # For license information, see LICENSE.TXT
 """This module contains the tests to the class
-PyGraphParser in module PyGraphParser.
+GraphParser.
 
 This test serves to ensure the viability of the
-methods of the class PyGraphParser in PyGraphParser.py.
+methods of the class GraphParser in io module.
 """
 
-import sys
-import codecs
 import os
 
 from graf import GraphParser

@@ -45,6 +45,9 @@ class Annotation(object):
     def __repr__(self):
         return "Annotation(%r, %r)" % (self.label, self.id)
 
+    def __eq__(self, id):
+        return self.id == id
+
     #TODO: perhaps delegate __*item__, etc. methods to features
 
 
@@ -71,8 +74,10 @@ class AnnotationList(object):
         """Adds a C{Annotation} to this C{AnnotationSpace}.
         :param a: Annotation
         """
-        self._elements.append(ann)
-        self._set_owner(ann)
+
+        if ann not in self._elements:
+            self._elements.append(ann)
+            self._set_owner(ann)
 
     def create(self, label):
         """Creates a new annotation with specified label, adds it
