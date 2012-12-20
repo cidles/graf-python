@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<graph xmlns="http://www.xces.org/ns/GrAF/1.0/"><graphHeader><labelsDecl><labelUsage occurs="1" gi="Annotation_label"></labelUsage></labelsDecl></graphHeader><node xml:id="node_one"></node><a label="Annotation_label" xml:id="annotation-1" ref="node_one" as="Annotation_label"></a></graph>
