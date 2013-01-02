@@ -3,8 +3,6 @@
 # Copyright (C) 2001-2010 NLTK Project
 # Author: Keith Suderman <suderman@cs.vassar.edu> (Original API)
 #         Stephen Matysik <smatysik@gmail.com> (Conversion to Python)
-#         Antonio Lopes <alopes@cidles.eu> (Edited and Updated to
-#         Python 3 and added new functionalites)
 # URL: <http://www.nltk.org/>
 # For license information, see LICENSE.TXT
 #
@@ -22,7 +20,6 @@ from graf.annotations import Annotation, AnnotationSpace, FeatureStructure
 from graf.graphs import Edge, Graph, Node, Link, StandoffHeader
 from graf.io import GraphParser, GrafRenderer
 from graf.util import *
-
 
 __all__ = [
     'Annotation',
