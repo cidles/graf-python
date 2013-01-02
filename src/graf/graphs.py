@@ -104,6 +104,10 @@ class Graph(object):
         self.header = StandoffHeader()
         self.annotation_spaces = GraphASpaces(self.header.add_annotation_space)
 
+        # List that will contain additional/extra information
+        # to the graph source/origins
+        self.additional_information = []
+
     def create_edge(self, from_node=None, to_node=None, id=None):
         """Create C{Edge} from id, from_node, to_node and add it to
         this C{Graph}.
