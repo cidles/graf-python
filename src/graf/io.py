@@ -149,7 +149,7 @@ class GrafRenderer(object):
 
         """
 
-        self.out = out if hasattr(out, 'write') else open(out, "w")
+        self.out = out if hasattr(out, 'write') else codecs.open(out, "w")
         # TODO: use a generator with indents
         try:
             # For Python >= 3.2
