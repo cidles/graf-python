@@ -585,7 +585,8 @@ class GraphParser(object):
 
         def do_parse(stream, graph):
             parser = make_parser()
-            handler = GraphHandler(parser, graph, parse_dependency, parse_anchor=self._parse_anchor, constants=self._g)
+            handler = GraphHandler(parser, graph, parse_dependency,
+                parse_anchor=self._parse_anchor, constants=self._g)
             parser.setContentHandler(handler)
             parser.parse(stream)
 
@@ -600,6 +601,8 @@ class GraphParser(object):
 
         parsed_deps = set()
 
+        parsed_files_dict = dict()
+
         extension = os.path.splitext(stream.name)[1][1:]
 
         if extension == 'hdr':
@@ -612,7 +615,13 @@ class GraphParser(object):
 
             # Get the files to look for
             for annotation in annotatios_files:
-                loc = annotation.getAttribute('loc') # File name
+                loc = annotation.getAttribute('loc')
+                fid = annotation.getAttribute('f.id')
+
+                if fid in parsed_files_dict.keys():
+                    continue
+                else:
+                    parsed_files_dict[fid] = loc
 
                 if self._get_dep:
                     get_dependency = self._get_dep
