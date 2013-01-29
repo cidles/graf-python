@@ -54,3 +54,10 @@ class TestGraphParser:
         #print(len(g.nodes))
         expected_result = 618
         assert(len(g.nodes) == expected_result)
+
+        # Check the parsed dependencies
+        expected_parsed_deps = set(['word', 'clause_unit', 'utterance'])
+
+        parsed_dependencies = self.gparser._parsed_deps
+
+        assert(parsed_dependencies == expected_parsed_deps)

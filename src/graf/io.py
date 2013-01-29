@@ -568,7 +568,7 @@ class GraphParser(object):
         self._g = constants
         self._get_dep = get_dependency
         self._parse_anchor = parse_anchor
-
+        self._parsed_deps = None
 
     def parse(self, stream, graph=None):
         """Parses the XML file at the given path.
@@ -618,10 +618,8 @@ class GraphParser(object):
                 loc = annotation.getAttribute('loc')
                 fid = annotation.getAttribute('f.id')
 
-                if fid in parsed_files_dict.keys():
+                if fid in parsed_deps:
                     continue
-                else:
-                    parsed_files_dict[fid] = loc
 
                 if self._get_dep:
                     get_dependency = self._get_dep
@@ -629,7 +627,7 @@ class GraphParser(object):
                     header = DocumentHeader(os.path.abspath(os.path.join(dirname, loc)))
 
                     def get_dependency(name):
-                        return open_file_for_parse(os.path.join(dirname, loc))
+                        return open_file_for_parse(header.get_location(name))
 
                 if graph is None:
                     graph = Graph()
@@ -649,6 +647,8 @@ class GraphParser(object):
                 graph = Graph()
 
             do_parse(stream, graph)
+
+        self._parsed_deps = parsed_deps
 
         return graph
 
