@@ -73,9 +73,9 @@ class AnnotationList(object):
         :param a: Annotation
         """
 
-        if ann not in self._elements:
-            self._elements.append(ann)
-            self._set_owner(ann)
+        #if ann not in self._elements:
+        self._elements.append(ann)
+        self._set_owner(ann)
 
     def create(self, label):
         """Creates a new annotation with specified label, adds it
