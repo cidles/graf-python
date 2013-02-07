@@ -6,8 +6,6 @@
 Welcome to graf-python's documentation!
 =======================================
 
-This document has the purpose present the documentation modules and tests that the project graf-python has.
-
 **Contents**
 
 .. toctree::
