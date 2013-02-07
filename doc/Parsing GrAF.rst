@@ -8,11 +8,13 @@ The first step is to initialize the parser:
     import graf
     gparser = graf.GraphParser()
 
-Like it was said before to parse a file or it is a header file (extension .hdr) or it is one of the dependent files (file with the suffix e.g. 'file-verb.xml'). You can directly pass the filename to the parser:
+ You can then directly pass the filename of the GrAF header to the parser:
 
 .. code-block:: python
 
     graph = gparser.parse("filename.hdr")
+
+The parser then collects all the dependencies from this header. You might also pass the file name of any GrAF/XML file to the parser. The parser then loads all files that are dependencies of that file as described in its header.
 
 Alternativily the parser also accepts and open file stream. Now we have a GrAF object and it is possible to verify the nodes, regions, edges and their respectives annotations.
 
