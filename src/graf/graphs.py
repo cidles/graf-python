@@ -106,7 +106,7 @@ class Graph(object):
 
         # List that will contain additional/extra information
         # to the graph source/origins
-        self.additional_information = []
+        self.additional_information = {}
 
     def create_edge(self, from_node=None, to_node=None, id=None):
         """Create C{Edge} from id, from_node, to_node and add it to
