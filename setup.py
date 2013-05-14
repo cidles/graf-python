@@ -21,7 +21,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = "graf-python",
-    description = "Python GrAF API",
+    description = "Python implementation of the Graph Annotation Framework (GrAF)",
     version = grafpython_version,
     url = "https://github.com/cidles/graf-python",
     download_url = "https://s3.amazonaws.com/cidles/downloads/graf-python/graf-python-{0}.tar.gz".format(grafpython_version),
