@@ -1,4 +1,8 @@
+0.2.1:
+*
+
 0.2.0:
 * complete rewrite of the library
+
 0.1.2:
 * VERSION file included now in dist package
