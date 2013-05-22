@@ -59,13 +59,18 @@ class GraphEdges(IdDict):
 
 
 class GraphNodes(IdDict):
-    __slots__ = ()
+    __slots__ = ('_order',)
+
+    def __init__(self):
+        IdDict.__init__(self)
+        self._order = list()
 
     def add(self, obj):
         """Adds the given node or creates one with the given id"""
         if isinstance(obj, string_type):
             obj = Node(obj)
         IdDict.add(self, obj)
+        self._order.append(obj.id)
         return obj
 
     def get_or_create(self, id):
@@ -74,6 +79,9 @@ class GraphNodes(IdDict):
         else:
             return self.add(id)
 
+    def iter_ordered(self):
+        for id in self._order:
+            yield self[id]
 
 class GraphASpaces(IdDict):
     __slots__ = ('_add_hook',)
