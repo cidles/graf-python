@@ -16,6 +16,11 @@ larger graphs as needed.
 """
 
 import sys
+import datetime
+import getpass
+import random
+
+from xml.etree.ElementTree import Element, SubElement, tostring
 
 from graf.annotations import FeatureStructure, AnnotationList, AnnotationSpace
 
@@ -101,7 +106,7 @@ class Graph(object):
         self.edges = GraphEdges()
         self.regions = IdDict()
         self.content = None
-        self.header = StandoffHeader()
+        self.header = GraphHeader()
         self.annotation_spaces = GraphASpaces(self.header.add_annotation_space)
 
         # List that will contain additional/extra information
@@ -390,14 +395,14 @@ class Link(list):
         super(Link, self).__init__(vals)
 
 
-class StandoffHeader(object):
+class GraphHeader(object):
     def __init__(self):
         self.annotation_spaces = {}
         self.depends_on = []
         self.roots = []
 
     def __repr__(self):
-        return "StandoffHeader"
+        return "GraphHeader"
 
     def add_annotation_space(self, aspace):
         self.annotation_spaces[aspace.as_id] = aspace
@@ -407,3 +412,99 @@ class StandoffHeader(object):
 
     def clear_roots(self):
         del self.roots[:]
+
+class StandoffHeader(object):
+
+
+    def __init__(self):
+        # Get the actual date hour time
+        now = datetime.datetime.now()
+
+        # Start the Header file
+        element_tree = Element('documentHeader',
+                {"xmlns":"http://www.xces.org/ns/GrAF/1.0/",
+                 "xmlns:xlink":"http://www.w3.org/1999/xlink",
+                 "docID":"PoioAPI-"+str(random.randint(1, 1000000)),
+                 "version":self.version,
+                 "date.created":now.strftime("%Y-%m-%d")})
+
+    def __repr__(self):
+        return "StandoffHeader"
+
+
+class FileDesc(object):
+
+    def __init__(self, filename, unit, unitcount, title, author,
+                 sourcetype, sourcename, distributor, publisher,
+                 pubAddress, eAddress, idno, pubName = None, documentation = None):
+
+        now = datetime.datetime.now()
+
+        # Branch fileDesc
+        fileDesc = Element('fileDesc')
+
+        fileName = SubElement(fileDesc, 'fileName')
+        fileName.text = filename
+
+        SubElement(fileDesc, 'extent',  {"unit":unit, "count":str(unitcount)})
+
+        # Required
+        sourceDesc = SubElement(fileDesc, "sourceDesc")
+        if title is not None:
+            fileName = SubElement(sourceDesc, 'title')
+            fileName.text = title
+
+        author_el = SubElement(sourceDesc, "author", {"age":author['age'],
+                                                   "sex":author['sex']})
+        author_el.text = author['name']
+
+        # Required
+        source = SubElement(sourceDesc, "source", {"type":sourcetype})
+        source.text = sourcename
+
+        if distributor != '':
+            distributor = SubElement(sourceDesc, "distributor")
+            distributor.text = distributor
+
+        # Required if there's no name the value should be self
+        publisher_el = SubElement(sourceDesc, "publisher")
+        publisher_el.text = publisher
+
+        if pubAddress != '':
+            pubAddress = SubElement(sourceDesc, "pubAddress")
+            pubAddress.text = pubAddress
+
+        # It's required but not mandatory
+        if eAddress is not None:
+            eAddress_el = SubElement(sourceDesc, "eAddress",
+                    {"type":eAddress['type']})
+            eAddress_el.text = eAddress['text']
+
+        # Should use the ISO 8601 format YYYY-MM-DD
+        pubDate = now.strftime("%Y-%m-%d")
+        SubElement(sourceDesc, "pubDate", {"iso8601":pubDate})
+
+        # Required
+        idno_el = SubElement(sourceDesc, "idno", {"type":idno['type']})
+        idno_el.text = idno['text']
+
+        if pubName is not None:
+            pubName = SubElement(sourceDesc, "pubName", {"type":pubName['type']})
+            pubName.text = pubName['text']
+
+        if documentation is not None:
+            documentation = SubElement(sourceDesc, "documentation")
+            documentation.text = documentation
+
+    def __repr__(self):
+        return "FileDesc"
+
+
+class ProfileDesc(object):
+    def __repr__(self):
+        return "ProfileDesc"
+
+
+class DataDesc(object):
+    def __repr__(self):
+        return "DataDesc"

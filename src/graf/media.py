@@ -59,12 +59,14 @@ class Region(object):
 
     def _get_end(self):
         return self.anchors[-1]
+
     def _set_end(self, val):
         self.anchors[-1] = val
     end = property(_get_end, _set_end)
     
     def _get_start(self):
         return self.anchors[0]
+
     def _set_start(self, val):
         self.anchors[0] = val
     start = property(_get_start, _set_start)
