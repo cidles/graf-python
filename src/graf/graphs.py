@@ -405,6 +405,12 @@ class Link(list):
 
 
 class GraphHeader(object):
+    """
+    Class that represents the graphHeader of each
+    GrAF file.
+
+    """
+
     def __init__(self):
         self.annotation_spaces = {}
         self.depends_on = []
@@ -422,19 +428,50 @@ class GraphHeader(object):
     def clear_roots(self):
         del self.roots[:]
 
-class StandoffHeader(object):
 
-    def __init__(self, version, filedesc, profiledesc, dataDesc):
+class StandoffHeader(object):
+    """
+    Class that represents the primary data document header.
+    The construction of the file is based in the
+    ISO 24612.
+
+    """
+
+    def __init__(self, version, filedesc, profiledesc, datadesc):
+        """Class's constructor.
+
+        Parameters
+        ----------
+        version : str
+            Version of the document header file.
+        filedesc : ElementTree
+            Element with the description of the file.
+        profiledesc : ElementTree
+            Element with the description of the source file.
+        datadesc : ElementTree
+            Element with the description of the annotations.
+
+        """
+
         self.version = version
         self.filedesc = filedesc
         self.profiledesc = profiledesc
-        self.datadesc = dataDesc
+        self.datadesc = datadesc
 
     def create_element(self):
+        """Create an Element Tree.
+
+        Returns
+        -------
+        documentheader : ElementTree
+            Primary element of the primary data document header.
+
+        """
+
         now = datetime.datetime.now()
         pubDate = now.strftime("%Y-%m-%d")
 
-        element_tree = Element('documentHeader',
+        documentheader = Element('documentHeader',
                 {"xmlns":"http://www.xces.org/ns/GrAF/1.0/",
                  "xmlns:xlink":"http://www.w3.org/1999/xlink",
                  "docID":"PoioAPI-"+str(random.randint(1, 1000000)),
@@ -442,168 +479,295 @@ class StandoffHeader(object):
                  "creator":getpass.getuser(),
                  "date.created":pubDate})
 
-        element_tree.append(self.filedesc.create_element())
-        element_tree.append(self.profiledesc.create_element())
-        element_tree.append(self.datadesc.create_element())
+        filedesc = self.filedesc.create_element()
+        profiledesc = self.profiledesc.create_element()
+        datadesc = self.datadesc.create_element()
 
-        return element_tree
+        profiledesc.append(datadesc)
+
+        documentheader.append(filedesc)
+        documentheader.append(profiledesc)
+
+        return documentheader
 
     def __repr__(self):
         return "StandoffHeader"
 
     def write_file_header(self, outputfile):
-        element_tree = self.create_element()
+        """Write primary data document header.
+
+        Parameters
+        ----------
+        outputfile : str
+            Path of the outputfile.
+
+        """
+
+        documentheader = self.create_element()
 
         file = open(outputfile,'wb')
-        doc = minidom.parseString(tostring(element_tree))
+        doc = minidom.parseString(tostring(documentheader))
         file.write(doc.toprettyxml(indent='  ', encoding='utf-8'))
         file.close()
 
-    def update_header(self):
+    def update_header(self, filename):
+        """Updated the documentheader element every time
+        something change in a existing file.
+
+        Parameters
+        ----------
+        filename : str
+            Path of the filename.
+
+        """
+
+        pass
+
+    def add_revision(self):
         pass
 
 class FileDesc(object):
+    """
+    Class that represents the descriptions of the file
+    containing the primary data document.
 
-    def __init__(self, filename, extent = None, source = None,
-                 idno = None, author = None, title = None, distributor = None,
-                 publisher = "self", pubAddress = None, eAddress = None,
-                 pubName = None, pubDate = None, documentation = None):
+    """
+
+    def __init__(self, filename, **kwargs):
+        """Class's constructor.
+
+        Parameters
+        ----------
+        filename : str
+            Name of the file containing the primary data
+            document.
+        extent : dict
+            Size of the resource. The keys are 'count' -
+            Value expressing the size. And 'unit' - Unit
+            in which the size of the resource is expressed.
+            Both keys are mandatory.
+        title : str
+            Title of the primary data document.
+        author : dict
+            Author of the primary data document. The keys
+            are 'age' and 'sex'.
+        source : dict
+            Source from which the primary data was obtained.
+            The keys are 'type' - Role or type the source
+            with regard to the document. And 'source'. Both
+            keys are mandatory.
+        distributor : str
+            Distributor of the primary data (if different
+            from source).
+        publisher : str
+            Publisher of the source.
+        pubAddress : str
+            Address of publisher.
+        eAddress : dict
+            Email address, URL, etc. of publisher. The keys
+            are 'email' and 'type' - Type of electronic
+            address, such as email or URL. Both keys are
+            mandatory.
+        pubDate : str
+            Date of original publication. Should use the
+            ISO 8601 format YYYY-MM-DD.
+        idno : dict
+            Identification number for the document. The keys
+            are 'number' and 'type' - Type of the identification
+            number (e.g. ISBN). Both keys are mandatory.
+        pubName : str
+            Name of the publication in which the primary data was
+            originally published (e.g. journal in which it appeared).
+        documentation : str
+            PID where documentation concerning the data may be found.
+
+        """
+
         self.filename = filename
-        self.extent = extent
-        self.title = title
-        self.source = source
-        self.distributor = distributor
-        self.publisher = publisher
-        self.pubAddress = pubAddress
-        self.eAddress = eAddress
-        self.idno = idno
-        self.pubDate = pubDate
-        self.pubName = pubName
-        self.documentation = documentation
-        self.author = author
+        self._element_map = kwargs
 
     def create_element(self):
+        """Create an Element Tree.
 
-        # Branch fileDesc
+        Returns
+        -------
+        fileDesc : ElementTree
+            Element with the descriptions of the primary file.
+
+        """
+
         fileDesc = Element('fileDesc')
 
         fileName = SubElement(fileDesc, 'fileName')
         fileName.text = self.filename
 
-        if self.extent is not None:
-            SubElement(fileDesc, 'extent',  {"unit":self.extent['unit'],
-                                             "count":self.extent['count']})
+        extent = self._get_key_value('extent')
+        if extent:
+            SubElement(fileDesc, 'extent',  {"unit":extent['unit'],
+                                             "count":extent['count']})
 
         sourceDesc = SubElement(fileDesc, "sourceDesc")
 
-        if self.title is not None:
-            fileName = SubElement(sourceDesc, 'title')
-            fileName.text = self.title
+        if self._get_key_value('title'):
+            title_el = SubElement(sourceDesc, 'title')
+            title_el.text = self._get_key_value('title')
 
-        if self.author is not None:
-            if 'age' in self.author:
-                aut = {"age":self.author['age']}
-            if 'sex' in self.author:
-                aut = {"sex":self.author['sex']}
+        author = self._get_key_value('author')
+        if author:
+            if 'age' in author:
+                aut = {"age":author['age']}
+            if 'sex' in author:
+                aut = {"sex":author['sex']}
 
-            author = SubElement(sourceDesc, "author", aut)
-            author.text = self.author['name']
+            author_el = SubElement(sourceDesc, "author", aut)
+            author_el.text = author['name']
 
-        # Required
-        if self.source is not None:
-            source = SubElement(sourceDesc, "source", {"type":self.source['type']})
-            source.text = self.source['text']
+        source = self._get_key_value('source')
+        if source:
+            source_el = SubElement(sourceDesc, "source",
+                    {"type":source['type']})
+            source_el.text = source['source']
 
-        if self.distributor is not None:
+        if self._get_key_value('distributor'):
             distributor = SubElement(sourceDesc, "distributor")
-            distributor.text = self.distributor
+            distributor.text = self._get_key_value('distributor')
 
-        # Required if there's no name the value should be self
         publisher = SubElement(sourceDesc, "publisher")
-        publisher.text = self.publisher
+        if self._get_key_value('publisher'):
+            publisher.text = self._get_key_value('publisher')
+        else:
+            publisher.text = "self"
 
-        if self.pubAddress is not None:
+        if self._get_key_value('pubAddress'):
             pubAddress = SubElement(sourceDesc, "pubAddress")
-            pubAddress.text = self.pubAddress
+            pubAddress.text = self._get_key_value('pubAddress')
 
-        # It's required but not mandatory
-        if self.eAddress is not None:
-            eAddress = SubElement(sourceDesc, "eAddress",
-                    {"type":self.eAddress['type']})
-            eAddress.text = self.eAddress['text']
+        eAddress = self._get_key_value('eAddress')
+        if eAddress:
+            eAddress_el = SubElement(sourceDesc, "eAddress",
+                    {"type":eAddress['type']})
+            eAddress_el.text = eAddress['email']
 
-        # Should use the ISO 8601 format YYYY-MM-DD
-        if self.pubDate:
-            SubElement(sourceDesc, "pubDate", {"iso8601":self.pubDate})
+        if self._get_key_value('pubDate'):
+            SubElement(sourceDesc, "pubDate",
+                    {"iso8601":self._get_key_value('pubDate')})
 
-        # Required
-        if self.idno is not None:
-            idno = SubElement(sourceDesc, "idno", {"type":self.idno['type']})
-            idno.text = self.idno['text']
+        idno = self._get_key_value('idno')
+        if idno:
+            idno_el = SubElement(sourceDesc, "idno", {"type":idno['type']})
+            idno_el.text = idno['number']
 
-        if self.pubName is not None:
-            pubName = SubElement(sourceDesc, "pubName", {"type":self.pubName['type']})
-            pubName.text = self.pubName['text']
+        pubName = self._get_key_value('pubName')
+        if pubName:
+            pubName_el = SubElement(sourceDesc, "pubName",
+                    {"type":pubName['type']})
+            pubName_el.text = pubName['text']
 
-        if self.documentation is not None:
+        if self._get_key_value('documentation'):
             documentation = SubElement(sourceDesc, "documentation")
-            documentation.text = self.documentation
+            documentation.text = documentation
 
         return fileDesc
 
     def __repr__(self):
         return "FileDesc"
 
+    def _get_key_value(self, key):
+        if key in self._element_map:
+            return self._element_map[key]
+
+        return None
+
 
 class ProfileDesc(object):
+    """
+    Class that represents the descriptions of the file
+    containing the primary data document.
 
-    def __init__(self, catRef = None, participants = None, subject = None,
-                 domain = None, subdomain = None, languages = None,
-                 settings = None):
-        self.catRef = catRef
-        self.subject = subject
-        self.domain = domain
-        self.subdomain = subdomain
-        self.languages = languages
-        self.participants = participants
-        self.settings = settings
+    """
+
+    def __init__(self, **kwargs):
+        """Class's constructor.
+
+        Parameters
+        ----------
+        catRef : str
+            One or more categories defined in the resource
+            header.
+        subject : str
+            Topic of the primary data.
+        domain : str
+            Primary domain of the data.
+        subdomain : str
+            Subdomain of the data.
+        languages : array_like
+            Array that contains the codes of the language(s)
+            of the primary data. The code should be in the
+            ISO 639.
+        participants : array_like
+            Array that contains the participants in an
+            interaction. Each person is a dict element and
+            the keys are 'age', 'sex', 'role' and 'id' -
+            Identifier for reference from annotation documents.
+            The 'id' key is mandatory.
+        settings : array_like
+            Array that contains the settings within which a
+            language interaction takes place. Each settings is
+            a dictionary and the keys are 'who', 'time', 'activity'
+            and 'locale'.
+
+        """
+
+        self._element_map = kwargs
 
     def create_element(self):
-        # Branch profileDesc
+        """Create an Element Tree.
+
+        Returns
+        -------
+        profileDesc : ElementTree
+            Element with the descriptions of the source file.
+
+        See Also
+        --------
+        add_language, add_participant, add_setting
+
+        """
+
         profileDesc = Element("profileDesc")
 
-        if self.languages is not None:
+        if self._get_key_value('languages'):
             langUsage = SubElement(profileDesc, "langUsage")
 
-            for language in self.languages:
-                SubElement(langUsage, "language", {"iso639":language}) # Use ISO 639
+            for language in self._get_key_value('languages'):
+                SubElement(langUsage, "language", {"iso639":language})
 
-        textClass = SubElement(profileDesc, "textClass",
-                {"catRef":self.catRef})
+        if self._get_key_value('catRef'):
+            textClass = SubElement(profileDesc, "textClass",
+                    {"catRef":self._get_key_value('catRef')})
 
-        if self.subject is not None:
-            subject_el = SubElement(textClass, "subject")
-            subject_el.text = self.subject
+            if self._get_key_value('subject'):
+                subject_el = SubElement(textClass, "subject")
+                subject_el.text = self._get_key_value('subject')
 
-        if self.domain is not None:
-            domain = SubElement(textClass, "domain")
-            domain.text = self.domain
+            if self._get_key_value('domain'):
+                domain = SubElement(textClass, "domain")
+                domain.text = self._get_key_value('domain')
 
-        if self.subdomain is not None:
-            subdomain = SubElement(textClass, "subdomain")
-            subdomain.text = self.subdomain
+            if self._get_key_value('subdomain'):
+                subdomain = SubElement(textClass, "subdomain")
+                subdomain.text = self._get_key_value('subdomain')
 
-        # Required at least one person
-        if self.participants is not None:
+        if self._get_key_value('participants'):
             particDesc = SubElement(profileDesc, "particDesc") # Required
 
-            for participant in self.participants:
+            for participant in self._get_key_value('participants'):
                 SubElement(particDesc, "person", participant)
 
-        if self.settings is not None:
+        if self._get_key_value('settings'):
             settingDesc = SubElement(profileDesc, "settingDesc")
 
-            for sett in self.settings:
+            for sett in self._get_key_value('settings'):
                 setting = SubElement(settingDesc, "setting",
                         {"who":sett['who']})
 
@@ -705,14 +869,56 @@ class ProfileDesc(object):
         self.settings.append({'who':who, 'time':time, 'activity':activity,
                               'locale':locale})
 
+    def _get_key_value(self, key):
+        if key in self._element_map:
+            return self._element_map[key]
+
+        return None
+
 
 class DataDesc(object):
+    """
+    Class that represents the annotations to the document associated
+    with the primary data document this header describes.
 
-    def __init__(self, primaryData, annotations_list = None):
+    """
+
+    def __init__(self, primaryData):
+        """Class's constructor.
+
+        Parameters
+        ----------
+        primaryData : dict
+            Provides the location of the primary data
+            document. The keys are 'loc' - relative
+            path or PID of the primary data document,
+            'loctype' - Indicates whether the primary
+            data path is a fully specified path (PID)
+            or a path relative to the location of
+            this header file, the default is 'relative',
+            the other option is 'URL'. The other key is
+            'f.id' - File type via reference to definition
+            in the resource header. All keys are mandatory.
+
+        """
+
         self.primaryData = primaryData
-        self.annotations_list = annotations_list
+        self.annotations_list = None
 
     def create_element(self):
+        """Create an Element Tree.
+
+        Returns
+        -------
+        dataDesc : ElementTree
+            Element with the descriptions of the annotation
+            files.
+
+        See Also
+        --------
+        add_annotation
+
+        """
 
         dataDesc = Element("dataDesc")
 
@@ -760,11 +966,41 @@ class DataDesc(object):
                                           'f.id':fid})
 
 class RevisonDesc():
+    """
+    Class that represents the changes made in a specific
+    of the primary data document header.
+
+    """
 
     def __init__(self, changes = None):
+        """Class's constructor.
+
+        Parameters
+        ----------
+        changes : array_like
+            Array that contains a list of changes. Each
+            change is a dictionary. The keys are
+            'changedate', 'respname' and 'item': All keys
+            are mandatory.
+
+        """
+
         self.changes = changes
 
     def create_element(self):
+        """Create an Element Tree.
+
+        Returns
+        -------
+        revisionDesc : ElementTree
+            Element with the revisions of the changes in
+            the file.
+
+        See Also
+        --------
+        add_change
+
+        """
 
         revisionDesc = Element("revisionDesc")
 
