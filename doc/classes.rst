@@ -15,3 +15,7 @@ graf-python Classes
    Node
    Region
    StandoffHeader
+   FileDesc
+   ProfileDesc
+   DataDesc
+   RevisionDesc
