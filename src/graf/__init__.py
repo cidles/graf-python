@@ -29,8 +29,12 @@ __all__ = [
     'GrafRenderer',
     'Graph'
     'GraphParser',
+    'GraphHeader',
     'Link',
     'Node',
     'Region',
-    'GraphHeader',
+    'StandoffHeader',
+    'FileDesc',
+    'ProfileDesc',
+    'DataDesc',
 ]

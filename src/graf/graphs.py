@@ -21,6 +21,7 @@ import getpass
 import random
 
 from xml.etree.ElementTree import Element, SubElement, tostring
+from xml.dom import minidom
 
 from graf.annotations import FeatureStructure, AnnotationList, AnnotationSpace
 
@@ -423,96 +424,386 @@ class GraphHeader(object):
 
 class StandoffHeader(object):
 
+    def __init__(self, version, filedesc, profiledesc, dataDesc):
+        self.version = version
+        self.filedesc = filedesc
+        self.profiledesc = profiledesc
+        self.datadesc = dataDesc
 
-    def __init__(self):
-        # Get the actual date hour time
+    def create_element(self):
         now = datetime.datetime.now()
+        pubDate = now.strftime("%Y-%m-%d")
 
-        # Start the Header file
         element_tree = Element('documentHeader',
                 {"xmlns":"http://www.xces.org/ns/GrAF/1.0/",
                  "xmlns:xlink":"http://www.w3.org/1999/xlink",
                  "docID":"PoioAPI-"+str(random.randint(1, 1000000)),
                  "version":self.version,
-                 "date.created":now.strftime("%Y-%m-%d")})
+                 "creator":getpass.getuser(),
+                 "date.created":pubDate})
+
+        element_tree.append(self.filedesc.create_element())
+        element_tree.append(self.profiledesc.create_element())
+        element_tree.append(self.datadesc.create_element())
+
+        return element_tree
 
     def __repr__(self):
         return "StandoffHeader"
 
+    def write_file_header(self, outputfile):
+        element_tree = self.create_element()
+
+        file = open(outputfile,'wb')
+        doc = minidom.parseString(tostring(element_tree))
+        file.write(doc.toprettyxml(indent='  ', encoding='utf-8'))
+        file.close()
+
+    def update_header(self):
+        pass
 
 class FileDesc(object):
 
-    def __init__(self, filename, unit, unitcount, title, author,
-                 sourcetype, sourcename, distributor, publisher,
-                 pubAddress, eAddress, idno, pubName = None, documentation = None):
+    def __init__(self, filename, extent = None, source = None,
+                 idno = None, author = None, title = None, distributor = None,
+                 publisher = "self", pubAddress = None, eAddress = None,
+                 pubName = None, pubDate = None, documentation = None):
+        self.filename = filename
+        self.extent = extent
+        self.title = title
+        self.source = source
+        self.distributor = distributor
+        self.publisher = publisher
+        self.pubAddress = pubAddress
+        self.eAddress = eAddress
+        self.idno = idno
+        self.pubDate = pubDate
+        self.pubName = pubName
+        self.documentation = documentation
+        self.author = author
 
-        now = datetime.datetime.now()
+    def create_element(self):
 
         # Branch fileDesc
         fileDesc = Element('fileDesc')
 
         fileName = SubElement(fileDesc, 'fileName')
-        fileName.text = filename
+        fileName.text = self.filename
 
-        SubElement(fileDesc, 'extent',  {"unit":unit, "count":str(unitcount)})
+        if self.extent is not None:
+            SubElement(fileDesc, 'extent',  {"unit":self.extent['unit'],
+                                             "count":self.extent['count']})
 
-        # Required
         sourceDesc = SubElement(fileDesc, "sourceDesc")
-        if title is not None:
-            fileName = SubElement(sourceDesc, 'title')
-            fileName.text = title
 
-        author_el = SubElement(sourceDesc, "author", {"age":author['age'],
-                                                   "sex":author['sex']})
-        author_el.text = author['name']
+        if self.title is not None:
+            fileName = SubElement(sourceDesc, 'title')
+            fileName.text = self.title
+
+        if self.author is not None:
+            if 'age' in self.author:
+                aut = {"age":self.author['age']}
+            if 'sex' in self.author:
+                aut = {"sex":self.author['sex']}
+
+            author = SubElement(sourceDesc, "author", aut)
+            author.text = self.author['name']
 
         # Required
-        source = SubElement(sourceDesc, "source", {"type":sourcetype})
-        source.text = sourcename
+        if self.source is not None:
+            source = SubElement(sourceDesc, "source", {"type":self.source['type']})
+            source.text = self.source['text']
 
-        if distributor != '':
+        if self.distributor is not None:
             distributor = SubElement(sourceDesc, "distributor")
-            distributor.text = distributor
+            distributor.text = self.distributor
 
         # Required if there's no name the value should be self
-        publisher_el = SubElement(sourceDesc, "publisher")
-        publisher_el.text = publisher
+        publisher = SubElement(sourceDesc, "publisher")
+        publisher.text = self.publisher
 
-        if pubAddress != '':
+        if self.pubAddress is not None:
             pubAddress = SubElement(sourceDesc, "pubAddress")
-            pubAddress.text = pubAddress
+            pubAddress.text = self.pubAddress
 
         # It's required but not mandatory
-        if eAddress is not None:
-            eAddress_el = SubElement(sourceDesc, "eAddress",
-                    {"type":eAddress['type']})
-            eAddress_el.text = eAddress['text']
+        if self.eAddress is not None:
+            eAddress = SubElement(sourceDesc, "eAddress",
+                    {"type":self.eAddress['type']})
+            eAddress.text = self.eAddress['text']
 
         # Should use the ISO 8601 format YYYY-MM-DD
-        pubDate = now.strftime("%Y-%m-%d")
-        SubElement(sourceDesc, "pubDate", {"iso8601":pubDate})
+        if self.pubDate:
+            SubElement(sourceDesc, "pubDate", {"iso8601":self.pubDate})
 
         # Required
-        idno_el = SubElement(sourceDesc, "idno", {"type":idno['type']})
-        idno_el.text = idno['text']
+        if self.idno is not None:
+            idno = SubElement(sourceDesc, "idno", {"type":self.idno['type']})
+            idno.text = self.idno['text']
 
-        if pubName is not None:
-            pubName = SubElement(sourceDesc, "pubName", {"type":pubName['type']})
-            pubName.text = pubName['text']
+        if self.pubName is not None:
+            pubName = SubElement(sourceDesc, "pubName", {"type":self.pubName['type']})
+            pubName.text = self.pubName['text']
 
-        if documentation is not None:
+        if self.documentation is not None:
             documentation = SubElement(sourceDesc, "documentation")
-            documentation.text = documentation
+            documentation.text = self.documentation
+
+        return fileDesc
 
     def __repr__(self):
         return "FileDesc"
 
 
 class ProfileDesc(object):
+
+    def __init__(self, catRef = None, participants = None, subject = None,
+                 domain = None, subdomain = None, languages = None,
+                 settings = None):
+        self.catRef = catRef
+        self.subject = subject
+        self.domain = domain
+        self.subdomain = subdomain
+        self.languages = languages
+        self.participants = participants
+        self.settings = settings
+
+    def create_element(self):
+        # Branch profileDesc
+        profileDesc = Element("profileDesc")
+
+        if self.languages is not None:
+            langUsage = SubElement(profileDesc, "langUsage")
+
+            for language in self.languages:
+                SubElement(langUsage, "language", {"iso639":language}) # Use ISO 639
+
+        textClass = SubElement(profileDesc, "textClass",
+                {"catRef":self.catRef})
+
+        if self.subject is not None:
+            subject_el = SubElement(textClass, "subject")
+            subject_el.text = self.subject
+
+        if self.domain is not None:
+            domain = SubElement(textClass, "domain")
+            domain.text = self.domain
+
+        if self.subdomain is not None:
+            subdomain = SubElement(textClass, "subdomain")
+            subdomain.text = self.subdomain
+
+        # Required at least one person
+        if self.participants is not None:
+            particDesc = SubElement(profileDesc, "particDesc") # Required
+
+            for participant in self.participants:
+                SubElement(particDesc, "person", participant)
+
+        if self.settings is not None:
+            settingDesc = SubElement(profileDesc, "settingDesc")
+
+            for sett in self.settings:
+                setting = SubElement(settingDesc, "setting",
+                        {"who":sett['who']})
+
+                time = SubElement(setting, "time")
+                time.text = sett['time']
+
+                activity = SubElement(setting, "activity")
+                activity.text = sett['activity']
+
+                locale = SubElement(setting, "locale")
+                locale.text = sett['locale']
+
+        return profileDesc
+
     def __repr__(self):
         return "ProfileDesc"
 
+    def add_language(self, language_code):
+        """This method is responsible to add the
+        annotations to the list of languages.
+
+        The language list in this class will
+        represents the language(s) that the
+        primary data use.
+
+        Parameters
+        ----------
+        language_code : str
+            ISO 639 code(s) for the language(s) of the primary data.
+
+        """
+
+        self.languages.append(language_code)
+
+    def add_participant(self, id, age = None, sex = None, role = None):
+        """This method is responsible to add the
+        annotations to the list of participants.
+
+        The parcipant list in this class will
+        represents participants in an interaction
+        with the data manipulated in the files pointed
+        by the header.
+
+        A participant is a person in this case and it's
+        important and required to give the id.
+
+        Parameters
+        ----------
+        id : str
+            Identifier for reference from annotation documents.
+        age : int
+            Age of the speaker.
+        role : str
+            Role of the speaker in the discourse.
+        sex : str
+            One of male, female, unknown.
+
+        """
+
+        participant = {'id':id}
+
+        if age:
+            participant['age'] = age
+        if sex:
+            participant['sex'] = sex
+        if role:
+            participant['role'] = role
+
+        self.participants.append(participant)
+
+    def add_setting(self, who, time, activity, locale):
+        """This method is responsible to add the
+        annotations to the list of settings.
+
+        The setting list in this class will
+        represents the setting or settings
+        within which a language interaction takes
+        place, either as a prose description or a
+        series of setting elements.
+
+        A setting is a particular setting in which
+        a language interaction takes place.
+
+        Parameters
+        ----------
+        who : str
+            Reference to person IDs involved in this interaction.
+        time : str
+            Time of the interaction.
+        activity : str
+            What a participant in a language interaction is doing
+            other than speaking.
+        locale : str
+            Place of the interaction, e.g. a room, a restaurant,
+            a park bench.
+
+        """
+
+        self.settings.append({'who':who, 'time':time, 'activity':activity,
+                              'locale':locale})
+
 
 class DataDesc(object):
+
+    def __init__(self, primaryData, annotations_list = None):
+        self.primaryData = primaryData
+        self.annotations_list = annotations_list
+
+    def create_element(self):
+
+        dataDesc = Element("dataDesc")
+
+        SubElement(dataDesc, "primaryData", self.primaryData)
+
+        annotations = SubElement(dataDesc, "annotations")
+
+        for ann in self.annotations_list:
+            SubElement(annotations, "annotation", ann)
+
+        return dataDesc
+
     def __repr__(self):
         return "DataDesc"
+
+    def add_annotation(self, loc, fid, loctype = "relative"):
+        """This method is responsible to add the
+        annotations to the list of annotations.
+
+        The annotations list in this class will
+        represents the documents associated with
+        the primary data document that this header
+        will describe.
+
+        Parameters
+        ----------
+        loc : str
+            Relative path or PID of the annotation document.
+        fid : str
+            File type via reference to definition in the resource header.
+        loctype : str
+            Indicates whether the path is a fully specified path or a
+            path relative to the header file.
+
+
+        """
+
+        if self.annotations_list is None:
+            self.annotations_list = []
+
+        value = {'loc':loc, 'loctype':loctype, 'f.id':fid}
+
+        if value not in self.annotations_list:
+            self.annotations_list.append({'loc':loc, 'loctype':loctype,
+                                          'f.id':fid})
+
+class RevisonDesc():
+
+    def __init__(self, changes = None):
+        self.changes = changes
+
+    def create_element(self):
+
+        revisionDesc = Element("revisionDesc")
+
+        if self.changes is not None:
+            for ch in self.changes:
+                change = SubElement(revisionDesc, "change")
+
+                changeDate = SubElement(change, "changeDate")
+                changeDate.text = ch['changedate']
+
+                respName = SubElement(change, "respName")
+                respName.text = ch['resp']
+
+                item = SubElement(change, "item")
+                item.text = ch['item']
+
+        return revisionDesc
+
+    def __repr__(self):
+        return "RevisonDesc"
+
+    def add_change(self, changedate, respname, item):
+        """This method is responsible to add the
+        annotations to the list of changes.
+
+        The changes list in this class will
+        represents the information about a
+        particular change made to the document.
+
+        Parameters
+        ----------
+        changedate : str
+            Date of the change in ISO 8601 format.
+        responsible : str
+            Identification of the person responsible for the change.
+        item : str
+            Description of the change.
+
+        """
+
+        self.changes.append({'changedate':changedate,
+                             'respname':respname, 'item':item})
