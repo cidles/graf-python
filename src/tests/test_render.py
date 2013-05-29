@@ -17,7 +17,8 @@ import os
 
 from xml.etree import ElementTree
 
-from graf import Annotation, Graph, GrafRenderer, Node
+from graf import Annotation, Graph, GrafRenderer, Node, Region, Edge
+
 
 class TestGrafRenderer:
     """
@@ -29,19 +30,31 @@ class TestGrafRenderer:
         self.graph = Graph()
 
     def test_renderer(self):
-        filename = os.path.dirname(__file__) +\
-                   '/sample_files/rend-file.xml'
+        filename = os.path.dirname(__file__) + '/sample_files/rend-file.xml'
 
-        comparation_filename = os.path.dirname(__file__) +\
-                          '/sample_files/expected-rend-file.xml'
+        comparation_filename = os.path.dirname(__file__) + \
+                               '/sample_files/expected-rend-file.xml'
 
+        from_node = Node('node_zero')
         node = Node('node_one')
 
-        annotation = Annotation('Annotation_label', None, 'annotation-1')
+        anchors = ('1', '2')
+        region = Region('region_one', *anchors)
+
+        node.add_region(region)
+
+        features = {'name': 'feature_name',
+                    'value': 'feature_value'}
+
+        annotation = Annotation('Annotation_label', features, 'annotation-1')
 
         node.annotations.add(annotation)
 
+        edge = Edge('edge1', from_node, node)
+
+        self.graph.edges.add(edge)
         self.graph.nodes.add(node)
+        self.graph.regions.add(region)
 
         graf_render = GrafRenderer(filename)
         graf_render.render(self.graph)
@@ -50,8 +63,8 @@ class TestGrafRenderer:
         result_tree = ElementTree.parse(filename)
 
         expected_result = set(ElementTree.tostring(i)
-            for i in expected_tree.getroot())
+                              for i in expected_tree.getroot())
         result = set(ElementTree.tostring(i)
-            for i in result_tree.getroot())
+                     for i in result_tree.getroot())
 
-        assert(result == expected_result)
+        assert (result == expected_result)
