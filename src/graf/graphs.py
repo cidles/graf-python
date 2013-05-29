@@ -31,8 +31,10 @@ if sys.version_info[:2] >= (3, 0):
 else:
     string_type = basestring
 
+
 class IdDict(dict):
     __slots__ = ('_id_field',)
+
     def __init__(self, data=(), field='id'):
         dict.__init__(self, data)
         self._id_field = field
@@ -84,8 +86,10 @@ class GraphNodes(IdDict):
         for id in self._order:
             yield self[id]
 
+
 class GraphASpaces(IdDict):
     __slots__ = ('_add_hook',)
+
     def __init__(self, add_hook):
         IdDict.__init__(self, field='as_id')
         self._add_hook = add_hook
@@ -194,17 +198,18 @@ class Graph(object):
                 return self.iter_roots().next()
         except StopIteration:
             return None
+
     def _set_root(self, node):
         # FIXME: how should this interact with node.is_root
         self.header.clear_roots()
         if node.id not in self.nodes:
             raise ValueError('The new root node is not in the graph: %r' % node)
         self.header.roots.append(node.id)
+
     root = property(_get_root, _set_root)
 
     def iter_roots(self):
         return (self.nodes[id] for id in self.header.roots)
-
 
 
 class GraphElement(object):
@@ -217,7 +222,7 @@ class GraphElement(object):
 
     """
 
-    def __init__(self, id = ""):
+    def __init__(self, id=""):
         """Constructor for C{GraphElement}.
 
         :param id: C{str}
@@ -353,7 +358,7 @@ class Node(GraphElement):
             res = edge.to_node
             if res is not None:
                 yield res
-        
+
     def clear(self):
         """Clears this node's visisted status and those of all visited descendents"""
         self.visited = False
@@ -375,6 +380,7 @@ class Edge(GraphElement):
     - Edges may also contain one or more C{Annotation} objects.
 
     """
+
     def __init__(self, id, from_node=None, to_node=None):
         """C{Edge} Constructor.
 
@@ -400,6 +406,7 @@ class Link(list):
     """
     # Inherits all functionality from builtin list
     __slots__ = ()
+
     def __init__(self, vals=()):
         super(Link, self).__init__(vals)
 
@@ -437,7 +444,7 @@ class StandoffHeader(object):
 
     """
 
-    def __init__(self, version, filedesc, profiledesc, datadesc):
+    def __init__(self, version = "1.0.0", **kwargs):
         """Class's constructor.
 
         Parameters
@@ -453,10 +460,12 @@ class StandoffHeader(object):
 
         """
 
+        self._kwargs = kwargs
+        
         self.version = version
-        self.filedesc = filedesc
-        self.profiledesc = profiledesc
-        self.datadesc = datadesc
+        self.filedesc = self._get_key_value('fileDesc')
+        self.profiledesc = self._get_key_value('profilDesc')
+        self.datadesc = self._get_key_value('dataDesc')
 
     def create_element(self):
         """Create an Element Tree.
@@ -472,18 +481,19 @@ class StandoffHeader(object):
         pubDate = now.strftime("%Y-%m-%d")
 
         documentheader = Element('documentHeader',
-                {"xmlns":"http://www.xces.org/ns/GrAF/1.0/",
-                 "xmlns:xlink":"http://www.w3.org/1999/xlink",
-                 "docID":"PoioAPI-"+str(random.randint(1, 1000000)),
-                 "version":self.version,
-                 "creator":getpass.getuser(),
-                 "date.created":pubDate})
+                                 {"xmlns": "http://www.xces.org/ns/GrAF/1.0/",
+                                  "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                                  "docId": "PoioAPI-" + str(random.randint(1, 1000000)),
+                                  "version": self.version,
+                                  "creator": getpass.getuser(),
+                                  "date.created": pubDate})
 
         filedesc = self.filedesc.create_element()
         profiledesc = self.profiledesc.create_element()
         datadesc = self.datadesc.create_element()
 
-        profiledesc.append(datadesc)
+        profiledesc.append(datadesc.getchildren()[0])
+        profiledesc.append(datadesc.getchildren()[1])
 
         documentheader.append(filedesc)
         documentheader.append(profiledesc)
@@ -493,6 +503,16 @@ class StandoffHeader(object):
     def __repr__(self):
         return "StandoffHeader"
 
+    def _get_key_value(self, key):
+        if key == 'fileDesc':
+            return FileDesc()
+        if key == 'profilDesc':
+            return ProfileDesc()
+        if key == 'dataDesc':
+            return DataDesc(None)
+
+        return None
+    
     def write_file_header(self, outputfile):
         """Write primary data document header.
 
@@ -505,8 +525,8 @@ class StandoffHeader(object):
 
         documentheader = self.create_element()
 
-        file = open(outputfile,'wb')
-        doc = minidom.parseString(tostring(documentheader))
+        file = open(outputfile, 'wb')
+        doc = minidom.parseString(tostring(documentheader, encoding="utf-8"))
         file.write(doc.toprettyxml(indent='  ', encoding='utf-8'))
         file.close()
 
@@ -526,6 +546,7 @@ class StandoffHeader(object):
     def add_revision(self):
         pass
 
+
 class FileDesc(object):
     """
     Class that represents the descriptions of the file
@@ -533,12 +554,12 @@ class FileDesc(object):
 
     """
 
-    def __init__(self, filename, **kwargs):
+    def __init__(self, **kwargs):
         """Class's constructor.
 
         Parameters
         ----------
-        filename : str
+        titlestmt : str
             Name of the file containing the primary data
             document.
         extent : dict
@@ -583,8 +604,21 @@ class FileDesc(object):
 
         """
 
-        self.filename = filename
-        self._element_map = kwargs
+        self._kwargs = kwargs
+
+        self.titlestmt = self._get_key_value('titlestmt')
+        self.extent = self._get_key_value('extent')
+        self.title = self._get_key_value('title')
+        self.author = self._get_key_value('author')
+        self.source = self._get_key_value('source')
+        self.distributor = self._get_key_value('distributor')
+        self.publisher = self._get_key_value('publisher')
+        self.pubAddress = self._get_key_value('pubAddress')
+        self.eAddress = self._get_key_value('eAddress')
+        self.pubDate = self._get_key_value('pubDate')
+        self.idno = self._get_key_value('idno')
+        self.pubName = self._get_key_value('pubName')
+        self.documentation = self._get_key_value('documentation')
 
     def create_element(self):
         """Create an Element Tree.
@@ -598,74 +632,56 @@ class FileDesc(object):
 
         fileDesc = Element('fileDesc')
 
-        fileName = SubElement(fileDesc, 'fileName')
-        fileName.text = self.filename
+        titleStmt = SubElement(fileDesc, 'titleStmt')
+        SubElement(titleStmt, 'title').text = self.titlestmt
 
-        extent = self._get_key_value('extent')
-        if extent:
-            SubElement(fileDesc, 'extent',  {"unit":extent['unit'],
-                                             "count":extent['count']})
+        if self.extent:
+            SubElement(fileDesc, 'extent', {"unit": self.extent['unit'],
+                                            "count": self.extent['count']})
 
         sourceDesc = SubElement(fileDesc, "sourceDesc")
 
-        if self._get_key_value('title'):
-            title_el = SubElement(sourceDesc, 'title')
-            title_el.text = self._get_key_value('title')
+        if self.title:
+            SubElement(sourceDesc, 'title').text = self.title
 
-        author = self._get_key_value('author')
-        if author:
-            if 'age' in author:
-                aut = {"age":author['age']}
-            if 'sex' in author:
-                aut = {"sex":author['sex']}
+        if self.author:
+            if 'age' in self.author:
+                aut = {"age": self.author['age']}
+            if 'sex' in self.author:
+                aut = {"sex": self.author['sex']}
 
-            author_el = SubElement(sourceDesc, "author", aut)
-            author_el.text = author['name']
+            SubElement(sourceDesc, "author", aut).text = self.author['name']
 
-        source = self._get_key_value('source')
-        if source:
-            source_el = SubElement(sourceDesc, "source",
-                    {"type":source['type']})
-            source_el.text = source['source']
+        if self.source:
+            SubElement(sourceDesc, "source",
+                       {"type": self.source['type']}).text = self.source['source']
 
-        if self._get_key_value('distributor'):
-            distributor = SubElement(sourceDesc, "distributor")
-            distributor.text = self._get_key_value('distributor')
+        if self.distributor:
+            SubElement(sourceDesc, "distributor").text = self.distributor
 
-        publisher = SubElement(sourceDesc, "publisher")
-        if self._get_key_value('publisher'):
-            publisher.text = self._get_key_value('publisher')
-        else:
-            publisher.text = "self"
+        if self.publisher:
+            SubElement(sourceDesc, "publisher").text = self.publisher
 
-        if self._get_key_value('pubAddress'):
-            pubAddress = SubElement(sourceDesc, "pubAddress")
-            pubAddress.text = self._get_key_value('pubAddress')
+        if self.pubAddress:
+            SubElement(sourceDesc, "pubAddress").text = self.pubAddress
 
-        eAddress = self._get_key_value('eAddress')
-        if eAddress:
-            eAddress_el = SubElement(sourceDesc, "eAddress",
-                    {"type":eAddress['type']})
-            eAddress_el.text = eAddress['email']
+        if self.eAddress:
+            SubElement(sourceDesc, "eAddress",
+                       {"type": self.eAddress['type']}).text = self.eAddress['email']
 
-        if self._get_key_value('pubDate'):
-            SubElement(sourceDesc, "pubDate",
-                    {"iso8601":self._get_key_value('pubDate')})
+        if self.pubDate:
+            SubElement(sourceDesc, "pubDate", {"iso8601": self.pubDate})
 
-        idno = self._get_key_value('idno')
-        if idno:
-            idno_el = SubElement(sourceDesc, "idno", {"type":idno['type']})
-            idno_el.text = idno['number']
+        if self.idno:
+            SubElement(sourceDesc, "idno",
+                       {"type": self.idno['type']}).text = self.idno['number']
 
-        pubName = self._get_key_value('pubName')
-        if pubName:
-            pubName_el = SubElement(sourceDesc, "pubName",
-                    {"type":pubName['type']})
-            pubName_el.text = pubName['text']
+        if self.pubName:
+            SubElement(sourceDesc, "pubName",
+                       {"type": self.pubName['type']}).text = self.pubName['text']
 
-        if self._get_key_value('documentation'):
-            documentation = SubElement(sourceDesc, "documentation")
-            documentation.text = documentation
+        if self.documentation:
+            SubElement(sourceDesc, "documentation").text = self.documentation
 
         return fileDesc
 
@@ -673,8 +689,8 @@ class FileDesc(object):
         return "FileDesc"
 
     def _get_key_value(self, key):
-        if key in self._element_map:
-            return self._element_map[key]
+        if key in self._kwargs:
+            return self._kwargs[key]
 
         return None
 
@@ -718,7 +734,15 @@ class ProfileDesc(object):
 
         """
 
-        self._element_map = kwargs
+        self._kwargs = kwargs
+
+        self.languages = self._get_key_value('languages')
+        self.catRef = self._get_key_value('catRef')
+        self.subject = self._get_key_value('subject')
+        self.domain = self._get_key_value('domain')
+        self.subdomain = self._get_key_value('subdomain')
+        self.participants = self._get_key_value('participants')
+        self.settings = self._get_key_value('settings')
 
     def create_element(self):
         """Create an Element Tree.
@@ -736,40 +760,40 @@ class ProfileDesc(object):
 
         profileDesc = Element("profileDesc")
 
-        if self._get_key_value('languages'):
+        if self.languages:
             langUsage = SubElement(profileDesc, "langUsage")
 
-            for language in self._get_key_value('languages'):
-                SubElement(langUsage, "language", {"iso639":language})
+            for language in self.languages:
+                SubElement(langUsage, "language", {"iso639": language})
 
-        if self._get_key_value('catRef'):
+        if self.catRef:
             textClass = SubElement(profileDesc, "textClass",
-                    {"catRef":self._get_key_value('catRef')})
+                                   {"catRef": self.catRef})
 
-            if self._get_key_value('subject'):
+            if self.subject:
                 subject_el = SubElement(textClass, "subject")
-                subject_el.text = self._get_key_value('subject')
+                subject_el.text = self.subject
 
-            if self._get_key_value('domain'):
+            if self.domain:
                 domain = SubElement(textClass, "domain")
-                domain.text = self._get_key_value('domain')
+                domain.text = self.domain
 
-            if self._get_key_value('subdomain'):
+            if self.subdomain:
                 subdomain = SubElement(textClass, "subdomain")
-                subdomain.text = self._get_key_value('subdomain')
+                subdomain.text = self.subdomain
 
-        if self._get_key_value('participants'):
+        if self.participants:
             particDesc = SubElement(profileDesc, "particDesc") # Required
 
-            for participant in self._get_key_value('participants'):
+            for participant in self.participants:
                 SubElement(particDesc, "person", participant)
 
-        if self._get_key_value('settings'):
+        if self.settings:
             settingDesc = SubElement(profileDesc, "settingDesc")
 
-            for sett in self._get_key_value('settings'):
+            for sett in self.settings:
                 setting = SubElement(settingDesc, "setting",
-                        {"who":sett['who']})
+                                     {"who": sett['who']})
 
                 time = SubElement(setting, "time")
                 time.text = sett['time']
@@ -802,7 +826,7 @@ class ProfileDesc(object):
 
         self.languages.append(language_code)
 
-    def add_participant(self, id, age = None, sex = None, role = None):
+    def add_participant(self, id, age=None, sex=None, role=None):
         """This method is responsible to add the
         annotations to the list of participants.
 
@@ -827,7 +851,7 @@ class ProfileDesc(object):
 
         """
 
-        participant = {'id':id}
+        participant = {'id': id}
 
         if age:
             participant['age'] = age
@@ -866,12 +890,12 @@ class ProfileDesc(object):
 
         """
 
-        self.settings.append({'who':who, 'time':time, 'activity':activity,
-                              'locale':locale})
+        self.settings.append({'who': who, 'time': time, 'activity': activity,
+                              'locale': locale})
 
     def _get_key_value(self, key):
-        if key in self._element_map:
-            return self._element_map[key]
+        if key in self._kwargs:
+            return self._kwargs[key]
 
         return None
 
@@ -934,7 +958,7 @@ class DataDesc(object):
     def __repr__(self):
         return "DataDesc"
 
-    def add_annotation(self, loc, fid, loctype = "relative"):
+    def add_annotation(self, loc, fid, loctype="relative"):
         """This method is responsible to add the
         annotations to the list of annotations.
 
@@ -959,11 +983,12 @@ class DataDesc(object):
         if self.annotations_list is None:
             self.annotations_list = []
 
-        value = {'loc':loc, 'loctype':loctype, 'f.id':fid}
+        value = {'loc': loc, 'loctype': loctype, 'f.id': fid}
 
         if value not in self.annotations_list:
-            self.annotations_list.append({'loc':loc, 'loctype':loctype,
-                                          'f.id':fid})
+            self.annotations_list.append({'loc': loc, 'loctype': loctype,
+                                          'f.id': fid})
+
 
 class RevisonDesc():
     """
@@ -972,7 +997,7 @@ class RevisonDesc():
 
     """
 
-    def __init__(self, changes = None):
+    def __init__(self, changes=None):
         """Class's constructor.
 
         Parameters
@@ -1041,5 +1066,5 @@ class RevisonDesc():
 
         """
 
-        self.changes.append({'changedate':changedate,
-                             'respname':respname, 'item':item})
+        self.changes.append({'changedate': changedate,
+                             'respname': respname, 'item': item})
