@@ -16,6 +16,8 @@ from xml.sax.handler import ContentHandler
 from xml.sax.saxutils import XMLGenerator
 from xml.dom import minidom
 
+from xml.etree.ElementTree import Element, SubElement, tostring
+
 from graf.graphs import Graph, Link
 from graf.annotations import Annotation, FeatureStructure
 from graf.media import CharAnchor, Region
@@ -149,125 +151,130 @@ class GrafRenderer(object):
 
         """
 
-        self.out = out if hasattr(out, 'write') else codecs.open(out, "w", "utf-8")
-        # TODO: use a generator with indents
-        try:
-            # For Python >= 3.2
-            self._gen = XMLGenerator(self.out, 'utf-8', short_empty_elements=True)
-        except TypeError:
-            self._gen = XMLGenerator(self.out, 'utf-8')
-        self._g = Constants
-
-    def _tag(self, tag, attribs=None):
-        return TagWriter(self._gen, self._g.NAMESPACE, tag, attribs)
+        self.out = open(out, "w")
 
     def render_node(self, n):
         """
         Used to render the node elements of the Graph.
         """
-        tag = self._tag(self._g.NODE, {
-            self._g.ID: n.id,
-        })
-        with tag:
-            for link in n.links:
-                self.render_link(link)
 
-        for a in n.annotations:
-            self.render_ann(a)
+        node = Element('node', {'xml:id': n.id})
+
+        for link in n.links:
+            node.append(self.render_link(link))
+
+        return node
 
     def render_link(self, link):
         """
         Used to render the link elements of the Graph.
         """
-        self._tag(self._g.LINK, {'targets': ' '.join(str(region.id) for region in link)}).write()
+
+        for region in link:
+            return Element('link', {'targets': region.id})
 
     def render_region(self, region):
         """
         Used to render the region elements of the Graph.
         """
-        self._tag(self._g.REGION, {
-            self._g.ID: region.id,
-            self._g.ANCHORS: ' '.join(str(a) for a in region.anchors)
-        }).write()
+
+        anchors = str(region.anchors[0]) + " " + str(region.anchors[1])
+
+        return Element('region', {'anchors': anchors, 'xml:id': region.id})
 
     def render_edge(self, e):
         """
         Used to render the edge elements of the Graph.
         """
-        with self._tag(self._g.EDGE, {self._g.FROM: e.from_node.id, self._g.TO: e.to_node.id}):
-            for a in e.annotations:
-                self.render_ann(a)
 
-    def render_as(self, aSet):
-        """
-        Used to render the annotation set elements of the Graph.
-        """
-        with self._tag(self._g.ASET, {self._g.NAME: aSet.name}):
-            for a in aSet:
-                self.render_ann(a)
+        return Element('edge', {'from': e.from_node.id,
+                                'to': e.to_node.id,
+                                'xml:id': str(e.id)})
 
     def render_ann(self, a):
         """
         Used to render the annotation elements of the Graph.
         """
-        tag = self._tag(self._g.ANNOTATION, {
-            'label': a.label, 'ref': a.element.id,
-            self._g.ASET: a.label, self._g.ID: a.id
-        })
-        with tag:
-            self.render_fs(a.features)
+
+        annotation = Element('a', {'as': a.label, 'label': a.label,
+                                   'ref': a.element.id, 'xml:id': a.id})
+
+        if a.features:
+            annotation.append(self.render_fs(a.features))
+
+        return annotation
 
     def render_fs(self, fs):
         """
         Used to render the feature structure elements of the Graph.
         """
+
         if not fs:
             return
-        with self._tag(self._g.FS, {self._g.TYPE: fs.type}):
-            for name, value in fs.items():
-                self.render_feature(name, value)
+
+        if fs.type:
+            feature_structure = Element('fs', {'type': fs.type})
+        else:
+            feature_structure = Element('fs')
+
+        for name, value in fs.items():
+            feature_structure.append(self.render_feature(name, value))
+
+        return feature_structure
 
     def render_feature(self, name, value):
         """
         Used to render the features elements of the Graph.
         """
-        if hasattr(value, 'items'):
-            with self._tag(self._g.FEATURE, {self._g.NAME: name}):
-                self.render_fs(value)
-        else:
-            self._tag(self._g.FEATURE, {self._g.NAME: name, self._g.VALUE: value}).write()
+
+        feature = Element('f', {'name': name})
+        feature.text = value
+
+        return feature
 
     def write_header(self, g):
         """
         Writes the header tag at the beginning of the XML file.
         """
-        header = g.header
-        with self._tag(self._g.HEADER):
-            self.render_tag_usage(g)
-            self.write_header_elements(g, header)
 
-    def write_header_elements(self, graph, header):
+        header = Element('graph', {'xmlns': 'http://www.xces.org/ns/GrAF/1.0/'})
+
+        header.append(self.write_header_elements(g))
+
+        return header
+
+    def write_header_elements(self, g):
         """
         Helper method for write_header.
         """
-        roots = header.roots
-        if roots:
-            with self._tag(self._g.ROOTS):
-                for root in roots:
-                    self._tag(self._g.ROOT).write()
 
-        depends_on = header.depends_on
+        graph_header = Element('graphHeader')
+
+        graph_header.append(self.render_tag_usage(g))
+
+        depends_on = g.header.depends_on
+        dependencies = SubElement(graph_header, 'dependencies')
         if depends_on:
-            with self._tag(self._g.DEPENDENCIES):
-                for dependency in depends_on:
-                    self._tag(self._g.DEPENDS_ON, {self._g.TYPE: dependency}).write()
+            for dependency in depends_on:
+                if dependency:
+                    SubElement(dependencies, 'dependsOn',
+                               {'f.id': dependency})
 
-        aspaces = graph.annotation_spaces
+        aspaces = g.annotation_spaces
+        annotation_spaces = SubElement(graph_header, 'annotationSpaces')
         if aspaces:
-            with self._tag(self._g.ANNOTATION_SPACES):
-                for aspace in aspaces:
-                    self._tag(self._g.ANNOTATION_SPACE, {self._g.TYPE_F_ID: aspace.as_id}).write()
+            for aspace in aspaces:
+                SubElement(annotation_spaces, 'annotationSpace',
+                           {'as.id': aspace.as_id})
 
+        roots = g.header.roots
+        if roots:
+            roots_element = SubElement(graph_header, 'roots')
+            for root in roots:
+                if root:
+                    SubElement(roots_element, 'root').text = root
+
+        return graph_header
 
     def count_tag_usage(self, g):
         annotations = {}
@@ -280,35 +287,42 @@ class GrafRenderer(object):
     def render_tag_usage(self, g):
         annotations = self.count_tag_usage(g)
 
-        with self._tag(self._g.TAGSDECL):
-            for k, v in annotations.items():
-                self._tag(self._g.TAGUSAGE, {self._g.GI: str(k), self._g.OCCURS: str(v)}).write()
+        labels_decl = Element('labelsDecl')
+
+        for k, v in annotations.items():
+            SubElement(labels_decl, "labelUsage", {"label": str(k), "occurs": str(v)})
+
+        return labels_decl
 
     def render(self, g):
-        self._gen.startDocument()
-        self._gen.startPrefixMapping(None, self._g.NAMESPACE)
-        with self._tag(self._g.GRAPH):
-            self.write_header(g)
 
-            # Add any features of the graph
-            if g.features is not None:
-                self.render_fs(g.features)
+        header = self.write_header(g)
 
-            # Render the regions
-            for region in sorted(g.regions):
-                self.render_region(region)
+        nodes = sorted(g.nodes)
 
-            # Render the nodes
-            nodes = sorted(g.nodes)
-            for node in nodes:
-                self.render_node(node)
+        for node in nodes:
+            header.append(self.render_node(node))
 
-            # Render the edges
+            for region in g.regions:
+                for region_node in region.nodes:
+                    if str(region_node.id) == str(node.id):
+                        header.append(self.render_region(region))
+
             for edge in g.edges:
-                self.render_edge(edge)
+                if str(edge.to_node.id) == str(node.id):
+                    header.append(self.render_edge(edge))
 
-        self._gen.endDocument()
+            for a in node.annotations:
+                header.append(self.render_ann(a))
+
+        doc = minidom.parseString(tostring(header, encoding="utf-8"))
+
+        self.out.write(doc.toprettyxml())
         self.out.close()
+
+
+class StandoffHeaderRenderer(object):
+    pass
 
 class DocumentHeader(object):
 
