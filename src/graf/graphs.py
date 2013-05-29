@@ -527,7 +527,7 @@ class StandoffHeader(object):
 
         file = open(outputfile, 'wb')
         doc = minidom.parseString(tostring(documentheader, encoding="utf-8"))
-        file.write(doc.toprettyxml(indent='  ', encoding='utf-8'))
+        file.write(doc.toprettyxml(encoding='utf-8'))
         file.close()
 
     def update_header(self, filename):

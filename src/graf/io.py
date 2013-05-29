@@ -151,7 +151,7 @@ class GrafRenderer(object):
 
         """
 
-        self.out = open(out, "w")
+        self.out = open(out, "wb")
 
     def render_node(self, n):
         """
@@ -317,7 +317,7 @@ class GrafRenderer(object):
 
         doc = minidom.parseString(tostring(header, encoding="utf-8"))
 
-        self.out.write(doc.toprettyxml())
+        self.out.write(doc.toprettyxml(encoding='utf-8'))
         self.out.close()
 
 
