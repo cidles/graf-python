@@ -16,7 +16,6 @@ import random
 
 from xml.sax import make_parser, SAXException
 from xml.sax.handler import ContentHandler
-from xml.sax.saxutils import XMLGenerator
 from xml.dom import minidom
 
 from xml.etree.ElementTree import Element, SubElement, tostring
@@ -24,12 +23,6 @@ from xml.etree.ElementTree import Element, SubElement, tostring
 from graf.graphs import Graph, Link
 from graf.annotations import Annotation, FeatureStructure
 from graf.media import CharAnchor, Region
-
-# Set the type of string
-# if sys.version_info[:2] >= (3, 0):
-#     string_type = str
-# else:
-#     string_type = basestring
 
 class Constants(object):
     """
@@ -98,47 +91,6 @@ class Constants(object):
     MEDIA = "media"
     DEFAULT = "default"
 
-
-# class TagWriter(object):
-#     """Allows a tag to be written using `with` syntax for nesting and `write()` when none is required"""
-#     __slots__ = ('handler', 'name', 'attribs', 'written')
-#
-#     def __init__(self, handler, ns, tag, attribs):
-#         self.written = False
-#         self.handler = handler
-#         self.name = (ns, tag)
-#         self.attribs = self._clean_attribs(attribs, ns)
-#
-#     @staticmethod
-#     def _clean_attribs(attribs, ns):
-#         if not attribs:
-#             return {}
-#         res = {}
-#         for k, v in attribs.items():
-#             if v is None:
-#                 continue
-#             if isinstance(k, string_type):
-#                 k = (ns, k)
-#             res[k] = v
-#         return res
-#
-#     def __del__(self):
-#         if not self.written:
-#             import sys
-#             print >> sys.stderr, ('Warning: tag not written: %s' % (self.name,))
-#
-#     def __enter__(self):
-#         self.handler.startElementNS(self.name, None, self.attribs)
-#
-#     def __exit__(self, *args):
-#         self.written = True
-#         self.handler.endElementNS(self.name, None)
-#
-#     def write(self, cdata=None):
-#         with self:
-#             if cdata is not None:
-#                 self.handler.characters(cdata)
-                 
 
 class GrafRenderer(object):
     """
