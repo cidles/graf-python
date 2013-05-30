@@ -10,6 +10,9 @@
 import sys
 import os
 import codecs
+import datetime
+import getpass
+import random
 
 from xml.sax import make_parser, SAXException
 from xml.sax.handler import ContentHandler
@@ -23,10 +26,10 @@ from graf.annotations import Annotation, FeatureStructure
 from graf.media import CharAnchor, Region
 
 # Set the type of string
-if sys.version_info[:2] >= (3, 0):
-    string_type = str
-else:
-    string_type = basestring
+# if sys.version_info[:2] >= (3, 0):
+#     string_type = str
+# else:
+#     string_type = basestring
 
 class Constants(object):
     """
@@ -96,45 +99,45 @@ class Constants(object):
     DEFAULT = "default"
 
 
-class TagWriter(object):
-    """Allows a tag to be written using `with` syntax for nesting and `write()` when none is required"""
-    __slots__ = ('handler', 'name', 'attribs', 'written')
-
-    def __init__(self, handler, ns, tag, attribs):
-        self.written = False
-        self.handler = handler
-        self.name = (ns, tag)
-        self.attribs = self._clean_attribs(attribs, ns)
-
-    @staticmethod
-    def _clean_attribs(attribs, ns):
-        if not attribs:
-            return {}
-        res = {}
-        for k, v in attribs.items():
-            if v is None:
-                continue
-            if isinstance(k, string_type):
-                k = (ns, k)
-            res[k] = v
-        return res
-
-    def __del__(self):
-        if not self.written:
-            import sys
-            print >> sys.stderr, ('Warning: tag not written: %s' % (self.name,))
-
-    def __enter__(self):
-        self.handler.startElementNS(self.name, None, self.attribs)
-
-    def __exit__(self, *args):
-        self.written = True
-        self.handler.endElementNS(self.name, None)
-
-    def write(self, cdata=None):
-        with self:
-            if cdata is not None:
-                self.handler.characters(cdata)
+# class TagWriter(object):
+#     """Allows a tag to be written using `with` syntax for nesting and `write()` when none is required"""
+#     __slots__ = ('handler', 'name', 'attribs', 'written')
+#
+#     def __init__(self, handler, ns, tag, attribs):
+#         self.written = False
+#         self.handler = handler
+#         self.name = (ns, tag)
+#         self.attribs = self._clean_attribs(attribs, ns)
+#
+#     @staticmethod
+#     def _clean_attribs(attribs, ns):
+#         if not attribs:
+#             return {}
+#         res = {}
+#         for k, v in attribs.items():
+#             if v is None:
+#                 continue
+#             if isinstance(k, string_type):
+#                 k = (ns, k)
+#             res[k] = v
+#         return res
+#
+#     def __del__(self):
+#         if not self.written:
+#             import sys
+#             print >> sys.stderr, ('Warning: tag not written: %s' % (self.name,))
+#
+#     def __enter__(self):
+#         self.handler.startElementNS(self.name, None, self.attribs)
+#
+#     def __exit__(self, *args):
+#         self.written = True
+#         self.handler.endElementNS(self.name, None)
+#
+#     def write(self, cdata=None):
+#         with self:
+#             if cdata is not None:
+#                 self.handler.characters(cdata)
                  
 
 class GrafRenderer(object):
@@ -322,7 +325,245 @@ class GrafRenderer(object):
 
 
 class StandoffHeaderRenderer(object):
-    pass
+
+    def __init__(self, outputfile):
+        self.out = open(outputfile, "wb")
+
+    def render_documentheader(self, standoffheader):
+        """Create the documentHeader Element.
+
+        Returns
+        -------
+        documentheader : ElementTree
+            Primary element of the primary data document header.
+
+        """
+
+        now = datetime.datetime.now()
+        pubDate = now.strftime("%Y-%m-%d")
+
+        documentheader = Element('documentHeader',
+                                 {"xmlns": "http://www.xces.org/ns/GrAF/1.0/",
+                                  "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                                  "docId": "PoioAPI-" + str(random.randint(1, 1000000)),
+                                  "version": standoffheader.version,
+                                  "creator": getpass.getuser(),
+                                  "date.created": pubDate})
+
+        filedesc = self.render_filedesc(standoffheader.filedesc)
+        profiledesc = self.render_profiledesc(standoffheader.profiledesc)
+        datadesc = self.render_datadesc(standoffheader.datadesc)
+
+        profiledesc.append(datadesc.getchildren()[0])
+        profiledesc.append(datadesc.getchildren()[1])
+
+        documentheader.append(filedesc)
+        documentheader.append(profiledesc)
+
+        return documentheader
+
+    def render_filedesc(self, filedesc):
+        """Create an fileDesc Element.
+
+        Returns
+        -------
+        fileDesc : ElementTree
+            Element with the descriptions of the primary file.
+
+        """
+
+        fileDesc = Element('fileDesc')
+
+        titleStmt = SubElement(fileDesc, 'titleStmt')
+        SubElement(titleStmt, 'title').text = filedesc.titlestmt
+
+        if filedesc.extent:
+            SubElement(fileDesc, 'extent', {"unit": filedesc.extent['unit'],
+                                            "count": filedesc.extent['count']})
+
+        sourceDesc = SubElement(fileDesc, "sourceDesc")
+
+        if filedesc.title:
+            SubElement(sourceDesc, 'title').text = filedesc.title
+
+        if filedesc.author:
+            if 'age' in filedesc.author:
+                aut = {"age": filedesc.author['age']}
+            if 'sex' in filedesc.author:
+                aut = {"sex": filedesc.author['sex']}
+
+            SubElement(sourceDesc, "author", aut).text = filedesc.author['name']
+
+        if filedesc.source:
+            SubElement(sourceDesc, "source",
+                       {"type": filedesc.source['type']}).text = filedesc.source['source']
+
+        if filedesc.distributor:
+            SubElement(sourceDesc, "distributor").text = filedesc.distributor
+
+        if filedesc.publisher:
+            SubElement(sourceDesc, "publisher").text = filedesc.publisher
+
+        if filedesc.pubAddress:
+            SubElement(sourceDesc, "pubAddress").text = filedesc.pubAddress
+
+        if filedesc.eAddress:
+            SubElement(sourceDesc, "eAddress",
+                       {"type": filedesc.eAddress['type']}).text = filedesc.eAddress['email']
+
+        if filedesc.pubDate:
+            SubElement(sourceDesc, "pubDate", {"iso8601": filedesc.pubDate})
+
+        if filedesc.idno:
+            SubElement(sourceDesc, "idno",
+                       {"type": filedesc.idno['type']}).text = filedesc.idno['number']
+
+        if filedesc.pubName:
+            SubElement(sourceDesc, "pubName",
+                       {"type": filedesc.pubName['type']}).text = filedesc.pubName['text']
+
+        if filedesc.documentation:
+            SubElement(sourceDesc, "documentation").text = filedesc.documentation
+
+        return fileDesc
+    
+    def render_profiledesc(self, profiledesc):
+        """Create an profileDesc Element.
+
+        Returns
+        -------
+        profileDesc : ElementTree
+            Element with the descriptions of the source file.
+
+        See Also
+        --------
+        add_language, add_participant, add_setting
+
+        """
+
+        profileDesc = Element("profileDesc")
+
+        if profiledesc.languages:
+            langUsage = SubElement(profileDesc, "langUsage")
+
+            for language in profiledesc.languages:
+                SubElement(langUsage, "language", {"iso639": language})
+
+        if profiledesc.catRef:
+            textClass = SubElement(profileDesc, "textClass",
+                                   {"catRef": profiledesc.catRef})
+
+            if profiledesc.subject:
+                subject_el = SubElement(textClass, "subject")
+                subject_el.text = profiledesc.subject
+
+            if profiledesc.domain:
+                domain = SubElement(textClass, "domain")
+                domain.text = profiledesc.domain
+
+            if profiledesc.subdomain:
+                subdomain = SubElement(textClass, "subdomain")
+                subdomain.text = profiledesc.subdomain
+
+        if profiledesc.participants:
+            particDesc = SubElement(profileDesc, "particDesc") # Required
+
+            for participant in profiledesc.participants:
+                SubElement(particDesc, "person", participant)
+
+        if profiledesc.settings:
+            settingDesc = SubElement(profileDesc, "settingDesc")
+
+            for sett in profiledesc.settings:
+                setting = SubElement(settingDesc, "setting",
+                                     {"who": sett['who']})
+
+                time = SubElement(setting, "time")
+                time.text = sett['time']
+
+                activity = SubElement(setting, "activity")
+                activity.text = sett['activity']
+
+                locale = SubElement(setting, "locale")
+                locale.text = sett['locale']
+
+        return profileDesc
+
+    def render_datadesc(self, datadesc):
+        """Create an dataDesc Element.
+
+        Returns
+        -------
+        dataDesc : ElementTree
+            Element with the descriptions of the annotation
+            files.
+
+        See Also
+        --------
+        add_annotation
+
+        """
+
+        dataDesc = Element("dataDesc")
+
+        SubElement(dataDesc, "primaryData", datadesc.primaryData)
+
+        annotations = SubElement(dataDesc, "annotations")
+
+        for ann in datadesc.annotations_list:
+            SubElement(annotations, "annotation", ann)
+
+        return dataDesc
+
+    def render_revisiondesc(self, revisiondesc):
+        """Create an revisionDesc Element.
+
+        Returns
+        -------
+        revisionDesc : ElementTree
+            Element with the revisions of the changes in
+            the file.
+
+        See Also
+        --------
+        add_change
+
+        """
+
+        revisionDesc = Element("revisionDesc")
+
+        if revisiondesc.changes is not None:
+            for ch in revisiondesc.changes:
+                change = SubElement(revisionDesc, "change")
+
+                changeDate = SubElement(change, "changeDate")
+                changeDate.text = ch['changedate']
+
+                respName = SubElement(change, "respName")
+                respName.text = ch['resp']
+
+                item = SubElement(change, "item")
+                item.text = ch['item']
+
+        return revisionDesc
+
+    def render(self, standoffheader):
+        """Write primary data document header.
+
+        Parameters
+        ----------
+        outputfile : str
+            Path of the outputfile.
+
+        """
+
+        documentheader = self.render_documentheader(standoffheader)
+
+        doc = minidom.parseString(tostring(documentheader, encoding="utf-8"))
+
+        self.out.write(doc.toprettyxml(encoding='utf-8'))
+        self.out.close()
+
 
 class DocumentHeader(object):
 
