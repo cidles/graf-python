@@ -467,39 +467,6 @@ class StandoffHeader(object):
         self.profiledesc = self._get_key_value('profilDesc')
         self.datadesc = self._get_key_value('dataDesc')
 
-    def create_element(self):
-        """Create an Element Tree.
-
-        Returns
-        -------
-        documentheader : ElementTree
-            Primary element of the primary data document header.
-
-        """
-
-        now = datetime.datetime.now()
-        pubDate = now.strftime("%Y-%m-%d")
-
-        documentheader = Element('documentHeader',
-                                 {"xmlns": "http://www.xces.org/ns/GrAF/1.0/",
-                                  "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                                  "docId": "PoioAPI-" + str(random.randint(1, 1000000)),
-                                  "version": self.version,
-                                  "creator": getpass.getuser(),
-                                  "date.created": pubDate})
-
-        filedesc = self.filedesc.create_element()
-        profiledesc = self.profiledesc.create_element()
-        datadesc = self.datadesc.create_element()
-
-        profiledesc.append(datadesc.getchildren()[0])
-        profiledesc.append(datadesc.getchildren()[1])
-
-        documentheader.append(filedesc)
-        documentheader.append(profiledesc)
-
-        return documentheader
-
     def __repr__(self):
         return "StandoffHeader"
 
@@ -512,39 +479,6 @@ class StandoffHeader(object):
             return DataDesc(None)
 
         return None
-    
-    def write_file_header(self, outputfile):
-        """Write primary data document header.
-
-        Parameters
-        ----------
-        outputfile : str
-            Path of the outputfile.
-
-        """
-
-        documentheader = self.create_element()
-
-        file = open(outputfile, 'wb')
-        doc = minidom.parseString(tostring(documentheader, encoding="utf-8"))
-        file.write(doc.toprettyxml(encoding='utf-8'))
-        file.close()
-
-    def update_header(self, filename):
-        """Updated the documentheader element every time
-        something change in a existing file.
-
-        Parameters
-        ----------
-        filename : str
-            Path of the filename.
-
-        """
-
-        pass
-
-    def add_revision(self):
-        pass
 
 
 class FileDesc(object):
@@ -620,71 +554,6 @@ class FileDesc(object):
         self.pubName = self._get_key_value('pubName')
         self.documentation = self._get_key_value('documentation')
 
-    def create_element(self):
-        """Create an Element Tree.
-
-        Returns
-        -------
-        fileDesc : ElementTree
-            Element with the descriptions of the primary file.
-
-        """
-
-        fileDesc = Element('fileDesc')
-
-        titleStmt = SubElement(fileDesc, 'titleStmt')
-        SubElement(titleStmt, 'title').text = self.titlestmt
-
-        if self.extent:
-            SubElement(fileDesc, 'extent', {"unit": self.extent['unit'],
-                                            "count": self.extent['count']})
-
-        sourceDesc = SubElement(fileDesc, "sourceDesc")
-
-        if self.title:
-            SubElement(sourceDesc, 'title').text = self.title
-
-        if self.author:
-            if 'age' in self.author:
-                aut = {"age": self.author['age']}
-            if 'sex' in self.author:
-                aut = {"sex": self.author['sex']}
-
-            SubElement(sourceDesc, "author", aut).text = self.author['name']
-
-        if self.source:
-            SubElement(sourceDesc, "source",
-                       {"type": self.source['type']}).text = self.source['source']
-
-        if self.distributor:
-            SubElement(sourceDesc, "distributor").text = self.distributor
-
-        if self.publisher:
-            SubElement(sourceDesc, "publisher").text = self.publisher
-
-        if self.pubAddress:
-            SubElement(sourceDesc, "pubAddress").text = self.pubAddress
-
-        if self.eAddress:
-            SubElement(sourceDesc, "eAddress",
-                       {"type": self.eAddress['type']}).text = self.eAddress['email']
-
-        if self.pubDate:
-            SubElement(sourceDesc, "pubDate", {"iso8601": self.pubDate})
-
-        if self.idno:
-            SubElement(sourceDesc, "idno",
-                       {"type": self.idno['type']}).text = self.idno['number']
-
-        if self.pubName:
-            SubElement(sourceDesc, "pubName",
-                       {"type": self.pubName['type']}).text = self.pubName['text']
-
-        if self.documentation:
-            SubElement(sourceDesc, "documentation").text = self.documentation
-
-        return fileDesc
-
     def __repr__(self):
         return "FileDesc"
 
@@ -743,68 +612,6 @@ class ProfileDesc(object):
         self.subdomain = self._get_key_value('subdomain')
         self.participants = self._get_key_value('participants')
         self.settings = self._get_key_value('settings')
-
-    def create_element(self):
-        """Create an Element Tree.
-
-        Returns
-        -------
-        profileDesc : ElementTree
-            Element with the descriptions of the source file.
-
-        See Also
-        --------
-        add_language, add_participant, add_setting
-
-        """
-
-        profileDesc = Element("profileDesc")
-
-        if self.languages:
-            langUsage = SubElement(profileDesc, "langUsage")
-
-            for language in self.languages:
-                SubElement(langUsage, "language", {"iso639": language})
-
-        if self.catRef:
-            textClass = SubElement(profileDesc, "textClass",
-                                   {"catRef": self.catRef})
-
-            if self.subject:
-                subject_el = SubElement(textClass, "subject")
-                subject_el.text = self.subject
-
-            if self.domain:
-                domain = SubElement(textClass, "domain")
-                domain.text = self.domain
-
-            if self.subdomain:
-                subdomain = SubElement(textClass, "subdomain")
-                subdomain.text = self.subdomain
-
-        if self.participants:
-            particDesc = SubElement(profileDesc, "particDesc") # Required
-
-            for participant in self.participants:
-                SubElement(particDesc, "person", participant)
-
-        if self.settings:
-            settingDesc = SubElement(profileDesc, "settingDesc")
-
-            for sett in self.settings:
-                setting = SubElement(settingDesc, "setting",
-                                     {"who": sett['who']})
-
-                time = SubElement(setting, "time")
-                time.text = sett['time']
-
-                activity = SubElement(setting, "activity")
-                activity.text = sett['activity']
-
-                locale = SubElement(setting, "locale")
-                locale.text = sett['locale']
-
-        return profileDesc
 
     def __repr__(self):
         return "ProfileDesc"
@@ -929,32 +736,6 @@ class DataDesc(object):
         self.primaryData = primaryData
         self.annotations_list = None
 
-    def create_element(self):
-        """Create an Element Tree.
-
-        Returns
-        -------
-        dataDesc : ElementTree
-            Element with the descriptions of the annotation
-            files.
-
-        See Also
-        --------
-        add_annotation
-
-        """
-
-        dataDesc = Element("dataDesc")
-
-        SubElement(dataDesc, "primaryData", self.primaryData)
-
-        annotations = SubElement(dataDesc, "annotations")
-
-        for ann in self.annotations_list:
-            SubElement(annotations, "annotation", ann)
-
-        return dataDesc
-
     def __repr__(self):
         return "DataDesc"
 
@@ -1011,38 +792,6 @@ class RevisonDesc():
         """
 
         self.changes = changes
-
-    def create_element(self):
-        """Create an Element Tree.
-
-        Returns
-        -------
-        revisionDesc : ElementTree
-            Element with the revisions of the changes in
-            the file.
-
-        See Also
-        --------
-        add_change
-
-        """
-
-        revisionDesc = Element("revisionDesc")
-
-        if self.changes is not None:
-            for ch in self.changes:
-                change = SubElement(revisionDesc, "change")
-
-                changeDate = SubElement(change, "changeDate")
-                changeDate.text = ch['changedate']
-
-                respName = SubElement(change, "respName")
-                respName.text = ch['resp']
-
-                item = SubElement(change, "item")
-                item.text = ch['item']
-
-        return revisionDesc
 
     def __repr__(self):
         return "RevisonDesc"
