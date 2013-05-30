@@ -19,7 +19,7 @@ from graf.media import Region
 from graf.annotations import Annotation, AnnotationSpace, FeatureStructure
 from graf.graphs import Edge, Graph, Node, Link, GraphHeader, StandoffHeader, \
     FileDesc, ProfileDesc, DataDesc, RevisonDesc
-from graf.io import GraphParser, GrafRenderer
+from graf.io import GraphParser, GrafRenderer, StandoffHeaderRenderer
 from graf.util import *
 
 __all__ = [
@@ -39,4 +39,5 @@ __all__ = [
     'ProfileDesc',
     'DataDesc',
     'RevisonDesc',
+    'StandoffHeaderRenderer',
 ]
