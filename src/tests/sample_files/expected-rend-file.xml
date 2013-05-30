@@ -1,2 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<graph xmlns="http://www.xces.org/ns/GrAF/1.0/"><graphHeader><labelsDecl><labelUsage occurs="1" gi="Annotation_label"></labelUsage></labelsDecl></graphHeader><node xml:id="node_one"></node><a label="Annotation_label" xml:id="annotation-1" ref="node_one" as="Annotation_label"></a></graph>
+<graph xmlns="http://www.xces.org/ns/GrAF/1.0/">
+	<graphHeader>
+		<labelsDecl>
+			<labelUsage label="Annotation_label" occurs="1"/>
+		</labelsDecl>
+		<dependencies/>
+		<annotationSpaces/>
+	</graphHeader>
+	<node xml:id="node_one">
+		<link targets="region_one"/>
+	</node>
+	<region anchors="1 2" xml:id="region_one"/>
+	<edge from="node_zero" to="node_one" xml:id="edge1"/>
+	<a as="Annotation_label" label="Annotation_label" ref="node_one" xml:id="annotation-1">
+		<fs>
+			<f name="value">feature_value</f>
+			<f name="name">feature_name</f>
+		</fs>
+	</a>
+</graph>
