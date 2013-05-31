@@ -16,20 +16,8 @@ larger graphs as needed.
 """
 
 import sys
-import datetime
-import getpass
-import random
-
-from xml.etree.ElementTree import Element, SubElement, tostring
-from xml.dom import minidom
 
 from graf.annotations import FeatureStructure, AnnotationList, AnnotationSpace
-
-# Set the type of string
-if sys.version_info[:2] >= (3, 0):
-    string_type = str
-else:
-    string_type = basestring
 
 
 class IdDict(dict):
@@ -70,8 +58,9 @@ class GraphNodes(IdDict):
 
     def add(self, obj):
         """Adds the given node or creates one with the given id"""
-        if isinstance(obj, string_type):
+        if not isinstance(obj, Node):
             obj = Node(obj)
+
         IdDict.add(self, obj)
         self._order.append(obj.id)
         return obj
