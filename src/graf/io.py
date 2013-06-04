@@ -144,7 +144,7 @@ class GrafRenderer(object):
 
         return Element('edge', {'from': e.from_node.id,
                                 'to': e.to_node.id,
-                                'xml:id': str(e.id)})
+                                'xml:id': e.id})
 
     def render_ann(self, a):
         """
@@ -245,7 +245,7 @@ class GrafRenderer(object):
         labels_decl = Element('labelsDecl')
 
         for k, v in annotations.items():
-            SubElement(labels_decl, "labelUsage", {"label": str(k), "occurs": str(v)})
+            SubElement(labels_decl, "labelUsage", {"label": k, "occurs": str(v)})
 
         return labels_decl
 
@@ -260,11 +260,11 @@ class GrafRenderer(object):
 
             for region in g.regions:
                 for region_node in region.nodes:
-                    if str(region_node.id) == str(node.id):
+                    if region_node.id == node.id:
                         header.append(self.render_region(region))
 
             for edge in g.edges:
-                if str(edge.to_node.id) == str(node.id):
+                if edge.to_node.id == node.id:
                     header.append(self.render_edge(edge))
 
             for a in node.annotations:
