@@ -62,9 +62,13 @@ class TestGrafRenderer:
         expected_tree = ElementTree.parse(comparation_filename)
         result_tree = ElementTree.parse(filename)
 
-        expected_result = set(ElementTree.tostring(i)
-                              for i in expected_tree.getroot())
-        result = set(ElementTree.tostring(i)
-                     for i in result_tree.getroot())
+        expected_result = [ElementTree.tostring(i) for i in
+                           expected_tree.getroot()]
+        result = [ElementTree.tostring(i) for i in
+                  result_tree.getroot()]
 
-        assert (result == expected_result)
+        assert (result[0] == expected_result[0])
+        assert (result[1] == expected_result[1])
+        assert (result[2] == expected_result[2])
+        assert (result[3] == expected_result[3])
+
