@@ -44,15 +44,13 @@ class TestGraphParser:
         filename = os.path.dirname(__file__) + '/sample_files/balochi-graid1.xml'
         g = self.gparser.parse(filename)
 
-        #print(len(g.nodes))
-        expected_result = 618
+        expected_result = 651
         assert(len(g.nodes) == expected_result)
 
-        filename = os.path.dirname(__file__) + '/sample_files/balochi-header.hdr'
+        filename = os.path.dirname(__file__) + '/sample_files/balochi.hdr'
         g = self.gparser.parse(filename)
 
-        #print(len(g.nodes))
-        expected_result = 618
+        expected_result = 1161
         assert(len(g.nodes) == expected_result)
 
         # Check the parsed dependencies
