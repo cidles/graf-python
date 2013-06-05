@@ -1,450 +1,678 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <graph xmlns="http://www.xces.org/ns/GrAF/1.0/">
-  <graphHeader>
-    <labelsDecl/>
-  </graphHeader>
-  <node xml:id="utterance-n0">
-    <link targets="utterance-r0"/>
-  </node>
-  <region anchors="0 7" xml:id="utterance-r0"/>
-  <node xml:id="utterance-n1">
-    <link targets="utterance-r1"/>
-  </node>
-  <region anchors="8 29" xml:id="utterance-r1"/>
-  <node xml:id="utterance-n2">
-    <link targets="utterance-r2"/>
-  </node>
-  <region anchors="30 93" xml:id="utterance-r2"/>
-  <node xml:id="utterance-n3">
-    <link targets="utterance-r3"/>
-  </node>
-  <region anchors="94 132" xml:id="utterance-r3"/>
-  <node xml:id="utterance-n4">
-    <link targets="utterance-r4"/>
-  </node>
-  <region anchors="133 155" xml:id="utterance-r4"/>
-  <node xml:id="utterance-n5">
-    <link targets="utterance-r5"/>
-  </node>
-  <region anchors="156 180" xml:id="utterance-r5"/>
-  <node xml:id="utterance-n6">
-    <link targets="utterance-r6"/>
-  </node>
-  <region anchors="181 205" xml:id="utterance-r6"/>
-  <node xml:id="utterance-n7">
-    <link targets="utterance-r7"/>
-  </node>
-  <region anchors="206 229" xml:id="utterance-r7"/>
-  <node xml:id="utterance-n8">
-    <link targets="utterance-r8"/>
-  </node>
-  <region anchors="230 244" xml:id="utterance-r8"/>
-  <node xml:id="utterance-n9">
-    <link targets="utterance-r9"/>
-  </node>
-  <region anchors="245 271" xml:id="utterance-r9"/>
-  <node xml:id="utterance-n10">
-    <link targets="utterance-r10"/>
-  </node>
-  <region anchors="272 292" xml:id="utterance-r10"/>
-  <node xml:id="utterance-n11">
-    <link targets="utterance-r11"/>
-  </node>
-  <region anchors="293 316" xml:id="utterance-r11"/>
-  <node xml:id="utterance-n12">
-    <link targets="utterance-r12"/>
-  </node>
-  <region anchors="317 329" xml:id="utterance-r12"/>
-  <node xml:id="utterance-n13">
-    <link targets="utterance-r13"/>
-  </node>
-  <region anchors="330 336" xml:id="utterance-r13"/>
-  <node xml:id="utterance-n14">
-    <link targets="utterance-r14"/>
-  </node>
-  <region anchors="337 341" xml:id="utterance-r14"/>
-  <node xml:id="utterance-n15">
-    <link targets="utterance-r15"/>
-  </node>
-  <region anchors="342 364" xml:id="utterance-r15"/>
-  <node xml:id="utterance-n16">
-    <link targets="utterance-r16"/>
-  </node>
-  <region anchors="365 367" xml:id="utterance-r16"/>
-  <node xml:id="utterance-n17">
-    <link targets="utterance-r17"/>
-  </node>
-  <region anchors="368 393" xml:id="utterance-r17"/>
-  <node xml:id="utterance-n18">
-    <link targets="utterance-r18"/>
-  </node>
-  <region anchors="394 406" xml:id="utterance-r18"/>
-  <node xml:id="utterance-n19">
-    <link targets="utterance-r19"/>
-  </node>
-  <region anchors="407 442" xml:id="utterance-r19"/>
-  <node xml:id="utterance-n20">
-    <link targets="utterance-r20"/>
-  </node>
-  <region anchors="443 459" xml:id="utterance-r20"/>
-  <node xml:id="utterance-n21">
-    <link targets="utterance-r21"/>
-  </node>
-  <region anchors="460 472" xml:id="utterance-r21"/>
-  <node xml:id="utterance-n22">
-    <link targets="utterance-r22"/>
-  </node>
-  <region anchors="473 489" xml:id="utterance-r22"/>
-  <node xml:id="utterance-n23">
-    <link targets="utterance-r23"/>
-  </node>
-  <region anchors="490 502" xml:id="utterance-r23"/>
-  <node xml:id="utterance-n24">
-    <link targets="utterance-r24"/>
-  </node>
-  <region anchors="503 509" xml:id="utterance-r24"/>
-  <node xml:id="utterance-n25">
-    <link targets="utterance-r25"/>
-  </node>
-  <region anchors="510 519" xml:id="utterance-r25"/>
-  <node xml:id="utterance-n26">
-    <link targets="utterance-r26"/>
-  </node>
-  <region anchors="520 539" xml:id="utterance-r26"/>
-  <node xml:id="utterance-n27">
-    <link targets="utterance-r27"/>
-  </node>
-  <region anchors="540 571" xml:id="utterance-r27"/>
-  <node xml:id="utterance-n28">
-    <link targets="utterance-r28"/>
-  </node>
-  <region anchors="572 574" xml:id="utterance-r28"/>
-  <node xml:id="utterance-n29">
-    <link targets="utterance-r29"/>
-  </node>
-  <region anchors="575 584" xml:id="utterance-r29"/>
-  <node xml:id="utterance-n30">
-    <link targets="utterance-r30"/>
-  </node>
-  <region anchors="585 618" xml:id="utterance-r30"/>
-  <node xml:id="utterance-n31">
-    <link targets="utterance-r31"/>
-  </node>
-  <region anchors="619 639" xml:id="utterance-r31"/>
-  <node xml:id="utterance-n32">
-    <link targets="utterance-r32"/>
-  </node>
-  <region anchors="640 650" xml:id="utterance-r32"/>
-  <node xml:id="utterance-n33">
-    <link targets="utterance-r33"/>
-  </node>
-  <region anchors="651 687" xml:id="utterance-r33"/>
-  <node xml:id="utterance-n34">
-    <link targets="utterance-r34"/>
-  </node>
-  <region anchors="688 703" xml:id="utterance-r34"/>
-  <node xml:id="utterance-n35">
-    <link targets="utterance-r35"/>
-  </node>
-  <region anchors="704 714" xml:id="utterance-r35"/>
-  <node xml:id="utterance-n36">
-    <link targets="utterance-r36"/>
-  </node>
-  <region anchors="715 749" xml:id="utterance-r36"/>
-  <node xml:id="utterance-n37">
-    <link targets="utterance-r37"/>
-  </node>
-  <region anchors="750 798" xml:id="utterance-r37"/>
-  <node xml:id="utterance-n38">
-    <link targets="utterance-r38"/>
-  </node>
-  <region anchors="799 824" xml:id="utterance-r38"/>
-  <node xml:id="utterance-n39">
-    <link targets="utterance-r39"/>
-  </node>
-  <region anchors="825 866" xml:id="utterance-r39"/>
-  <node xml:id="utterance-n40">
-    <link targets="utterance-r40"/>
-  </node>
-  <region anchors="867 881" xml:id="utterance-r40"/>
-  <node xml:id="utterance-n41">
-    <link targets="utterance-r41"/>
-  </node>
-  <region anchors="882 891" xml:id="utterance-r41"/>
-  <node xml:id="utterance-n42">
-    <link targets="utterance-r42"/>
-  </node>
-  <region anchors="892 911" xml:id="utterance-r42"/>
-  <node xml:id="utterance-n43">
-    <link targets="utterance-r43"/>
-  </node>
-  <region anchors="912 924" xml:id="utterance-r43"/>
-  <node xml:id="utterance-n44">
-    <link targets="utterance-r44"/>
-  </node>
-  <region anchors="925 960" xml:id="utterance-r44"/>
-  <node xml:id="utterance-n45">
-    <link targets="utterance-r45"/>
-  </node>
-  <region anchors="961 970" xml:id="utterance-r45"/>
-  <node xml:id="utterance-n46">
-    <link targets="utterance-r46"/>
-  </node>
-  <region anchors="971 979" xml:id="utterance-r46"/>
-  <node xml:id="utterance-n47">
-    <link targets="utterance-r47"/>
-  </node>
-  <region anchors="980 1007" xml:id="utterance-r47"/>
-  <node xml:id="utterance-n48">
-    <link targets="utterance-r48"/>
-  </node>
-  <region anchors="1008 1044" xml:id="utterance-r48"/>
-  <node xml:id="utterance-n49">
-    <link targets="utterance-r49"/>
-  </node>
-  <region anchors="1045 1067" xml:id="utterance-r49"/>
-  <node xml:id="utterance-n50">
-    <link targets="utterance-r50"/>
-  </node>
-  <region anchors="1068 1091" xml:id="utterance-r50"/>
-  <node xml:id="utterance-n51">
-    <link targets="utterance-r51"/>
-  </node>
-  <region anchors="1092 1097" xml:id="utterance-r51"/>
-  <node xml:id="utterance-n52">
-    <link targets="utterance-r52"/>
-  </node>
-  <region anchors="1098 1122" xml:id="utterance-r52"/>
-  <node xml:id="utterance-n53">
-    <link targets="utterance-r53"/>
-  </node>
-  <region anchors="1123 1187" xml:id="utterance-r53"/>
-  <node xml:id="utterance-n54">
-    <link targets="utterance-r54"/>
-  </node>
-  <region anchors="1188 1193" xml:id="utterance-r54"/>
-  <node xml:id="utterance-n55">
-    <link targets="utterance-r55"/>
-  </node>
-  <region anchors="1194 1202" xml:id="utterance-r55"/>
-  <node xml:id="utterance-n56">
-    <link targets="utterance-r56"/>
-  </node>
-  <region anchors="1203 1218" xml:id="utterance-r56"/>
-  <node xml:id="utterance-n57">
-    <link targets="utterance-r57"/>
-  </node>
-  <region anchors="1219 1225" xml:id="utterance-r57"/>
-  <node xml:id="utterance-n58">
-    <link targets="utterance-r58"/>
-  </node>
-  <region anchors="1226 1269" xml:id="utterance-r58"/>
-  <node xml:id="utterance-n59">
-    <link targets="utterance-r59"/>
-  </node>
-  <region anchors="1270 1274" xml:id="utterance-r59"/>
-  <node xml:id="utterance-n60">
-    <link targets="utterance-r60"/>
-  </node>
-  <region anchors="1275 1293" xml:id="utterance-r60"/>
-  <node xml:id="utterance-n61">
-    <link targets="utterance-r61"/>
-  </node>
-  <region anchors="1294 1320" xml:id="utterance-r61"/>
-  <node xml:id="utterance-n62">
-    <link targets="utterance-r62"/>
-  </node>
-  <region anchors="1321 1354" xml:id="utterance-r62"/>
-  <node xml:id="utterance-n63">
-    <link targets="utterance-r63"/>
-  </node>
-  <region anchors="1355 1381" xml:id="utterance-r63"/>
-  <node xml:id="utterance-n64">
-    <link targets="utterance-r64"/>
-  </node>
-  <region anchors="1382 1388" xml:id="utterance-r64"/>
-  <node xml:id="utterance-n65">
-    <link targets="utterance-r65"/>
-  </node>
-  <region anchors="1389 1408" xml:id="utterance-r65"/>
-  <node xml:id="utterance-n66">
-    <link targets="utterance-r66"/>
-  </node>
-  <region anchors="1409 1432" xml:id="utterance-r66"/>
-  <node xml:id="utterance-n67">
-    <link targets="utterance-r67"/>
-  </node>
-  <region anchors="1433 1451" xml:id="utterance-r67"/>
-  <node xml:id="utterance-n68">
-    <link targets="utterance-r68"/>
-  </node>
-  <region anchors="1452 1460" xml:id="utterance-r68"/>
-  <node xml:id="utterance-n69">
-    <link targets="utterance-r69"/>
-  </node>
-  <region anchors="1461 1487" xml:id="utterance-r69"/>
-  <node xml:id="utterance-n70">
-    <link targets="utterance-r70"/>
-  </node>
-  <region anchors="1488 1564" xml:id="utterance-r70"/>
-  <node xml:id="utterance-n71">
-    <link targets="utterance-r71"/>
-  </node>
-  <region anchors="1565 1583" xml:id="utterance-r71"/>
-  <node xml:id="utterance-n72">
-    <link targets="utterance-r72"/>
-  </node>
-  <region anchors="1584 1602" xml:id="utterance-r72"/>
-  <node xml:id="utterance-n73">
-    <link targets="utterance-r73"/>
-  </node>
-  <region anchors="1603 1641" xml:id="utterance-r73"/>
-  <node xml:id="utterance-n74">
-    <link targets="utterance-r74"/>
-  </node>
-  <region anchors="1642 1674" xml:id="utterance-r74"/>
-  <node xml:id="utterance-n75">
-    <link targets="utterance-r75"/>
-  </node>
-  <region anchors="1675 1689" xml:id="utterance-r75"/>
-  <node xml:id="utterance-n76">
-    <link targets="utterance-r76"/>
-  </node>
-  <region anchors="1690 1712" xml:id="utterance-r76"/>
-  <node xml:id="utterance-n77">
-    <link targets="utterance-r77"/>
-  </node>
-  <region anchors="1713 1720" xml:id="utterance-r77"/>
-  <node xml:id="utterance-n78">
-    <link targets="utterance-r78"/>
-  </node>
-  <region anchors="1721 1750" xml:id="utterance-r78"/>
-  <node xml:id="utterance-n79">
-    <link targets="utterance-r79"/>
-  </node>
-  <region anchors="1751 1780" xml:id="utterance-r79"/>
-  <node xml:id="utterance-n80">
-    <link targets="utterance-r80"/>
-  </node>
-  <region anchors="1781 1810" xml:id="utterance-r80"/>
-  <node xml:id="utterance-n81">
-    <link targets="utterance-r81"/>
-  </node>
-  <region anchors="1811 1824" xml:id="utterance-r81"/>
-  <node xml:id="utterance-n82">
-    <link targets="utterance-r82"/>
-  </node>
-  <region anchors="1825 1855" xml:id="utterance-r82"/>
-  <node xml:id="utterance-n83">
-    <link targets="utterance-r83"/>
-  </node>
-  <region anchors="1856 1874" xml:id="utterance-r83"/>
-  <node xml:id="utterance-n84">
-    <link targets="utterance-r84"/>
-  </node>
-  <region anchors="1875 1890" xml:id="utterance-r84"/>
-  <node xml:id="utterance-n85">
-    <link targets="utterance-r85"/>
-  </node>
-  <region anchors="1891 1944" xml:id="utterance-r85"/>
-  <node xml:id="utterance-n86">
-    <link targets="utterance-r86"/>
-  </node>
-  <region anchors="1945 1948" xml:id="utterance-r86"/>
-  <node xml:id="utterance-n87">
-    <link targets="utterance-r87"/>
-  </node>
-  <region anchors="1949 1967" xml:id="utterance-r87"/>
-  <node xml:id="utterance-n88">
-    <link targets="utterance-r88"/>
-  </node>
-  <region anchors="1968 1993" xml:id="utterance-r88"/>
-  <node xml:id="utterance-n89">
-    <link targets="utterance-r89"/>
-  </node>
-  <region anchors="1994 2009" xml:id="utterance-r89"/>
-  <node xml:id="utterance-n90">
-    <link targets="utterance-r90"/>
-  </node>
-  <region anchors="2010 2031" xml:id="utterance-r90"/>
-  <node xml:id="utterance-n91">
-    <link targets="utterance-r91"/>
-  </node>
-  <region anchors="2032 2053" xml:id="utterance-r91"/>
-  <node xml:id="utterance-n92">
-    <link targets="utterance-r92"/>
-  </node>
-  <region anchors="2054 2060" xml:id="utterance-r92"/>
-  <node xml:id="utterance-n93">
-    <link targets="utterance-r93"/>
-  </node>
-  <region anchors="2061 2089" xml:id="utterance-r93"/>
-  <node xml:id="utterance-n94">
-    <link targets="utterance-r94"/>
-  </node>
-  <region anchors="2090 2096" xml:id="utterance-r94"/>
-  <node xml:id="utterance-n95">
-    <link targets="utterance-r95"/>
-  </node>
-  <region anchors="2097 2119" xml:id="utterance-r95"/>
-  <node xml:id="utterance-n96">
-    <link targets="utterance-r96"/>
-  </node>
-  <region anchors="2120 2134" xml:id="utterance-r96"/>
-  <node xml:id="utterance-n97">
-    <link targets="utterance-r97"/>
-  </node>
-  <region anchors="2135 2155" xml:id="utterance-r97"/>
-  <node xml:id="utterance-n98">
-    <link targets="utterance-r98"/>
-  </node>
-  <region anchors="2156 2171" xml:id="utterance-r98"/>
-  <node xml:id="utterance-n99">
-    <link targets="utterance-r99"/>
-  </node>
-  <region anchors="2172 2180" xml:id="utterance-r99"/>
-  <node xml:id="utterance-n100">
-    <link targets="utterance-r100"/>
-  </node>
-  <region anchors="2181 2201" xml:id="utterance-r100"/>
-  <node xml:id="utterance-n101">
-    <link targets="utterance-r101"/>
-  </node>
-  <region anchors="2202 2220" xml:id="utterance-r101"/>
-  <node xml:id="utterance-n102">
-    <link targets="utterance-r102"/>
-  </node>
-  <region anchors="2221 2231" xml:id="utterance-r102"/>
-  <node xml:id="utterance-n103">
-    <link targets="utterance-r103"/>
-  </node>
-  <region anchors="2232 2265" xml:id="utterance-r103"/>
-  <node xml:id="utterance-n104">
-    <link targets="utterance-r104"/>
-  </node>
-  <region anchors="2266 2276" xml:id="utterance-r104"/>
-  <node xml:id="utterance-n105">
-    <link targets="utterance-r105"/>
-  </node>
-  <region anchors="2277 2288" xml:id="utterance-r105"/>
-  <node xml:id="utterance-n106">
-    <link targets="utterance-r106"/>
-  </node>
-  <region anchors="2289 2301" xml:id="utterance-r106"/>
-  <node xml:id="utterance-n107">
-    <link targets="utterance-r107"/>
-  </node>
-  <region anchors="2302 2335" xml:id="utterance-r107"/>
-  <node xml:id="utterance-n108">
-    <link targets="utterance-r108"/>
-  </node>
-  <region anchors="2336 2372" xml:id="utterance-r108"/>
-  <node xml:id="utterance-n109">
-    <link targets="utterance-r109"/>
-  </node>
-  <region anchors="2373 2399" xml:id="utterance-r109"/>
-  <node xml:id="utterance-n110">
-    <link targets="utterance-r110"/>
-  </node>
-  <region anchors="2400 2419" xml:id="utterance-r110"/>
+	<graphHeader>
+		<labelsDecl>
+			<labelUsage label="utterance" occurs="111"/>
+		</labelsDecl>
+		<dependencies/>
+		<annotationSpaces>
+			<annotationSpace as.id="utterance"/>
+		</annotationSpaces>
+	</graphHeader>
+	<node xml:id="utterance..na1003"/>
+	<a as="utterance" label="utterance" ref="utterance..na1003" xml:id="a1003">
+		<fs>
+			<f name="annotation_value">am-ē	tōm-ā=um	am-ēš-ā=um	mnā	ē	dā</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1023"/>
+	<a as="utterance" label="utterance" ref="utterance..na1023" xml:id="a1023">
+		<fs>
+			<f name="annotation_value">ša	wat-ī	dap-ay	tā=ē	prēnt</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1031"/>
+	<a as="utterance" label="utterance" ref="utterance..na1031" xml:id="a1031">
+		<fs>
+			<f name="annotation_value">gušt=ī</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1045"/>
+	<a as="utterance" label="utterance" ref="utterance..na1045" xml:id="a1045">
+		<fs>
+			<f name="annotation_value">ī	dgar=u	ǰawāir=ant</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1059"/>
+	<a as="utterance" label="utterance" ref="utterance..na1059" xml:id="a1059">
+		<fs>
+			<f name="annotation_value">am-ēš-ā	mašmā	na-zān-an</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na106"/>
+	<a as="utterance" label="utterance" ref="utterance..na106" xml:id="a106">
+		<fs>
+			<f name="annotation_value">harka	ki	arz-ē	b-dāšt-ēn</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1073"/>
+	<a as="utterance" label="utterance" ref="utterance..na1073" xml:id="a1073">
+		<fs>
+			<f name="annotation_value">ē	maššōra	kurt-ant</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1081"/>
+	<a as="utterance" label="utterance" ref="utterance..na1081" xml:id="a1081">
+		<fs>
+			<f name="annotation_value">gušt-ant</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1098"/>
+	<a as="utterance" label="utterance" ref="utterance..na1098" xml:id="a1098">
+		<fs>
+			<f name="annotation_value">b-(y)ā	ēš-ā	p-kiš-an	mašmā</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1133"/>
+	<a as="utterance" label="utterance" ref="utterance..na1133" xml:id="a1133">
+		<fs>
+			<f name="annotation_value">ēš-ā	ǰwān-ēn	ǰā-(y)ē	bāg-ē	ḍigār-ay	tā	kišt-ant=u		ǰwān-ēn	narm-ēn	ḍigār-ē=u</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1147"/>
+	<a as="utterance" label="utterance" ref="utterance..na1147" xml:id="a1147">
+		<fs>
+			<f name="annotation_value">wall-ē	sabz	kurt=u</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1164"/>
+	<a as="utterance" label="utterance" ref="utterance..na1164" xml:id="a1164">
+		<fs>
+			<f name="annotation_value">ēš	činkas	galaw	ku</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1187"/>
+	<a as="utterance" label="utterance" ref="utterance..na1187" xml:id="a1187">
+		<fs>
+			<f name="annotation_value">ša	truss-ā	kass-ē	ē	galaw-ān-ā	na-wārt</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1207"/>
+	<a as="utterance" label="utterance" ref="utterance..na1207" xml:id="a1207">
+		<fs>
+			<f name="annotation_value">ki	ša	aždiyā-(y)ay	dap-ay	tā=ant</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1218"/>
+	<a as="utterance" label="utterance" ref="utterance..na1218" xml:id="a1218">
+		<fs>
+			<f name="annotation_value">mār-ay	zār=ant</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na123"/>
+	<a as="utterance" label="utterance" ref="utterance..na123" xml:id="a123">
+		<fs>
+			<f name="annotation_value">am-ēširā	ki	takān	dāt-ēn</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1235"/>
+	<a as="utterance" label="utterance" ref="utterance..na1235" xml:id="a1235">
+		<fs>
+			<f name="annotation_value">ē	činka	tōm	kurt-ant=u</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1243"/>
+	<a as="utterance" label="utterance" ref="utterance..na1243" xml:id="a1243">
+		<fs>
+			<f name="annotation_value">šut-ant</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1260"/>
+	<a as="utterance" label="utterance" ref="utterance..na1260" xml:id="a1260">
+		<fs>
+			<f name="annotation_value">ṭū-(y)ēn	pālēz-ē	bādšā	kišt=u</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1277"/>
+	<a as="utterance" label="utterance" ref="utterance..na1277" xml:id="a1277">
+		<fs>
+			<f name="annotation_value">yakk	pīramard-ē-rā	sawzwān	ku</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1300"/>
+	<a as="utterance" label="utterance" ref="utterance..na1300" xml:id="a1300">
+		<fs>
+			<f name="annotation_value">ē	laggit	ē	pālēz	bi	galaw-ā=ō</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1314"/>
+	<a as="utterance" label="utterance" ref="utterance..na1314" xml:id="a1314">
+		<fs>
+			<f name="annotation_value">bēxī	galaw	ku</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1331"/>
+	<a as="utterance" label="utterance" ref="utterance..na1331" xml:id="a1331">
+		<fs>
+			<f name="annotation_value">pīramard=am	awal	čē=(w)a	na-ku</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1342"/>
+	<a as="utterance" label="utterance" ref="utterance..na1342" xml:id="a1342">
+		<fs>
+			<f name="annotation_value">tawkal=a	na-kurt=u</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1353"/>
+	<a as="utterance" label="utterance" ref="utterance..na1353" xml:id="a1353">
+		<fs>
+			<f name="annotation_value">ar-uk-(k)ē	dāšt</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1379"/>
+	<a as="utterance" label="utterance" ref="utterance..na1379" xml:id="a1379">
+		<fs>
+			<f name="annotation_value">am-ē	galaw-ān-ā	dēmā 	bi=m-ē	ar-uk-(k)ay	dēmā	kōṭit=u</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1387"/>
+	<a as="utterance" label="utterance" ref="utterance..na1387" xml:id="a1387">
+		<fs>
+			<f name="annotation_value">dāt</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na140"/>
+	<a as="utterance" label="utterance" ref="utterance..na140" xml:id="a140">
+		<fs>
+			<f name="annotation_value">bādišā	ōdā	sī=(y)a		būt</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1404"/>
+	<a as="utterance" label="utterance" ref="utterance..na1404" xml:id="a1404">
+		<fs>
+			<f name="annotation_value">ē	ar=am	pazzōr 	ūt</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1421"/>
+	<a as="utterance" label="utterance" ref="utterance..na1421" xml:id="a1421">
+		<fs>
+			<f name="annotation_value">pīramard	šurū	ku	wārtin-ā</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1438"/>
+	<a as="utterance" label="utterance" ref="utterance..na1438" xml:id="a1438">
+		<fs>
+			<f name="annotation_value">ta	ē	či	čīz=ant</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1452"/>
+	<a as="utterance" label="utterance" ref="utterance..na1452" xml:id="a1452">
+		<fs>
+			<f name="annotation_value">pīramard=am	pazzōr	ūt</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1472"/>
+	<a as="utterance" label="utterance" ref="utterance..na1472" xml:id="a1472">
+		<fs>
+			<f name="annotation_value">bādšā	yag	rōč-ē	ki	āt</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1480"/>
+	<a as="utterance" label="utterance" ref="utterance..na1480" xml:id="a1480">
+		<fs>
+			<f name="annotation_value">gušt=ī</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1500"/>
+	<a as="utterance" label="utterance" ref="utterance..na1500" xml:id="a1500">
+		<fs>
+			<f name="annotation_value">ki	pīramard	bābā	ē	čē=(w)ant</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1508"/>
+	<a as="utterance" label="utterance" ref="utterance..na1508" xml:id="a1508">
+		<fs>
+			<f name="annotation_value">gušt=ī</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1525"/>
+	<a as="utterance" label="utterance" ref="utterance..na1525" xml:id="a1525">
+		<fs>
+			<f name="annotation_value">ē	bēxī	ǰwān-ēn	čīz=ant</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1536"/>
+	<a as="utterance" label="utterance" ref="utterance..na1536" xml:id="a1536">
+		<fs>
+			<f name="annotation_value">man=um	wārt-a,</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na154"/>
+	<a as="utterance" label="utterance" ref="utterance..na154" xml:id="a154">
+		<fs>
+			<f name="annotation_value">yag	rōč-ē	dīst</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1550"/>
+	<a as="utterance" label="utterance" ref="utterance..na1550" xml:id="a1550">
+		<fs>
+			<f name="annotation_value">ē	ar-ā=um	dāt-a=un=ō</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1561"/>
+	<a as="utterance" label="utterance" ref="utterance..na1561" xml:id="a1561">
+		<fs>
+			<f name="annotation_value">šumā=um	bōr-it.</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1572"/>
+	<a as="utterance" label="utterance" ref="utterance..na1572" xml:id="a1572">
+		<fs>
+			<f name="annotation_value">wazīr	gu</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1589"/>
+	<a as="utterance" label="utterance" ref="utterance..na1589" xml:id="a1589">
+		<fs>
+			<f name="annotation_value">na	dēmā	man=a	war-īn</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1606"/>
+	<a as="utterance" label="utterance" ref="utterance..na1606" xml:id="a1606">
+		<fs>
+			<f name="annotation_value">ta	ay	bādšā	ma-war</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1617"/>
+	<a as="utterance" label="utterance" ref="utterance..na1617" xml:id="a1617">
+		<fs>
+			<f name="annotation_value">wazīr	wārt</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1637"/>
+	<a as="utterance" label="utterance" ref="utterance..na1637" xml:id="a1637">
+		<fs>
+			<f name="annotation_value">ta	ē	aǰab-ēn	xušmizzag-ēn	čīz=ant</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1645"/>
+	<a as="utterance" label="utterance" ref="utterance..na1645" xml:id="a1645">
+		<fs>
+			<f name="annotation_value">wārt-ant=ō</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1656"/>
+	<a as="utterance" label="utterance" ref="utterance..na1656" xml:id="a1656">
+		<fs>
+			<f name="annotation_value">ki	wārt-ant</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1667"/>
+	<a as="utterance" label="utterance" ref="utterance..na1667" xml:id="a1667">
+		<fs>
+			<f name="annotation_value">nūn	gušt-ant</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1687"/>
+	<a as="utterance" label="utterance" ref="utterance..na1687" xml:id="a1687">
+		<fs>
+			<f name="annotation_value">b-(y)ā	mašmā	p=ēšī	nām=ē	b-ill-an</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1707"/>
+	<a as="utterance" label="utterance" ref="utterance..na1707" xml:id="a1707">
+		<fs>
+			<f name="annotation_value">nām=ay	guṛā	galaw-ā	išt-ant	xarmizza</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na171"/>
+	<a as="utterance" label="utterance" ref="utterance..na171" xml:id="a171">
+		<fs>
+			<f name="annotation_value">ta	am-ē	aždiyā-(y)ē	āt-a=u</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1727"/>
+	<a as="utterance" label="utterance" ref="utterance..na1727" xml:id="a1727">
+		<fs>
+			<f name="annotation_value">ki	mizzag-ay	awal	xar	burt</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na1741"/>
+	<a as="utterance" label="utterance" ref="utterance..na1741" xml:id="a1741">
+		<fs>
+			<f name="annotation_value">xarmizza	š=ōdā	mant</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na185"/>
+	<a as="utterance" label="utterance" ref="utterance..na185" xml:id="a185">
+		<fs>
+			<f name="annotation_value">am-ēš-ā	takān=a	dant</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na20"/>
+	<a as="utterance" label="utterance" ref="utterance..na20" xml:id="a20">
+		<fs>
+			<f name="annotation_value">ki	yag	bādišā=(y)ē=at</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na202"/>
+	<a as="utterance" label="utterance" ref="utterance..na202" xml:id="a202">
+		<fs>
+			<f name="annotation_value">bādšā	dēm	dāt	yakk-ē-rā</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na216"/>
+	<a as="utterance" label="utterance" ref="utterance..na216" xml:id="a216">
+		<fs>
+			<f name="annotation_value">ki	ē	čī-(y)ē</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na224"/>
+	<a as="utterance" label="utterance" ref="utterance..na224" xml:id="a224">
+		<fs>
+			<f name="annotation_value">āt-ant</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na232"/>
+	<a as="utterance" label="utterance" ref="utterance..na232" xml:id="a232">
+		<fs>
+			<f name="annotation_value">gušt</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na246"/>
+	<a as="utterance" label="utterance" ref="utterance..na246" xml:id="a246">
+		<fs>
+			<f name="annotation_value">bādšā	sāib	aždiyā-(y)ē</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na254"/>
+	<a as="utterance" label="utterance" ref="utterance..na254" xml:id="a254">
+		<fs>
+			<f name="annotation_value">gu</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na274"/>
+	<a as="utterance" label="utterance" ref="utterance..na274" xml:id="a274">
+		<fs>
+			<f name="annotation_value">hā…	ē	aždiyā	amr-ē	dār-īt</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na285"/>
+	<a as="utterance" label="utterance" ref="utterance..na285" xml:id="a285">
+		<fs>
+			<f name="annotation_value">arz-ē	dār-īt</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na305"/>
+	<a as="utterance" label="utterance" ref="utterance..na305" xml:id="a305">
+		<fs>
+			<f name="annotation_value">ēš-ī	arz-ā	kay	pa=(m)man	b-(y)ār-īt</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na319"/>
+	<a as="utterance" label="utterance" ref="utterance..na319" xml:id="a319">
+		<fs>
+			<f name="annotation_value">man	ki	na-zān-īn</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na330"/>
+	<a as="utterance" label="utterance" ref="utterance..na330" xml:id="a330">
+		<fs>
+			<f name="annotation_value">ē	bē-zuwān-ē</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na344"/>
+	<a as="utterance" label="utterance" ref="utterance..na344" xml:id="a344">
+		<fs>
+			<f name="annotation_value">yakk	naǰǰār-ē	gu</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na355"/>
+	<a as="utterance" label="utterance" ref="utterance..na355" xml:id="a355">
+		<fs>
+			<f name="annotation_value">man=a	zān-īn</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na363"/>
+	<a as="utterance" label="utterance" ref="utterance..na363" xml:id="a363">
+		<fs>
+			<f name="annotation_value">gušt=ī</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na374"/>
+	<a as="utterance" label="utterance" ref="utterance..na374" xml:id="a374">
+		<fs>
+			<f name="annotation_value">ki	zān-ay</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na388"/>
+	<a as="utterance" label="utterance" ref="utterance..na388" xml:id="a388">
+		<fs>
+			<f name="annotation_value">ēš-ī	arz-ā	āwurt-ay</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na408"/>
+	<a as="utterance" label="utterance" ref="utterance..na408" xml:id="a408">
+		<fs>
+			<f name="annotation_value">man	trā	inka	xalāit=(t)a	day-īn</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na416"/>
+	<a as="utterance" label="utterance" ref="utterance..na416" xml:id="a416">
+		<fs>
+			<f name="annotation_value">gu</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na427"/>
+	<a as="utterance" label="utterance" ref="utterance..na427" xml:id="a427">
+		<fs>
+			<f name="annotation_value">xayli	xub</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na453"/>
+	<a as="utterance" label="utterance" ref="utterance..na453" xml:id="a453">
+		<fs>
+			<f name="annotation_value">ē	naǰǰār	ki	āt	gō	tēγ=u		arrag-ān</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na470"/>
+	<a as="utterance" label="utterance" ref="utterance..na470" xml:id="a470">
+		<fs>
+			<f name="annotation_value">ē	aždiyā	wayl	kurt=u</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na481"/>
+	<a as="utterance" label="utterance" ref="utterance..na481" xml:id="a481">
+		<fs>
+			<f name="annotation_value">rāda	būt=u</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na501"/>
+	<a as="utterance" label="utterance" ref="utterance..na501" xml:id="a501">
+		<fs>
+			<f name="annotation_value">aždīyā	naǰǰār-ā	išāra	dāt=u		išāra=u</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na518"/>
+	<a as="utterance" label="utterance" ref="utterance..na518" xml:id="a518">
+		<fs>
+			<f name="annotation_value">bi	kō-ay	tā	šut</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na532"/>
+	<a as="utterance" label="utterance" ref="utterance..na532" xml:id="a532">
+		<fs>
+			<f name="annotation_value">ōdā	ki	šut</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na55"/>
+	<a as="utterance" label="utterance" ref="utterance..na55" xml:id="a55">
+		<fs>
+			<f name="annotation_value">ē	bādišā	bi=m-ē	wat-ī	šār-ay	wasat-(t)ā	yakk	tīr=i	barγ-ē		dāšt</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na558"/>
+	<a as="utterance" label="utterance" ref="utterance..na558" xml:id="a558">
+		<fs>
+			<f name="annotation_value">ta	uhō…	ē	aždiyā	diga	mās-ē	dār-īt</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na587"/>
+	<a as="utterance" label="utterance" ref="utterance..na587" xml:id="a587">
+		<fs>
+			<f name="annotation_value">ē	mās=ay	ša=m-ē	kōh-ay	pāčin	na-(w)ant	mazan	šāx</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na6"/>
+	<a as="utterance" label="utterance" ref="utterance..na6" xml:id="a6">
+		<fs>
+			<f name="annotation_value">guš-īt:</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na601"/>
+	<a as="utterance" label="utterance" ref="utterance..na601" xml:id="a601">
+		<fs>
+			<f name="annotation_value">ša=m-ēš-ān	šikār	kurt-a=u</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na624"/>
+	<a as="utterance" label="utterance" ref="utterance..na624" xml:id="a624">
+		<fs>
+			<f name="annotation_value">am-ē	šāx=ay	ēš-ī	guṭṭ-ā	gīr	kurt-ag=ant=u</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na635"/>
+	<a as="utterance" label="utterance" ref="utterance..na635" xml:id="a635">
+		<fs>
+			<f name="annotation_value">napas	tank=int</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na646"/>
+	<a as="utterance" label="utterance" ref="utterance..na646" xml:id="a646">
+		<fs>
+			<f name="annotation_value">āt-a		idā</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na663"/>
+	<a as="utterance" label="utterance" ref="utterance..na663" xml:id="a663">
+		<fs>
+			<f name="annotation_value">bi	bādšā	arz	kurt-a</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na674"/>
+	<a as="utterance" label="utterance" ref="utterance..na674" xml:id="a674">
+		<fs>
+			<f name="annotation_value">išāra	kurt=u</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na694"/>
+	<a as="utterance" label="utterance" ref="utterance..na694" xml:id="a694">
+		<fs>
+			<f name="annotation_value">ē	šāx-ān-ā	pāčin-ē-ān-ā	arra	kurt=u</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na708"/>
+	<a as="utterance" label="utterance" ref="utterance..na708" xml:id="a708">
+		<fs>
+			<f name="annotation_value">ā	alās	ūt</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na719"/>
+	<a as="utterance" label="utterance" ref="utterance..na719" xml:id="a719">
+		<fs>
+			<f name="annotation_value">āzāt	būt</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na739"/>
+	<a as="utterance" label="utterance" ref="utterance..na739" xml:id="a739">
+		<fs>
+			<f name="annotation_value">ē	aždiyā	diga	ǰā-(y)ē	šut=u</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na75"/>
+	<a as="utterance" label="utterance" ref="utterance..na75" xml:id="a75">
+		<fs>
+			<f name="annotation_value">ki	harčī	am-ē	tilīpun-ān-ī 	sīm=at-ant</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na759"/>
+	<a as="utterance" label="utterance" ref="utterance..na759" xml:id="a759">
+		<fs>
+			<f name="annotation_value">ēš-ā	mazan-ēn	xalāit-(t)ē	dāt	ǰawāir</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na779"/>
+	<a as="utterance" label="utterance" ref="utterance..na779" xml:id="a779">
+		<fs>
+			<f name="annotation_value">guṛā	ē	ṭukkur-ē	ki	šut</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na796"/>
+	<a as="utterance" label="utterance" ref="utterance..na796" xml:id="a796">
+		<fs>
+			<f name="annotation_value">padā	ēš-ā	išāra-(y)ē	ku</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na804"/>
+	<a as="utterance" label="utterance" ref="utterance..na804" xml:id="a804">
+		<fs>
+			<f name="annotation_value">ōštāt</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na818"/>
+	<a as="utterance" label="utterance" ref="utterance..na818" xml:id="a818">
+		<fs>
+			<f name="annotation_value">am-inkas-ēn	tōm-ē	zurt=u</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na859"/>
+	<a as="utterance" label="utterance" ref="utterance..na859" xml:id="a859">
+		<fs>
+			<f name="annotation_value">ša	wat-ī	dap-ay	tā	prēnt	bi	am-ē	ǰawāir-ān-ī	tā	ēš-ī	tūrag-ay	tā</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na870"/>
+	<a as="utterance" label="utterance" ref="utterance..na870" xml:id="a870">
+		<fs>
+			<f name="annotation_value">ki	āt</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na881"/>
+	<a as="utterance" label="utterance" ref="utterance..na881" xml:id="a881">
+		<fs>
+			<f name="annotation_value">bādšā	gu</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na89"/>
+	<a as="utterance" label="utterance" ref="utterance..na89" xml:id="a89">
+		<fs>
+			<f name="annotation_value">bi	am-ēš-ī	wasl=at-ant</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na898"/>
+	<a as="utterance" label="utterance" ref="utterance..na898" xml:id="a898">
+		<fs>
+			<f name="annotation_value">ē	čē	arz-ē	dāšt</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na906"/>
+	<a as="utterance" label="utterance" ref="utterance..na906" xml:id="a906">
+		<fs>
+			<f name="annotation_value">gušt=ī</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na938"/>
+	<a as="utterance" label="utterance" ref="utterance..na938" xml:id="a938">
+		<fs>
+			<f name="annotation_value">b-(y)ā	ki	ē	rang	ēš-ī	mās	ē	rang	guṭṭō=at=ō</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na946"/>
+	<a as="utterance" label="utterance" ref="utterance..na946" xml:id="a946">
+		<fs>
+			<f name="annotation_value">āt=u</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na960"/>
+	<a as="utterance" label="utterance" ref="utterance..na960" xml:id="a960">
+		<fs>
+			<f name="annotation_value">man	āzāt	kurt-un=u</f>
+		</fs>
+	</a>
+	<node xml:id="utterance..na980"/>
+	<a as="utterance" label="utterance" ref="utterance..na980" xml:id="a980">
+		<fs>
+			<f name="annotation_value">guṛā	mnā	inka	ǰawāir	dāt=u</f>
+		</fs>
+	</a>
 </graph>

@@ -1,1992 +1,2786 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <graph xmlns="http://www.xces.org/ns/GrAF/1.0/">
-  <graphHeader>
-    <labelsDecl/>
-    <dependencies>
-      <dependsOn f.id="word"/>
-    </dependencies>
-    <annotationSpaces>
-      <annotationSpace as.id="wfw"/>
-    </annotationSpaces>
-  </graphHeader>
-  <a as="wfw" label="wfw" ref="word-n0" xml:id="wfw-a0">
-    <fs>
-      <f name="wfw">say.PRS-3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n1" xml:id="wfw-a1">
-    <fs>
-      <f name="wfw">SUB</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n2" xml:id="wfw-a2">
-    <fs>
-      <f name="wfw">one</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n3" xml:id="wfw-a3">
-    <fs>
-      <f name="wfw">king=IND=COP.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n4" xml:id="wfw-a4">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n5" xml:id="wfw-a5">
-    <fs>
-      <f name="wfw">king</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n6" xml:id="wfw-a6">
-    <fs>
-      <f name="wfw">in=EMPH-DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n7" xml:id="wfw-a7">
-    <fs>
-      <f name="wfw">RFL-GEN</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n8" xml:id="wfw-a8">
-    <fs>
-      <f name="wfw">town-GEN</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n9" xml:id="wfw-a9">
-    <fs>
-      <f name="wfw">middle-OBL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n10" xml:id="wfw-a10">
-    <fs>
-      <f name="wfw">one</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n11" xml:id="wfw-a11">
-    <fs>
-      <f name="wfw">pole=IZ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n12" xml:id="wfw-a12">
-    <fs>
-      <f name="wfw">electricity-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n13" xml:id="wfw-a13">
-    <fs>
-      <f name="wfw">have.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n14" xml:id="wfw-a14">
-    <fs>
-      <f name="wfw">SUB</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n15" xml:id="wfw-a15">
-    <fs>
-      <f name="wfw">whatever</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n16" xml:id="wfw-a16">
-    <fs>
-      <f name="wfw">EMPH-DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n17" xml:id="wfw-a17">
-    <fs>
-      <f name="wfw">telephone-PL-GEN</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n18" xml:id="wfw-a18">
-    <fs>
-      <f name="wfw">wire=COP.PST-3PL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n19" xml:id="wfw-a19">
-    <fs>
-      <f name="wfw">to</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n20" xml:id="wfw-a20">
-    <fs>
-      <f name="wfw">EMPH-DEM-OBL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n21" xml:id="wfw-a21">
-    <fs>
-      <f name="wfw">connected=COP.PST-3PL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n22" xml:id="wfw-a22">
-    <fs>
-      <f name="wfw">whoever</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n23" xml:id="wfw-a23">
-    <fs>
-      <f name="wfw">SUB</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n24" xml:id="wfw-a24">
-    <fs>
-      <f name="wfw">petition-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n25" xml:id="wfw-a25">
-    <fs>
-      <f name="wfw">SUBJ-have.PST-PSUBJ.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n26" xml:id="wfw-a26">
-    <fs>
-      <f name="wfw">EMPH-DEM.OBJ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n27" xml:id="wfw-a27">
-    <fs>
-      <f name="wfw">SUB</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n28" xml:id="wfw-a28">
-    <fs>
-      <f name="wfw">shake</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n29" xml:id="wfw-a29">
-    <fs>
-      <f name="wfw">SUBJ.give.PST-PSUBJ.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n30" xml:id="wfw-a30">
-    <fs>
-      <f name="wfw">king</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n31" xml:id="wfw-a31">
-    <fs>
-      <f name="wfw">there</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n32" xml:id="wfw-a32">
-    <fs>
-      <f name="wfw">informed=IMF</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n33" xml:id="wfw-a33">
-    <fs>
-      <f name="wfw">become.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n34" xml:id="wfw-a34">
-    <fs>
-      <f name="wfw">one</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n35" xml:id="wfw-a35">
-    <fs>
-      <f name="wfw">day-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n36" xml:id="wfw-a36">
-    <fs>
-      <f name="wfw">see.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n37" xml:id="wfw-a37">
-    <fs>
-      <f name="wfw">FOC</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n38" xml:id="wfw-a38">
-    <fs>
-      <f name="wfw">EMPH.DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n39" xml:id="wfw-a39">
-    <fs>
-      <f name="wfw">dragon-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n40" xml:id="wfw-a40">
-    <fs>
-      <f name="wfw">come.PST-PP(=COP.PRS.3SG)=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n41" xml:id="wfw-a41">
-    <fs>
-      <f name="wfw">EMPH-DEM-OBJ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n42" xml:id="wfw-a42">
-    <fs>
-      <f name="wfw">shake=IMF</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n43" xml:id="wfw-a43">
-    <fs>
-      <f name="wfw">give.PRS.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n44" xml:id="wfw-a44">
-    <fs>
-      <f name="wfw">king</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n45" xml:id="wfw-a45">
-    <fs>
-      <f name="wfw">face</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n46" xml:id="wfw-a46">
-    <fs>
-      <f name="wfw">give.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n47" xml:id="wfw-a47">
-    <fs>
-      <f name="wfw">one-IND-OBJ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n48" xml:id="wfw-a48">
-    <fs>
-      <f name="wfw">SUB</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n49" xml:id="wfw-a49">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n50" xml:id="wfw-a50">
-    <fs>
-      <f name="wfw">what-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n51" xml:id="wfw-a51">
-    <fs>
-      <f name="wfw">come.PST-3PL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n52" xml:id="wfw-a52">
-    <fs>
-      <f name="wfw">say.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n53" xml:id="wfw-a53">
-    <fs>
-      <f name="wfw">king</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n54" xml:id="wfw-a54">
-    <fs>
-      <f name="wfw">master</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n55" xml:id="wfw-a55">
-    <fs>
-      <f name="wfw">dragon-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n56" xml:id="wfw-a56">
-    <fs>
-      <f name="wfw">say.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n57" xml:id="wfw-a57">
-    <fs>
-      <f name="wfw">oh…</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n58" xml:id="wfw-a58">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n59" xml:id="wfw-a59">
-    <fs>
-      <f name="wfw">dragon</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n60" xml:id="wfw-a60">
-    <fs>
-      <f name="wfw">order-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n61" xml:id="wfw-a61">
-    <fs>
-      <f name="wfw">have.PRS-3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n62" xml:id="wfw-a62">
-    <fs>
-      <f name="wfw">petition-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n63" xml:id="wfw-a63">
-    <fs>
-      <f name="wfw">have.PRS-3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n64" xml:id="wfw-a64">
-    <fs>
-      <f name="wfw">DEM-GEN</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n65" xml:id="wfw-a65">
-    <fs>
-      <f name="wfw">petition-OBJ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n66" xml:id="wfw-a66">
-    <fs>
-      <f name="wfw">who</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n67" xml:id="wfw-a67">
-    <fs>
-      <f name="wfw">for=I</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n68" xml:id="wfw-a68">
-    <fs>
-      <f name="wfw">SUBJ-bring.PRS-3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n69" xml:id="wfw-a69">
-    <fs>
-      <f name="wfw">I</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n70" xml:id="wfw-a70">
-    <fs>
-      <f name="wfw">SUB</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n71" xml:id="wfw-a71">
-    <fs>
-      <f name="wfw">NEG-know.PRS-1SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n72" xml:id="wfw-a72">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n73" xml:id="wfw-a73">
-    <fs>
-      <f name="wfw">without-tongue-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n74" xml:id="wfw-a74">
-    <fs>
-      <f name="wfw">one</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n75" xml:id="wfw-a75">
-    <fs>
-      <f name="wfw">carpenter-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n76" xml:id="wfw-a76">
-    <fs>
-      <f name="wfw">say.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n77" xml:id="wfw-a77">
-    <fs>
-      <f name="wfw">I=IMF</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n78" xml:id="wfw-a78">
-    <fs>
-      <f name="wfw">know.PRS-1SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n79" xml:id="wfw-a79">
-    <fs>
-      <f name="wfw">say.PST.3SG=ENC.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n80" xml:id="wfw-a80">
-    <fs>
-      <f name="wfw">SUB</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n81" xml:id="wfw-a81">
-    <fs>
-      <f name="wfw">know.PRS-2SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n82" xml:id="wfw-a82">
-    <fs>
-      <f name="wfw">DEM-GEN</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n83" xml:id="wfw-a83">
-    <fs>
-      <f name="wfw">petition-OBJ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n84" xml:id="wfw-a84">
-    <fs>
-      <f name="wfw">bring.PST.SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n85" xml:id="wfw-a85">
-    <fs>
-      <f name="wfw">I</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n86" xml:id="wfw-a86">
-    <fs>
-      <f name="wfw">you.SG.OBJ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n87" xml:id="wfw-a87">
-    <fs>
-      <f name="wfw">this.much</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n88" xml:id="wfw-a88">
-    <fs>
-      <f name="wfw">reward=IMF</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n89" xml:id="wfw-a89">
-    <fs>
-      <f name="wfw">give.PRS-1SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n90" xml:id="wfw-a90">
-    <fs>
-      <f name="wfw">say.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n91" xml:id="wfw-a91">
-    <fs>
-      <f name="wfw">very</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n92" xml:id="wfw-a92">
-    <fs>
-      <f name="wfw">well</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n93" xml:id="wfw-a93">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n94" xml:id="wfw-a94">
-    <fs>
-      <f name="wfw">carpenter</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n95" xml:id="wfw-a95">
-    <fs>
-      <f name="wfw">SUB</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n96" xml:id="wfw-a96">
-    <fs>
-      <f name="wfw">come.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n97" xml:id="wfw-a97">
-    <fs>
-      <f name="wfw">with</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n98" xml:id="wfw-a98">
-    <fs>
-      <f name="wfw">blade=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n99" xml:id="wfw-a99">
-    <fs>
-      <f name="wfw">saw-PL.OBL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n100" xml:id="wfw-a100">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n101" xml:id="wfw-a101">
-    <fs>
-      <f name="wfw">dragon</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n102" xml:id="wfw-a102">
-    <fs>
-      <f name="wfw">released</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n103" xml:id="wfw-a103">
-    <fs>
-      <f name="wfw">do.PST.3SG=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n104" xml:id="wfw-a104">
-    <fs>
-      <f name="wfw">en.route</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n105" xml:id="wfw-a105">
-    <fs>
-      <f name="wfw">become.PST.3SG=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n106" xml:id="wfw-a106">
-    <fs>
-      <f name="wfw">dragon</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n107" xml:id="wfw-a107">
-    <fs>
-      <f name="wfw">carpenter-OBJ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n108" xml:id="wfw-a108">
-    <fs>
-      <f name="wfw">hint</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n109" xml:id="wfw-a109">
-    <fs>
-      <f name="wfw">give.PST.3SG=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n110" xml:id="wfw-a110">
-    <fs>
-      <f name="wfw">hint=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n111" xml:id="wfw-a111">
-    <fs>
-      <f name="wfw">to</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n112" xml:id="wfw-a112">
-    <fs>
-      <f name="wfw">mountain-GEN</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n113" xml:id="wfw-a113">
-    <fs>
-      <f name="wfw">in</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n114" xml:id="wfw-a114">
-    <fs>
-      <f name="wfw">go.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n115" xml:id="wfw-a115">
-    <fs>
-      <f name="wfw">there</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n116" xml:id="wfw-a116">
-    <fs>
-      <f name="wfw">SUB</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n117" xml:id="wfw-a117">
-    <fs>
-      <f name="wfw">go.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n118" xml:id="wfw-a118">
-    <fs>
-      <f name="wfw">FOC</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n119" xml:id="wfw-a119">
-    <fs>
-      <f name="wfw">ohhhh...</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n120" xml:id="wfw-a120">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n121" xml:id="wfw-a121">
-    <fs>
-      <f name="wfw">dragon</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n122" xml:id="wfw-a122">
-    <fs>
-      <f name="wfw">other</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n123" xml:id="wfw-a123">
-    <fs>
-      <f name="wfw">mother-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n124" xml:id="wfw-a124">
-    <fs>
-      <f name="wfw">have.PRS-3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n125" xml:id="wfw-a125">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n126" xml:id="wfw-a126">
-    <fs>
-      <f name="wfw">mother=ENC.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n127" xml:id="wfw-a127">
-    <fs>
-      <f name="wfw">from=EMPH-DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n128" xml:id="wfw-a128">
-    <fs>
-      <f name="wfw">mountain-GEN</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n129" xml:id="wfw-a129">
-    <fs>
-      <f name="wfw">wild.goat</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n130" xml:id="wfw-a130">
-    <fs>
-      <f name="wfw">NEG-COP.PRS.3PL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n131" xml:id="wfw-a131">
-    <fs>
-      <f name="wfw">big</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n132" xml:id="wfw-a132">
-    <fs>
-      <f name="wfw">horn</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n133" xml:id="wfw-a133">
-    <fs>
-      <f name="wfw">from=EMPH-DEM-PL.OBL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n134" xml:id="wfw-a134">
-    <fs>
-      <f name="wfw">hunting</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n135" xml:id="wfw-a135">
-    <fs>
-      <f name="wfw">do.PST-PP(=COP.PRS.3SG)=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n136" xml:id="wfw-a136">
-    <fs>
-      <f name="wfw">EMPH.DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n137" xml:id="wfw-a137">
-    <fs>
-      <f name="wfw">horn=ENC.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n138" xml:id="wfw-a138">
-    <fs>
-      <f name="wfw">DEM-GEN</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n139" xml:id="wfw-a139">
-    <fs>
-      <f name="wfw">throat-OBL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n140" xml:id="wfw-a140">
-    <fs>
-      <f name="wfw">captive</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n141" xml:id="wfw-a141">
-    <fs>
-      <f name="wfw">do.PST-PP=COP.PRS.3PL=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n142" xml:id="wfw-a142">
-    <fs>
-      <f name="wfw">breath</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n143" xml:id="wfw-a143">
-    <fs>
-      <f name="wfw">narrow=COP.PRS.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n144" xml:id="wfw-a144">
-    <fs>
-      <f name="wfw">come.PST-PP(=COP.PRS.3SG)</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n145" xml:id="wfw-a145">
-    <fs>
-      <f name="wfw">here</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n146" xml:id="wfw-a146">
-    <fs>
-      <f name="wfw">to</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n147" xml:id="wfw-a147">
-    <fs>
-      <f name="wfw">king</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n148" xml:id="wfw-a148">
-    <fs>
-      <f name="wfw">petition</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n149" xml:id="wfw-a149">
-    <fs>
-      <f name="wfw">do.PST-PP(=COP.PRS.3SG)</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n150" xml:id="wfw-a150">
-    <fs>
-      <f name="wfw">hint</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n151" xml:id="wfw-a151">
-    <fs>
-      <f name="wfw">do.PST.3SG=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n152" xml:id="wfw-a152">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n153" xml:id="wfw-a153">
-    <fs>
-      <f name="wfw">horn-PL-OBJ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n154" xml:id="wfw-a154">
-    <fs>
-      <f name="wfw">wild.goat-GEN-PL=OBJ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n155" xml:id="wfw-a155">
-    <fs>
-      <f name="wfw">saw</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n156" xml:id="wfw-a156">
-    <fs>
-      <f name="wfw">do.PST.3SG=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n157" xml:id="wfw-a157">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n158" xml:id="wfw-a158">
-    <fs>
-      <f name="wfw">finished</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n159" xml:id="wfw-a159">
-    <fs>
-      <f name="wfw">become.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n160" xml:id="wfw-a160">
-    <fs>
-      <f name="wfw">free</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n161" xml:id="wfw-a161">
-    <fs>
-      <f name="wfw">become.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n162" xml:id="wfw-a162">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n163" xml:id="wfw-a163">
-    <fs>
-      <f name="wfw">dragon</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n164" xml:id="wfw-a164">
-    <fs>
-      <f name="wfw">other</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n165" xml:id="wfw-a165">
-    <fs>
-      <f name="wfw">place-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n166" xml:id="wfw-a166">
-    <fs>
-      <f name="wfw">go.PST.3SG=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n167" xml:id="wfw-a167">
-    <fs>
-      <f name="wfw">DEM-OBJ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n168" xml:id="wfw-a168">
-    <fs>
-      <f name="wfw">big-ATTR</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n169" xml:id="wfw-a169">
-    <fs>
-      <f name="wfw">reward-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n170" xml:id="wfw-a170">
-    <fs>
-      <f name="wfw">give.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n171" xml:id="wfw-a171">
-    <fs>
-      <f name="wfw">jewelry</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n172" xml:id="wfw-a172">
-    <fs>
-      <f name="wfw">then</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n173" xml:id="wfw-a173">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n174" xml:id="wfw-a174">
-    <fs>
-      <f name="wfw">bit-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n175" xml:id="wfw-a175">
-    <fs>
-      <f name="wfw">SUB</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n176" xml:id="wfw-a176">
-    <fs>
-      <f name="wfw">go.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n177" xml:id="wfw-a177">
-    <fs>
-      <f name="wfw">back</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n178" xml:id="wfw-a178">
-    <fs>
-      <f name="wfw">DEM-OBJ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n179" xml:id="wfw-a179">
-    <fs>
-      <f name="wfw">hint-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n180" xml:id="wfw-a180">
-    <fs>
-      <f name="wfw">do.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n181" xml:id="wfw-a181">
-    <fs>
-      <f name="wfw">stand.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n182" xml:id="wfw-a182">
-    <fs>
-      <f name="wfw">EMPH-such-ATTR</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n183" xml:id="wfw-a183">
-    <fs>
-      <f name="wfw">seed-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n184" xml:id="wfw-a184">
-    <fs>
-      <f name="wfw">seize.PST.3SG=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n185" xml:id="wfw-a185">
-    <fs>
-      <f name="wfw">from</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n186" xml:id="wfw-a186">
-    <fs>
-      <f name="wfw">RFL-GEN</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n187" xml:id="wfw-a187">
-    <fs>
-      <f name="wfw">mouth-GEN</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n188" xml:id="wfw-a188">
-    <fs>
-      <f name="wfw">inside</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n189" xml:id="wfw-a189">
-    <fs>
-      <f name="wfw">throw.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n190" xml:id="wfw-a190">
-    <fs>
-      <f name="wfw">in</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n191" xml:id="wfw-a191">
-    <fs>
-      <f name="wfw">EMPH.DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n192" xml:id="wfw-a192">
-    <fs>
-      <f name="wfw">jewel-PL.OBL-GEN</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n193" xml:id="wfw-a193">
-    <fs>
-      <f name="wfw">inside</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n194" xml:id="wfw-a194">
-    <fs>
-      <f name="wfw">DEM-GEN</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n195" xml:id="wfw-a195">
-    <fs>
-      <f name="wfw">woolen.shoulder.bag-GEN</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n196" xml:id="wfw-a196">
-    <fs>
-      <f name="wfw">in</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n197" xml:id="wfw-a197">
-    <fs>
-      <f name="wfw">SUB</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n198" xml:id="wfw-a198">
-    <fs>
-      <f name="wfw">come.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n199" xml:id="wfw-a199">
-    <fs>
-      <f name="wfw">king</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n200" xml:id="wfw-a200">
-    <fs>
-      <f name="wfw">say.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n201" xml:id="wfw-a201">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n202" xml:id="wfw-a202">
-    <fs>
-      <f name="wfw">what</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n203" xml:id="wfw-a203">
-    <fs>
-      <f name="wfw">petition-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n204" xml:id="wfw-a204">
-    <fs>
-      <f name="wfw">have.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n205" xml:id="wfw-a205">
-    <fs>
-      <f name="wfw">say.PST.3SG=ENC.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n206" xml:id="wfw-a206">
-    <fs>
-      <f name="wfw">SUBJ-come.PRS</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n207" xml:id="wfw-a207">
-    <fs>
-      <f name="wfw">SUB</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n208" xml:id="wfw-a208">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n209" xml:id="wfw-a209">
-    <fs>
-      <f name="wfw">manner</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n210" xml:id="wfw-a210">
-    <fs>
-      <f name="wfw">DEM-GEN</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n211" xml:id="wfw-a211">
-    <fs>
-      <f name="wfw">mother</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n212" xml:id="wfw-a212">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n213" xml:id="wfw-a213">
-    <fs>
-      <f name="wfw">manner</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n214" xml:id="wfw-a214">
-    <fs>
-      <f name="wfw">strangled=COP.PST.3SG=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n215" xml:id="wfw-a215">
-    <fs>
-      <f name="wfw">come.PST.3SG=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n216" xml:id="wfw-a216">
-    <fs>
-      <f name="wfw">I</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n217" xml:id="wfw-a217">
-    <fs>
-      <f name="wfw">free</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n218" xml:id="wfw-a218">
-    <fs>
-      <f name="wfw">do.PST-1SG=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n219" xml:id="wfw-a219">
-    <fs>
-      <f name="wfw">then</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n220" xml:id="wfw-a220">
-    <fs>
-      <f name="wfw">I.OBJ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n221" xml:id="wfw-a221">
-    <fs>
-      <f name="wfw">this.much</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n222" xml:id="wfw-a222">
-    <fs>
-      <f name="wfw">jewelry</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n223" xml:id="wfw-a223">
-    <fs>
-      <f name="wfw">give.PST.3SG=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n224" xml:id="wfw-a224">
-    <fs>
-      <f name="wfw">EMPH.DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n225" xml:id="wfw-a225">
-    <fs>
-      <f name="wfw">seed-OBJ=also</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n226" xml:id="wfw-a226">
-    <fs>
-      <f name="wfw">EMPH-DEM-OBJ=also</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n227" xml:id="wfw-a227">
-    <fs>
-      <f name="wfw">I.OBJ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n228" xml:id="wfw-a228">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n229" xml:id="wfw-a229">
-    <fs>
-      <f name="wfw">give.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n230" xml:id="wfw-a230">
-    <fs>
-      <f name="wfw">from</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n231" xml:id="wfw-a231">
-    <fs>
-      <f name="wfw">RFL-GEN</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n232" xml:id="wfw-a232">
-    <fs>
-      <f name="wfw">mouth-GEN</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n233" xml:id="wfw-a233">
-    <fs>
-      <f name="wfw">inside=ENC.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n234" xml:id="wfw-a234">
-    <fs>
-      <f name="wfw">throw.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n235" xml:id="wfw-a235">
-    <fs>
-      <f name="wfw">say.PST.3SG=ENC.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n236" xml:id="wfw-a236">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n237" xml:id="wfw-a237">
-    <fs>
-      <f name="wfw">other=TOP</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n238" xml:id="wfw-a238">
-    <fs>
-      <f name="wfw">jwelery=COP.PRS.3PL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n239" xml:id="wfw-a239">
-    <fs>
-      <f name="wfw">EMPH-DEM-OBJ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n240" xml:id="wfw-a240">
-    <fs>
-      <f name="wfw">we.INCL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n241" xml:id="wfw-a241">
-    <fs>
-      <f name="wfw">NEG-know.PRS-1PL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n242" xml:id="wfw-a242">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n243" xml:id="wfw-a243">
-    <fs>
-      <f name="wfw">consultation</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n244" xml:id="wfw-a244">
-    <fs>
-      <f name="wfw">do.PST-3PL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n245" xml:id="wfw-a245">
-    <fs>
-      <f name="wfw">say.PST-3PL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n246" xml:id="wfw-a246">
-    <fs>
-      <f name="wfw">SUBJ-come.PRS</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n247" xml:id="wfw-a247">
-    <fs>
-      <f name="wfw">DEM-OBJ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n248" xml:id="wfw-a248">
-    <fs>
-      <f name="wfw">SUBJ-sow.PRS-1PL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n249" xml:id="wfw-a249">
-    <fs>
-      <f name="wfw">we.INCL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n250" xml:id="wfw-a250">
-    <fs>
-      <f name="wfw">DEM-OBJ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n251" xml:id="wfw-a251">
-    <fs>
-      <f name="wfw">good-ATTR</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n252" xml:id="wfw-a252">
-    <fs>
-      <f name="wfw">place-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n253" xml:id="wfw-a253">
-    <fs>
-      <f name="wfw">garden-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n254" xml:id="wfw-a254">
-    <fs>
-      <f name="wfw">plot-GEN</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n255" xml:id="wfw-a255">
-    <fs>
-      <f name="wfw">inside</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n256" xml:id="wfw-a256">
-    <fs>
-      <f name="wfw">sow.PST-3PL=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n257" xml:id="wfw-a257">
-    <fs>
-      <f name="wfw">good-ATTR</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n258" xml:id="wfw-a258">
-    <fs>
-      <f name="wfw">soft-ATTR</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n259" xml:id="wfw-a259">
-    <fs>
-      <f name="wfw">plot-IND=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n260" xml:id="wfw-a260">
-    <fs>
-      <f name="wfw">melon.bush-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n261" xml:id="wfw-a261">
-    <fs>
-      <f name="wfw">green</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n262" xml:id="wfw-a262">
-    <fs>
-      <f name="wfw">do.PST.3SG=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n263" xml:id="wfw-a263">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n264" xml:id="wfw-a264">
-    <fs>
-      <f name="wfw">so.many</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n265" xml:id="wfw-a265">
-    <fs>
-      <f name="wfw">melon</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n266" xml:id="wfw-a266">
-    <fs>
-      <f name="wfw">do.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n267" xml:id="wfw-a267">
-    <fs>
-      <f name="wfw">from</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n268" xml:id="wfw-a268">
-    <fs>
-      <f name="wfw">fear-OBL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n269" xml:id="wfw-a269">
-    <fs>
-      <f name="wfw">person-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n270" xml:id="wfw-a270">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n271" xml:id="wfw-a271">
-    <fs>
-      <f name="wfw">melon-PL-OBJ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n272" xml:id="wfw-a272">
-    <fs>
-      <f name="wfw">NEG-eat.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n273" xml:id="wfw-a273">
-    <fs>
-      <f name="wfw">SUB</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n274" xml:id="wfw-a274">
-    <fs>
-      <f name="wfw">from</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n275" xml:id="wfw-a275">
-    <fs>
-      <f name="wfw">dragon-GEN</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n276" xml:id="wfw-a276">
-    <fs>
-      <f name="wfw">mouth-GEN</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n277" xml:id="wfw-a277">
-    <fs>
-      <f name="wfw">in=COP.PRS.3PL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n278" xml:id="wfw-a278">
-    <fs>
-      <f name="wfw">snake-GEN</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n279" xml:id="wfw-a279">
-    <fs>
-      <f name="wfw">poison=COP.PRS.3PL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n280" xml:id="wfw-a280">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n281" xml:id="wfw-a281">
-    <fs>
-      <f name="wfw">so.many</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n282" xml:id="wfw-a282">
-    <fs>
-      <f name="wfw">seed</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n283" xml:id="wfw-a283">
-    <fs>
-      <f name="wfw">do.PST-3PL=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n284" xml:id="wfw-a284">
-    <fs>
-      <f name="wfw">go.PST-3PL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n285" xml:id="wfw-a285">
-    <fs>
-      <f name="wfw">huge-ATTR</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n286" xml:id="wfw-a286">
-    <fs>
-      <f name="wfw">melon.bed-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n287" xml:id="wfw-a287">
-    <fs>
-      <f name="wfw">king</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n288" xml:id="wfw-a288">
-    <fs>
-      <f name="wfw">sow.PST.3SG=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n289" xml:id="wfw-a289">
-    <fs>
-      <f name="wfw">one</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n290" xml:id="wfw-a290">
-    <fs>
-      <f name="wfw">old.man-IND-OBJ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n291" xml:id="wfw-a291">
-    <fs>
-      <f name="wfw">gardener</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n292" xml:id="wfw-a292">
-    <fs>
-      <f name="wfw">do.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n293" xml:id="wfw-a293">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n294" xml:id="wfw-a294">
-    <fs>
-      <f name="wfw">hit.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n295" xml:id="wfw-a295">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n296" xml:id="wfw-a296">
-    <fs>
-      <f name="wfw">melon.bed</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n297" xml:id="wfw-a297">
-    <fs>
-      <f name="wfw">to</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n298" xml:id="wfw-a298">
-    <fs>
-      <f name="wfw">melon-OBL=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n299" xml:id="wfw-a299">
-    <fs>
-      <f name="wfw">entirely</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n300" xml:id="wfw-a300">
-    <fs>
-      <f name="wfw">melon</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n301" xml:id="wfw-a301">
-    <fs>
-      <f name="wfw">do.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n302" xml:id="wfw-a302">
-    <fs>
-      <f name="wfw">old.man=also</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n303" xml:id="wfw-a303">
-    <fs>
-      <f name="wfw">first</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n304" xml:id="wfw-a304">
-    <fs>
-      <f name="wfw">what=IMF</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n305" xml:id="wfw-a305">
-    <fs>
-      <f name="wfw">NEG-do.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n306" xml:id="wfw-a306">
-    <fs>
-      <f name="wfw">trust=IMF</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n307" xml:id="wfw-a307">
-    <fs>
-      <f name="wfw">NEG-do.PST.3SG=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n308" xml:id="wfw-a308">
-    <fs>
-      <f name="wfw">donkey-DIM-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n309" xml:id="wfw-a309">
-    <fs>
-      <f name="wfw">have.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n310" xml:id="wfw-a310">
-    <fs>
-      <f name="wfw">EMPH-DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n311" xml:id="wfw-a311">
-    <fs>
-      <f name="wfw">melon-PL-OBJ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n312" xml:id="wfw-a312">
-    <fs>
-      <f name="wfw">before</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n313" xml:id="wfw-a313">
-    <fs>
-      <f name="wfw">to=EMPH-DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n314" xml:id="wfw-a314">
-    <fs>
-      <f name="wfw">donkey-DIM-GEN</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n315" xml:id="wfw-a315">
-    <fs>
-      <f name="wfw">in.front.of</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n316" xml:id="wfw-a316">
-    <fs>
-      <f name="wfw">cut.to.pieces.PST.3SG=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n317" xml:id="wfw-a317">
-    <fs>
-      <f name="wfw">give.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n318" xml:id="wfw-a318">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n319" xml:id="wfw-a319">
-    <fs>
-      <f name="wfw">donkey=also</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n320" xml:id="wfw-a320">
-    <fs>
-      <f name="wfw">strong</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n321" xml:id="wfw-a321">
-    <fs>
-      <f name="wfw">become.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n322" xml:id="wfw-a322">
-    <fs>
-      <f name="wfw">old.man</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n323" xml:id="wfw-a323">
-    <fs>
-      <f name="wfw">start</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n324" xml:id="wfw-a324">
-    <fs>
-      <f name="wfw">do.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n325" xml:id="wfw-a325">
-    <fs>
-      <f name="wfw">eat.INF-OBJ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n326" xml:id="wfw-a326">
-    <fs>
-      <f name="wfw">FOC</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n327" xml:id="wfw-a327">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n328" xml:id="wfw-a328">
-    <fs>
-      <f name="wfw">what</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n329" xml:id="wfw-a329">
-    <fs>
-      <f name="wfw">thing=COP.PRS.3PL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n330" xml:id="wfw-a330">
-    <fs>
-      <f name="wfw">old.man=also</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n331" xml:id="wfw-a331">
-    <fs>
-      <f name="wfw">strong</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n332" xml:id="wfw-a332">
-    <fs>
-      <f name="wfw">become.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n333" xml:id="wfw-a333">
-    <fs>
-      <f name="wfw">king</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n334" xml:id="wfw-a334">
-    <fs>
-      <f name="wfw">one</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n335" xml:id="wfw-a335">
-    <fs>
-      <f name="wfw">day-IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n336" xml:id="wfw-a336">
-    <fs>
-      <f name="wfw">SUB</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n337" xml:id="wfw-a337">
-    <fs>
-      <f name="wfw">come.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n338" xml:id="wfw-a338">
-    <fs>
-      <f name="wfw">say.PST.3SG=ENC.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n339" xml:id="wfw-a339">
-    <fs>
-      <f name="wfw">SUB</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n340" xml:id="wfw-a340">
-    <fs>
-      <f name="wfw">old.man</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n341" xml:id="wfw-a341">
-    <fs>
-      <f name="wfw">father</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n342" xml:id="wfw-a342">
-    <fs>
-      <f name="wfw">D</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n343" xml:id="wfw-a343">
-    <fs>
-      <f name="wfw">what=COP.PRS.3PL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n344" xml:id="wfw-a344">
-    <fs>
-      <f name="wfw">say.PST.3SG=ENC.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n345" xml:id="wfw-a345">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n346" xml:id="wfw-a346">
-    <fs>
-      <f name="wfw">entirely</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n347" xml:id="wfw-a347">
-    <fs>
-      <f name="wfw">good-ATTR</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n348" xml:id="wfw-a348">
-    <fs>
-      <f name="wfw">thing=COP.PRS.3PL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n349" xml:id="wfw-a349">
-    <fs>
-      <f name="wfw">I=also</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n350" xml:id="wfw-a350">
-    <fs>
-      <f name="wfw">eat.PST-PP(=COP.PRS.1SG)</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n351" xml:id="wfw-a351">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n352" xml:id="wfw-a352">
-    <fs>
-      <f name="wfw">donkey-OBJ=also</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n353" xml:id="wfw-a353">
-    <fs>
-      <f name="wfw">give.PST-PP=COP.PRS.1SG=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n354" xml:id="wfw-a354">
-    <fs>
-      <f name="wfw">you.PL=also</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n355" xml:id="wfw-a355">
-    <fs>
-      <f name="wfw">SUBJ.eat.PRS-2PL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n356" xml:id="wfw-a356">
-    <fs>
-      <f name="wfw">vizier</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n357" xml:id="wfw-a357">
-    <fs>
-      <f name="wfw">say.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n358" xml:id="wfw-a358">
-    <fs>
-      <f name="wfw">no</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n359" xml:id="wfw-a359">
-    <fs>
-      <f name="wfw">before</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n360" xml:id="wfw-a360">
-    <fs>
-      <f name="wfw">I=IMF</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n361" xml:id="wfw-a361">
-    <fs>
-      <f name="wfw">eat.PRS-1SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n362" xml:id="wfw-a362">
-    <fs>
-      <f name="wfw">you.SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n363" xml:id="wfw-a363">
-    <fs>
-      <f name="wfw">VOC</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n364" xml:id="wfw-a364">
-    <fs>
-      <f name="wfw">king</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n365" xml:id="wfw-a365">
-    <fs>
-      <f name="wfw">PROH-eat.PRS</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n366" xml:id="wfw-a366">
-    <fs>
-      <f name="wfw">vizier</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n367" xml:id="wfw-a367">
-    <fs>
-      <f name="wfw">eat.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n368" xml:id="wfw-a368">
-    <fs>
-      <f name="wfw">FOC</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n369" xml:id="wfw-a369">
-    <fs>
-      <f name="wfw">DEM</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n370" xml:id="wfw-a370">
-    <fs>
-      <f name="wfw">strange-ATTR</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n371" xml:id="wfw-a371">
-    <fs>
-      <f name="wfw">tasty-ATTR</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n372" xml:id="wfw-a372">
-    <fs>
-      <f name="wfw">thing=COP.PRS.3PL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n373" xml:id="wfw-a373">
-    <fs>
-      <f name="wfw">eat.PST-3PL=and</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n374" xml:id="wfw-a374">
-    <fs>
-      <f name="wfw">SUB</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n375" xml:id="wfw-a375">
-    <fs>
-      <f name="wfw">eat.PST-3PL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n376" xml:id="wfw-a376">
-    <fs>
-      <f name="wfw">now</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n377" xml:id="wfw-a377">
-    <fs>
-      <f name="wfw">say.PST-3PL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n378" xml:id="wfw-a378">
-    <fs>
-      <f name="wfw">SUBJ-come.PRS</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n379" xml:id="wfw-a379">
-    <fs>
-      <f name="wfw">we.INCL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n380" xml:id="wfw-a380">
-    <fs>
-      <f name="wfw">for=DEM-OBL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n381" xml:id="wfw-a381">
-    <fs>
-      <f name="wfw">name=IND</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n382" xml:id="wfw-a382">
-    <fs>
-      <f name="wfw">SUBJ-leave.PRS-1PL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n383" xml:id="wfw-a383">
-    <fs>
-      <f name="wfw">name=ENC.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n384" xml:id="wfw-a384">
-    <fs>
-      <f name="wfw">then</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n385" xml:id="wfw-a385">
-    <fs>
-      <f name="wfw">melon-OBJ</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n386" xml:id="wfw-a386">
-    <fs>
-      <f name="wfw">leave.PST-3PL</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n387" xml:id="wfw-a387">
-    <fs>
-      <f name="wfw">xarmizza</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n388" xml:id="wfw-a388">
-    <fs>
-      <f name="wfw">SUB</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n389" xml:id="wfw-a389">
-    <fs>
-      <f name="wfw">taste-ENC.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n390" xml:id="wfw-a390">
-    <fs>
-      <f name="wfw">first</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n391" xml:id="wfw-a391">
-    <fs>
-      <f name="wfw">donkey</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n392" xml:id="wfw-a392">
-    <fs>
-      <f name="wfw">take.PST.3SG</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n393" xml:id="wfw-a393">
-    <fs>
-      <f name="wfw">xarmizza</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n394" xml:id="wfw-a394">
-    <fs>
-      <f name="wfw">from=there</f>
-    </fs>
-  </a>
-  <a as="wfw" label="wfw" ref="word-n395" xml:id="wfw-a395">
-    <fs>
-      <f name="wfw">remain.PST.3SG</f>
-    </fs>
-  </a>
+	<graphHeader>
+		<labelsDecl>
+			<labelUsage label="wfw" occurs="396"/>
+		</labelsDecl>
+		<dependencies>
+			<dependsOn f.id="word"/>
+		</dependencies>
+		<annotationSpaces>
+			<annotationSpace as.id="wfw"/>
+		</annotationSpaces>
+	</graphHeader>
+	<node xml:id="wfw..na10"/>
+	<edge from="word..na9" to="wfw..na10" xml:id="ea10"/>
+	<a as="wfw" label="wfw" ref="wfw..na10" xml:id="a10">
+		<fs>
+			<f name="annotation_value">SUB</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1007"/>
+	<edge from="word..na1006" to="wfw..na1007" xml:id="ea1007"/>
+	<a as="wfw" label="wfw" ref="wfw..na1007" xml:id="a1007">
+		<fs>
+			<f name="annotation_value">from</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1010"/>
+	<edge from="word..na1009" to="wfw..na1010" xml:id="ea1010"/>
+	<a as="wfw" label="wfw" ref="wfw..na1010" xml:id="a1010">
+		<fs>
+			<f name="annotation_value">RFL-GEN</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1013"/>
+	<edge from="word..na1012" to="wfw..na1013" xml:id="ea1013"/>
+	<a as="wfw" label="wfw" ref="wfw..na1013" xml:id="a1013">
+		<fs>
+			<f name="annotation_value">mouth-GEN</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1016"/>
+	<edge from="word..na1015" to="wfw..na1016" xml:id="ea1016"/>
+	<a as="wfw" label="wfw" ref="wfw..na1016" xml:id="a1016">
+		<fs>
+			<f name="annotation_value">inside=ENC.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1019"/>
+	<edge from="word..na1018" to="wfw..na1019" xml:id="ea1019"/>
+	<a as="wfw" label="wfw" ref="wfw..na1019" xml:id="a1019">
+		<fs>
+			<f name="annotation_value">throw.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na102"/>
+	<edge from="word..na101" to="wfw..na102" xml:id="ea102"/>
+	<a as="wfw" label="wfw" ref="wfw..na102" xml:id="a102">
+		<fs>
+			<f name="annotation_value">SUBJ-have.PST-PSUBJ.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1027"/>
+	<edge from="word..na1026" to="wfw..na1027" xml:id="ea1027"/>
+	<a as="wfw" label="wfw" ref="wfw..na1027" xml:id="a1027">
+		<fs>
+			<f name="annotation_value">say.PST.3SG=ENC.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1035"/>
+	<edge from="word..na1034" to="wfw..na1035" xml:id="ea1035"/>
+	<a as="wfw" label="wfw" ref="wfw..na1035" xml:id="a1035">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1038"/>
+	<edge from="word..na1037" to="wfw..na1038" xml:id="ea1038"/>
+	<a as="wfw" label="wfw" ref="wfw..na1038" xml:id="a1038">
+		<fs>
+			<f name="annotation_value">other=TOP</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1041"/>
+	<edge from="word..na1040" to="wfw..na1041" xml:id="ea1041"/>
+	<a as="wfw" label="wfw" ref="wfw..na1041" xml:id="a1041">
+		<fs>
+			<f name="annotation_value">jwelery=COP.PRS.3PL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1049"/>
+	<edge from="word..na1048" to="wfw..na1049" xml:id="ea1049"/>
+	<a as="wfw" label="wfw" ref="wfw..na1049" xml:id="a1049">
+		<fs>
+			<f name="annotation_value">EMPH-DEM-OBJ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1052"/>
+	<edge from="word..na1051" to="wfw..na1052" xml:id="ea1052"/>
+	<a as="wfw" label="wfw" ref="wfw..na1052" xml:id="a1052">
+		<fs>
+			<f name="annotation_value">we.INCL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1055"/>
+	<edge from="word..na1054" to="wfw..na1055" xml:id="ea1055"/>
+	<a as="wfw" label="wfw" ref="wfw..na1055" xml:id="a1055">
+		<fs>
+			<f name="annotation_value">NEG-know.PRS-1PL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1063"/>
+	<edge from="word..na1062" to="wfw..na1063" xml:id="ea1063"/>
+	<a as="wfw" label="wfw" ref="wfw..na1063" xml:id="a1063">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1066"/>
+	<edge from="word..na1065" to="wfw..na1066" xml:id="ea1066"/>
+	<a as="wfw" label="wfw" ref="wfw..na1066" xml:id="a1066">
+		<fs>
+			<f name="annotation_value">consultation</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1069"/>
+	<edge from="word..na1068" to="wfw..na1069" xml:id="ea1069"/>
+	<a as="wfw" label="wfw" ref="wfw..na1069" xml:id="a1069">
+		<fs>
+			<f name="annotation_value">do.PST-3PL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1077"/>
+	<edge from="word..na1076" to="wfw..na1077" xml:id="ea1077"/>
+	<a as="wfw" label="wfw" ref="wfw..na1077" xml:id="a1077">
+		<fs>
+			<f name="annotation_value">say.PST-3PL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1085"/>
+	<edge from="word..na1084" to="wfw..na1085" xml:id="ea1085"/>
+	<a as="wfw" label="wfw" ref="wfw..na1085" xml:id="a1085">
+		<fs>
+			<f name="annotation_value">SUBJ-come.PRS</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1088"/>
+	<edge from="word..na1087" to="wfw..na1088" xml:id="ea1088"/>
+	<a as="wfw" label="wfw" ref="wfw..na1088" xml:id="a1088">
+		<fs>
+			<f name="annotation_value">DEM-OBJ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1091"/>
+	<edge from="word..na1090" to="wfw..na1091" xml:id="ea1091"/>
+	<a as="wfw" label="wfw" ref="wfw..na1091" xml:id="a1091">
+		<fs>
+			<f name="annotation_value">SUBJ-sow.PRS-1PL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1094"/>
+	<edge from="word..na1093" to="wfw..na1094" xml:id="ea1094"/>
+	<a as="wfw" label="wfw" ref="wfw..na1094" xml:id="a1094">
+		<fs>
+			<f name="annotation_value">we.INCL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na110"/>
+	<edge from="word..na109" to="wfw..na110" xml:id="ea110"/>
+	<a as="wfw" label="wfw" ref="wfw..na110" xml:id="a110">
+		<fs>
+			<f name="annotation_value">EMPH-DEM.OBJ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1102"/>
+	<edge from="word..na1101" to="wfw..na1102" xml:id="ea1102"/>
+	<a as="wfw" label="wfw" ref="wfw..na1102" xml:id="a1102">
+		<fs>
+			<f name="annotation_value">DEM-OBJ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1105"/>
+	<edge from="word..na1104" to="wfw..na1105" xml:id="ea1105"/>
+	<a as="wfw" label="wfw" ref="wfw..na1105" xml:id="a1105">
+		<fs>
+			<f name="annotation_value">good-ATTR</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1108"/>
+	<edge from="word..na1107" to="wfw..na1108" xml:id="ea1108"/>
+	<a as="wfw" label="wfw" ref="wfw..na1108" xml:id="a1108">
+		<fs>
+			<f name="annotation_value">place-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1111"/>
+	<edge from="word..na1110" to="wfw..na1111" xml:id="ea1111"/>
+	<a as="wfw" label="wfw" ref="wfw..na1111" xml:id="a1111">
+		<fs>
+			<f name="annotation_value">garden-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1114"/>
+	<edge from="word..na1113" to="wfw..na1114" xml:id="ea1114"/>
+	<a as="wfw" label="wfw" ref="wfw..na1114" xml:id="a1114">
+		<fs>
+			<f name="annotation_value">plot-GEN</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1117"/>
+	<edge from="word..na1116" to="wfw..na1117" xml:id="ea1117"/>
+	<a as="wfw" label="wfw" ref="wfw..na1117" xml:id="a1117">
+		<fs>
+			<f name="annotation_value">inside</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1120"/>
+	<edge from="word..na1119" to="wfw..na1120" xml:id="ea1120"/>
+	<a as="wfw" label="wfw" ref="wfw..na1120" xml:id="a1120">
+		<fs>
+			<f name="annotation_value">sow.PST-3PL=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1123"/>
+	<edge from="word..na1122" to="wfw..na1123" xml:id="ea1123"/>
+	<a as="wfw" label="wfw" ref="wfw..na1123" xml:id="a1123">
+		<fs>
+			<f name="annotation_value">good-ATTR</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1126"/>
+	<edge from="word..na1125" to="wfw..na1126" xml:id="ea1126"/>
+	<a as="wfw" label="wfw" ref="wfw..na1126" xml:id="a1126">
+		<fs>
+			<f name="annotation_value">soft-ATTR</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1129"/>
+	<edge from="word..na1128" to="wfw..na1129" xml:id="ea1129"/>
+	<a as="wfw" label="wfw" ref="wfw..na1129" xml:id="a1129">
+		<fs>
+			<f name="annotation_value">plot-IND=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na113"/>
+	<edge from="word..na112" to="wfw..na113" xml:id="ea113"/>
+	<a as="wfw" label="wfw" ref="wfw..na113" xml:id="a113">
+		<fs>
+			<f name="annotation_value">SUB</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1137"/>
+	<edge from="word..na1136" to="wfw..na1137" xml:id="ea1137"/>
+	<a as="wfw" label="wfw" ref="wfw..na1137" xml:id="a1137">
+		<fs>
+			<f name="annotation_value">melon.bush-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1140"/>
+	<edge from="word..na1139" to="wfw..na1140" xml:id="ea1140"/>
+	<a as="wfw" label="wfw" ref="wfw..na1140" xml:id="a1140">
+		<fs>
+			<f name="annotation_value">green</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1143"/>
+	<edge from="word..na1142" to="wfw..na1143" xml:id="ea1143"/>
+	<a as="wfw" label="wfw" ref="wfw..na1143" xml:id="a1143">
+		<fs>
+			<f name="annotation_value">do.PST.3SG=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1151"/>
+	<edge from="word..na1150" to="wfw..na1151" xml:id="ea1151"/>
+	<a as="wfw" label="wfw" ref="wfw..na1151" xml:id="a1151">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1154"/>
+	<edge from="word..na1153" to="wfw..na1154" xml:id="ea1154"/>
+	<a as="wfw" label="wfw" ref="wfw..na1154" xml:id="a1154">
+		<fs>
+			<f name="annotation_value">so.many</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1157"/>
+	<edge from="word..na1156" to="wfw..na1157" xml:id="ea1157"/>
+	<a as="wfw" label="wfw" ref="wfw..na1157" xml:id="a1157">
+		<fs>
+			<f name="annotation_value">melon</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na116"/>
+	<edge from="word..na115" to="wfw..na116" xml:id="ea116"/>
+	<a as="wfw" label="wfw" ref="wfw..na116" xml:id="a116">
+		<fs>
+			<f name="annotation_value">shake</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1160"/>
+	<edge from="word..na1159" to="wfw..na1160" xml:id="ea1160"/>
+	<a as="wfw" label="wfw" ref="wfw..na1160" xml:id="a1160">
+		<fs>
+			<f name="annotation_value">do.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1168"/>
+	<edge from="word..na1167" to="wfw..na1168" xml:id="ea1168"/>
+	<a as="wfw" label="wfw" ref="wfw..na1168" xml:id="a1168">
+		<fs>
+			<f name="annotation_value">from</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1171"/>
+	<edge from="word..na1170" to="wfw..na1171" xml:id="ea1171"/>
+	<a as="wfw" label="wfw" ref="wfw..na1171" xml:id="a1171">
+		<fs>
+			<f name="annotation_value">fear-OBL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1174"/>
+	<edge from="word..na1173" to="wfw..na1174" xml:id="ea1174"/>
+	<a as="wfw" label="wfw" ref="wfw..na1174" xml:id="a1174">
+		<fs>
+			<f name="annotation_value">person-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1177"/>
+	<edge from="word..na1176" to="wfw..na1177" xml:id="ea1177"/>
+	<a as="wfw" label="wfw" ref="wfw..na1177" xml:id="a1177">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1180"/>
+	<edge from="word..na1179" to="wfw..na1180" xml:id="ea1180"/>
+	<a as="wfw" label="wfw" ref="wfw..na1180" xml:id="a1180">
+		<fs>
+			<f name="annotation_value">melon-PL-OBJ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1183"/>
+	<edge from="word..na1182" to="wfw..na1183" xml:id="ea1183"/>
+	<a as="wfw" label="wfw" ref="wfw..na1183" xml:id="a1183">
+		<fs>
+			<f name="annotation_value">NEG-eat.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na119"/>
+	<edge from="word..na118" to="wfw..na119" xml:id="ea119"/>
+	<a as="wfw" label="wfw" ref="wfw..na119" xml:id="a119">
+		<fs>
+			<f name="annotation_value">SUBJ.give.PST-PSUBJ.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1191"/>
+	<edge from="word..na1190" to="wfw..na1191" xml:id="ea1191"/>
+	<a as="wfw" label="wfw" ref="wfw..na1191" xml:id="a1191">
+		<fs>
+			<f name="annotation_value">SUB</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1194"/>
+	<edge from="word..na1193" to="wfw..na1194" xml:id="ea1194"/>
+	<a as="wfw" label="wfw" ref="wfw..na1194" xml:id="a1194">
+		<fs>
+			<f name="annotation_value">from</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1197"/>
+	<edge from="word..na1196" to="wfw..na1197" xml:id="ea1197"/>
+	<a as="wfw" label="wfw" ref="wfw..na1197" xml:id="a1197">
+		<fs>
+			<f name="annotation_value">dragon-GEN</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1200"/>
+	<edge from="word..na1199" to="wfw..na1200" xml:id="ea1200"/>
+	<a as="wfw" label="wfw" ref="wfw..na1200" xml:id="a1200">
+		<fs>
+			<f name="annotation_value">mouth-GEN</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1203"/>
+	<edge from="word..na1202" to="wfw..na1203" xml:id="ea1203"/>
+	<a as="wfw" label="wfw" ref="wfw..na1203" xml:id="a1203">
+		<fs>
+			<f name="annotation_value">in=COP.PRS.3PL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1211"/>
+	<edge from="word..na1210" to="wfw..na1211" xml:id="ea1211"/>
+	<a as="wfw" label="wfw" ref="wfw..na1211" xml:id="a1211">
+		<fs>
+			<f name="annotation_value">snake-GEN</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1214"/>
+	<edge from="word..na1213" to="wfw..na1214" xml:id="ea1214"/>
+	<a as="wfw" label="wfw" ref="wfw..na1214" xml:id="a1214">
+		<fs>
+			<f name="annotation_value">poison=COP.PRS.3PL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1222"/>
+	<edge from="word..na1221" to="wfw..na1222" xml:id="ea1222"/>
+	<a as="wfw" label="wfw" ref="wfw..na1222" xml:id="a1222">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1225"/>
+	<edge from="word..na1224" to="wfw..na1225" xml:id="ea1225"/>
+	<a as="wfw" label="wfw" ref="wfw..na1225" xml:id="a1225">
+		<fs>
+			<f name="annotation_value">so.many</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1228"/>
+	<edge from="word..na1227" to="wfw..na1228" xml:id="ea1228"/>
+	<a as="wfw" label="wfw" ref="wfw..na1228" xml:id="a1228">
+		<fs>
+			<f name="annotation_value">seed</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1231"/>
+	<edge from="word..na1230" to="wfw..na1231" xml:id="ea1231"/>
+	<a as="wfw" label="wfw" ref="wfw..na1231" xml:id="a1231">
+		<fs>
+			<f name="annotation_value">do.PST-3PL=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1239"/>
+	<edge from="word..na1238" to="wfw..na1239" xml:id="ea1239"/>
+	<a as="wfw" label="wfw" ref="wfw..na1239" xml:id="a1239">
+		<fs>
+			<f name="annotation_value">go.PST-3PL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1247"/>
+	<edge from="word..na1246" to="wfw..na1247" xml:id="ea1247"/>
+	<a as="wfw" label="wfw" ref="wfw..na1247" xml:id="a1247">
+		<fs>
+			<f name="annotation_value">huge-ATTR</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1250"/>
+	<edge from="word..na1249" to="wfw..na1250" xml:id="ea1250"/>
+	<a as="wfw" label="wfw" ref="wfw..na1250" xml:id="a1250">
+		<fs>
+			<f name="annotation_value">melon.bed-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1253"/>
+	<edge from="word..na1252" to="wfw..na1253" xml:id="ea1253"/>
+	<a as="wfw" label="wfw" ref="wfw..na1253" xml:id="a1253">
+		<fs>
+			<f name="annotation_value">king</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1256"/>
+	<edge from="word..na1255" to="wfw..na1256" xml:id="ea1256"/>
+	<a as="wfw" label="wfw" ref="wfw..na1256" xml:id="a1256">
+		<fs>
+			<f name="annotation_value">sow.PST.3SG=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1264"/>
+	<edge from="word..na1263" to="wfw..na1264" xml:id="ea1264"/>
+	<a as="wfw" label="wfw" ref="wfw..na1264" xml:id="a1264">
+		<fs>
+			<f name="annotation_value">one</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1267"/>
+	<edge from="word..na1266" to="wfw..na1267" xml:id="ea1267"/>
+	<a as="wfw" label="wfw" ref="wfw..na1267" xml:id="a1267">
+		<fs>
+			<f name="annotation_value">old.man-IND-OBJ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na127"/>
+	<edge from="word..na126" to="wfw..na127" xml:id="ea127"/>
+	<a as="wfw" label="wfw" ref="wfw..na127" xml:id="a127">
+		<fs>
+			<f name="annotation_value">king</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1270"/>
+	<edge from="word..na1269" to="wfw..na1270" xml:id="ea1270"/>
+	<a as="wfw" label="wfw" ref="wfw..na1270" xml:id="a1270">
+		<fs>
+			<f name="annotation_value">gardener</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1273"/>
+	<edge from="word..na1272" to="wfw..na1273" xml:id="ea1273"/>
+	<a as="wfw" label="wfw" ref="wfw..na1273" xml:id="a1273">
+		<fs>
+			<f name="annotation_value">do.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1281"/>
+	<edge from="word..na1280" to="wfw..na1281" xml:id="ea1281"/>
+	<a as="wfw" label="wfw" ref="wfw..na1281" xml:id="a1281">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1284"/>
+	<edge from="word..na1283" to="wfw..na1284" xml:id="ea1284"/>
+	<a as="wfw" label="wfw" ref="wfw..na1284" xml:id="a1284">
+		<fs>
+			<f name="annotation_value">hit.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1287"/>
+	<edge from="word..na1286" to="wfw..na1287" xml:id="ea1287"/>
+	<a as="wfw" label="wfw" ref="wfw..na1287" xml:id="a1287">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1290"/>
+	<edge from="word..na1289" to="wfw..na1290" xml:id="ea1290"/>
+	<a as="wfw" label="wfw" ref="wfw..na1290" xml:id="a1290">
+		<fs>
+			<f name="annotation_value">melon.bed</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1293"/>
+	<edge from="word..na1292" to="wfw..na1293" xml:id="ea1293"/>
+	<a as="wfw" label="wfw" ref="wfw..na1293" xml:id="a1293">
+		<fs>
+			<f name="annotation_value">to</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1296"/>
+	<edge from="word..na1295" to="wfw..na1296" xml:id="ea1296"/>
+	<a as="wfw" label="wfw" ref="wfw..na1296" xml:id="a1296">
+		<fs>
+			<f name="annotation_value">melon-OBL=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na13"/>
+	<edge from="word..na12" to="wfw..na13" xml:id="ea13"/>
+	<a as="wfw" label="wfw" ref="wfw..na13" xml:id="a13">
+		<fs>
+			<f name="annotation_value">one</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na130"/>
+	<edge from="word..na129" to="wfw..na130" xml:id="ea130"/>
+	<a as="wfw" label="wfw" ref="wfw..na130" xml:id="a130">
+		<fs>
+			<f name="annotation_value">there</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1304"/>
+	<edge from="word..na1303" to="wfw..na1304" xml:id="ea1304"/>
+	<a as="wfw" label="wfw" ref="wfw..na1304" xml:id="a1304">
+		<fs>
+			<f name="annotation_value">entirely</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1307"/>
+	<edge from="word..na1306" to="wfw..na1307" xml:id="ea1307"/>
+	<a as="wfw" label="wfw" ref="wfw..na1307" xml:id="a1307">
+		<fs>
+			<f name="annotation_value">melon</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1310"/>
+	<edge from="word..na1309" to="wfw..na1310" xml:id="ea1310"/>
+	<a as="wfw" label="wfw" ref="wfw..na1310" xml:id="a1310">
+		<fs>
+			<f name="annotation_value">do.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1318"/>
+	<edge from="word..na1317" to="wfw..na1318" xml:id="ea1318"/>
+	<a as="wfw" label="wfw" ref="wfw..na1318" xml:id="a1318">
+		<fs>
+			<f name="annotation_value">old.man=also</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1321"/>
+	<edge from="word..na1320" to="wfw..na1321" xml:id="ea1321"/>
+	<a as="wfw" label="wfw" ref="wfw..na1321" xml:id="a1321">
+		<fs>
+			<f name="annotation_value">first</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1324"/>
+	<edge from="word..na1323" to="wfw..na1324" xml:id="ea1324"/>
+	<a as="wfw" label="wfw" ref="wfw..na1324" xml:id="a1324">
+		<fs>
+			<f name="annotation_value">what=IMF</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1327"/>
+	<edge from="word..na1326" to="wfw..na1327" xml:id="ea1327"/>
+	<a as="wfw" label="wfw" ref="wfw..na1327" xml:id="a1327">
+		<fs>
+			<f name="annotation_value">NEG-do.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na133"/>
+	<edge from="word..na132" to="wfw..na133" xml:id="ea133"/>
+	<a as="wfw" label="wfw" ref="wfw..na133" xml:id="a133">
+		<fs>
+			<f name="annotation_value">informed=IMF</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1335"/>
+	<edge from="word..na1334" to="wfw..na1335" xml:id="ea1335"/>
+	<a as="wfw" label="wfw" ref="wfw..na1335" xml:id="a1335">
+		<fs>
+			<f name="annotation_value">trust=IMF</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1338"/>
+	<edge from="word..na1337" to="wfw..na1338" xml:id="ea1338"/>
+	<a as="wfw" label="wfw" ref="wfw..na1338" xml:id="a1338">
+		<fs>
+			<f name="annotation_value">NEG-do.PST.3SG=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1346"/>
+	<edge from="word..na1345" to="wfw..na1346" xml:id="ea1346"/>
+	<a as="wfw" label="wfw" ref="wfw..na1346" xml:id="a1346">
+		<fs>
+			<f name="annotation_value">donkey-DIM-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1349"/>
+	<edge from="word..na1348" to="wfw..na1349" xml:id="ea1349"/>
+	<a as="wfw" label="wfw" ref="wfw..na1349" xml:id="a1349">
+		<fs>
+			<f name="annotation_value">have.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1357"/>
+	<edge from="word..na1356" to="wfw..na1357" xml:id="ea1357"/>
+	<a as="wfw" label="wfw" ref="wfw..na1357" xml:id="a1357">
+		<fs>
+			<f name="annotation_value">EMPH-DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na136"/>
+	<edge from="word..na135" to="wfw..na136" xml:id="ea136"/>
+	<a as="wfw" label="wfw" ref="wfw..na136" xml:id="a136">
+		<fs>
+			<f name="annotation_value">become.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1360"/>
+	<edge from="word..na1359" to="wfw..na1360" xml:id="ea1360"/>
+	<a as="wfw" label="wfw" ref="wfw..na1360" xml:id="a1360">
+		<fs>
+			<f name="annotation_value">melon-PL-OBJ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1363"/>
+	<edge from="word..na1362" to="wfw..na1363" xml:id="ea1363"/>
+	<a as="wfw" label="wfw" ref="wfw..na1363" xml:id="a1363">
+		<fs>
+			<f name="annotation_value">before</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1366"/>
+	<edge from="word..na1365" to="wfw..na1366" xml:id="ea1366"/>
+	<a as="wfw" label="wfw" ref="wfw..na1366" xml:id="a1366">
+		<fs>
+			<f name="annotation_value">to=EMPH-DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1369"/>
+	<edge from="word..na1368" to="wfw..na1369" xml:id="ea1369"/>
+	<a as="wfw" label="wfw" ref="wfw..na1369" xml:id="a1369">
+		<fs>
+			<f name="annotation_value">donkey-DIM-GEN</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1372"/>
+	<edge from="word..na1371" to="wfw..na1372" xml:id="ea1372"/>
+	<a as="wfw" label="wfw" ref="wfw..na1372" xml:id="a1372">
+		<fs>
+			<f name="annotation_value">in.front.of</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1375"/>
+	<edge from="word..na1374" to="wfw..na1375" xml:id="ea1375"/>
+	<a as="wfw" label="wfw" ref="wfw..na1375" xml:id="a1375">
+		<fs>
+			<f name="annotation_value">cut.to.pieces.PST.3SG=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1383"/>
+	<edge from="word..na1382" to="wfw..na1383" xml:id="ea1383"/>
+	<a as="wfw" label="wfw" ref="wfw..na1383" xml:id="a1383">
+		<fs>
+			<f name="annotation_value">give.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1391"/>
+	<edge from="word..na1390" to="wfw..na1391" xml:id="ea1391"/>
+	<a as="wfw" label="wfw" ref="wfw..na1391" xml:id="a1391">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1394"/>
+	<edge from="word..na1393" to="wfw..na1394" xml:id="ea1394"/>
+	<a as="wfw" label="wfw" ref="wfw..na1394" xml:id="a1394">
+		<fs>
+			<f name="annotation_value">donkey=also</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1397"/>
+	<edge from="word..na1396" to="wfw..na1397" xml:id="ea1397"/>
+	<a as="wfw" label="wfw" ref="wfw..na1397" xml:id="a1397">
+		<fs>
+			<f name="annotation_value">strong</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1400"/>
+	<edge from="word..na1399" to="wfw..na1400" xml:id="ea1400"/>
+	<a as="wfw" label="wfw" ref="wfw..na1400" xml:id="a1400">
+		<fs>
+			<f name="annotation_value">become.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1408"/>
+	<edge from="word..na1407" to="wfw..na1408" xml:id="ea1408"/>
+	<a as="wfw" label="wfw" ref="wfw..na1408" xml:id="a1408">
+		<fs>
+			<f name="annotation_value">old.man</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1411"/>
+	<edge from="word..na1410" to="wfw..na1411" xml:id="ea1411"/>
+	<a as="wfw" label="wfw" ref="wfw..na1411" xml:id="a1411">
+		<fs>
+			<f name="annotation_value">start</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1414"/>
+	<edge from="word..na1413" to="wfw..na1414" xml:id="ea1414"/>
+	<a as="wfw" label="wfw" ref="wfw..na1414" xml:id="a1414">
+		<fs>
+			<f name="annotation_value">do.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1417"/>
+	<edge from="word..na1416" to="wfw..na1417" xml:id="ea1417"/>
+	<a as="wfw" label="wfw" ref="wfw..na1417" xml:id="a1417">
+		<fs>
+			<f name="annotation_value">eat.INF-OBJ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1425"/>
+	<edge from="word..na1424" to="wfw..na1425" xml:id="ea1425"/>
+	<a as="wfw" label="wfw" ref="wfw..na1425" xml:id="a1425">
+		<fs>
+			<f name="annotation_value">FOC</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1428"/>
+	<edge from="word..na1427" to="wfw..na1428" xml:id="ea1428"/>
+	<a as="wfw" label="wfw" ref="wfw..na1428" xml:id="a1428">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1431"/>
+	<edge from="word..na1430" to="wfw..na1431" xml:id="ea1431"/>
+	<a as="wfw" label="wfw" ref="wfw..na1431" xml:id="a1431">
+		<fs>
+			<f name="annotation_value">what</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1434"/>
+	<edge from="word..na1433" to="wfw..na1434" xml:id="ea1434"/>
+	<a as="wfw" label="wfw" ref="wfw..na1434" xml:id="a1434">
+		<fs>
+			<f name="annotation_value">thing=COP.PRS.3PL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na144"/>
+	<edge from="word..na143" to="wfw..na144" xml:id="ea144"/>
+	<a as="wfw" label="wfw" ref="wfw..na144" xml:id="a144">
+		<fs>
+			<f name="annotation_value">one</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1442"/>
+	<edge from="word..na1441" to="wfw..na1442" xml:id="ea1442"/>
+	<a as="wfw" label="wfw" ref="wfw..na1442" xml:id="a1442">
+		<fs>
+			<f name="annotation_value">old.man=also</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1445"/>
+	<edge from="word..na1444" to="wfw..na1445" xml:id="ea1445"/>
+	<a as="wfw" label="wfw" ref="wfw..na1445" xml:id="a1445">
+		<fs>
+			<f name="annotation_value">strong</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1448"/>
+	<edge from="word..na1447" to="wfw..na1448" xml:id="ea1448"/>
+	<a as="wfw" label="wfw" ref="wfw..na1448" xml:id="a1448">
+		<fs>
+			<f name="annotation_value">become.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1456"/>
+	<edge from="word..na1455" to="wfw..na1456" xml:id="ea1456"/>
+	<a as="wfw" label="wfw" ref="wfw..na1456" xml:id="a1456">
+		<fs>
+			<f name="annotation_value">king</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1459"/>
+	<edge from="word..na1458" to="wfw..na1459" xml:id="ea1459"/>
+	<a as="wfw" label="wfw" ref="wfw..na1459" xml:id="a1459">
+		<fs>
+			<f name="annotation_value">one</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1462"/>
+	<edge from="word..na1461" to="wfw..na1462" xml:id="ea1462"/>
+	<a as="wfw" label="wfw" ref="wfw..na1462" xml:id="a1462">
+		<fs>
+			<f name="annotation_value">day-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1465"/>
+	<edge from="word..na1464" to="wfw..na1465" xml:id="ea1465"/>
+	<a as="wfw" label="wfw" ref="wfw..na1465" xml:id="a1465">
+		<fs>
+			<f name="annotation_value">SUB</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1468"/>
+	<edge from="word..na1467" to="wfw..na1468" xml:id="ea1468"/>
+	<a as="wfw" label="wfw" ref="wfw..na1468" xml:id="a1468">
+		<fs>
+			<f name="annotation_value">come.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na147"/>
+	<edge from="word..na146" to="wfw..na147" xml:id="ea147"/>
+	<a as="wfw" label="wfw" ref="wfw..na147" xml:id="a147">
+		<fs>
+			<f name="annotation_value">day-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1476"/>
+	<edge from="word..na1475" to="wfw..na1476" xml:id="ea1476"/>
+	<a as="wfw" label="wfw" ref="wfw..na1476" xml:id="a1476">
+		<fs>
+			<f name="annotation_value">say.PST.3SG=ENC.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1484"/>
+	<edge from="word..na1483" to="wfw..na1484" xml:id="ea1484"/>
+	<a as="wfw" label="wfw" ref="wfw..na1484" xml:id="a1484">
+		<fs>
+			<f name="annotation_value">SUB</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1487"/>
+	<edge from="word..na1486" to="wfw..na1487" xml:id="ea1487"/>
+	<a as="wfw" label="wfw" ref="wfw..na1487" xml:id="a1487">
+		<fs>
+			<f name="annotation_value">old.man</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1490"/>
+	<edge from="word..na1489" to="wfw..na1490" xml:id="ea1490"/>
+	<a as="wfw" label="wfw" ref="wfw..na1490" xml:id="a1490">
+		<fs>
+			<f name="annotation_value">father</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1493"/>
+	<edge from="word..na1492" to="wfw..na1493" xml:id="ea1493"/>
+	<a as="wfw" label="wfw" ref="wfw..na1493" xml:id="a1493">
+		<fs>
+			<f name="annotation_value">D</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1496"/>
+	<edge from="word..na1495" to="wfw..na1496" xml:id="ea1496"/>
+	<a as="wfw" label="wfw" ref="wfw..na1496" xml:id="a1496">
+		<fs>
+			<f name="annotation_value">what=COP.PRS.3PL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na150"/>
+	<edge from="word..na149" to="wfw..na150" xml:id="ea150"/>
+	<a as="wfw" label="wfw" ref="wfw..na150" xml:id="a150">
+		<fs>
+			<f name="annotation_value">see.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1504"/>
+	<edge from="word..na1503" to="wfw..na1504" xml:id="ea1504"/>
+	<a as="wfw" label="wfw" ref="wfw..na1504" xml:id="a1504">
+		<fs>
+			<f name="annotation_value">say.PST.3SG=ENC.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1512"/>
+	<edge from="word..na1511" to="wfw..na1512" xml:id="ea1512"/>
+	<a as="wfw" label="wfw" ref="wfw..na1512" xml:id="a1512">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1515"/>
+	<edge from="word..na1514" to="wfw..na1515" xml:id="ea1515"/>
+	<a as="wfw" label="wfw" ref="wfw..na1515" xml:id="a1515">
+		<fs>
+			<f name="annotation_value">entirely</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1518"/>
+	<edge from="word..na1517" to="wfw..na1518" xml:id="ea1518"/>
+	<a as="wfw" label="wfw" ref="wfw..na1518" xml:id="a1518">
+		<fs>
+			<f name="annotation_value">good-ATTR</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1521"/>
+	<edge from="word..na1520" to="wfw..na1521" xml:id="ea1521"/>
+	<a as="wfw" label="wfw" ref="wfw..na1521" xml:id="a1521">
+		<fs>
+			<f name="annotation_value">thing=COP.PRS.3PL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1529"/>
+	<edge from="word..na1528" to="wfw..na1529" xml:id="ea1529"/>
+	<a as="wfw" label="wfw" ref="wfw..na1529" xml:id="a1529">
+		<fs>
+			<f name="annotation_value">I=also</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1532"/>
+	<edge from="word..na1531" to="wfw..na1532" xml:id="ea1532"/>
+	<a as="wfw" label="wfw" ref="wfw..na1532" xml:id="a1532">
+		<fs>
+			<f name="annotation_value">eat.PST-PP(=COP.PRS.1SG)</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1540"/>
+	<edge from="word..na1539" to="wfw..na1540" xml:id="ea1540"/>
+	<a as="wfw" label="wfw" ref="wfw..na1540" xml:id="a1540">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1543"/>
+	<edge from="word..na1542" to="wfw..na1543" xml:id="ea1543"/>
+	<a as="wfw" label="wfw" ref="wfw..na1543" xml:id="a1543">
+		<fs>
+			<f name="annotation_value">donkey-OBJ=also</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1546"/>
+	<edge from="word..na1545" to="wfw..na1546" xml:id="ea1546"/>
+	<a as="wfw" label="wfw" ref="wfw..na1546" xml:id="a1546">
+		<fs>
+			<f name="annotation_value">give.PST-PP=COP.PRS.1SG=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1554"/>
+	<edge from="word..na1553" to="wfw..na1554" xml:id="ea1554"/>
+	<a as="wfw" label="wfw" ref="wfw..na1554" xml:id="a1554">
+		<fs>
+			<f name="annotation_value">you.PL=also</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1557"/>
+	<edge from="word..na1556" to="wfw..na1557" xml:id="ea1557"/>
+	<a as="wfw" label="wfw" ref="wfw..na1557" xml:id="a1557">
+		<fs>
+			<f name="annotation_value">SUBJ.eat.PRS-2PL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1565"/>
+	<edge from="word..na1564" to="wfw..na1565" xml:id="ea1565"/>
+	<a as="wfw" label="wfw" ref="wfw..na1565" xml:id="a1565">
+		<fs>
+			<f name="annotation_value">vizier</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1568"/>
+	<edge from="word..na1567" to="wfw..na1568" xml:id="ea1568"/>
+	<a as="wfw" label="wfw" ref="wfw..na1568" xml:id="a1568">
+		<fs>
+			<f name="annotation_value">say.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1576"/>
+	<edge from="word..na1575" to="wfw..na1576" xml:id="ea1576"/>
+	<a as="wfw" label="wfw" ref="wfw..na1576" xml:id="a1576">
+		<fs>
+			<f name="annotation_value">no</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1579"/>
+	<edge from="word..na1578" to="wfw..na1579" xml:id="ea1579"/>
+	<a as="wfw" label="wfw" ref="wfw..na1579" xml:id="a1579">
+		<fs>
+			<f name="annotation_value">before</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na158"/>
+	<edge from="word..na157" to="wfw..na158" xml:id="ea158"/>
+	<a as="wfw" label="wfw" ref="wfw..na158" xml:id="a158">
+		<fs>
+			<f name="annotation_value">FOC</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1582"/>
+	<edge from="word..na1581" to="wfw..na1582" xml:id="ea1582"/>
+	<a as="wfw" label="wfw" ref="wfw..na1582" xml:id="a1582">
+		<fs>
+			<f name="annotation_value">I=IMF</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1585"/>
+	<edge from="word..na1584" to="wfw..na1585" xml:id="ea1585"/>
+	<a as="wfw" label="wfw" ref="wfw..na1585" xml:id="a1585">
+		<fs>
+			<f name="annotation_value">eat.PRS-1SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1593"/>
+	<edge from="word..na1592" to="wfw..na1593" xml:id="ea1593"/>
+	<a as="wfw" label="wfw" ref="wfw..na1593" xml:id="a1593">
+		<fs>
+			<f name="annotation_value">you.SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1596"/>
+	<edge from="word..na1595" to="wfw..na1596" xml:id="ea1596"/>
+	<a as="wfw" label="wfw" ref="wfw..na1596" xml:id="a1596">
+		<fs>
+			<f name="annotation_value">VOC</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1599"/>
+	<edge from="word..na1598" to="wfw..na1599" xml:id="ea1599"/>
+	<a as="wfw" label="wfw" ref="wfw..na1599" xml:id="a1599">
+		<fs>
+			<f name="annotation_value">king</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na16"/>
+	<edge from="word..na15" to="wfw..na16" xml:id="ea16"/>
+	<a as="wfw" label="wfw" ref="wfw..na16" xml:id="a16">
+		<fs>
+			<f name="annotation_value">king=IND=COP.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1602"/>
+	<edge from="word..na1601" to="wfw..na1602" xml:id="ea1602"/>
+	<a as="wfw" label="wfw" ref="wfw..na1602" xml:id="a1602">
+		<fs>
+			<f name="annotation_value">PROH-eat.PRS</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na161"/>
+	<edge from="word..na160" to="wfw..na161" xml:id="ea161"/>
+	<a as="wfw" label="wfw" ref="wfw..na161" xml:id="a161">
+		<fs>
+			<f name="annotation_value">EMPH.DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1610"/>
+	<edge from="word..na1609" to="wfw..na1610" xml:id="ea1610"/>
+	<a as="wfw" label="wfw" ref="wfw..na1610" xml:id="a1610">
+		<fs>
+			<f name="annotation_value">vizier</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1613"/>
+	<edge from="word..na1612" to="wfw..na1613" xml:id="ea1613"/>
+	<a as="wfw" label="wfw" ref="wfw..na1613" xml:id="a1613">
+		<fs>
+			<f name="annotation_value">eat.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1621"/>
+	<edge from="word..na1620" to="wfw..na1621" xml:id="ea1621"/>
+	<a as="wfw" label="wfw" ref="wfw..na1621" xml:id="a1621">
+		<fs>
+			<f name="annotation_value">FOC</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1624"/>
+	<edge from="word..na1623" to="wfw..na1624" xml:id="ea1624"/>
+	<a as="wfw" label="wfw" ref="wfw..na1624" xml:id="a1624">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1627"/>
+	<edge from="word..na1626" to="wfw..na1627" xml:id="ea1627"/>
+	<a as="wfw" label="wfw" ref="wfw..na1627" xml:id="a1627">
+		<fs>
+			<f name="annotation_value">strange-ATTR</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1630"/>
+	<edge from="word..na1629" to="wfw..na1630" xml:id="ea1630"/>
+	<a as="wfw" label="wfw" ref="wfw..na1630" xml:id="a1630">
+		<fs>
+			<f name="annotation_value">tasty-ATTR</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1633"/>
+	<edge from="word..na1632" to="wfw..na1633" xml:id="ea1633"/>
+	<a as="wfw" label="wfw" ref="wfw..na1633" xml:id="a1633">
+		<fs>
+			<f name="annotation_value">thing=COP.PRS.3PL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na164"/>
+	<edge from="word..na163" to="wfw..na164" xml:id="ea164"/>
+	<a as="wfw" label="wfw" ref="wfw..na164" xml:id="a164">
+		<fs>
+			<f name="annotation_value">dragon-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1641"/>
+	<edge from="word..na1640" to="wfw..na1641" xml:id="ea1641"/>
+	<a as="wfw" label="wfw" ref="wfw..na1641" xml:id="a1641">
+		<fs>
+			<f name="annotation_value">eat.PST-3PL=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1649"/>
+	<edge from="word..na1648" to="wfw..na1649" xml:id="ea1649"/>
+	<a as="wfw" label="wfw" ref="wfw..na1649" xml:id="a1649">
+		<fs>
+			<f name="annotation_value">SUB</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1652"/>
+	<edge from="word..na1651" to="wfw..na1652" xml:id="ea1652"/>
+	<a as="wfw" label="wfw" ref="wfw..na1652" xml:id="a1652">
+		<fs>
+			<f name="annotation_value">eat.PST-3PL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1660"/>
+	<edge from="word..na1659" to="wfw..na1660" xml:id="ea1660"/>
+	<a as="wfw" label="wfw" ref="wfw..na1660" xml:id="a1660">
+		<fs>
+			<f name="annotation_value">now</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1663"/>
+	<edge from="word..na1662" to="wfw..na1663" xml:id="ea1663"/>
+	<a as="wfw" label="wfw" ref="wfw..na1663" xml:id="a1663">
+		<fs>
+			<f name="annotation_value">say.PST-3PL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na167"/>
+	<edge from="word..na166" to="wfw..na167" xml:id="ea167"/>
+	<a as="wfw" label="wfw" ref="wfw..na167" xml:id="a167">
+		<fs>
+			<f name="annotation_value">come.PST-PP(=COP.PRS.3SG)=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1671"/>
+	<edge from="word..na1670" to="wfw..na1671" xml:id="ea1671"/>
+	<a as="wfw" label="wfw" ref="wfw..na1671" xml:id="a1671">
+		<fs>
+			<f name="annotation_value">SUBJ-come.PRS</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1674"/>
+	<edge from="word..na1673" to="wfw..na1674" xml:id="ea1674"/>
+	<a as="wfw" label="wfw" ref="wfw..na1674" xml:id="a1674">
+		<fs>
+			<f name="annotation_value">we.INCL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1677"/>
+	<edge from="word..na1676" to="wfw..na1677" xml:id="ea1677"/>
+	<a as="wfw" label="wfw" ref="wfw..na1677" xml:id="a1677">
+		<fs>
+			<f name="annotation_value">for=DEM-OBL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1680"/>
+	<edge from="word..na1679" to="wfw..na1680" xml:id="ea1680"/>
+	<a as="wfw" label="wfw" ref="wfw..na1680" xml:id="a1680">
+		<fs>
+			<f name="annotation_value">name=IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1683"/>
+	<edge from="word..na1682" to="wfw..na1683" xml:id="ea1683"/>
+	<a as="wfw" label="wfw" ref="wfw..na1683" xml:id="a1683">
+		<fs>
+			<f name="annotation_value">SUBJ-leave.PRS-1PL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1691"/>
+	<edge from="word..na1690" to="wfw..na1691" xml:id="ea1691"/>
+	<a as="wfw" label="wfw" ref="wfw..na1691" xml:id="a1691">
+		<fs>
+			<f name="annotation_value">name=ENC.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1694"/>
+	<edge from="word..na1693" to="wfw..na1694" xml:id="ea1694"/>
+	<a as="wfw" label="wfw" ref="wfw..na1694" xml:id="a1694">
+		<fs>
+			<f name="annotation_value">then</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1697"/>
+	<edge from="word..na1696" to="wfw..na1697" xml:id="ea1697"/>
+	<a as="wfw" label="wfw" ref="wfw..na1697" xml:id="a1697">
+		<fs>
+			<f name="annotation_value">melon-OBJ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1700"/>
+	<edge from="word..na1699" to="wfw..na1700" xml:id="ea1700"/>
+	<a as="wfw" label="wfw" ref="wfw..na1700" xml:id="a1700">
+		<fs>
+			<f name="annotation_value">leave.PST-3PL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1703"/>
+	<edge from="word..na1702" to="wfw..na1703" xml:id="ea1703"/>
+	<a as="wfw" label="wfw" ref="wfw..na1703" xml:id="a1703">
+		<fs>
+			<f name="annotation_value">xarmizza</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1711"/>
+	<edge from="word..na1710" to="wfw..na1711" xml:id="ea1711"/>
+	<a as="wfw" label="wfw" ref="wfw..na1711" xml:id="a1711">
+		<fs>
+			<f name="annotation_value">SUB</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1714"/>
+	<edge from="word..na1713" to="wfw..na1714" xml:id="ea1714"/>
+	<a as="wfw" label="wfw" ref="wfw..na1714" xml:id="a1714">
+		<fs>
+			<f name="annotation_value">taste-ENC.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1717"/>
+	<edge from="word..na1716" to="wfw..na1717" xml:id="ea1717"/>
+	<a as="wfw" label="wfw" ref="wfw..na1717" xml:id="a1717">
+		<fs>
+			<f name="annotation_value">first</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1720"/>
+	<edge from="word..na1719" to="wfw..na1720" xml:id="ea1720"/>
+	<a as="wfw" label="wfw" ref="wfw..na1720" xml:id="a1720">
+		<fs>
+			<f name="annotation_value">donkey</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1723"/>
+	<edge from="word..na1722" to="wfw..na1723" xml:id="ea1723"/>
+	<a as="wfw" label="wfw" ref="wfw..na1723" xml:id="a1723">
+		<fs>
+			<f name="annotation_value">take.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1731"/>
+	<edge from="word..na1730" to="wfw..na1731" xml:id="ea1731"/>
+	<a as="wfw" label="wfw" ref="wfw..na1731" xml:id="a1731">
+		<fs>
+			<f name="annotation_value">xarmizza</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1734"/>
+	<edge from="word..na1733" to="wfw..na1734" xml:id="ea1734"/>
+	<a as="wfw" label="wfw" ref="wfw..na1734" xml:id="a1734">
+		<fs>
+			<f name="annotation_value">from=there</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na1737"/>
+	<edge from="word..na1736" to="wfw..na1737" xml:id="ea1737"/>
+	<a as="wfw" label="wfw" ref="wfw..na1737" xml:id="a1737">
+		<fs>
+			<f name="annotation_value">remain.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na175"/>
+	<edge from="word..na174" to="wfw..na175" xml:id="ea175"/>
+	<a as="wfw" label="wfw" ref="wfw..na175" xml:id="a175">
+		<fs>
+			<f name="annotation_value">EMPH-DEM-OBJ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na178"/>
+	<edge from="word..na177" to="wfw..na178" xml:id="ea178"/>
+	<a as="wfw" label="wfw" ref="wfw..na178" xml:id="a178">
+		<fs>
+			<f name="annotation_value">shake=IMF</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na181"/>
+	<edge from="word..na180" to="wfw..na181" xml:id="ea181"/>
+	<a as="wfw" label="wfw" ref="wfw..na181" xml:id="a181">
+		<fs>
+			<f name="annotation_value">give.PRS.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na189"/>
+	<edge from="word..na188" to="wfw..na189" xml:id="ea189"/>
+	<a as="wfw" label="wfw" ref="wfw..na189" xml:id="a189">
+		<fs>
+			<f name="annotation_value">king</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na192"/>
+	<edge from="word..na191" to="wfw..na192" xml:id="ea192"/>
+	<a as="wfw" label="wfw" ref="wfw..na192" xml:id="a192">
+		<fs>
+			<f name="annotation_value">face</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na195"/>
+	<edge from="word..na194" to="wfw..na195" xml:id="ea195"/>
+	<a as="wfw" label="wfw" ref="wfw..na195" xml:id="a195">
+		<fs>
+			<f name="annotation_value">give.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na198"/>
+	<edge from="word..na197" to="wfw..na198" xml:id="ea198"/>
+	<a as="wfw" label="wfw" ref="wfw..na198" xml:id="a198">
+		<fs>
+			<f name="annotation_value">one-IND-OBJ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na2"/>
+	<edge from="word..na1" to="wfw..na2" xml:id="ea2"/>
+	<a as="wfw" label="wfw" ref="wfw..na2" xml:id="a2">
+		<fs>
+			<f name="annotation_value">say.PRS-3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na206"/>
+	<edge from="word..na205" to="wfw..na206" xml:id="ea206"/>
+	<a as="wfw" label="wfw" ref="wfw..na206" xml:id="a206">
+		<fs>
+			<f name="annotation_value">SUB</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na209"/>
+	<edge from="word..na208" to="wfw..na209" xml:id="ea209"/>
+	<a as="wfw" label="wfw" ref="wfw..na209" xml:id="a209">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na212"/>
+	<edge from="word..na211" to="wfw..na212" xml:id="ea212"/>
+	<a as="wfw" label="wfw" ref="wfw..na212" xml:id="a212">
+		<fs>
+			<f name="annotation_value">what-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na220"/>
+	<edge from="word..na219" to="wfw..na220" xml:id="ea220"/>
+	<a as="wfw" label="wfw" ref="wfw..na220" xml:id="a220">
+		<fs>
+			<f name="annotation_value">come.PST-3PL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na228"/>
+	<edge from="word..na227" to="wfw..na228" xml:id="ea228"/>
+	<a as="wfw" label="wfw" ref="wfw..na228" xml:id="a228">
+		<fs>
+			<f name="annotation_value">say.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na236"/>
+	<edge from="word..na235" to="wfw..na236" xml:id="ea236"/>
+	<a as="wfw" label="wfw" ref="wfw..na236" xml:id="a236">
+		<fs>
+			<f name="annotation_value">king</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na239"/>
+	<edge from="word..na238" to="wfw..na239" xml:id="ea239"/>
+	<a as="wfw" label="wfw" ref="wfw..na239" xml:id="a239">
+		<fs>
+			<f name="annotation_value">master</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na24"/>
+	<edge from="word..na23" to="wfw..na24" xml:id="ea24"/>
+	<a as="wfw" label="wfw" ref="wfw..na24" xml:id="a24">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na242"/>
+	<edge from="word..na241" to="wfw..na242" xml:id="ea242"/>
+	<a as="wfw" label="wfw" ref="wfw..na242" xml:id="a242">
+		<fs>
+			<f name="annotation_value">dragon-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na250"/>
+	<edge from="word..na249" to="wfw..na250" xml:id="ea250"/>
+	<a as="wfw" label="wfw" ref="wfw..na250" xml:id="a250">
+		<fs>
+			<f name="annotation_value">say.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na258"/>
+	<edge from="word..na257" to="wfw..na258" xml:id="ea258"/>
+	<a as="wfw" label="wfw" ref="wfw..na258" xml:id="a258">
+		<fs>
+			<f name="annotation_value">oh…</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na261"/>
+	<edge from="word..na260" to="wfw..na261" xml:id="ea261"/>
+	<a as="wfw" label="wfw" ref="wfw..na261" xml:id="a261">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na264"/>
+	<edge from="word..na263" to="wfw..na264" xml:id="ea264"/>
+	<a as="wfw" label="wfw" ref="wfw..na264" xml:id="a264">
+		<fs>
+			<f name="annotation_value">dragon</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na267"/>
+	<edge from="word..na266" to="wfw..na267" xml:id="ea267"/>
+	<a as="wfw" label="wfw" ref="wfw..na267" xml:id="a267">
+		<fs>
+			<f name="annotation_value">order-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na27"/>
+	<edge from="word..na26" to="wfw..na27" xml:id="ea27"/>
+	<a as="wfw" label="wfw" ref="wfw..na27" xml:id="a27">
+		<fs>
+			<f name="annotation_value">king</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na270"/>
+	<edge from="word..na269" to="wfw..na270" xml:id="ea270"/>
+	<a as="wfw" label="wfw" ref="wfw..na270" xml:id="a270">
+		<fs>
+			<f name="annotation_value">have.PRS-3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na278"/>
+	<edge from="word..na277" to="wfw..na278" xml:id="ea278"/>
+	<a as="wfw" label="wfw" ref="wfw..na278" xml:id="a278">
+		<fs>
+			<f name="annotation_value">petition-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na281"/>
+	<edge from="word..na280" to="wfw..na281" xml:id="ea281"/>
+	<a as="wfw" label="wfw" ref="wfw..na281" xml:id="a281">
+		<fs>
+			<f name="annotation_value">have.PRS-3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na289"/>
+	<edge from="word..na288" to="wfw..na289" xml:id="ea289"/>
+	<a as="wfw" label="wfw" ref="wfw..na289" xml:id="a289">
+		<fs>
+			<f name="annotation_value">DEM-GEN</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na292"/>
+	<edge from="word..na291" to="wfw..na292" xml:id="ea292"/>
+	<a as="wfw" label="wfw" ref="wfw..na292" xml:id="a292">
+		<fs>
+			<f name="annotation_value">petition-OBJ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na295"/>
+	<edge from="word..na294" to="wfw..na295" xml:id="ea295"/>
+	<a as="wfw" label="wfw" ref="wfw..na295" xml:id="a295">
+		<fs>
+			<f name="annotation_value">who</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na298"/>
+	<edge from="word..na297" to="wfw..na298" xml:id="ea298"/>
+	<a as="wfw" label="wfw" ref="wfw..na298" xml:id="a298">
+		<fs>
+			<f name="annotation_value">for=I</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na30"/>
+	<edge from="word..na29" to="wfw..na30" xml:id="ea30"/>
+	<a as="wfw" label="wfw" ref="wfw..na30" xml:id="a30">
+		<fs>
+			<f name="annotation_value">in=EMPH-DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na301"/>
+	<edge from="word..na300" to="wfw..na301" xml:id="ea301"/>
+	<a as="wfw" label="wfw" ref="wfw..na301" xml:id="a301">
+		<fs>
+			<f name="annotation_value">SUBJ-bring.PRS-3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na309"/>
+	<edge from="word..na308" to="wfw..na309" xml:id="ea309"/>
+	<a as="wfw" label="wfw" ref="wfw..na309" xml:id="a309">
+		<fs>
+			<f name="annotation_value">I</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na312"/>
+	<edge from="word..na311" to="wfw..na312" xml:id="ea312"/>
+	<a as="wfw" label="wfw" ref="wfw..na312" xml:id="a312">
+		<fs>
+			<f name="annotation_value">SUB</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na315"/>
+	<edge from="word..na314" to="wfw..na315" xml:id="ea315"/>
+	<a as="wfw" label="wfw" ref="wfw..na315" xml:id="a315">
+		<fs>
+			<f name="annotation_value">NEG-know.PRS-1SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na323"/>
+	<edge from="word..na322" to="wfw..na323" xml:id="ea323"/>
+	<a as="wfw" label="wfw" ref="wfw..na323" xml:id="a323">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na326"/>
+	<edge from="word..na325" to="wfw..na326" xml:id="ea326"/>
+	<a as="wfw" label="wfw" ref="wfw..na326" xml:id="a326">
+		<fs>
+			<f name="annotation_value">without-tongue-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na33"/>
+	<edge from="word..na32" to="wfw..na33" xml:id="ea33"/>
+	<a as="wfw" label="wfw" ref="wfw..na33" xml:id="a33">
+		<fs>
+			<f name="annotation_value">RFL-GEN</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na334"/>
+	<edge from="word..na333" to="wfw..na334" xml:id="ea334"/>
+	<a as="wfw" label="wfw" ref="wfw..na334" xml:id="a334">
+		<fs>
+			<f name="annotation_value">one</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na337"/>
+	<edge from="word..na336" to="wfw..na337" xml:id="ea337"/>
+	<a as="wfw" label="wfw" ref="wfw..na337" xml:id="a337">
+		<fs>
+			<f name="annotation_value">carpenter-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na340"/>
+	<edge from="word..na339" to="wfw..na340" xml:id="ea340"/>
+	<a as="wfw" label="wfw" ref="wfw..na340" xml:id="a340">
+		<fs>
+			<f name="annotation_value">say.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na348"/>
+	<edge from="word..na347" to="wfw..na348" xml:id="ea348"/>
+	<a as="wfw" label="wfw" ref="wfw..na348" xml:id="a348">
+		<fs>
+			<f name="annotation_value">I=IMF</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na351"/>
+	<edge from="word..na350" to="wfw..na351" xml:id="ea351"/>
+	<a as="wfw" label="wfw" ref="wfw..na351" xml:id="a351">
+		<fs>
+			<f name="annotation_value">know.PRS-1SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na359"/>
+	<edge from="word..na358" to="wfw..na359" xml:id="ea359"/>
+	<a as="wfw" label="wfw" ref="wfw..na359" xml:id="a359">
+		<fs>
+			<f name="annotation_value">say.PST.3SG=ENC.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na36"/>
+	<edge from="word..na35" to="wfw..na36" xml:id="ea36"/>
+	<a as="wfw" label="wfw" ref="wfw..na36" xml:id="a36">
+		<fs>
+			<f name="annotation_value">town-GEN</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na367"/>
+	<edge from="word..na366" to="wfw..na367" xml:id="ea367"/>
+	<a as="wfw" label="wfw" ref="wfw..na367" xml:id="a367">
+		<fs>
+			<f name="annotation_value">SUB</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na370"/>
+	<edge from="word..na369" to="wfw..na370" xml:id="ea370"/>
+	<a as="wfw" label="wfw" ref="wfw..na370" xml:id="a370">
+		<fs>
+			<f name="annotation_value">know.PRS-2SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na378"/>
+	<edge from="word..na377" to="wfw..na378" xml:id="ea378"/>
+	<a as="wfw" label="wfw" ref="wfw..na378" xml:id="a378">
+		<fs>
+			<f name="annotation_value">DEM-GEN</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na381"/>
+	<edge from="word..na380" to="wfw..na381" xml:id="ea381"/>
+	<a as="wfw" label="wfw" ref="wfw..na381" xml:id="a381">
+		<fs>
+			<f name="annotation_value">petition-OBJ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na384"/>
+	<edge from="word..na383" to="wfw..na384" xml:id="ea384"/>
+	<a as="wfw" label="wfw" ref="wfw..na384" xml:id="a384">
+		<fs>
+			<f name="annotation_value">bring.PST.SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na39"/>
+	<edge from="word..na38" to="wfw..na39" xml:id="ea39"/>
+	<a as="wfw" label="wfw" ref="wfw..na39" xml:id="a39">
+		<fs>
+			<f name="annotation_value">middle-OBL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na392"/>
+	<edge from="word..na391" to="wfw..na392" xml:id="ea392"/>
+	<a as="wfw" label="wfw" ref="wfw..na392" xml:id="a392">
+		<fs>
+			<f name="annotation_value">I</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na395"/>
+	<edge from="word..na394" to="wfw..na395" xml:id="ea395"/>
+	<a as="wfw" label="wfw" ref="wfw..na395" xml:id="a395">
+		<fs>
+			<f name="annotation_value">you.SG.OBJ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na398"/>
+	<edge from="word..na397" to="wfw..na398" xml:id="ea398"/>
+	<a as="wfw" label="wfw" ref="wfw..na398" xml:id="a398">
+		<fs>
+			<f name="annotation_value">this.much</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na401"/>
+	<edge from="word..na400" to="wfw..na401" xml:id="ea401"/>
+	<a as="wfw" label="wfw" ref="wfw..na401" xml:id="a401">
+		<fs>
+			<f name="annotation_value">reward=IMF</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na404"/>
+	<edge from="word..na403" to="wfw..na404" xml:id="ea404"/>
+	<a as="wfw" label="wfw" ref="wfw..na404" xml:id="a404">
+		<fs>
+			<f name="annotation_value">give.PRS-1SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na412"/>
+	<edge from="word..na411" to="wfw..na412" xml:id="ea412"/>
+	<a as="wfw" label="wfw" ref="wfw..na412" xml:id="a412">
+		<fs>
+			<f name="annotation_value">say.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na42"/>
+	<edge from="word..na41" to="wfw..na42" xml:id="ea42"/>
+	<a as="wfw" label="wfw" ref="wfw..na42" xml:id="a42">
+		<fs>
+			<f name="annotation_value">one</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na420"/>
+	<edge from="word..na419" to="wfw..na420" xml:id="ea420"/>
+	<a as="wfw" label="wfw" ref="wfw..na420" xml:id="a420">
+		<fs>
+			<f name="annotation_value">very</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na423"/>
+	<edge from="word..na422" to="wfw..na423" xml:id="ea423"/>
+	<a as="wfw" label="wfw" ref="wfw..na423" xml:id="a423">
+		<fs>
+			<f name="annotation_value">well</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na431"/>
+	<edge from="word..na430" to="wfw..na431" xml:id="ea431"/>
+	<a as="wfw" label="wfw" ref="wfw..na431" xml:id="a431">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na434"/>
+	<edge from="word..na433" to="wfw..na434" xml:id="ea434"/>
+	<a as="wfw" label="wfw" ref="wfw..na434" xml:id="a434">
+		<fs>
+			<f name="annotation_value">carpenter</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na437"/>
+	<edge from="word..na436" to="wfw..na437" xml:id="ea437"/>
+	<a as="wfw" label="wfw" ref="wfw..na437" xml:id="a437">
+		<fs>
+			<f name="annotation_value">SUB</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na440"/>
+	<edge from="word..na439" to="wfw..na440" xml:id="ea440"/>
+	<a as="wfw" label="wfw" ref="wfw..na440" xml:id="a440">
+		<fs>
+			<f name="annotation_value">come.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na443"/>
+	<edge from="word..na442" to="wfw..na443" xml:id="ea443"/>
+	<a as="wfw" label="wfw" ref="wfw..na443" xml:id="a443">
+		<fs>
+			<f name="annotation_value">with</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na446"/>
+	<edge from="word..na445" to="wfw..na446" xml:id="ea446"/>
+	<a as="wfw" label="wfw" ref="wfw..na446" xml:id="a446">
+		<fs>
+			<f name="annotation_value">blade=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na449"/>
+	<edge from="word..na448" to="wfw..na449" xml:id="ea449"/>
+	<a as="wfw" label="wfw" ref="wfw..na449" xml:id="a449">
+		<fs>
+			<f name="annotation_value">saw-PL.OBL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na45"/>
+	<edge from="word..na44" to="wfw..na45" xml:id="ea45"/>
+	<a as="wfw" label="wfw" ref="wfw..na45" xml:id="a45">
+		<fs>
+			<f name="annotation_value">pole=IZ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na457"/>
+	<edge from="word..na456" to="wfw..na457" xml:id="ea457"/>
+	<a as="wfw" label="wfw" ref="wfw..na457" xml:id="a457">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na460"/>
+	<edge from="word..na459" to="wfw..na460" xml:id="ea460"/>
+	<a as="wfw" label="wfw" ref="wfw..na460" xml:id="a460">
+		<fs>
+			<f name="annotation_value">dragon</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na463"/>
+	<edge from="word..na462" to="wfw..na463" xml:id="ea463"/>
+	<a as="wfw" label="wfw" ref="wfw..na463" xml:id="a463">
+		<fs>
+			<f name="annotation_value">released</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na466"/>
+	<edge from="word..na465" to="wfw..na466" xml:id="ea466"/>
+	<a as="wfw" label="wfw" ref="wfw..na466" xml:id="a466">
+		<fs>
+			<f name="annotation_value">do.PST.3SG=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na474"/>
+	<edge from="word..na473" to="wfw..na474" xml:id="ea474"/>
+	<a as="wfw" label="wfw" ref="wfw..na474" xml:id="a474">
+		<fs>
+			<f name="annotation_value">en.route</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na477"/>
+	<edge from="word..na476" to="wfw..na477" xml:id="ea477"/>
+	<a as="wfw" label="wfw" ref="wfw..na477" xml:id="a477">
+		<fs>
+			<f name="annotation_value">become.PST.3SG=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na48"/>
+	<edge from="word..na47" to="wfw..na48" xml:id="ea48"/>
+	<a as="wfw" label="wfw" ref="wfw..na48" xml:id="a48">
+		<fs>
+			<f name="annotation_value">electricity-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na485"/>
+	<edge from="word..na484" to="wfw..na485" xml:id="ea485"/>
+	<a as="wfw" label="wfw" ref="wfw..na485" xml:id="a485">
+		<fs>
+			<f name="annotation_value">dragon</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na488"/>
+	<edge from="word..na487" to="wfw..na488" xml:id="ea488"/>
+	<a as="wfw" label="wfw" ref="wfw..na488" xml:id="a488">
+		<fs>
+			<f name="annotation_value">carpenter-OBJ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na491"/>
+	<edge from="word..na490" to="wfw..na491" xml:id="ea491"/>
+	<a as="wfw" label="wfw" ref="wfw..na491" xml:id="a491">
+		<fs>
+			<f name="annotation_value">hint</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na494"/>
+	<edge from="word..na493" to="wfw..na494" xml:id="ea494"/>
+	<a as="wfw" label="wfw" ref="wfw..na494" xml:id="a494">
+		<fs>
+			<f name="annotation_value">give.PST.3SG=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na497"/>
+	<edge from="word..na496" to="wfw..na497" xml:id="ea497"/>
+	<a as="wfw" label="wfw" ref="wfw..na497" xml:id="a497">
+		<fs>
+			<f name="annotation_value">hint=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na505"/>
+	<edge from="word..na504" to="wfw..na505" xml:id="ea505"/>
+	<a as="wfw" label="wfw" ref="wfw..na505" xml:id="a505">
+		<fs>
+			<f name="annotation_value">to</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na508"/>
+	<edge from="word..na507" to="wfw..na508" xml:id="ea508"/>
+	<a as="wfw" label="wfw" ref="wfw..na508" xml:id="a508">
+		<fs>
+			<f name="annotation_value">mountain-GEN</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na51"/>
+	<edge from="word..na50" to="wfw..na51" xml:id="ea51"/>
+	<a as="wfw" label="wfw" ref="wfw..na51" xml:id="a51">
+		<fs>
+			<f name="annotation_value">have.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na511"/>
+	<edge from="word..na510" to="wfw..na511" xml:id="ea511"/>
+	<a as="wfw" label="wfw" ref="wfw..na511" xml:id="a511">
+		<fs>
+			<f name="annotation_value">in</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na514"/>
+	<edge from="word..na513" to="wfw..na514" xml:id="ea514"/>
+	<a as="wfw" label="wfw" ref="wfw..na514" xml:id="a514">
+		<fs>
+			<f name="annotation_value">go.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na522"/>
+	<edge from="word..na521" to="wfw..na522" xml:id="ea522"/>
+	<a as="wfw" label="wfw" ref="wfw..na522" xml:id="a522">
+		<fs>
+			<f name="annotation_value">there</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na525"/>
+	<edge from="word..na524" to="wfw..na525" xml:id="ea525"/>
+	<a as="wfw" label="wfw" ref="wfw..na525" xml:id="a525">
+		<fs>
+			<f name="annotation_value">SUB</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na528"/>
+	<edge from="word..na527" to="wfw..na528" xml:id="ea528"/>
+	<a as="wfw" label="wfw" ref="wfw..na528" xml:id="a528">
+		<fs>
+			<f name="annotation_value">go.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na536"/>
+	<edge from="word..na535" to="wfw..na536" xml:id="ea536"/>
+	<a as="wfw" label="wfw" ref="wfw..na536" xml:id="a536">
+		<fs>
+			<f name="annotation_value">FOC</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na539"/>
+	<edge from="word..na538" to="wfw..na539" xml:id="ea539"/>
+	<a as="wfw" label="wfw" ref="wfw..na539" xml:id="a539">
+		<fs>
+			<f name="annotation_value">ohhhh...</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na542"/>
+	<edge from="word..na541" to="wfw..na542" xml:id="ea542"/>
+	<a as="wfw" label="wfw" ref="wfw..na542" xml:id="a542">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na545"/>
+	<edge from="word..na544" to="wfw..na545" xml:id="ea545"/>
+	<a as="wfw" label="wfw" ref="wfw..na545" xml:id="a545">
+		<fs>
+			<f name="annotation_value">dragon</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na548"/>
+	<edge from="word..na547" to="wfw..na548" xml:id="ea548"/>
+	<a as="wfw" label="wfw" ref="wfw..na548" xml:id="a548">
+		<fs>
+			<f name="annotation_value">other</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na551"/>
+	<edge from="word..na550" to="wfw..na551" xml:id="ea551"/>
+	<a as="wfw" label="wfw" ref="wfw..na551" xml:id="a551">
+		<fs>
+			<f name="annotation_value">mother-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na554"/>
+	<edge from="word..na553" to="wfw..na554" xml:id="ea554"/>
+	<a as="wfw" label="wfw" ref="wfw..na554" xml:id="a554">
+		<fs>
+			<f name="annotation_value">have.PRS-3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na562"/>
+	<edge from="word..na561" to="wfw..na562" xml:id="ea562"/>
+	<a as="wfw" label="wfw" ref="wfw..na562" xml:id="a562">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na565"/>
+	<edge from="word..na564" to="wfw..na565" xml:id="ea565"/>
+	<a as="wfw" label="wfw" ref="wfw..na565" xml:id="a565">
+		<fs>
+			<f name="annotation_value">mother=ENC.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na568"/>
+	<edge from="word..na567" to="wfw..na568" xml:id="ea568"/>
+	<a as="wfw" label="wfw" ref="wfw..na568" xml:id="a568">
+		<fs>
+			<f name="annotation_value">from=EMPH-DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na571"/>
+	<edge from="word..na570" to="wfw..na571" xml:id="ea571"/>
+	<a as="wfw" label="wfw" ref="wfw..na571" xml:id="a571">
+		<fs>
+			<f name="annotation_value">mountain-GEN</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na574"/>
+	<edge from="word..na573" to="wfw..na574" xml:id="ea574"/>
+	<a as="wfw" label="wfw" ref="wfw..na574" xml:id="a574">
+		<fs>
+			<f name="annotation_value">wild.goat</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na577"/>
+	<edge from="word..na576" to="wfw..na577" xml:id="ea577"/>
+	<a as="wfw" label="wfw" ref="wfw..na577" xml:id="a577">
+		<fs>
+			<f name="annotation_value">NEG-COP.PRS.3PL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na580"/>
+	<edge from="word..na579" to="wfw..na580" xml:id="ea580"/>
+	<a as="wfw" label="wfw" ref="wfw..na580" xml:id="a580">
+		<fs>
+			<f name="annotation_value">big</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na583"/>
+	<edge from="word..na582" to="wfw..na583" xml:id="ea583"/>
+	<a as="wfw" label="wfw" ref="wfw..na583" xml:id="a583">
+		<fs>
+			<f name="annotation_value">horn</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na59"/>
+	<edge from="word..na58" to="wfw..na59" xml:id="ea59"/>
+	<a as="wfw" label="wfw" ref="wfw..na59" xml:id="a59">
+		<fs>
+			<f name="annotation_value">SUB</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na591"/>
+	<edge from="word..na590" to="wfw..na591" xml:id="ea591"/>
+	<a as="wfw" label="wfw" ref="wfw..na591" xml:id="a591">
+		<fs>
+			<f name="annotation_value">from=EMPH-DEM-PL.OBL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na594"/>
+	<edge from="word..na593" to="wfw..na594" xml:id="ea594"/>
+	<a as="wfw" label="wfw" ref="wfw..na594" xml:id="a594">
+		<fs>
+			<f name="annotation_value">hunting</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na597"/>
+	<edge from="word..na596" to="wfw..na597" xml:id="ea597"/>
+	<a as="wfw" label="wfw" ref="wfw..na597" xml:id="a597">
+		<fs>
+			<f name="annotation_value">do.PST-PP(=COP.PRS.3SG)=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na605"/>
+	<edge from="word..na604" to="wfw..na605" xml:id="ea605"/>
+	<a as="wfw" label="wfw" ref="wfw..na605" xml:id="a605">
+		<fs>
+			<f name="annotation_value">EMPH.DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na608"/>
+	<edge from="word..na607" to="wfw..na608" xml:id="ea608"/>
+	<a as="wfw" label="wfw" ref="wfw..na608" xml:id="a608">
+		<fs>
+			<f name="annotation_value">horn=ENC.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na611"/>
+	<edge from="word..na610" to="wfw..na611" xml:id="ea611"/>
+	<a as="wfw" label="wfw" ref="wfw..na611" xml:id="a611">
+		<fs>
+			<f name="annotation_value">DEM-GEN</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na614"/>
+	<edge from="word..na613" to="wfw..na614" xml:id="ea614"/>
+	<a as="wfw" label="wfw" ref="wfw..na614" xml:id="a614">
+		<fs>
+			<f name="annotation_value">throat-OBL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na617"/>
+	<edge from="word..na616" to="wfw..na617" xml:id="ea617"/>
+	<a as="wfw" label="wfw" ref="wfw..na617" xml:id="a617">
+		<fs>
+			<f name="annotation_value">captive</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na62"/>
+	<edge from="word..na61" to="wfw..na62" xml:id="ea62"/>
+	<a as="wfw" label="wfw" ref="wfw..na62" xml:id="a62">
+		<fs>
+			<f name="annotation_value">whatever</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na620"/>
+	<edge from="word..na619" to="wfw..na620" xml:id="ea620"/>
+	<a as="wfw" label="wfw" ref="wfw..na620" xml:id="a620">
+		<fs>
+			<f name="annotation_value">do.PST-PP=COP.PRS.3PL=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na628"/>
+	<edge from="word..na627" to="wfw..na628" xml:id="ea628"/>
+	<a as="wfw" label="wfw" ref="wfw..na628" xml:id="a628">
+		<fs>
+			<f name="annotation_value">breath</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na631"/>
+	<edge from="word..na630" to="wfw..na631" xml:id="ea631"/>
+	<a as="wfw" label="wfw" ref="wfw..na631" xml:id="a631">
+		<fs>
+			<f name="annotation_value">narrow=COP.PRS.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na639"/>
+	<edge from="word..na638" to="wfw..na639" xml:id="ea639"/>
+	<a as="wfw" label="wfw" ref="wfw..na639" xml:id="a639">
+		<fs>
+			<f name="annotation_value">come.PST-PP(=COP.PRS.3SG)</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na642"/>
+	<edge from="word..na641" to="wfw..na642" xml:id="ea642"/>
+	<a as="wfw" label="wfw" ref="wfw..na642" xml:id="a642">
+		<fs>
+			<f name="annotation_value">here</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na65"/>
+	<edge from="word..na64" to="wfw..na65" xml:id="ea65"/>
+	<a as="wfw" label="wfw" ref="wfw..na65" xml:id="a65">
+		<fs>
+			<f name="annotation_value">EMPH-DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na650"/>
+	<edge from="word..na649" to="wfw..na650" xml:id="ea650"/>
+	<a as="wfw" label="wfw" ref="wfw..na650" xml:id="a650">
+		<fs>
+			<f name="annotation_value">to</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na653"/>
+	<edge from="word..na652" to="wfw..na653" xml:id="ea653"/>
+	<a as="wfw" label="wfw" ref="wfw..na653" xml:id="a653">
+		<fs>
+			<f name="annotation_value">king</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na656"/>
+	<edge from="word..na655" to="wfw..na656" xml:id="ea656"/>
+	<a as="wfw" label="wfw" ref="wfw..na656" xml:id="a656">
+		<fs>
+			<f name="annotation_value">petition</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na659"/>
+	<edge from="word..na658" to="wfw..na659" xml:id="ea659"/>
+	<a as="wfw" label="wfw" ref="wfw..na659" xml:id="a659">
+		<fs>
+			<f name="annotation_value">do.PST-PP(=COP.PRS.3SG)</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na667"/>
+	<edge from="word..na666" to="wfw..na667" xml:id="ea667"/>
+	<a as="wfw" label="wfw" ref="wfw..na667" xml:id="a667">
+		<fs>
+			<f name="annotation_value">hint</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na670"/>
+	<edge from="word..na669" to="wfw..na670" xml:id="ea670"/>
+	<a as="wfw" label="wfw" ref="wfw..na670" xml:id="a670">
+		<fs>
+			<f name="annotation_value">do.PST.3SG=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na678"/>
+	<edge from="word..na677" to="wfw..na678" xml:id="ea678"/>
+	<a as="wfw" label="wfw" ref="wfw..na678" xml:id="a678">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na68"/>
+	<edge from="word..na67" to="wfw..na68" xml:id="ea68"/>
+	<a as="wfw" label="wfw" ref="wfw..na68" xml:id="a68">
+		<fs>
+			<f name="annotation_value">telephone-PL-GEN</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na681"/>
+	<edge from="word..na680" to="wfw..na681" xml:id="ea681"/>
+	<a as="wfw" label="wfw" ref="wfw..na681" xml:id="a681">
+		<fs>
+			<f name="annotation_value">horn-PL-OBJ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na684"/>
+	<edge from="word..na683" to="wfw..na684" xml:id="ea684"/>
+	<a as="wfw" label="wfw" ref="wfw..na684" xml:id="a684">
+		<fs>
+			<f name="annotation_value">wild.goat-GEN-PL=OBJ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na687"/>
+	<edge from="word..na686" to="wfw..na687" xml:id="ea687"/>
+	<a as="wfw" label="wfw" ref="wfw..na687" xml:id="a687">
+		<fs>
+			<f name="annotation_value">saw</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na690"/>
+	<edge from="word..na689" to="wfw..na690" xml:id="ea690"/>
+	<a as="wfw" label="wfw" ref="wfw..na690" xml:id="a690">
+		<fs>
+			<f name="annotation_value">do.PST.3SG=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na698"/>
+	<edge from="word..na697" to="wfw..na698" xml:id="ea698"/>
+	<a as="wfw" label="wfw" ref="wfw..na698" xml:id="a698">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na701"/>
+	<edge from="word..na700" to="wfw..na701" xml:id="ea701"/>
+	<a as="wfw" label="wfw" ref="wfw..na701" xml:id="a701">
+		<fs>
+			<f name="annotation_value">finished</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na704"/>
+	<edge from="word..na703" to="wfw..na704" xml:id="ea704"/>
+	<a as="wfw" label="wfw" ref="wfw..na704" xml:id="a704">
+		<fs>
+			<f name="annotation_value">become.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na71"/>
+	<edge from="word..na70" to="wfw..na71" xml:id="ea71"/>
+	<a as="wfw" label="wfw" ref="wfw..na71" xml:id="a71">
+		<fs>
+			<f name="annotation_value">wire=COP.PST-3PL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na712"/>
+	<edge from="word..na711" to="wfw..na712" xml:id="ea712"/>
+	<a as="wfw" label="wfw" ref="wfw..na712" xml:id="a712">
+		<fs>
+			<f name="annotation_value">free</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na715"/>
+	<edge from="word..na714" to="wfw..na715" xml:id="ea715"/>
+	<a as="wfw" label="wfw" ref="wfw..na715" xml:id="a715">
+		<fs>
+			<f name="annotation_value">become.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na723"/>
+	<edge from="word..na722" to="wfw..na723" xml:id="ea723"/>
+	<a as="wfw" label="wfw" ref="wfw..na723" xml:id="a723">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na726"/>
+	<edge from="word..na725" to="wfw..na726" xml:id="ea726"/>
+	<a as="wfw" label="wfw" ref="wfw..na726" xml:id="a726">
+		<fs>
+			<f name="annotation_value">dragon</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na729"/>
+	<edge from="word..na728" to="wfw..na729" xml:id="ea729"/>
+	<a as="wfw" label="wfw" ref="wfw..na729" xml:id="a729">
+		<fs>
+			<f name="annotation_value">other</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na732"/>
+	<edge from="word..na731" to="wfw..na732" xml:id="ea732"/>
+	<a as="wfw" label="wfw" ref="wfw..na732" xml:id="a732">
+		<fs>
+			<f name="annotation_value">place-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na735"/>
+	<edge from="word..na734" to="wfw..na735" xml:id="ea735"/>
+	<a as="wfw" label="wfw" ref="wfw..na735" xml:id="a735">
+		<fs>
+			<f name="annotation_value">go.PST.3SG=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na743"/>
+	<edge from="word..na742" to="wfw..na743" xml:id="ea743"/>
+	<a as="wfw" label="wfw" ref="wfw..na743" xml:id="a743">
+		<fs>
+			<f name="annotation_value">DEM-OBJ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na746"/>
+	<edge from="word..na745" to="wfw..na746" xml:id="ea746"/>
+	<a as="wfw" label="wfw" ref="wfw..na746" xml:id="a746">
+		<fs>
+			<f name="annotation_value">big-ATTR</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na749"/>
+	<edge from="word..na748" to="wfw..na749" xml:id="ea749"/>
+	<a as="wfw" label="wfw" ref="wfw..na749" xml:id="a749">
+		<fs>
+			<f name="annotation_value">reward-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na752"/>
+	<edge from="word..na751" to="wfw..na752" xml:id="ea752"/>
+	<a as="wfw" label="wfw" ref="wfw..na752" xml:id="a752">
+		<fs>
+			<f name="annotation_value">give.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na755"/>
+	<edge from="word..na754" to="wfw..na755" xml:id="ea755"/>
+	<a as="wfw" label="wfw" ref="wfw..na755" xml:id="a755">
+		<fs>
+			<f name="annotation_value">jewelry</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na763"/>
+	<edge from="word..na762" to="wfw..na763" xml:id="ea763"/>
+	<a as="wfw" label="wfw" ref="wfw..na763" xml:id="a763">
+		<fs>
+			<f name="annotation_value">then</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na766"/>
+	<edge from="word..na765" to="wfw..na766" xml:id="ea766"/>
+	<a as="wfw" label="wfw" ref="wfw..na766" xml:id="a766">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na769"/>
+	<edge from="word..na768" to="wfw..na769" xml:id="ea769"/>
+	<a as="wfw" label="wfw" ref="wfw..na769" xml:id="a769">
+		<fs>
+			<f name="annotation_value">bit-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na772"/>
+	<edge from="word..na771" to="wfw..na772" xml:id="ea772"/>
+	<a as="wfw" label="wfw" ref="wfw..na772" xml:id="a772">
+		<fs>
+			<f name="annotation_value">SUB</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na775"/>
+	<edge from="word..na774" to="wfw..na775" xml:id="ea775"/>
+	<a as="wfw" label="wfw" ref="wfw..na775" xml:id="a775">
+		<fs>
+			<f name="annotation_value">go.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na783"/>
+	<edge from="word..na782" to="wfw..na783" xml:id="ea783"/>
+	<a as="wfw" label="wfw" ref="wfw..na783" xml:id="a783">
+		<fs>
+			<f name="annotation_value">back</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na786"/>
+	<edge from="word..na785" to="wfw..na786" xml:id="ea786"/>
+	<a as="wfw" label="wfw" ref="wfw..na786" xml:id="a786">
+		<fs>
+			<f name="annotation_value">DEM-OBJ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na789"/>
+	<edge from="word..na788" to="wfw..na789" xml:id="ea789"/>
+	<a as="wfw" label="wfw" ref="wfw..na789" xml:id="a789">
+		<fs>
+			<f name="annotation_value">hint-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na79"/>
+	<edge from="word..na78" to="wfw..na79" xml:id="ea79"/>
+	<a as="wfw" label="wfw" ref="wfw..na79" xml:id="a79">
+		<fs>
+			<f name="annotation_value">to</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na792"/>
+	<edge from="word..na791" to="wfw..na792" xml:id="ea792"/>
+	<a as="wfw" label="wfw" ref="wfw..na792" xml:id="a792">
+		<fs>
+			<f name="annotation_value">do.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na800"/>
+	<edge from="word..na799" to="wfw..na800" xml:id="ea800"/>
+	<a as="wfw" label="wfw" ref="wfw..na800" xml:id="a800">
+		<fs>
+			<f name="annotation_value">stand.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na808"/>
+	<edge from="word..na807" to="wfw..na808" xml:id="ea808"/>
+	<a as="wfw" label="wfw" ref="wfw..na808" xml:id="a808">
+		<fs>
+			<f name="annotation_value">EMPH-such-ATTR</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na811"/>
+	<edge from="word..na810" to="wfw..na811" xml:id="ea811"/>
+	<a as="wfw" label="wfw" ref="wfw..na811" xml:id="a811">
+		<fs>
+			<f name="annotation_value">seed-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na814"/>
+	<edge from="word..na813" to="wfw..na814" xml:id="ea814"/>
+	<a as="wfw" label="wfw" ref="wfw..na814" xml:id="a814">
+		<fs>
+			<f name="annotation_value">seize.PST.3SG=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na82"/>
+	<edge from="word..na81" to="wfw..na82" xml:id="ea82"/>
+	<a as="wfw" label="wfw" ref="wfw..na82" xml:id="a82">
+		<fs>
+			<f name="annotation_value">EMPH-DEM-OBL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na822"/>
+	<edge from="word..na821" to="wfw..na822" xml:id="ea822"/>
+	<a as="wfw" label="wfw" ref="wfw..na822" xml:id="a822">
+		<fs>
+			<f name="annotation_value">from</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na825"/>
+	<edge from="word..na824" to="wfw..na825" xml:id="ea825"/>
+	<a as="wfw" label="wfw" ref="wfw..na825" xml:id="a825">
+		<fs>
+			<f name="annotation_value">RFL-GEN</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na828"/>
+	<edge from="word..na827" to="wfw..na828" xml:id="ea828"/>
+	<a as="wfw" label="wfw" ref="wfw..na828" xml:id="a828">
+		<fs>
+			<f name="annotation_value">mouth-GEN</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na831"/>
+	<edge from="word..na830" to="wfw..na831" xml:id="ea831"/>
+	<a as="wfw" label="wfw" ref="wfw..na831" xml:id="a831">
+		<fs>
+			<f name="annotation_value">inside</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na834"/>
+	<edge from="word..na833" to="wfw..na834" xml:id="ea834"/>
+	<a as="wfw" label="wfw" ref="wfw..na834" xml:id="a834">
+		<fs>
+			<f name="annotation_value">throw.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na837"/>
+	<edge from="word..na836" to="wfw..na837" xml:id="ea837"/>
+	<a as="wfw" label="wfw" ref="wfw..na837" xml:id="a837">
+		<fs>
+			<f name="annotation_value">in</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na840"/>
+	<edge from="word..na839" to="wfw..na840" xml:id="ea840"/>
+	<a as="wfw" label="wfw" ref="wfw..na840" xml:id="a840">
+		<fs>
+			<f name="annotation_value">EMPH.DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na843"/>
+	<edge from="word..na842" to="wfw..na843" xml:id="ea843"/>
+	<a as="wfw" label="wfw" ref="wfw..na843" xml:id="a843">
+		<fs>
+			<f name="annotation_value">jewel-PL.OBL-GEN</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na846"/>
+	<edge from="word..na845" to="wfw..na846" xml:id="ea846"/>
+	<a as="wfw" label="wfw" ref="wfw..na846" xml:id="a846">
+		<fs>
+			<f name="annotation_value">inside</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na849"/>
+	<edge from="word..na848" to="wfw..na849" xml:id="ea849"/>
+	<a as="wfw" label="wfw" ref="wfw..na849" xml:id="a849">
+		<fs>
+			<f name="annotation_value">DEM-GEN</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na85"/>
+	<edge from="word..na84" to="wfw..na85" xml:id="ea85"/>
+	<a as="wfw" label="wfw" ref="wfw..na85" xml:id="a85">
+		<fs>
+			<f name="annotation_value">connected=COP.PST-3PL</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na852"/>
+	<edge from="word..na851" to="wfw..na852" xml:id="ea852"/>
+	<a as="wfw" label="wfw" ref="wfw..na852" xml:id="a852">
+		<fs>
+			<f name="annotation_value">woolen.shoulder.bag-GEN</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na855"/>
+	<edge from="word..na854" to="wfw..na855" xml:id="ea855"/>
+	<a as="wfw" label="wfw" ref="wfw..na855" xml:id="a855">
+		<fs>
+			<f name="annotation_value">in</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na863"/>
+	<edge from="word..na862" to="wfw..na863" xml:id="ea863"/>
+	<a as="wfw" label="wfw" ref="wfw..na863" xml:id="a863">
+		<fs>
+			<f name="annotation_value">SUB</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na866"/>
+	<edge from="word..na865" to="wfw..na866" xml:id="ea866"/>
+	<a as="wfw" label="wfw" ref="wfw..na866" xml:id="a866">
+		<fs>
+			<f name="annotation_value">come.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na874"/>
+	<edge from="word..na873" to="wfw..na874" xml:id="ea874"/>
+	<a as="wfw" label="wfw" ref="wfw..na874" xml:id="a874">
+		<fs>
+			<f name="annotation_value">king</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na877"/>
+	<edge from="word..na876" to="wfw..na877" xml:id="ea877"/>
+	<a as="wfw" label="wfw" ref="wfw..na877" xml:id="a877">
+		<fs>
+			<f name="annotation_value">say.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na885"/>
+	<edge from="word..na884" to="wfw..na885" xml:id="ea885"/>
+	<a as="wfw" label="wfw" ref="wfw..na885" xml:id="a885">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na888"/>
+	<edge from="word..na887" to="wfw..na888" xml:id="ea888"/>
+	<a as="wfw" label="wfw" ref="wfw..na888" xml:id="a888">
+		<fs>
+			<f name="annotation_value">what</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na891"/>
+	<edge from="word..na890" to="wfw..na891" xml:id="ea891"/>
+	<a as="wfw" label="wfw" ref="wfw..na891" xml:id="a891">
+		<fs>
+			<f name="annotation_value">petition-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na894"/>
+	<edge from="word..na893" to="wfw..na894" xml:id="ea894"/>
+	<a as="wfw" label="wfw" ref="wfw..na894" xml:id="a894">
+		<fs>
+			<f name="annotation_value">have.PST.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na902"/>
+	<edge from="word..na901" to="wfw..na902" xml:id="ea902"/>
+	<a as="wfw" label="wfw" ref="wfw..na902" xml:id="a902">
+		<fs>
+			<f name="annotation_value">say.PST.3SG=ENC.3SG</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na910"/>
+	<edge from="word..na909" to="wfw..na910" xml:id="ea910"/>
+	<a as="wfw" label="wfw" ref="wfw..na910" xml:id="a910">
+		<fs>
+			<f name="annotation_value">SUBJ-come.PRS</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na913"/>
+	<edge from="word..na912" to="wfw..na913" xml:id="ea913"/>
+	<a as="wfw" label="wfw" ref="wfw..na913" xml:id="a913">
+		<fs>
+			<f name="annotation_value">SUB</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na916"/>
+	<edge from="word..na915" to="wfw..na916" xml:id="ea916"/>
+	<a as="wfw" label="wfw" ref="wfw..na916" xml:id="a916">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na919"/>
+	<edge from="word..na918" to="wfw..na919" xml:id="ea919"/>
+	<a as="wfw" label="wfw" ref="wfw..na919" xml:id="a919">
+		<fs>
+			<f name="annotation_value">manner</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na922"/>
+	<edge from="word..na921" to="wfw..na922" xml:id="ea922"/>
+	<a as="wfw" label="wfw" ref="wfw..na922" xml:id="a922">
+		<fs>
+			<f name="annotation_value">DEM-GEN</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na925"/>
+	<edge from="word..na924" to="wfw..na925" xml:id="ea925"/>
+	<a as="wfw" label="wfw" ref="wfw..na925" xml:id="a925">
+		<fs>
+			<f name="annotation_value">mother</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na928"/>
+	<edge from="word..na927" to="wfw..na928" xml:id="ea928"/>
+	<a as="wfw" label="wfw" ref="wfw..na928" xml:id="a928">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na93"/>
+	<edge from="word..na92" to="wfw..na93" xml:id="ea93"/>
+	<a as="wfw" label="wfw" ref="wfw..na93" xml:id="a93">
+		<fs>
+			<f name="annotation_value">whoever</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na931"/>
+	<edge from="word..na930" to="wfw..na931" xml:id="ea931"/>
+	<a as="wfw" label="wfw" ref="wfw..na931" xml:id="a931">
+		<fs>
+			<f name="annotation_value">manner</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na934"/>
+	<edge from="word..na933" to="wfw..na934" xml:id="ea934"/>
+	<a as="wfw" label="wfw" ref="wfw..na934" xml:id="a934">
+		<fs>
+			<f name="annotation_value">strangled=COP.PST.3SG=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na942"/>
+	<edge from="word..na941" to="wfw..na942" xml:id="ea942"/>
+	<a as="wfw" label="wfw" ref="wfw..na942" xml:id="a942">
+		<fs>
+			<f name="annotation_value">come.PST.3SG=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na950"/>
+	<edge from="word..na949" to="wfw..na950" xml:id="ea950"/>
+	<a as="wfw" label="wfw" ref="wfw..na950" xml:id="a950">
+		<fs>
+			<f name="annotation_value">I</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na953"/>
+	<edge from="word..na952" to="wfw..na953" xml:id="ea953"/>
+	<a as="wfw" label="wfw" ref="wfw..na953" xml:id="a953">
+		<fs>
+			<f name="annotation_value">free</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na956"/>
+	<edge from="word..na955" to="wfw..na956" xml:id="ea956"/>
+	<a as="wfw" label="wfw" ref="wfw..na956" xml:id="a956">
+		<fs>
+			<f name="annotation_value">do.PST-1SG=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na96"/>
+	<edge from="word..na95" to="wfw..na96" xml:id="ea96"/>
+	<a as="wfw" label="wfw" ref="wfw..na96" xml:id="a96">
+		<fs>
+			<f name="annotation_value">SUB</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na964"/>
+	<edge from="word..na963" to="wfw..na964" xml:id="ea964"/>
+	<a as="wfw" label="wfw" ref="wfw..na964" xml:id="a964">
+		<fs>
+			<f name="annotation_value">then</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na967"/>
+	<edge from="word..na966" to="wfw..na967" xml:id="ea967"/>
+	<a as="wfw" label="wfw" ref="wfw..na967" xml:id="a967">
+		<fs>
+			<f name="annotation_value">I.OBJ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na970"/>
+	<edge from="word..na969" to="wfw..na970" xml:id="ea970"/>
+	<a as="wfw" label="wfw" ref="wfw..na970" xml:id="a970">
+		<fs>
+			<f name="annotation_value">this.much</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na973"/>
+	<edge from="word..na972" to="wfw..na973" xml:id="ea973"/>
+	<a as="wfw" label="wfw" ref="wfw..na973" xml:id="a973">
+		<fs>
+			<f name="annotation_value">jewelry</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na976"/>
+	<edge from="word..na975" to="wfw..na976" xml:id="ea976"/>
+	<a as="wfw" label="wfw" ref="wfw..na976" xml:id="a976">
+		<fs>
+			<f name="annotation_value">give.PST.3SG=and</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na984"/>
+	<edge from="word..na983" to="wfw..na984" xml:id="ea984"/>
+	<a as="wfw" label="wfw" ref="wfw..na984" xml:id="a984">
+		<fs>
+			<f name="annotation_value">EMPH.DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na987"/>
+	<edge from="word..na986" to="wfw..na987" xml:id="ea987"/>
+	<a as="wfw" label="wfw" ref="wfw..na987" xml:id="a987">
+		<fs>
+			<f name="annotation_value">seed-OBJ=also</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na99"/>
+	<edge from="word..na98" to="wfw..na99" xml:id="ea99"/>
+	<a as="wfw" label="wfw" ref="wfw..na99" xml:id="a99">
+		<fs>
+			<f name="annotation_value">petition-IND</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na990"/>
+	<edge from="word..na989" to="wfw..na990" xml:id="ea990"/>
+	<a as="wfw" label="wfw" ref="wfw..na990" xml:id="a990">
+		<fs>
+			<f name="annotation_value">EMPH-DEM-OBJ=also</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na993"/>
+	<edge from="word..na992" to="wfw..na993" xml:id="ea993"/>
+	<a as="wfw" label="wfw" ref="wfw..na993" xml:id="a993">
+		<fs>
+			<f name="annotation_value">I.OBJ</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na996"/>
+	<edge from="word..na995" to="wfw..na996" xml:id="ea996"/>
+	<a as="wfw" label="wfw" ref="wfw..na996" xml:id="a996">
+		<fs>
+			<f name="annotation_value">DEM</f>
+		</fs>
+	</a>
+	<node xml:id="wfw..na999"/>
+	<edge from="word..na998" to="wfw..na999" xml:id="ea999"/>
+	<a as="wfw" label="wfw" ref="wfw..na999" xml:id="a999">
+		<fs>
+			<f name="annotation_value">give.PST.3SG</f>
+		</fs>
+	</a>
 </graph>
