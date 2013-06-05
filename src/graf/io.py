@@ -18,6 +18,7 @@ from xml.sax import make_parser, SAXException
 from xml.sax.handler import ContentHandler
 from xml.dom import minidom
 
+
 from xml.etree.ElementTree import Element, SubElement, tostring
 
 from graf.graphs import Graph, Link
@@ -542,7 +543,7 @@ class DocumentHeader(object):
     def get_location(self, type):
         if len(self._annotationMap) != 0:
             return self._annotationMap.get(type)
-        if self._basename != None:
+        if self._basename is not None:
             return self._basename + '-' + type + ".xml"
         return None
 
@@ -712,7 +713,7 @@ class GraphHandler(SAXHandler):
             aspace = self.graph.annotation_spaces[aspace]
 
         id_ = attribs.get(self._g.ID, None)
-        self._cur_annot = Annotation(attribs[self._g.LABEL], id = id_)
+        self._cur_annot = Annotation(attribs[self._g.LABEL], id=id_)
         element = self.graph.get_element(attribs[self._g.REF])
         element.annotations.add(self._cur_annot)
         aspace.add(self._cur_annot)
@@ -793,7 +794,8 @@ class GraphParser(object):
         def do_parse(stream, graph):
             parser = make_parser()
             handler = GraphHandler(parser, graph, parse_dependency,
-                parse_anchor=self._parse_anchor, constants=self._g)
+                                   parse_anchor=self._parse_anchor,
+                                   constants=self._g)
             parser.setContentHandler(handler)
             parser.parse(stream)
 
@@ -847,6 +849,7 @@ class GraphParser(object):
             else:
                 # Default get_dependency is relative to path
                 header = DocumentHeader(os.path.abspath(stream.name))
+
                 def get_dependency(name):
                     return open_file_for_parse(header.get_location(name))
 
