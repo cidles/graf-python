@@ -102,12 +102,12 @@ class GrafRenderer(object):
 
     """
 
-    def __init__(self, out, constants=Constants):
+    def __init__(self, outputfile):
         """Create an instance of a GrafRenderer.
 
         """
 
-        self.out = open(out, "wb")
+        self.outputfile = outputfile
 
     def render_node(self, n):
         """
@@ -273,14 +273,15 @@ class GrafRenderer(object):
 
         doc = minidom.parseString(tostring(header, encoding="utf-8"))
 
-        self.out.write(doc.toprettyxml(encoding='utf-8'))
-        self.out.close()
+        output = open(self.outputfile, "wb")
+        output.write(doc.toprettyxml(encoding='utf-8'))
+        output.close()
 
 
 class StandoffHeaderRenderer(object):
 
     def __init__(self, outputfile):
-        self.out = open(outputfile, "wb")
+        self.outputfile = outputfile
 
     def render_documentheader(self, standoffheader):
         """Create the documentHeader Element.
@@ -514,9 +515,45 @@ class StandoffHeaderRenderer(object):
 
         doc = minidom.parseString(tostring(documentheader, encoding="utf-8"))
 
-        self.out.write(doc.toprettyxml(encoding='utf-8'))
-        self.out.close()
+        output = open(self.outputfile, "wb")
+        output.write(doc.toprettyxml(encoding='utf-8'))
+        output.close()
 
+
+class GrAFXMLValidator(object):
+
+    def __init__(self):
+        try:
+            from lxml import etree
+
+            xsd_header = os.path.join(os.path.dirname(__file__), "..",
+                                      "..", "xsd", "GrAF_DocumentHeader.xsd")
+            xsd_annotation = os.path.join(os.path.dirname(__file__), "..",
+                                          "..", "xsd", "GrAF_StandoffAnnotation.xsd")
+
+            self.header_xmlschema = etree.XMLSchema(etree.parse(xsd_header))
+            self.annotation_xmlschema = etree.XMLSchema(etree.parse(xsd_annotation))
+
+            self.import_validator = True
+        except :
+            self.import_validator = False
+
+    def validate_xml(self, filepath):
+
+        if self.import_validator:
+            from lxml import etree
+
+            (filename, extension) = os.path.splitext(filepath)
+
+            if extension == ".hdr":
+                xmlschema = self.header_xmlschema
+            elif extension == ".xml":
+                xmlschema = self.annotation_xmlschema
+
+            doc = etree.parse(filepath)
+
+            validation = etree.XMLSchema(xmlschema)
+            validation.assert_(doc)
 
 class DocumentHeader(object):
 
