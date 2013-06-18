@@ -6,10 +6,15 @@
 Welcome to graf-python's documentation!
 =======================================
 
+The library graf-python is an open source Python implemenation to parse and write GrAF/XML files as described in ISO 24612.
+
+The project's homepage is: http://media.cidles.eu/poio/graf-python/
+
+
 **Contents**
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    howto
    classes
