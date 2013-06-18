@@ -1,6 +1,7 @@
 *******************
 graf-python Classes
 *******************
+
 .. toctree::
    :maxdepth: 1
 
@@ -18,4 +19,3 @@ graf-python Classes
    FileDesc
    ProfileDesc
    DataDesc
-   RevisionDesc
