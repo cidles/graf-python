@@ -25,6 +25,7 @@ from graf.graphs import Graph, Link
 from graf.annotations import Annotation, FeatureStructure
 from graf.media import CharAnchor, Region
 
+
 class Constants(object):
     """
     A list of constants used in the GrafRenderer
@@ -538,22 +539,19 @@ class GrAFXMLValidator(object):
         except :
             self.import_validator = False
 
-    def validate_xml(self, filepath):
+    def validate_xml(self, context, header=False, annotation=False):
 
         if self.import_validator:
             from lxml import etree
 
-            (filename, extension) = os.path.splitext(filepath)
+            if header:
+                validator = self.header_xmlschema
+            elif annotation:
+                validator = self.annotation_xmlschema
 
-            if extension == ".hdr":
-                xmlschema = self.header_xmlschema
-            elif extension == ".xml":
-                xmlschema = self.annotation_xmlschema
+            doc = etree.fromstring(context)
 
-            doc = etree.parse(filepath)
-
-            validation = etree.XMLSchema(xmlschema)
-            validation.assert_(doc)
+            validator.assert_(doc)
 
 class DocumentHeader(object):
 
@@ -814,6 +812,7 @@ class GraphParser(object):
         self._get_dep = get_dependency
         self._parse_anchor = parse_anchor
         self._parsed_deps = None
+        self.graf_validator = GrAFXMLValidator()
 
     def parse(self, stream, graph=None):
         """Parses the XML file at the given path.
@@ -829,12 +828,16 @@ class GraphParser(object):
                 return open(filename, "r")
 
         def do_parse(stream, graph):
+            filename = stream.name
+            context = stream.read()
+            self.graf_validator.validate_xml(context, annotation="True")
+
             parser = make_parser()
             handler = GraphHandler(parser, graph, parse_dependency,
                                    parse_anchor=self._parse_anchor,
                                    constants=self._g)
             parser.setContentHandler(handler)
-            parser.parse(stream)
+            parser.parse(filename)
 
         def parse_dependency(name, graph):
             if name in parsed_deps:
@@ -846,21 +849,16 @@ class GraphParser(object):
             stream = open_file_for_parse(stream)
 
         parsed_deps = set()
-
-        parsed_files_dict = dict()
-
         extension = os.path.splitext(stream.name)[1][1:]
 
         if extension == 'hdr':
-            # Read header file
-            doc_header = minidom.parse(stream)
+            context = stream.read()
+            self.graf_validator.validate_xml(context, header=True)
 
+            doc_header = minidom.parseString(context)
             dirname = os.path.dirname(stream.name)
 
-            annotatios_files = doc_header.getElementsByTagName('annotation')
-
-            # Get the files to look for
-            for annotation in annotatios_files:
+            for annotation in doc_header.getElementsByTagName('annotation'):
                 loc = annotation.getAttribute('loc')
                 fid = annotation.getAttribute('f.id')
 
