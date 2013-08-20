@@ -24,7 +24,7 @@ setup(
     description = "Python implementation of the Graph Annotation Framework (GrAF)",
     version = grafpython_version,
     url = "http://media.cidles.eu/poio/graf-python/",
-    download_url = "https://s3.amazonaws.com/cidles/downloads/graf-python/graf-python-{0}.tar.gz".format(grafpython_version),
+    download_url = "http://media.cidles.eu/poio/graf-python/",
     long_description = "Python implementation of the Graph Annotation Framework. (http://www.xces.org/ns/GrAF/1.0/)",
     license = "Apache License, Version 2.0",
     keywords = ['NLP', 'CL', 'natural language processing',
