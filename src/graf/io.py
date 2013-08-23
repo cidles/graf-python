@@ -562,7 +562,7 @@ class DocumentHeader(object):
         self.set_basepath(path)
 
     def set_basepath(self, filename):
-        if filename.endswith(".anc") or filename.endswith(".txt"):
+        if filename.endswith(".txt"):
             self._basename = filename[0:-4]
             return
         elif filename.endswith(".xml"):
@@ -577,10 +577,15 @@ class DocumentHeader(object):
 
     def get_location(self, type):
         if len(self._annotationMap) != 0:
-            return self._annotationMap.get(type)
+            return self._annotationMap[type]
         if self._basename is not None:
+            #return self._basename + ".xml"
             return self._basename + '-' + type + ".xml"
+        retu
         return None
+
+    def add_type(self, type, loc):
+        self._annotationMap[type] = loc
 
 
 class SAXHandler(ContentHandler):
@@ -858,20 +863,25 @@ class GraphParser(object):
             doc_header = minidom.parseString(context)
             dirname = os.path.dirname(stream.name)
 
+            if self._get_dep:
+                get_dependency = self._get_dep
+            else:
+                header = DocumentHeader(stream.name)
+                for annotation in doc_header.getElementsByTagName('annotation'):
+                    loc = annotation.getAttribute('loc')
+                    fid = annotation.getAttribute('f.id')
+                    header.add_type(fid, loc)
+
+                def get_dependency(name):
+                    return open_file_for_parse(os.path.join(dirname, header.get_location(name)))
+
+
             for annotation in doc_header.getElementsByTagName('annotation'):
                 loc = annotation.getAttribute('loc')
                 fid = annotation.getAttribute('f.id')
 
                 if fid in parsed_deps:
                     continue
-
-                if self._get_dep:
-                    get_dependency = self._get_dep
-                else:
-                    header = DocumentHeader(os.path.abspath(os.path.join(dirname, loc)))
-
-                    def get_dependency(name):
-                        return open_file_for_parse(header.get_location(name))
 
                 if graph is None:
                     graph = Graph()
