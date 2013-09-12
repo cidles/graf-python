@@ -34,7 +34,7 @@ class Constants(object):
     VERSION = "1.0"
     NAMESPACE = "http://www.xces.org/ns/GrAF/" + VERSION + "/"
     EOL = "\n"
-    DEFAULT = "DEFAULT"    	
+    #DEFAULT = "DEFAULT"    	
     IMPLEMENTATION = "org.xces.graf.api.Implementation"
     DEFAULT_IMPLEMENTATION = "org.xces.graf.impl.DefaultImplementation"
     LANGUAGE = "org.xces.graf.lang"
@@ -693,6 +693,7 @@ class GraphHandler(SAXHandler):
         self._fs_stack = []
         self._feat_name_stack = []
         self._aspace_stack = []
+        self._default_aspace_id = None
 
     # === Header ===
 
@@ -706,9 +707,13 @@ class GraphHandler(SAXHandler):
 
     def aspace_handle(self, attribs):
         as_id = attribs[self._g.AS_ID]
+        is_default = attribs.get(self._g.DEFAULT, False) == "true"
 
         if as_id not in self.graph.annotation_spaces:
             self.graph.annotation_spaces.create(as_id)
+
+        if is_default:
+            self._default_aspace_id = as_id
 
     def root_chars(self, node_id):
         node = self.graph.nodes.get_or_create(node_id)
@@ -748,7 +753,10 @@ class GraphHandler(SAXHandler):
         assert self._cur_annot is None
         aspace = attribs.get(self._g.ASET, None)
         if aspace is None:
-            aspace = self._aspace_stack[-1]
+            if len(self._aspace_stack) > 0:
+                aspace = self._aspace_stack[-1]
+            elif self._default_aspace_id:
+                aspace = self.graph.annotation_spaces[self._default_aspace_id]
         else:
             aspace = self.graph.annotation_spaces[aspace]
 
@@ -835,7 +843,7 @@ class GraphParser(object):
         def do_parse(stream, graph):
             filename = stream.name
             context = stream.read()
-            self.graf_validator.validate_xml(context, annotation="True")
+            #self.graf_validator.validate_xml(context, annotation="True")
 
             parser = make_parser()
             handler = GraphHandler(parser, graph, parse_dependency,
@@ -858,7 +866,7 @@ class GraphParser(object):
 
         if extension == 'hdr':
             context = stream.read()
-            self.graf_validator.validate_xml(context, header=True)
+            #self.graf_validator.validate_xml(context, header=True)
 
             doc_header = minidom.parseString(context)
             dirname = os.path.dirname(stream.name)
