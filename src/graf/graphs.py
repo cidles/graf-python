@@ -342,7 +342,7 @@ class Node(GraphElement):
                 yield res
 
     def clear(self):
-        """Clears this node's visisted status and those of all visited descendents"""
+        """Clears this node's visited status and those of all visited descendents"""
         self.visited = False
 
         for child in self.iter_children():
@@ -357,7 +357,7 @@ class Node(GraphElement):
 class Edge(GraphElement):
     """
     Class of edges in Graph:
-    - Each edge maintains the source (from) C{Node} and the destination.
+    - Each edge maintains the source (from) C{Node} and the destination
     (to) C{Node}.
     - Edges may also contain one or more C{Annotation} objects.
 
@@ -384,7 +384,7 @@ class Link(list):
     Link objects are used to associate nodes in the graph with the
     regions of the graph they annotate. Links are almost like edges except a
     link is a relation between a node and a region rather than a relation
-    between two nodes. A node make be linked to more than one region.
+    between two nodes. A node may be linked to more than one region.
     """
     # Inherits all functionality from builtin list
     __slots__ = ()
@@ -421,7 +421,7 @@ class GraphHeader(object):
 class StandoffHeader(object):
     """
     Class that represents the primary data document header.
-    The construction of the file is based in the
+    The construction of the file is based on the
     ISO 24612.
 
     """
@@ -569,7 +569,7 @@ class ProfileDesc(object):
             Subdomain of the data.
         languages : array_like
             Array that contains the codes of the language(s)
-            of the primary data. The code should be in the
+            of the primary data. The codes should be in the
             ISO 639.
         participants : array_like
             Array that contains the participants in an
