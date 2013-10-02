@@ -11,7 +11,7 @@ import copy
 
 class Annotation(object):
     """
-    A Annotation is the artifcat being annotated.  An annotation is a
+    An Annotation is the artifact being annotated.  An annotation is a
     labelled feature structure.  The annotation class/interface also
     provides convenience methods for setting and getting values
     from a feature structure.
