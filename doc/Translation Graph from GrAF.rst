@@ -3,9 +3,9 @@ Translation Graphs from GrAF/XML files
 
 In this tutorial we will demonstrate how to extract a translation graph
 from data in digitized dictionaries. The translation graph connects
-entries in dioctionaries, via annotation for "heads" and "translations"
+entries in dictionaries, via annotation for "heads" and "translations"
 within the dictionary. We will demonstrate how to visualize this data
-with a plotting library and hwo to export parts of the graph to JSON for
+with a plotting library and how to export parts of the graph to JSON for
 interactive visualizations in the web.
 
 You can download this tutorial as IPython notebook here:
@@ -34,7 +34,7 @@ dictionary and wordlist sources. Those were first tokenized into
 entries, for each entry you will find annotations for at least the head
 word(s) ("head" annotation) and translation(s) ("translation"
 annotation) in the case of dictionaries. We will only use the
-dictionaries of the "Witotoan" compoment in this tutorial. The ZIP
+dictionaries of the "Witotoan" component in this tutorial. The ZIP
 package also contains a CSV file "sources.csv" that contains some
 information for each source, for example the languages as ISO codes,
 type of source, etc. Be aware that the ZIP package contains a filtered
@@ -43,7 +43,7 @@ included in the `Spanish swadesh
 list <http://en.wiktionary.org/wiki/Appendix:Spanish_Swadesh_list>`_ are
 included in the download package.
 
-For a simple example how to parse on of the source please see here:
+For a simple example how to parse one of the source please see here:
 
 http://graf-python.readthedocs.org/en/latest/Querying%20GrAF%20graphs.html
 
@@ -101,7 +101,7 @@ To visualize the graphs you have to install matplotlib:
 
 -  matplotlib: http://matplotlib.org/
 
-When you installed all the libraries you are able to import the
+When you have installed all the libraries you are able to import the
 following modules:
 
 In[22]:
@@ -238,7 +238,7 @@ In[53]:
 Merge all graphs
 ----------------
 
-Now we can merge all the individual graphsm for each source into one big
+Now we can merge all the individual graphs for each source into one big
 graph. This will collapse all Spanish nodes and so connect the nodes
 that have a common Spanish translation:
 
@@ -257,7 +257,7 @@ In[54]:
 We count the nodes in the graph and the `number of connected
 components <http://networkx.lanl.gov/reference/generated/networkx.algorithms.components.connected.number_connected_components.html#networkx.algorithms.components.connected.number_connected_components>`_
 to get an impression how the graph "looks". The number of nodes is much
-higher then the number of connected components, so we already have a lot
+higher than the number of connected components, so we already have a lot
 of the nodes connected in groups, either as a consequence from being
 part of one dictionary entry or through the merge we did via the Spanish
 node:
@@ -294,12 +294,12 @@ stem. For this we first remove certain stop words from the translation
 (list of stopwords from NLTK). There are two cases then: just one word
 remains, or more than one word remains.
 
-We have to options now what to do with the latter: either they are not
+We have two options now what to do with the latter: either they are not
 connected with anything at all (default behaviour), or each word is
 stemmed and the translation is connected with every other translation
 that contain the same stems. Right now this results in many connections
 that look not very useful. This should be done in a more intelligent way
-in the future (for example find heads of phrases in mulitword expression
+in the future (for example find heads of phrases in multiword expressions
 and only connect those; split the weight of the connections between all
 stems and work with weighted graphs from this step on; ...).
 
@@ -472,7 +472,7 @@ In[68]:
     from networkx.readwrite import json_graph
     comer_json = json_graph.node_link_data(comer_graph)
 
-The JSON data structure can now be writte to a file with the help of the
+The JSON data structure can now be written to a file with the help of the
 Python ``json`` module:
 
 In[69]:
