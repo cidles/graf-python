@@ -1,8 +1,10 @@
 .DS_STORE
 *.pyc
 .idea
+*.egg
 dist/
 build/
 doc/_build/
 graf_python.egg-info/
 src/graf_python.egg-info/
+distribute-0.6.49.tar.gz
