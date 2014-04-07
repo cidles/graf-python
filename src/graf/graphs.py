@@ -98,6 +98,7 @@ class Graph(object):
         self.features = FeatureStructure()
         self.nodes = GraphNodes()
         self._top_edge_id = 0
+        self._edge_pos = 0
         self.edges = GraphEdges()
         self.regions = IdDict()
         self.content = None
@@ -108,14 +109,24 @@ class Graph(object):
         # to the graph source/origins
         self.additional_information = {}
 
-    def create_edge(self, from_node=None, to_node=None, id=None):
-        """Create C{Edge} from id, from_node, to_node and add it to
-        this C{Graph}.
+    def create_edge(self, from_node, to_node, id=None):
+        """Create graf.Edge from id, from_node, to_node and add it to
+        this graf.Graph.
 
-        :param id: C{str}
-        :param from_node: C{Node}
-        :param to_node: C{Node}
+        Parameters
+        ----------
+        from_node : graf.Node
+            The start node for the edge.
+        to_node: graf.Node
+            The end node for the edge.
+        id : str, optional
+            An ID for the edge. We will create one if none is given.
 
+        Returns
+        -------
+        res : graf.Edge
+            The Edge object that was created.
+        
         """
         if not hasattr(from_node, 'id'):
             from_node = self.nodes[from_node]
@@ -131,7 +142,9 @@ class Graph(object):
             while id is None or id in self.edges:
                 id = 'e%d' % self._top_edge_id
                 self._top_edge_id += 1
-        res = Edge(id, from_node, to_node)
+
+        res = Edge(id, from_node, to_node, self._edge_pos)
+        self._edge_pos += 1
 
         #if not res in self.edges.values():
         self.edges.add(res)
@@ -318,7 +331,6 @@ class Node(GraphElement):
             self.add_link(Link((region,)))
 
     # Relationship within graph
-
     def iter_parents(self):
         for edge in self.in_edges:
             res = edge.from_node
@@ -357,23 +369,33 @@ class Node(GraphElement):
 class Edge(GraphElement):
     """
     Class of edges in Graph:
-    - Each edge maintains the source (from) C{Node} and the destination
-    (to) C{Node}.
-    - Edges may also contain one or more C{Annotation} objects.
+    - Each edge maintains the source (from) graf.Node and the destination
+    (to) graf.Node.
+    - Edges may also contain one or more graf.Annotation objects.
 
     """
 
-    def __init__(self, id, from_node=None, to_node=None):
-        """C{Edge} Constructor.
+    def __init__(self, id, from_node, to_node, pos=None):
+        """Edge Constructor.
 
-        :param id: C{str}
-        :param from_node: C{Node}
-        :param to_node: C{Node}
+        Parameters
+        ----------
+        id : str
+            The ID for the new edge.
+        from_node : graf.Node
+            The source node for the edge.
+        to_node : graf.Node
+            The target node for the edge.
+        pos : int, optional
+            An optional position of the edge in the graph. This will
+            only be used when we render the graf, to make it easier to
+            store an order of the edges.
 
         """
         GraphElement.__init__(self, id)
         self.from_node = from_node
         self.to_node = to_node
+        self.pos = pos
 
     def __repr__(self):
         return "Edge id = " + self.id

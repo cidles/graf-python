@@ -13,6 +13,7 @@ import codecs
 import datetime
 import getpass
 import random
+from operator import attrgetter
 
 from xml.sax import make_parser, SAXException
 from xml.sax.handler import ContentHandler
@@ -255,22 +256,30 @@ class GrafRenderer(object):
 
         header = self.write_header(g)
 
-        nodes = sorted(g.nodes)
+        # render regions
+        for region in sorted(g.regions):
+            header.append(self.render_region(region))
 
+        # render nodes
+        nodes = sorted(g.nodes)
         for node in nodes:
             header.append(self.render_node(node))
-
-            for region in g.regions:
-                for region_node in region.nodes:
-                    if region_node.id == node.id:
-                        header.append(self.render_region(region))
-
-            for edge in g.edges:
-                if edge.to_node.id == node.id:
-                    header.append(self.render_edge(edge))
-
             for a in node.annotations:
                 header.append(self.render_ann(a))
+
+            # for region in g.regions:
+            #     for region_node in region.nodes:
+            #         if region_node.id == node.id:
+            #             header.append(self.render_region(region))
+
+            # for edge in g.edges:
+            #     if edge.to_node.id == node.id:
+            #         header.append(self.render_edge(edge))
+
+        # render edges
+        for edge in sorted(g.edges, key=lambda e: e.pos
+                if e.pos is not None else 0):
+            header.append(self.render_edge(edge))
 
         doc = minidom.parseString(tostring(header, encoding="utf-8"))
 

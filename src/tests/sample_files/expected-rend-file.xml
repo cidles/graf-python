@@ -7,15 +7,15 @@
 		<dependencies/>
 		<annotationSpaces/>
 	</graphHeader>
+	<region anchors="1 2" xml:id="region_one"/>
 	<node xml:id="node_one">
 		<link targets="region_one"/>
 	</node>
-	<region anchors="1 2" xml:id="region_one"/>
-	<edge from="node_zero" to="node_one" xml:id="edge1"/>
 	<a as="Annotation_label" label="Annotation_label" ref="node_one" xml:id="annotation-1">
 		<fs>
 			<f name="value">feature_value</f>
 			<f name="name">feature_name</f>
 		</fs>
 	</a>
+	<edge from="node_zero" to="node_one" xml:id="edge1"/>
 </graph>
