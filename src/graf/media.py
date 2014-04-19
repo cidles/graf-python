@@ -32,7 +32,7 @@ class Region(object):
 
         self.id = id
         self.nodes = []
-        self.anchors = anchors
+        self.anchors = list(anchors)
         if len(anchors) == 1:
             raise ValueError('Regions must be defined by at least 2 anchors')
 
@@ -57,17 +57,18 @@ class Region(object):
             return False
         return self.anchors == other.anchors
 
-    def _get_end(self):
+    @property
+    def end(self):
         return self.anchors[-1]
 
-    def _set_end(self, val):
+    @end.setter
+    def end(self, val):
         self.anchors[-1] = val
-    end = property(_get_end, _set_end)
-    
-    def _get_start(self):
+
+    @property
+    def start(self):
         return self.anchors[0]
 
-    def _set_start(self, val):
+    @start.setter
+    def start(self, val):
         self.anchors[0] = val
-    start = property(_get_start, _set_start)
-    
