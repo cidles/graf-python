@@ -589,6 +589,8 @@ class DocumentHeader(object):
             return self._annotationMap[type]
         if self._basename is not None:
             #return self._basename + ".xml"
+            if type.startswith('f.'):
+                type = type[2:]
             return self._basename + '-' + type + ".xml"
         return None
 
@@ -710,9 +712,6 @@ class GraphHandler(SAXHandler):
             type = attribs[self._g.TYPE_F_ID]
         except KeyError:
             type = attribs[self._g.TYPE]
-
-        if type.startswith('f.'):
-            type = type[2:]
 
         self._parse_dependency(type, self.graph)
 
