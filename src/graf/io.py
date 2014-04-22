@@ -589,8 +589,9 @@ class DocumentHeader(object):
             return self._annotationMap[type]
         if self._basename is not None:
             #return self._basename + ".xml"
+            if type.startswith('f.'):
+                type = type[2:]
             return self._basename + '-' + type + ".xml"
-        retu
         return None
 
     def add_type(self, type, loc):

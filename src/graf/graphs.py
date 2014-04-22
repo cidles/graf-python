@@ -180,12 +180,14 @@ class Graph(object):
         return self.edges[id]
 
     def get_region(self, *anchors):
+        anchors = list(anchors)
         for region in self.regions:
             if region.anchors == anchors:
                 return region
         return None
 
-    def _get_root(self):
+    @property
+    def root(self):
         try:
             if sys.version_info[:2] >= (3, 0):
                 return self.iter_roots().__next__()
@@ -194,14 +196,13 @@ class Graph(object):
         except StopIteration:
             return None
 
-    def _set_root(self, node):
+    @root.setter
+    def root(self, node):
         # FIXME: how should this interact with node.is_root
         self.header.clear_roots()
         if node.id not in self.nodes:
             raise ValueError('The new root node is not in the graph: %r' % node)
         self.header.roots.append(node.id)
-
-    root = property(_get_root, _set_root)
 
     def iter_roots(self):
         return (self.nodes[id] for id in self.header.roots)
