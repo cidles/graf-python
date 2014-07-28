@@ -14,9 +14,6 @@ version_file = os.path.join(os.path.dirname(__file__), 'src', 'graf', 'VERSION')
 with open(version_file) as fh:
     grafpython_version = fh.read().strip()
 
-import distribute_setup
-distribute_setup.use_setuptools()
-
 from setuptools import setup, find_packages
 
 setup(
@@ -24,7 +21,7 @@ setup(
     description = "Python implementation of the Graph Annotation Framework (GrAF)",
     version = grafpython_version,
     url = "http://media.cidles.eu/poio/graf-python/",
-    download_url = "https://s3.amazonaws.com/cidles/downloads/graf-python/graf-python-{0}.tar.gz".format(grafpython_version),
+    #download_url = "https://s3.amazonaws.com/cidles/downloads/graf-python/graf-python-{0}.tar.gz".format(grafpython_version),
     long_description = "Python implementation of the Graph Annotation Framework. (http://www.xces.org/ns/GrAF/1.0/)",
     license = "Apache License, Version 2.0",
     keywords = ['NLP', 'CL', 'natural language processing',
